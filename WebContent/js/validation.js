@@ -15,7 +15,7 @@ $(function(){
 		}
 	});
 
-	$("#register-form").validate({
+	$("LienHe-form").validate({
 		rules:{
 			name:{
 				required: true,
@@ -75,5 +75,54 @@ $(function(){
 			}
 		}
 	});
+	$.validator.setDefaults({
+	    errorClass: 'help-block',
+	    highlight: function(element) {
+	      $(element)
+	        .closest('.row')
+	        .addClass('has-error');
+	    },
+	    unhighlight: function(element) {
+	      $(element)
+	        .closest('.row')
+	        .removeClass('has-error');
+	    },
+	 
+	  });
+
+	  $("#LienHe-form").validate({
+	    rules: {
+	      name:{
+	        required: true,
+	        lettersonly:true
+	      },
+	      email: {
+	        required: true,
+	        email: true
+	      },
+	      subject:{
+	        required: true,
+	        lettersonly:true
+	      },
+	      binhluan:{
+	        required:true
+
+	      },
+
+	      messages:{
+	        name:{
+	          required: 'Hãy nhập họ và tên của bạn.',
+	        lettersonly: 'Vui lòng nhập đúng tên.'
+
+	        },
+	      email:{
+	        required: 'Hãy nhập địa chỉ email.',
+	        email:'Pls enter a <em>valid</em> email address.'
+	      },
+	       subject:{
+	          required: 'Nhập thông tin.',
+	        lettersonly: 'Vui lòng nhập thông tin.'
+	      
+	  });
 
 });

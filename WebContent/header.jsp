@@ -37,6 +37,7 @@
         <link rel="stylesheet" href="css/responsive.css">
 		<!-- modernizr js -->
         <script src="js/vendor/modernizr-2.8.3.min.js"></script>
+        <link rel="stylesheet" href="LienHe.css">
 </head>
 <body>
      
@@ -74,7 +75,7 @@
 												</ul>												
 											</li>	
 											<li><a href="blog.html">TIN TỨC</a></li>										
-											<li><a href="#">LIÊN HỆ</a></li>
+											<li><a href="LienHe.jsp">LIÊN HỆ</a></li>
 										</ul>
 									</nav>
 								</div>
