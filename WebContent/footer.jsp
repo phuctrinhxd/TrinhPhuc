@@ -7,6 +7,63 @@
 <title>Insert title here</title>
 </head>
 <body>
+	<!-- brand-area start -->
+		<div class="brand-area">
+			<div class="container">
+				<div class="brand-inner-container pad-60">
+					<div class="row">
+						<div class="brand-curosel">
+							<div class="col-md-12">
+								<div class="single-brand">
+									<a href="#"><img src="img/brand/brand1.png" alt="" /></a>
+								</div>
+							</div>
+							<div class="col-md-12">
+								<div class="single-brand">
+									<a href="#"><img src="img/brand/brand2.jpg" alt="" /></a>
+								</div>
+							</div>
+							<div class="col-md-12">
+								<div class="single-brand">
+									<a href="#"><img src="img/brand/brand3.png" alt="" /></a>
+								</div>
+							</div>
+							<div class="col-md-12">
+								<div class="single-brand">
+									<a href="#"><img src="img/brand/brand4.png" alt="" /></a>
+								</div>
+							</div>
+							<div class="col-md-12">
+								<div class="single-brand">
+									<a href="#"><img src="img/brand/brand8.png" alt="" /></a>
+								</div>
+							</div>
+							<div class="col-md-12">
+								<div class="single-brand">
+									<a href="#"><img src="img/brand/brand5.png" alt="" /></a>
+								</div>
+							</div>
+							<div class="col-md-12">
+								<div class="single-brand">
+									<a href="#"><img src="img/brand/brand6.png" alt="" /></a>
+								</div>
+							</div>
+							<div class="col-md-12">
+								<div class="single-brand">
+									<a href="#"><img src="img/brand/brand7.png" alt="" /></a>
+								</div>
+							</div>
+							<div class="col-md-12">
+								<div class="single-brand">
+									<a href="#"><img src="img/brand/brand8.png" alt="" /></a>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- brand-area end -->
 	<footer>
 	<div class="footer-top-area">
 				<div class="container"  >
@@ -87,5 +144,8 @@
         <script src="js/plugins.js"></script>
 		<!-- main js -->
         <script src="js/main.js"></script>
+        <script src="js/jquery.validate.js"></script>
+        <script src="js/validation.js"></script>
+        <script src="js/additional-methods.js"></script>
 </body>
 </html>
