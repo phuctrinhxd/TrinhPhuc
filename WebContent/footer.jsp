@@ -66,60 +66,63 @@
 		<!-- brand-area end -->
 	<footer>
 	<div class="footer-top-area">
-				<div class="container"  >
+				<div class="container">
 					<div class="row">
 						<!-- footer-widget start -->
-						<div class="col-lg-3 col-md-3 col-sm-4">
+						<div class="col-xs-6 col-md-4">
 							<div class="footer-widget">
-								<h3>Liên Hệ</h3>
+								<h3 class="text-center">LIÊN HỆ</h3>
 								<ul class="footer-contact">
 									<li>
 										<i class="fa fa-map-marker"> </i>
-										Địa chỉ: DH SPKT TP-HCM
+										Địa chỉ: Trường ĐH SPKT TPHCM
 									</li>
 									<li>
 										<i class="fa fa-envelope"> </i>	
-										Email: ute@student.hcmute.edu.vn
+										Email: admin@ThemeBuz.com
 									</li>
 									<li>
 										<i class="fa fa-phone"> </i>
-										Phone: +123456789
+										Phone: +123 455657589
 									</li>
 								</ul>
 							</div>
 						</div>
 						<!-- footer-widget end -->					
 						<!-- footer-widget start -->
-						<div class="col-lg-3 col-md-3 hidden-sm">
+						<div class="col-xs-6 col-md-4">
 							<div class="footer-widget">
-								<h3>Thông tin GIAYNE</h3>
+								<h3 class="text-center">THÔNG TIN PTT</h3>
 								<ul class="footer-menu">
-									<li><a href="#">Gới thiệu</a></li>
-									<li><a href="#">Giao hàng và thanh toán</a></li>
-									<li><a href="#">Bảo hành</a></li>
-									<li><a href="#">Chính sách bảo mật</a></li>
-									<li><a href="#">Điều khoản sử dụng</a></li>
+									<li><a href="#" class="text-center">Giới thiệu</a></li>
+									<li><a href="#" class="text-center">Chính sách giao hàng</a></li>
+									<li><a href="#" class="text-center">Chính sách bảo hành</a></li>
+									<li><a href="#" class="text-center">Chính sách bảo mật</a></li>
+									<li><a href="#" class="text-center">Điểu khoản sử dụng</a></li>
 								</ul>
 							</div>
 						</div>
 						<!-- footer-widget end -->
 						<!-- footer-widget start -->
-						<div class="col-lg-3 col-md-3 col-sm-4">
+						<div class="col-xs-6 col-md-4">
 							<div class="footer-widget">
-								<h3>Tài Khoản</h3>
+								<h3 class="text-center">TÀI KHOẢN</h3>
 								<ul class="footer-menu">
-									<li><a href="#">Tài khoản</a></li>
-									<li><a href="#">Liên hệ với GIAYNE</a></li>
-									<li><a href="#">Lịch sử mua hàng</a></li>
-									<li><a href="#">Trả lại</a></li>
+									<li><a href="#" class="text-center">Tài khoản</a></li>
+									<li><a href="#" class="text-center">Liên hệ PTT</a></li>
+									<li><a href="#" class="text-center">Mua hàng</a></li>
+									<li><a href="#" class="text-center">Trả lại</a></li>
 									
 								</ul>
 							</div>
 						</div>
-										
+						<!-- footer-widget end -->
+						<!-- footer-widget start -->
+						
+						<!-- footer-widget end -->						
 					</div>
 				</div>
-			</div>-->
+			</div>
 				
 		</footer>
 		<!-- footer end -->
