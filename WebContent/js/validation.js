@@ -122,5 +122,44 @@ $(function(){
 			}
 		}
 	});
+	$("#LienHe-form").validate({
+		rules:{
+			name:{
+				required: true,
+				lettersonly: true
+			},
+			email:{
+				required:true,
+				email: true
+			},
+			subject:{
+				required:true,
+				lettersonly:true
+			},
+			comment:{
+				required:true,
+				lettersonly:true
+			}
+		},
+		messages:{
+			name:{
+				required: 'Hãy nhập họ và tên của bạn.',
+				lettersonly: 'Vui lòng nhập đúng tên.'
+			},
+			email:{
+				required: 'Hãy nhập địa chỉ email.',
+				email:'Vui lòng nhập đúng email.Email phải có @gmail.com'
+			},
+			subject:{
+				required:'Nhập tên tiêu đề',
+				subject:'Nhập đúng tiêu đề.'
+			},
+			comment:{
+				required:'Nhập vào nôi dung cần hổ trợ.',
+				
+			}
+		}
+			
+	});
 });
 
