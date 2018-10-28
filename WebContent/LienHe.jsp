@@ -42,80 +42,15 @@
         <script type="text/javascript" language="javascript" src="validation.js"></script>
     </head>
     <body>
-    
-			 
-			<div class="header-bottom-area">
-				<div class="container">
-					<div class="inner-container">
-						<div class="row">
-							<div class="col-md-2 col-sm-4 col-xs-5">
-								<div class="logo">
-									<a href="index.html" ><img src="img/logoGiayNe.png" alt="" style="width: 90px; height: 70px;" /></a>
-								</div>
-							</div>
-							<div class="col-md-8 hidden-xs hidden-sm">
-								<div class="main-menu">
-									<nav>
-										<ul>
-											<li><a href="index.html">TRANG CHỦ</a>
-											</li>
-											<li><a href="about.jsp">GIỚI THIỆU</a></li>
-											<li><a href="#">GIÀY NAM</a>
-												<ul>
-													<li><a href="#">ADIDAS</a></li>
-													<li><a href="#">NIKE</a></li>
-													<li><a href="#">BITIS</a></li>
-												
-												</ul>												
-											</li>	
-											<li><a href="#">GIÀY NỮ</a>
-												<ul>
-													<li><a href="#">ADIDAS</a></li>
-													<li><a href="#">NIKE</a></li>
-													<li><a href="#">BITIS</a></li>
-												</ul>												
-											</li>	
-											<li><a href="blog.html">TIN TỨC</a></li>										
-											<li><a href="LienHe.jsp">LIÊN HỆ</a></li>
-										</ul>
-									</nav>
-								</div>
-							</div>
-							<div class="col-md-2 col-sm-8 col-xs-7 header-right">
-								<div class="my-cart">
-									<div class="total-cart">
-										<a href="#">
-											<i class="fa fa-shopping-cart"></i>
-											<span>2</span>
-										</a>								
-									</div>
-								</div>
-								<div class="user-meta">
-									<a href="#"><i class="fa fa-cog"></i></a>
-									<ul>
-										<li><a href="login.jsp">Đăng nhập</a></li>
-										<li><a href="login.jsp">Đăng kí</a></li>
-										
-									</ul>								
-								</div>
-								<div class="header-search">
-									<i class="fa fa-search"></i>
-									<div class="header-form">
-										<form action="#">
-											<input type="text" placeholder="search" />
-											<button><i class="fa fa-search"></i></button>
-										</form>
-									</div>
-								</div>							
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-			<!-- header-bottom-area end -->
+    <jsp:include page="header.jsp"></jsp:include>
+
+	<div class="breadcrumb-area">
 			
-				
-		</header>
+	</div>
+			 
+			
+			
+
 		<!-- breadcrumb-area end -->
 		<!-- contact-area start -->
 		<div class="contact-area pad-60">
