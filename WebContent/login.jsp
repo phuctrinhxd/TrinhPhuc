@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="utf-8">
-<title>Insert title here</title>
+<title>Đăng nhập - Đăng ký</title>
 </head>
 <body>
 	<jsp:include page="header.jsp"></jsp:include>
@@ -32,7 +32,7 @@
 										<label>Remember me!</label>
 									</span>
 									<span class="forgot-login">
-										<a href="#">Quên mật khẩu</a>
+										<a href="forgot-password.jsp">Quên mật khẩu</a>
 									</span>
 								</div>
 								<input class="login-sub" type="submit" value="Login" />
