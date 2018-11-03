@@ -12,32 +12,8 @@
 	<div class="slider-container">
 		<!-- Slider Image -->
 		<div id="mainSlider" class="nivoSlider slider-image">
-			<img src="img/giay1.jpg" alt="main slider" title="#htmlcaption1" style="width: 1920px;height: 912px" />
-			<img src="img/giay1.jpg" alt="main slider" title="#htmlcaption2" style="width: 1920px;height: 912px"/>
-		</div>
-		<!-- Slider Caption 1 -->
-		<div id="htmlcaption1" class="nivo-html-caption slider-caption-1">
-			<div class="slider-progress"></div>	
-			<div class="slide1-text">
-				
-			</div>						
-		</div>
-		<!-- Slider Caption 2 -->
-		<div id="htmlcaption2" class="nivo-html-caption slider-caption-2">
-			<div class="slider-progress"></div>	
-			<div class="slide1-text">
-				<div class="middle-text">
-					<div class="cap-dec wow bounceIn" data-wow-duration="0.7s" data-wow-delay="0s">
-						<h3>trendy summer collection 2016</h3>
-					</div>	
-					<div class="cap-title wow bounceIn" data-wow-duration="1s" data-wow-delay="0.2s">
-						<h1>Top fashion for women</h1>
-					</div>
-					<div class="cap-readmore wow bounceIn" data-wow-duration="1.1s" data-wow-delay=".5s">
-						
-					</div>										
-				</div>										
-			</div>
+			<img src="img/blog/logoGiayNe.png" alt="main slider" title="#htmlcaption1" />
+			<img src="img/blog/bg.jpg" alt="main slider" title="#htmlcaption2" />
 		</div>
 	</div>
 	
