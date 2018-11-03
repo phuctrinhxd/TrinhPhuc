@@ -54,9 +54,7 @@
 			<div class="row">
 				<div class="col-md-12">
 					<div class="product-tab">
-						<!-- Nav tabs -->
-						
-
+						<!-- Nav tabs -->		
 						<!-- Tab panes -->
 						<div class="tab-content">
 							<div role="tabpanel" class="tab-pane active" id="home">
@@ -66,26 +64,23 @@
 										<div class="col-md-12">
 											<div class="single-product">
 												<div class="product-img">
-													<a href="single-product.html">
+													<a href="single-product.jsp">
 														<img src="img/giay1.jpg" alt="" />
-														<!--<img class="secondary-img" src="img/product/w2.jpg" alt="" />-->
 													</a>
 													<span class="tag-line">new</span>
 													<div class="product-action">
-														<div class="button-top">
-															<a  data-toggle="modal" data-target="#productModal"><i class="fa fa-search"></i></a>
-															<a  ><i class="fa fa-heart"></i></a>
-														</div>
 														<div class="button-cart">
+															<a href="order.jsp"><button><i class="fa fa-usd" aria-hidden="true"></i> đặt hàng</button>
+															</a>
 															<button><i class="fa fa-shopping-cart"></i> Giỏ hàng</button>
 														</div>
 													</div>
 												</div>
 												<div class="product-content">
-													<h3><a href="single-product.html">Nike Nam</a></h3>
+													<h3><a href="single-product.jsp">Nike Nam</a></h3>
 													<div class="price">
-														<span>850.000đồng</span>
-														
+														<span>900.000đ</span>
+														<span class="old">950.000đ</span>
 													</div>
 												</div>
 											</div>
@@ -95,26 +90,23 @@
 										<div class="col-md-12">
 											<div class="single-product">
 												<div class="product-img">
-													<a href="single-product.html">
+													<a href="single-product.jsp">
 														<img src="img/giay1.jpg" alt="" />
-														
 													</a>
 													<span class="tag-line">new</span>
 													<div class="product-action">
-														<div class="button-top">
-															<a  data-toggle="modal" data-target="#productModal"><i class="fa fa-search"></i></a>
-															<a  ><i class="fa fa-heart"></i></a>
-														</div>
 														<div class="button-cart">
+															<a href="order.jsp"><button><i class="fa fa-usd" aria-hidden="true"></i> đặt hàng</button>
+															</a>
 															<button><i class="fa fa-shopping-cart"></i> Giỏ hàng</button>
 														</div>
 													</div>
 												</div>
 												<div class="product-content">
-													<h3><a href="single-product.html">Nike nam</a></h3>
+													<h3><a href="single-product.jsp">Nike Nam</a></h3>
 													<div class="price">
-														<span>950.00đồng</span>
-														
+														<span>900.000đ</span>
+														<span class="old">950.000đ</span>
 													</div>
 												</div>
 											</div>
@@ -122,26 +114,23 @@
 										<div class="col-md-12">
 											<div class="single-product">
 												<div class="product-img">
-													<a href="single-product.html">
+													<a href="single-product.jsp">
 														<img src="img/giay1.jpg" alt="" />
-														<img class="secondary-img" src="img/product/4.jpg" alt="" />
 													</a>
 													<span class="tag-line">new</span>
 													<div class="product-action">
-														<div class="button-top">
-															<a  data-toggle="modal" data-target="#productModal"><i class="fa fa-search"></i></a>
-															<a  ><i class="fa fa-heart"></i></a>
-														</div>
 														<div class="button-cart">
+															<a href="order.jsp"><button><i class="fa fa-usd" aria-hidden="true"></i> đặt hàng</button>
+															</a>
 															<button><i class="fa fa-shopping-cart"></i> Giỏ hàng</button>
 														</div>
 													</div>
 												</div>
 												<div class="product-content">
-													<h3><a href="single-product.html">Nike nam</a></h3>
+													<h3><a href="single-product.jsp">Nike Nam</a></h3>
 													<div class="price">
-														<span>950.00đồng</span>
-														
+														<span>900.000đ</span>
+														<span class="old">950.000đ</span>
 													</div>
 												</div>
 											</div>
@@ -149,30 +138,27 @@
 										<div class="col-md-12">
 											<div class="single-product">
 												<div class="product-img">
-													<a href="single-product.html">
+													<a href="single-product.jsp">
 														<img src="img/giay1.jpg" alt="" />
-														<img class="secondary-img" src="img/product/4.jpg" alt="" />
 													</a>
 													<span class="tag-line">new</span>
 													<div class="product-action">
-														<div class="button-top">
-															<a  data-toggle="modal" data-target="#productModal"><i class="fa fa-search"></i></a>
-															<a  ><i class="fa fa-heart"></i></a>
-														</div>
 														<div class="button-cart">
+															<a href="order.jsp"><button><i class="fa fa-usd" aria-hidden="true"></i> đặt hàng</button>
+															</a>
 															<button><i class="fa fa-shopping-cart"></i> Giỏ hàng</button>
 														</div>
 													</div>
 												</div>
 												<div class="product-content">
-													<h3><a href="single-product.html">Nike nam</a></h3>
+													<h3><a href="single-product.jsp">Nike Nam</a></h3>
 													<div class="price">
-														<span>950.00đồng</span>
-														
+														<span>900.000đ</span>
+														<span class="old">950.000đ</span>
 													</div>
 												</div>
 											</div>
-										</div>								
+										</div>					
 									</div>
 								</div>								
 							</div>
@@ -187,7 +173,7 @@
 		<div class="container">
 			<div class="row">
 				<div class="section-title">
-					<h2><a href="blog.html">TIN TỨC</a></h2>
+					<h2><a href="blog.jsp">TIN TỨC</a></h2>
 					<div class="title-icon">
 						<span><i class="fa fa-angle-left"></i> <i class="fa fa-angle-right"></i></span>
 					</div>
@@ -198,50 +184,47 @@
 					<div class="col-md-12">
 						<div class="blog-wrapper">
 							<div class="blog-img">
-								<a href="single-blog.html">
-									<img src="img/giay1.jpg" alt="Nike" />
+								<a href="single-blog.jsp">
+									<img src="img/blog/bg.jpg" alt="Nike" />
 								</a>
 							</div>
 							<div class="blog-content">
-								<h3><a href="single-blog.html">
-									Nike		
+								<h3><a href="single-blog.jsp">
+									Những mẫu giày hot		
 								</a></h3>					
 							</div>
 						</div>
 					</div>
 					<div class="col-md-12">
-						<div class="blog-wrapper">
+					<div class="blog-wrapper">
 							<div class="blog-img">
-								<a href="single-blog.html">
-									<img src="img/giay1.jpg" alt="" />
+								<a href="single-blog.jsp">
+									<img src="img/blog/halloween.jpg" alt="" />
 								</a>
 							</div>
 							<div class="blog-content">
-								<h3><a href="single-blog.html">
-									NIKE ĐEN NỮ	
+								<h3><a href="single-blog.jsp">
+									Halloween không sợ ma, chỉ sợ thiếu giày
 								</a></h3>												
 							</div>
-
 					</div>
 				</div>
 				<div class="col-md-12">
 					<div class="blog-wrapper">
 						
 						<div class="blog-img">
-							<a href="single-blog.html">
-								<img src="img/Giay3.jpg" alt="Giay3.jpg" />
+							<a href="single-blog.jsp">
+								<img src="img/blog/logoGiayNe.png" alt="Giay3.jpg" />
 							</a>
 						</div>
 						<div class="blog-content">
 							<h3>
-								<a href="single-blog.html">
-									NIKE TRẮNG NỮ
+								<a href="single-blog.jsp">
+									Khai trương shop giayne ptt
 								</a></h3>
 							</div>
-
 					</div>
-				</div>
-				
+				</div>	
 			</div>
 		</div>
 	</div>

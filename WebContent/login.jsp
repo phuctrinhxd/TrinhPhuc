@@ -45,31 +45,31 @@
 							<p>Tạo tài khoản mới</p>
 							<form action="#" id="register-form">
 								<div class="form-group">
-									<label>Tên người dùng</label>
+									<label>Tên người dùng <span class="required">*</span></label>
 									<input type="text" placeholder="Họ tên" name=name class="form-control"/>
 								</div>
 								<div class="form-group">
-									<label>Email</label>
+									<label>Email <span class="required">*</span></label>
 									<input type="text" placeholder="Địa chỉ email" name="email" class="form-control"/>
 								</div>		
 								<div class="form-group">
-									<label>Số điện thoại</label>
+									<label>Số điện thoại <span class="required">*</span></label>
 									<input type="number" placeholder="Số điện thoại" name="numberphone" class="form-control"/>
 								</div>
 								<div class="form-group">
-									<label>Địa chỉ</label>
+									<label>Địa chỉ <span class="required">*</span></label>
 									<textarea name="addresshome" placeholder="Địa chỉ" class="form-control"></textarea>
 								</div>						
 								<div class="form-group">
-									<label>Tên đăng nhập</label>
+									<label>Tên đăng nhập <span class="required">*</span></label>
 									<input type="text" placeholder="Tên đăng nhập" name=username class="form-control"/>
 								</div>
 								<div class="form-group">
-									<label>Mật khẩu</label>
+									<label>Mật khẩu <span class="required">*</span></label>
 									<input type="password" placeholder="Mật khẩu" name="password" id="password" class="form-control"/>
 								</div>
 								<div class="form-group">
-									<label>Xác nhận mật khẩu</label>
+									<label>Xác nhận mật khẩu <span class="required">*</span></label>
 									<input type="password" placeholder="Nhập lại mật khẩu" name="password2" class="form-control"/>
 								</div>	
 

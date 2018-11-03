@@ -179,11 +179,11 @@ p.checkout-coupon input[type="text"] {
   padding: 0 7px;
 }
 .related-curosel{margin-bottom:40px} 
-.shop-tab ,.shop-breadcrumb{
+.short-by ,.shop-breadcrumb{
   width: 50%;
 }
 .short-by ,.shop-show{
-  display: none;
+  display: block;
 }
 .shop-content {
   margin-top: 40px;

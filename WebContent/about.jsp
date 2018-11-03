@@ -14,11 +14,7 @@
 				<div class="row">
 					<div class="col-md-12">
 						<div class="breadcrumb-list">
-							<h1>About us</h1>
-							<ul>
-								<li><a href="index.html">home</a> <span class="divider">|</span></li>
-								<li>About us</li>
-							</ul>							
+							<h1>giới thiệu</h1>						
 						</div>
 					</div>
 				</div>
@@ -93,64 +89,6 @@
 			</div>
 		</div>
 		<!-- testimonial-area end -->	
-
-		<!-- brand-area start -->
-		<div class="brand-area">
-				<div class="container">
-					<div class="brand-inner-container pad-60">
-						<div class="row">
-							<div class="brand-curosel">
-								<div class="col-md-12">
-									<div class="single-brand">
-										<a href="#"><img src="img/brand/brand1.png" alt="" /></a>
-									</div>
-								</div>
-								<div class="col-md-12">
-									<div class="single-brand">
-										<a href="#"><img src="img/brand/brand2.jpg" alt="" /></a>
-									</div>
-								</div>
-								<div class="col-md-12">
-									<div class="single-brand">
-										<a href="#"><img src="img/brand/brand3.png" alt="" /></a>
-									</div>
-								</div>
-								<div class="col-md-12">
-									<div class="single-brand">
-										<a href="#"><img src="img/brand/brand4.png" alt="" /></a>
-									</div>
-								</div>
-								<div class="col-md-12">
-									<div class="single-brand">
-										<a href="#"><img src="img/brand/brand8.png" alt="" /></a>
-									</div>
-								</div>
-								<div class="col-md-12">
-									<div class="single-brand">
-										<a href="#"><img src="img/brand/brand5.png" alt="" /></a>
-									</div>
-								</div>
-								<div class="col-md-12">
-									<div class="single-brand">
-										<a href="#"><img src="img/brand/brand6.png" alt="" /></a>
-									</div>
-								</div>
-								<div class="col-md-12">
-									<div class="single-brand">
-										<a href="#"><img src="img/brand/brand7.png" alt="" /></a>
-									</div>
-								</div>
-								<div class="col-md-12">
-									<div class="single-brand">
-										<a href="#"><img src="img/brand/brand8.png" alt="" /></a>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-	
 	<jsp:include page="footer.jsp"></jsp:include>
 </body>
 </html>

@@ -58,10 +58,10 @@
 								<div class="main-menu">
 									<nav>
 										<ul>
-											<li><a href="index.html">TRANG CHỦ</a>
+											<li><a href="index.jsp">TRANG CHỦ</a>
 											</li>
 											<li><a href="about.jsp">GIỚI THIỆU</a></li>
-											<li><a href="#">GIÀY NAM</a>
+											<li><a href="shop.jsp">GIÀY NAM</a>
 												<ul>
 													<li><a href="#">ADIDAS</a></li>
 													<li><a href="#">NIKE</a></li>
@@ -69,14 +69,14 @@
 												
 												</ul>												
 											</li>	
-											<li><a href="#">GIÀY NỮ</a>
+											<li><a href="shop.jsp">GIÀY NỮ</a>
 												<ul>
 													<li><a href="#">ADIDAS</a></li>
 													<li><a href="#">NIKE</a></li>
 													<li><a href="#">BITIS</a></li>
 												</ul>												
 											</li>	
-											<li><a href="blog.html">TIN TỨC</a></li>										
+											<li><a href="blog.jsp">TIN TỨC</a></li>										
 											<li><a href="LienHe.jsp">LIÊN HỆ</a></li>
 										</ul>
 									</nav>
@@ -115,7 +115,42 @@
 			</div>
 			<!-- header-bottom-area end -->
 			<!-- mobile-menu-area start -->
-			
+			<div class="mobile-menu-area visible-xs visible-sm">
+				<div class="container">
+					<div class="row">
+						<div class="col-md-12">
+							<div class="mobile-menu">
+								<nav id="dropdown">
+									<ul>
+										<li><a href="index.jsp">Trang chủ</a></li>
+										<li><a href="about.jsp">Giới thiệu</a></li>										
+										<li><a href="shop.jsp">Adidas</a>
+											<ul>
+												<li><a href="shop.jsp">Giày nam</a></li>
+												<li><a href="shop.jsp">Giày nữ</a></li>
+											</ul>
+										</li>
+										<li><a href="shop.jsp">Nike</a>
+											<ul>
+												<li><a href="shop.jsp">Giày nam</a></li>
+												<li><a href="shop.jsp">Giày nữ</a></li>
+											</ul>
+										</li>
+										<li><a href="shop.jsp">Bitis</a>
+											<ul>
+												<li><a href="shop.jsp">Giày nam</a></li>
+												<li><a href="shop.jsp">Giày nữ</a></li>
+											</ul>
+										</li>
+										<li><a href="#">Tin tức</a></li>
+										<li><a href="LienHe.jsp">Liên hệ</a></li>
+									</ul>
+								</nav>
+							</div>					
+						</div>
+					</div>
+				</div>
+			</div>
 			<!-- mobile-menu-area end -->	
 				
 		</header>
