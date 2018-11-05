@@ -10,6 +10,8 @@
         <link href="css/font-awesome.min.css" rel="stylesheet">
         <link href="css/datepicker3.css" rel="stylesheet">
         <link href="css/admin.css" rel="stylesheet">
+        <script src="js/vendor/jquery-1.12.0.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
         <link href="https://fonts.googleapis.com/css?family=Montserrat:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
     </head>
     <body>
@@ -125,7 +127,7 @@
                             <p style="margin: 50% 0 0 0 ">500000đ</p>
                         </div>
                         <div class="col-md-1" style=" height:100px; background-color: white;  border: solid 1px #000000">
-                            <div >
+                            <div class="row" >
                                 <a id="a-id" href="#"  data-toggle="modal" data-target="#myModal1" title="">Xóa</a>
                                 <div class="modal fade" id="myModal1" role="dialog">
                                     <div class="modal-dialog">
@@ -391,7 +393,7 @@
                                 <a id="a-id"href="themSLSP.jsp" title="">Chi tiết</a>
                             </div>
                             <div  >
-                                <a id="a-id" href="#" title="">Comment</a>
+                                <a id="a-id" href="single-product.jsp" title="">Comment</a>
                             </div>
                         </div>
                         <div class="col-md-1" style=" height:100px; background-color: white; text-align: center; border: solid 1px #000000">
@@ -683,7 +685,7 @@
                                 <a id="a-id"href="themSLSP.jsp" title="">Chi tiết</a>
                             </div>
                             <div  >
-                                <a id="a-id" href="#" title="">Comment</a>
+                                <a id="a-id" href="single-product.jsp" title="">Comment</a>
                             </div>
                         </div>
                         <div class="col-md-1" style=" height:100px; background-color: white; text-align: center; border: solid 1px #000000">
@@ -975,7 +977,7 @@
                                 <a id="a-id"href="themSLSP.jsp" title="">Chi tiết</a>
                             </div>
                             <div  >
-                                <a id="a-id" href="#" title="">Comment</a>
+                                <a id="a-id" href="single-product.jsp" title="">Comment</a>
                             </div>
                         </div>
                         <div class="col-md-1" style=" height:100px; background-color: white; text-align: center; border: solid 1px #000000">
@@ -1267,7 +1269,7 @@
                                 <a id="a-id"href="themSLSP.jsp" title="">Chi tiết</a>
                             </div>
                             <div  >
-                                <a id="a-id" href="#" title="">Comment</a>
+                                <a id="a-id" href="single-product.jsp" title="">Comment</a>
                             </div>
                         </div>
                         <div class="col-md-1" style=" height:100px; background-color: white; text-align: center; border: solid 1px #000000">
@@ -1559,7 +1561,7 @@
                                 <a id="a-id"href="themSLSP.jsp" title="">Chi tiết</a>
                             </div>
                             <div  >
-                                <a id="a-id" href="#" title="">Comment</a>
+                                <a id="a-id" href="single-product.jsp" title="">Comment</a>
                             </div>
                         </div>
                         <div class="col-md-1" style=" height:100px; background-color: white; text-align: center; border: solid 1px #000000">
@@ -1851,7 +1853,7 @@
                                 <a id="a-id"href="themSLSP.jsp" title="">Chi tiết</a>
                             </div>
                             <div  >
-                                <a id="a-id" href="#" title="">Comment</a>
+                                <a id="a-id" href="single-product.jsp" title="">Comment</a>
                             </div>
                         </div>
                     </div>
@@ -1862,29 +1864,7 @@
             </div>
         </div>
         </div>
-        <script src="js/jquery-1.11.1.min.js"></script>
-        <script src="js/bootstrap.min.js"></script>
-        <script src="js/chart.min.js"></script>
-        <script src="js/chart-data.js"></script>
-        <script src="js/easypiechart.js"></script>
-        <script src="js/easypiechart-data.js"></script>
-        <script src="js/bootstrap-datepicker.js"></script>
-        <script src="js/custom.js"></script>
-        <script>
-            window.onload = function () {
-            var chart1 = document.getElementById("line-chart").getContext("2d");
-            window.myLine = new Chart(chart1).Line(lineChartData, {
-            responsive: true,
-            scaleLineColor: "rgba(0,0,0,.2)",
-            scaleGridLineColor: "rgba(0,0,0,.05)",
-            scaleFontColor: "#c5c7cc"
-            });
-            };
-        </script>
-        <script>
-            function myFunction() {
-                alert("Hello! I am an alert box!");
-            }
-        </script>
+       
     </body>
 </html>
+
