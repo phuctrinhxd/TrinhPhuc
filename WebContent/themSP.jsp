@@ -38,14 +38,31 @@
             <div class="clear"></div>
          </div>
          <div class="divider"></div>
-         <ul class="nav menu">
-            <li><a href="index.jsp"><em >&nbsp;</em> Quản lý tài khoản</a></li>
-            <li><a href="QLNV.jsp"><em ">&nbsp;</em> Quản lý nhân viên</a></li>
-            <li class="active"><a href="QLSP.jsp"><em ">&nbsp;</em> Quản lý sản phẩm</a></li>
-            <li><a href="QLTT.jsp"><em ">&nbsp;</em> Quản lý tin tức</a></li>
-          
-            <li><a href="login.jsp"><em ">&nbsp;</em> Đăng xuất</a></li>
-         </ul>
+         	
+		<ul class="nav menu">
+			<li><a href="QLTK.jsp"><em ">&nbsp;</em> Quản lý tài khoản</a></li>
+			<li class="parent "><a data-toggle="collapse" href="#sub-item-1">
+				<em class="fa fa-navicon">&nbsp;</em> Quản lý nhân viên <span data-toggle="collapse" href="#sub-item-1" class="icon pull-right"><em class="fa fa-plus"></em></span>
+				</a>
+				<ul class="children collapse" id="sub-item-1">
+					<li><a class="" href="nhomQuyen-admin.jsp">
+						<span class="fa fa-arrow-right">&nbsp;</span> Các nhóm quản trị viên
+					</a></li>
+					<li><a class="" href="QLNV.jsp">
+						<span class="fa fa-arrow-right">&nbsp;</span> Danh sách nhân viên
+					</a></li>
+					
+				</ul>
+				
+			</li>
+			
+			<li class="active"><a href="QLSP.jsp"><em >&nbsp;</em> Quản lý sản phẩm</a></li>
+			<li><a href="QLDH.jsp"><em >&nbsp;</em> Quản lý đơn hàng</a></li>
+			<li><a href="QLKH.jsp"><em >&nbsp;</em> Quản lý khách hàng</a></li>
+			<li><a href="QLTT.jsp"><em >&nbsp;</em> Quản lý tin tức</a></li>
+			
+			<li><a href="login-admin.jsp"><em >&nbsp;</em> Đăng xuất</a></li>
+		</ul>
       </div>
       <!--/.sidebar-->
       <div class="col-sm-9 col-sm-offset-3 col-lg-10 col-lg-offset-2 main">
@@ -77,7 +94,7 @@
                      <div class="col-md-9"  style="margin-top: 5px">
                         <p style="margin-left: 61px">Danh mục sản phẩm :</p>
                      </div>
-                     <div class="col-md-3" style="margin-top: 5px"><input s type="radio" name="gender" value="Nike" > Nike</div>
+                     <div class="col-md-3" style="margin-top: 5px"><input  type="radio" name="gender" value="Nike" > Nike</div>
                   </div>
                   <div class="col-md-3">
                      <div class="col-md-7" style="margin-top: 10px"><input type="radio" name="gender" value="Adidas" > Adidas</div>
@@ -128,11 +145,11 @@
                   <div class="col-md-9"  style="margin-top: 5px">
                      <p style="margin-left: 50px">Giới tính :</p>
                   </div>
-                  <div class="col-md-3" style="margin-top: 5px"><input s type="radio" name="Nam" value="Nam" > Nam</div>
+                  <div class="col-md-3" style="margin-top: 5px"><input  type="radio" name="gender" value="Nam" > Nam</div>
                </div>
                <div class="col-md-3">
-                  <div class="col-md-7" style="margin-top: 10px"><input type="radio" name="Nữ" value="Nữ" > Nữ</div>
-                  <div class="col-md-5" style="margin-top: 10px"><input type="radio" name="Ca_2" value="Cả 2" > Cả 2</div>
+                  <div class="col-md-7" style="margin-top: 10px"><input type="radio" name="gender" value="Nữ" > Nữ</div>
+                  <div class="col-md-5" style="margin-top: 10px"><input type="radio" name="gender" value="Cả 2" > Cả 2</div>
                </div>
             </div>
             <div  class="row"style="margin-top: 10px">

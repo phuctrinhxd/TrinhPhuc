@@ -43,13 +43,29 @@
         </div>
         <div class="divider"></div>
         <ul class="nav menu">
-            <li><a href="index.jsp"><em >&nbsp;</em> Quản lý tài khoản</a></li>
-            <li><a href="QLNV.jsp"><em ">&nbsp;</em> Quản lý nhân viên</a></li>
-            <li><a href="QLSP.jsp"><em ">&nbsp;</em> Quản lý sản phẩm</a></li>
-            <li class="active"><a href="QLTT.jsp"><em ">&nbsp;</em> Quản lý tin tức</a></li>
-          
-            <li><a href="login.jsp"><em ">&nbsp;</em> Đăng xuất</a></li>
-        </ul>
+                <li><a href="QLTK.jsp"><em >&nbsp;</em> Quản lý tài khoản</a></li>
+               <li class="parent "><a data-toggle="collapse" href="#sub-item-1">
+				<em class="fa fa-navicon">&nbsp;</em> Quản lý nhân viên <span data-toggle="collapse" href="#sub-item-1" class="icon pull-right"><em class="fa fa-plus"></em></span>
+				</a>
+				<ul class="children collapse" id="sub-item-1">
+					<li><a class="" href="nhomQuyen-admin.jsp">
+						<span class="fa fa-arrow-right">&nbsp;</span> Các nhóm quyền
+					</a></li>
+					<li><a class="active" href="QLNV.jsp">
+						<span class="fa fa-arrow-right">&nbsp;</span> Danh sách nhân viên
+					</a></li>
+					
+				</ul>
+				
+				</li>
+			
+                <li ><a href="QLSP.jsp"><em>&nbsp;</em> Quản lý sản phẩm</a></li>
+                <li><a href="QLDH.jsp"><em >&nbsp;</em> Quản lý đơn hàng</a></li>
+				<li><a href="QLKH.jsp"><em >&nbsp;</em> Quản lý khách hàng</a></li>
+                <li class="active"><a href="QLTT.jsp"><em ">&nbsp;</em> Quản lý tin tức</a></li>
+              
+                <li><a href="login-admin.jsp"><em >&nbsp;</em> Đăng xuất</a></li>
+          </ul>
     </div>
     <!--/.sidebar-->
     <div class="col-sm-9 col-sm-offset-3 col-lg-10 col-lg-offset-2 main">
@@ -95,7 +111,7 @@
                             </thead>
                             <tbody>
                                 <tr>
-                                    <td class="tintuc-anh"><img src="img/nike.jpg" alt="" style="width: 100px;height: 100px"></td>
+                                    <td class="tintuc-anh"><img src="img/giay1.jpg" alt="" style="width: 100px;height: 100px"></td>
                                     <td class="tintuc-tieude">
                                         <textarea name="name" style="width: 100%;height: 100px; text-align: center;">NIKE</textarea>
                                     </td>
@@ -299,12 +315,12 @@
                                             </div>
                                         </div >
                                         <div style="margin-top: 5%">
-                                            <a id="a-id" href="#">Xem</a>
+                                            <a id="a-id" href="single-blog.jsp">Xem</a>
                                         </div>
                                     </td>
                                 </tr>
                                 <tr>
-                                    <td class="tintuc-anh"><img src="img/nike.jpg" alt="" style="width: 25%x;height: 12.5%"></td>
+                                    <td class="tintuc-anh"><img src="img/giay1.jpg" alt="" style="width: 100px;height: 100px"></td>
                                     <td class="tintuc-tieude">
                                         <textarea name="name" style="width: 100%;height: 100px; text-align: center;">NIKE</textarea>
                                     </td>
@@ -508,12 +524,12 @@
                                             </div>
                                         </div >
                                         <div style="margin-top: 5%">
-                                            <a id="a-id" href="#">Xem</a>
+                                            <a id="a-id" href="single-blog">Xem</a>
                                         </div>
                                     </td>
                                 </tr>
                                 <tr>
-                                    <td class="tintuc-anh"><img src="img/nike.jpg" alt="" style="width: 25%x;height: 12.5%"></td>
+                                    <td class="tintuc-anh"><img src="img/giay1.jpg" alt="" style="width: 100px;height: 100px"></td>
                                     <td class="tintuc-tieude">
                                         <textarea name="name" style="width: 100%;height: 100px; text-align: center;">NIKE</textarea>
                                     </td>
@@ -717,12 +733,12 @@
                                             </div>
                                         </div >
                                         <div style="margin-top: 5%">
-                                            <a id="a-id" href="#">Xem</a>
+                                            <a id="a-id" href="single-blog">Xem</a>
                                         </div>
                                     </td>
                                 </tr>
                                 <tr>
-                                    <td class="tintuc-anh"><img src="img/nike.jpg" alt="" style="width: 25%x;height: 12.5%"></td>
+                                    <td class="tintuc-anh"><img src="img/giay1.jpg" alt="" style="width: 100px;height: 100px"></td>
                                     <td class="tintuc-tieude">
                                         <textarea name="name" style="width: 100%;height: 100px; text-align: center;">NIKE</textarea>
                                     </td>
@@ -926,12 +942,12 @@
                                             </div>
                                         </div >
                                         <div style="margin-top: 5%">
-                                            <a id="a-id" href="#">Xem</a>
+                                            <a id="a-id" href="single-blog">Xem</a>
                                         </div>
                                     </td>
                                 </tr>
                                 <tr>
-                                    <td class="tintuc-anh"><img src="img/nike.jpg" alt="" style="width: 25%x;height: 12.5%"></td>
+                                    <td class="tintuc-anh"><img src="img/giay1.jpg" alt="" style="width: 25%x;height: 12.5%"></td>
                                     <td class="tintuc-tieude">
                                         <textarea name="name" style="width: 100%;height: 100px; text-align: center;">NIKE</textarea>
                                     </td>
@@ -1135,7 +1151,7 @@
                                             </div>
                                         </div >
                                         <div style="margin-top: 5%">
-                                            <a id="a-id" href="#">Xem</a>
+                                            <a id="a-id" href="single-blog">Xem</a>
                                         </div>
                                     </td>
                                 </tr>
