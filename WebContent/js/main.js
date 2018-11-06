@@ -207,5 +207,6 @@
         $( '#ship-box-info' ).slideToggle(1000);
      });	  
 	
- 
+	
+	 
 })(jQuery); 
