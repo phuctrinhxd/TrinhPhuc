@@ -51,7 +51,7 @@
 		
 		<ul class="nav menu">
 			<li><a href="QLTK.jsp"><em ">&nbsp;</em> Quản lý tài khoản</a></li>
-			<li class="parent "><a data-toggle="collapse" href="#sub-item-1">
+			<li class="parent "><a data-toggle="collapse" href="#sub-item-1" class aria-expanded="true">
 				<em class="fa fa-navicon">&nbsp;</em> Quản lý nhân viên <span data-toggle="collapse" href="#sub-item-1" class="icon pull-right"><em class="fa fa-plus"></em></span>
 				</a>
 				<ul class="children collapse" id="sub-item-1">
@@ -112,8 +112,27 @@
                             <a href="fixNV.jsp"> 
                             	<button type="button" class="btn btn-info">Sửa</button>
                             </a>
-                            
-                            <button type="button" class="btn btn-info">Xóa</button>
+							<button type="button" class="btn btn-info " data-toggle="modal" data-target="#myModal">Xóa</button>
+
+							  <!-- Modal -->
+							  <div class="modal fade" id="myModal" role="dialog">
+							    <div class="modal-dialog">
+							    
+							      <!-- Modal content-->
+							      <div class="modal-content">
+							        <div class="modal-header" style="text-align: center;">
+							          <button type="button" class="close" data-dismiss="modal">&times;</button>
+							          <h4 class="modal-title">Bạn chắc chắn xóa Nhân viên</h4>
+							        </div>
+							        <div class="modal-body">
+							          <p>Trịnh Vĩnh Phúc</p>
+							        </div>
+							        <div class="modal-footer" style="text-align: center;">
+							          <button type="button" class="btn btn-default" data-dismiss="modal">Xác nhận</button>
+							        </div>
+							      </div>
+							    </div>
+							  </div>
                             </td>
                         </tr>
                         
@@ -129,7 +148,27 @@
                             <a href="fixNV.jsp"> 
                             	<button type="button" class="btn btn-info">Sửa</button>
                             </a>
-                            <button type="button" class="btn btn-info">Xóa</button>
+                            <button type="button" class="btn btn-info " data-toggle="modal" data-target="#myModal">Xóa</button>
+
+							  <!-- Modal -->
+							  <div class="modal fade" id="myModal" role="dialog">
+							    <div class="modal-dialog">
+							    
+							      <!-- Modal content-->
+							      <div class="modal-content">
+							        <div class="modal-header" style="text-align: center;">
+							          <button type="button" class="close" data-dismiss="modal">&times;</button>
+							          <h4 class="modal-title">Bạn chắc chắn xóa Nhân viên</h4>
+							        </div>
+							        <div class="modal-body">
+							          <p>Trịnh Vĩnh Phúc</p>
+							        </div>
+							        <div class="modal-footer" style="text-align: center;">
+							          <button type="button" class="btn btn-default" data-dismiss="modal">Xác nhận</button>
+							        </div>
+							      </div>
+							    </div>
+							  </div>
                             </td>
                         </tr>
                         <tr>
@@ -144,7 +183,27 @@
                             <a href="fixNV.jsp"> 
                             	<button type="button" class="btn btn-info">Sửa</button>
                             </a>
-                            <button type="button" class="btn btn-info">Xóa</button>
+                            <button type="button" class="btn btn-info " data-toggle="modal" data-target="#myModal">Xóa</button>
+
+							  <!-- Modal -->
+							  <div class="modal fade" id="myModal" role="dialog">
+							    <div class="modal-dialog">
+							    
+							      <!-- Modal content-->
+							      <div class="modal-content">
+							        <div class="modal-header" style="text-align: center;">
+							          <button type="button" class="close" data-dismiss="modal">&times;</button>
+							          <h4 class="modal-title">Bạn chắc chắn xóa Nhân viên</h4>
+							        </div>
+							        <div class="modal-body">
+							          <p>Trịnh Vĩnh Phúc</p>
+							        </div>
+							        <div class="modal-footer" style="text-align: center;">
+							          <button type="button" class="btn btn-default" data-dismiss="modal">Xác nhận</button>
+							        </div>
+							      </div>
+							    </div>
+							  </div>
                             </td>
                         </tr>
                     </tbody>

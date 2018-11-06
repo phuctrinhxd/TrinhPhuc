@@ -5,7 +5,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>Quản lý nhân viên</title>
+	<title>Quản lý khách hàng</title>
 	<link href="css/bootstrap.min.css" rel="stylesheet">
 	<link href="css/font-awesome.min.css" rel="stylesheet">
 	<link href="css/datepicker3.css" rel="stylesheet">
@@ -58,7 +58,7 @@
 					<li><a class="" href="nhomQuyen-admin.jsp">
 						<span class="fa fa-arrow-right">&nbsp;</span> Các nhóm quyền
 					</a></li>
-					<li><a class="active" href="QLNV.jsp">
+					<li><a class="" href="QLNV.jsp">
 						<span class="fa fa-arrow-right">&nbsp;</span> Danh sách nhân viên
 					</a></li>
 					
@@ -68,7 +68,7 @@
 			
 			<li><a href="QLSP.jsp"><em >&nbsp;</em> Quản lý sản phẩm</a></li>
 			<li><a href="QLDH.jsp"><em >&nbsp;</em> Quản lý đơn hàng</a></li>
-			<li><a href="QLKH.jsp"><em >&nbsp;</em> Quản lý khách hàng</a></li>
+			<li class="active"><a href="QLKH.jsp"><em >&nbsp;</em> Quản lý khách hàng</a></li>
 			<li><a href="QLTT.jsp"><em >&nbsp;</em> Quản lý tin tức</a></li>
 			
 			<li><a href="login.jsp"><em >&nbsp;</em> Đăng xuất</a></li>
@@ -82,21 +82,21 @@
 					<em class="fa fa-home"></em>
 				</a></li>				
 					<li class="active">
-					<a href="QLNV.jsp">  Danh sách nhóm quyền </a>
+					<a href="QLKH.jsp">  Danh sách khách hàng </a>
 					</li>
 
-				<li><em class="fa"> Sửa nhân viên </em> </li>
+				<li><em class="fa"> Xem chi tiết thông tin khách hàng </em> </li>
 			</ol>
 			
 		</div><!--/.row-->
 		
 		<div class="widget">
-			<div class="title"> <h4> Nhập dữ liệu</h4> </div>
+			<div class="title"> <h4> Thông tin khách hàng</h4> </div>
 			<div class="formRow">
 				<label> Tên đăng nhập </label>
 				<div class="formRight"> 
 					<div class="col-xs-6">
-	        			<input class="form-control" id="tenDN" type="text" value="admin123">
+	        			<input class="form-control" id="tenDN" type="text" value="an123">
 					</div>
 				</div>
 			</div>
@@ -108,12 +108,27 @@
 					</div>
 				</div>
 			</div>
-			
+			<div class="formRow">
+				<label>ID</label>
+				<div class="formRight"> 
+					<div class="col-xs-6">
+	        			<input class="form-control" id="id" type="text" value="1101">
+					</div>
+				</div>
+			</div>
 			<div class="formRow">
 				<label>Họ và tên</label>
 				<div class="formRight"> 
 					<div class="col-xs-6">
-	        			<input class="form-control" id="name" type="text" value="Trịnh Vĩnh Phúc">
+	        			<input class="form-control" id="name" type="text" value="Đang An">
+					</div>
+				</div>
+			</div>
+			<div class="formRow">
+				<label>Email</label>
+				<div class="formRight"> 
+					<div class="col-xs-6">
+	        			<input class="form-control" id="email" type="text" value="dangan@gmail.com">
 					</div>
 				</div>
 			</div>
@@ -126,21 +141,15 @@
 				</div>
 			</div>
 		
-			<div class="formRow" >
-	        	<label>Nhóm quyền quản lý</label>
-	        	<div class="form-group">
-				  <select class="form-control" id="sel1">
-				    <option >Quản lý full toàn quyền</option>
-				    <option>Quản lý sản phẩm - đơn hàng</option>
-				    <option>Quản lý khách hàng</option>
-				    <option>Quản lý tin tức - comment</option>
-				  </select>
+			<div class="formRow">
+				<label>Địa chỉ</label>
+				<div class="formRight"> 
+				<div class="col-xs-6">
+	        			<input class="form-control" id="address" type="text" value="Thử Đức">
+					</div>
 				</div>
-					        	
-	                <div class="clear"></div>
-	
-	           	
-        	</div>
+			</div>
+		
         	
 			<div class="formRow" style="height: 50px">
 				<div class="formRight"> 

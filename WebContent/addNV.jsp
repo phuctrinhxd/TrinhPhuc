@@ -50,15 +50,15 @@
 		<div class="divider"></div>
 		
 		<ul class="nav menu">
-			<li><a href="admin.jsp"><em ">&nbsp;</em> Quản lý tài khoản</a></li>
-			<li class="parent "><a data-toggle="collapse" href="#sub-item-1">
+			<li><a href="QLTK.jsp"><em ">&nbsp;</em> Quản lý tài khoản</a></li>
+			<li class="parent "><a data-toggle="collapse" href="#sub-item-1" class aria-expanded="true">
 				<em class="fa fa-navicon">&nbsp;</em> Quản lý nhân viên <span data-toggle="collapse" href="#sub-item-1" class="icon pull-right"><em class="fa fa-plus"></em></span>
 				</a>
 				<ul class="children collapse" id="sub-item-1">
-					<li><a class="active" href="nhomQuyen-admin.jsp">
+					<li><a class="" href="nhomQuyen-admin.jsp">
 						<span class="fa fa-arrow-right">&nbsp;</span> Các nhóm quyền
 					</a></li>
-					<li><a class="" href="QLNV.jsp">
+					<li><a class="active" href="QLNV.jsp">
 						<span class="fa fa-arrow-right">&nbsp;</span> Danh sách nhân viên
 					</a></li>
 					
@@ -67,6 +67,8 @@
 			</li>
 			
 			<li><a href="QLSP.jsp"><em >&nbsp;</em> Quản lý sản phẩm</a></li>
+			<li><a href="QLDH.jsp"><em >&nbsp;</em> Quản lý đơn hàng</a></li>
+			<li><a href="QLKH.jsp"><em >&nbsp;</em> Quản lý khách hàng</a></li>
 			<li><a href="QLTT.jsp"><em >&nbsp;</em> Quản lý tin tức</a></li>
 			
 			<li><a href="login.jsp"><em >&nbsp;</em> Đăng xuất</a></li>
