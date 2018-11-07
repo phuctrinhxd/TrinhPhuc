@@ -64,7 +64,7 @@
 				<li><a href="QLKH.jsp"><em >&nbsp;</em> Quản lý khách hàng</a></li>
                 <li class="active"><a href="QLTT.jsp"><em ">&nbsp;</em> Quản lý tin tức</a></li>
               
-                <li><a href="login.jsp"><em ">&nbsp;</em> Đăng xuất</a></li>
+                <li><a href="login-admin.jsp"><em >&nbsp;</em> Đăng xuất</a></li>
           </ul>
     </div>
     <!--/.sidebar-->

@@ -71,7 +71,7 @@
 			<li><a href="QLKH.jsp"><em >&nbsp;</em> Quản lý khách hàng</a></li>
 			<li><a href="QLTT.jsp"><em >&nbsp;</em> Quản lý tin tức</a></li>
 			
-			<li><a href="login.jsp"><em >&nbsp;</em> Đăng xuất</a></li>
+			<li><a href="login-admin.jsp"><em >&nbsp;</em> Đăng xuất</a></li>
 		</ul>
 	</div><!--/.sidebar-->
 		
@@ -117,12 +117,49 @@
                             </td>
                             
                             <td>
-	                            <button type="button" class="btn btn-info">Lưu</button>
+	                             <button type="button" class="btn btn-info " data-toggle="modal" data-target="#myModal">Lưu</button>
+								  <!-- Modal -->
+								  <div class="modal fade" id="myModal" role="dialog">
+								    <div class="modal-dialog">
+								    
+								      <!-- Modal content-->
+								      <div class="modal-content">
+								        <div class="modal-header" style="text-align: center;">
+								          <button type="button" class="close" data-dismiss="modal">&times;</button>
+								          <h4 class="modal-title">Lưu thành công</h4>
+								        </div>
+								        
+								        <div class="modal-footer" style="text-align: center;">
+								          <button type="button" class="btn btn-default" data-dismiss="modal">Xác nhận</button>
+								        </div>
+								      </div> 
+								    </div>
+								  </div>
 	                             <a href="xemDH.jsp">
 	                            	 <button type="button" class="btn btn-info">Xem</button>
 	                            </a>
-	                           
-	                            <button type="button" class="btn btn-info">Xóa</button>
+								 <button type="button" class="btn btn-info " data-toggle="modal" data-target="#myModal">Xóa</button>
+
+							  <!-- Modal -->
+							  <div class="modal fade" id="myModal" role="dialog">
+							    <div class="modal-dialog">
+							    
+							      <!-- Modal content-->
+							      <div class="modal-content">
+							        <div class="modal-header" style="text-align: center;">
+							          <button type="button" class="close" data-dismiss="modal">&times;</button>
+							          <h4 class="modal-title">Bạn chắc chắn xóa Đơn Hàng</h4>
+							        </div>
+							        <div class="modal-body">
+							          <p>DH_1102</p>
+							        </div>
+							        <div class="modal-footer" style="text-align: center;">
+							          <button type="button" class="btn btn-default" data-dismiss="modal">Xác nhận</button>
+							        </div>
+							      </div>
+							      
+							    </div>
+							  </div>
                             </td>
                         </tr>
                          <tr>
@@ -139,12 +176,50 @@
                             </td>
                             
                             <td>
-	                            <button type="button" class="btn btn-info">Lưu</button>
+	                            <button type="button" class="btn btn-info " data-toggle="modal" data-target="#myModal">Lưu</button>
+								  <!-- Modal -->
+								  <div class="modal fade" id="myModal" role="dialog">
+								    <div class="modal-dialog">
+								    
+								      <!-- Modal content-->
+								      <div class="modal-content">
+								        <div class="modal-header" style="text-align: center;">
+								          <button type="button" class="close" data-dismiss="modal">&times;</button>
+								          <h4 class="modal-title">Lưu thành công</h4>
+								        </div>
+								        
+								        <div class="modal-footer" style="text-align: center;">
+								          <button type="button" class="btn btn-default" data-dismiss="modal">Xác nhận</button>
+								        </div>
+								      </div> 
+								    </div>
+								  </div>
 	                             <a href="xemDH.jsp">
 	                            	 <button type="button" class="btn btn-info">Xem</button>
 	                            </a>
 	                           
-	                            <button type="button" class="btn btn-info">Xóa</button>
+	                            <button type="button" class="btn btn-info " data-toggle="modal" data-target="#myModal">Xóa</button>
+
+							  <!-- Modal -->
+							  <div class="modal fade" id="myModal" role="dialog">
+							    <div class="modal-dialog">
+							    
+							      <!-- Modal content-->
+							      <div class="modal-content">
+							        <div class="modal-header" style="text-align: center;">
+							          <button type="button" class="close" data-dismiss="modal">&times;</button>
+							          <h4 class="modal-title">Bạn chắc chắn xóa Đơn Hàng</h4>
+							        </div>
+							        <div class="modal-body">
+							          <p>DH_1102</p>
+							        </div>
+							        <div class="modal-footer" style="text-align: center;">
+							          <button type="button" class="btn btn-default" data-dismiss="modal">Xác nhận</button>
+							        </div>
+							      </div>
+							      
+							    </div>
+							  </div>
                             </td>
                         </tr>
                       	
@@ -162,12 +237,49 @@
                             </td>
                             
                             <td>
-	                            <button type="button" class="btn btn-info">Lưu</button>
+	                            <button type="button" class="btn btn-info " data-toggle="modal" data-target="#myModal">Lưu</button>
+								  <!-- Modal -->
+								  <div class="modal fade" id="myModal" role="dialog">
+								    <div class="modal-dialog">
+								    
+								      <!-- Modal content-->
+								      <div class="modal-content">
+								        <div class="modal-header" style="text-align: center;">
+								          <button type="button" class="close" data-dismiss="modal">&times;</button>
+								          <h4 class="modal-title">Lưu thành công</h4>
+								        </div>
+								        
+								        <div class="modal-footer" style="text-align: center;">
+								          <button type="button" class="btn btn-default" data-dismiss="modal">Xác nhận</button>
+								        </div>
+								      </div> 
+								    </div>
+								  </div>
 	                             <a href="xemDH.jsp">
 	                            	 <button type="button" class="btn btn-info">Xem</button>
 	                            </a>
-	                           
-	                            <button type="button" class="btn btn-info">Xóa</button>
+ 								<button type="button" class="btn btn-info " data-toggle="modal" data-target="#myModal">Xóa</button>
+
+							  <!-- Modal -->
+							  <div class="modal fade" id="myModal" role="dialog">
+							    <div class="modal-dialog">
+							    
+							      <!-- Modal content-->
+							      <div class="modal-content">
+							        <div class="modal-header" style="text-align: center;">
+							          <button type="button" class="close" data-dismiss="modal">&times;</button>
+							          <h4 class="modal-title">Bạn chắc chắn xóa Đơn Hàng</h4>
+							        </div>
+							        <div class="modal-body">
+							          <p>DH_1102</p>
+							        </div>
+							        <div class="modal-footer" style="text-align: center;">
+							          <button type="button" class="btn btn-default" data-dismiss="modal">Xác nhận</button>
+							        </div>
+							      </div>
+							      
+							    </div>
+							  </div>
                             </td>
                         </tr>
                          <tr>
@@ -184,12 +296,49 @@
                             </td>
                             
                             <td>
-	                            <button type="button" class="btn btn-info">Lưu</button>
+	                            <button type="button" class="btn btn-info " data-toggle="modal" data-target="#myModal">Lưu</button>
+								  <!-- Modal -->
+								  <div class="modal fade" id="myModal" role="dialog">
+								    <div class="modal-dialog">
+								    
+								      <!-- Modal content-->
+								      <div class="modal-content">
+								        <div class="modal-header" style="text-align: center;">
+								          <button type="button" class="close" data-dismiss="modal">&times;</button>
+								          <h4 class="modal-title">Lưu thành công</h4>
+								        </div>
+								        
+								        <div class="modal-footer" style="text-align: center;">
+								          <button type="button" class="btn btn-default" data-dismiss="modal">Xác nhận</button>
+								        </div>
+								      </div> 
+								    </div>
+								  </div>
 	                            <a href="xemDH.jsp">
 	                            	 <button type="button" class="btn btn-info">Xem</button>
 	                            </a>
-	                           
-	                            <button type="button" class="btn btn-info">Xóa</button>
+	                            <button type="button" class="btn btn-info " data-toggle="modal" data-target="#myModal">Xóa</button>
+
+							  <!-- Modal -->
+							  <div class="modal fade" id="myModal" role="dialog">
+							    <div class="modal-dialog">
+							    
+							      <!-- Modal content-->
+							      <div class="modal-content">
+							        <div class="modal-header" style="text-align: center;">
+							          <button type="button" class="close" data-dismiss="modal">&times;</button>
+							          <h4 class="modal-title">Bạn chắc chắn xóa Đơn Hàng</h4>
+							        </div>
+							        <div class="modal-body">
+							          <p>DH_1102</p>
+							        </div>
+							        <div class="modal-footer" style="text-align: center;">
+							          <button type="button" class="btn btn-default" data-dismiss="modal">Xác nhận</button>
+							        </div>
+							      </div>
+							      
+							    </div>
+							  </div>
                             </td>
                         </tr>
                         

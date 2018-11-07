@@ -67,11 +67,13 @@
 			</li>
 			
 			<li><a href="QLSP.jsp"><em >&nbsp;</em> Quản lý sản phẩm</a></li>
+			<li><a href="QLDH.jsp"><em >&nbsp;</em> Quản lý đơn hàng</a></li>
+			<li><a href="QLKH.jsp"><em >&nbsp;</em> Quản lý khách hàng</a></li>
 			 <li><a href="QLDH.jsp"><em >&nbsp;</em> Quản lý đơn hàng</a></li>
 				<li><a href="QLKH.jsp"><em >&nbsp;</em> Quản lý khách hàng</a></li>
 			<li><a href="QLTT.jsp"><em >&nbsp;</em> Quản lý tin tức</a></li>
 			
-			<li><a href="login.jsp"><em >&nbsp;</em> Đăng xuất</a></li>
+			<li><a href="login-admin.jsp"><em >&nbsp;</em> Đăng xuất</a></li>
 		</ul>
 	</div><!--/.sidebar-->
 		
@@ -107,7 +109,27 @@
                             <a href="fixNhomQuyen.jsp">
                             	<button type="button" class="btn btn-info">Sửa</button>
                             </a>
-                            <button type="button" class="btn btn-info">Xóa</button>
+                            <button type="button" class="btn btn-info " data-toggle="modal" data-target="#myModal">Xóa</button>
+
+							  <!-- Modal -->
+							  <div class="modal fade" id="myModal" role="dialog">
+							    <div class="modal-dialog">
+							    
+							      <!-- Modal content-->
+							      <div class="modal-content">
+							        <div class="modal-header" style="text-align: center;">
+							          <button type="button" class="close" data-dismiss="modal">&times;</button>
+							          <h4 class="modal-title">Bạn chắc chắn xóa nhóm quyền</h4>
+							        </div>
+							        <div class="modal-body">
+							          <p>Nhóm quản trị full quyền</p>
+							        </div>
+							        <div class="modal-footer" style="text-align: center;">
+							          <button type="button" class="btn btn-default" data-dismiss="modal">Xác nhận</button>
+							        </div>
+							      </div>
+							    </div>
+							  </div>
                             </td>
                         </tr>
                         
@@ -119,7 +141,27 @@
                             <a href="fixNhomQuyen.jsp">
                             	<button type="button" class="btn btn-info">Sửa</button>
                             </a>
-                            <button type="button" class="btn btn-info">Xóa</button>
+                            <button type="button" class="btn btn-info " data-toggle="modal" data-target="#myModal">Xóa</button>
+
+							  <!-- Modal -->
+							  <div class="modal fade" id="myModal" role="dialog">
+							    <div class="modal-dialog">
+							    
+							      <!-- Modal content-->
+							      <div class="modal-content">
+							        <div class="modal-header" style="text-align: center;">
+							          <button type="button" class="close" data-dismiss="modal">&times;</button>
+							          <h4 class="modal-title">Bạn chắc chắn xóa nhóm quyền</h4>
+							        </div>
+							        <div class="modal-body">
+							          <p>Nhóm quản trị full quyền</p>
+							        </div>
+							        <div class="modal-footer" style="text-align: center;">
+							          <button type="button" class="btn btn-default" data-dismiss="modal">Xác nhận</button>
+							        </div>
+							      </div>
+							    </div>
+							  </div>
                             </td>
                         </tr>
                         <tr>
@@ -130,7 +172,27 @@
                             <a href="fixNhomQuyen.jsp">
                             	<button type="button" class="btn btn-info">Sửa</button>
                             </a>
-                            <button type="button" class="btn btn-info">Xóa</button>
+                            <button type="button" class="btn btn-info " data-toggle="modal" data-target="#myModal">Xóa</button>
+
+							  <!-- Modal -->
+							  <div class="modal fade" id="myModal" role="dialog">
+							    <div class="modal-dialog">
+							    
+							      <!-- Modal content-->
+							      <div class="modal-content">
+							        <div class="modal-header" style="text-align: center;">
+							          <button type="button" class="close" data-dismiss="modal">&times;</button>
+							          <h4 class="modal-title">Bạn chắc chắn xóa nhóm quyền</h4>
+							        </div>
+							        <div class="modal-body">
+							          <p>Nhóm quản trị full quyền</p>
+							        </div>
+							        <div class="modal-footer" style="text-align: center;">
+							          <button type="button" class="btn btn-default" data-dismiss="modal">Xác nhận</button>
+							        </div>
+							      </div>
+							    </div>
+							  </div>
                             </td>
                         </tr>
                     </tbody>
