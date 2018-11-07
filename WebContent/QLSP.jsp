@@ -94,36 +94,39 @@
                         </div>
                     </div>
                     <div class="row" style="margin: 10px 0px 0px -15px; background-color: white; text-align: center;">
-                        <div class="col-md-1" style=" height:50px; background-color: white; text-align: center; border: solid 1px #000000 ">
+                        <div class="col-md-1" style=" height:52px; background-color: white; text-align: center; border: solid 1px #000000 ">
                             <p style="margin: 25% 0 0 0 ">STT</p>
                         </div>
-                        <div class="col-md-2" style=" height:50px; background-color: white; text-align: center; border: solid 1px #000000">
+                        <div class="col-md-2" style=" height:52px; background-color: white; text-align: center; border: solid 1px #000000">
                             <p style="margin: 12.5% 0 0 0 ">Ảnh</p>
                         </div>
-                        <div class="col-md-1" style=" height:50px; background-color: white; text-align: center; border: solid 1px #000000">
+                        <div class="col-md-1" style=" height:52px; background-color: white; text-align: center; border: solid 1px #000000">
                             <p style="margin: 5% 0 0 0 ">Mã sản phẩm</p>
                         </div>
-                        <div class="col-md-3" style=" height:50px; background-color: white; text-align: center; border: solid 1px #000000">
+                        <div class="col-md-3" style=" height:52px; background-color: white; text-align: center; border: solid 1px #000000">
                             <p style="margin: 5% 0 0 0 ">Tên sản phẩm</p>
                         </div>
-                        <div class="col-md-1" style=" height:50px; background-color: white; text-align: center; border: solid 1px #000000">
+                        <div class="col-md-1" style=" height:52px; background-color: white; text-align: center; border: solid 1px #000000">
                             <p style="margin: 25% 0 0 0 ">Màu</p>
                         </div>
-                        <div class="col-md-1" style=" height:50px; background-color: white; text-align: center; border: solid 1px #000000">
+                        <div class="col-md-1" style=" height:52px; background-color: white; text-align: center; border: solid 1px #000000">
                             <p style="margin: 25% 0 0 0 ">Gới tính</p>
                         </div>
-                        <div class="col-md-1" style=" height:50px; background-color: white; text-align: center; border: solid 1px #000000">
+                        <div class="col-md-1" style=" height:52px; background-color: white; text-align: center; border: solid 1px #000000">
                             <p style="margin: 5% 0 0 0 ">Khuyến mãi</p>
                         </div>
-                        <div class="col-md-1" style=" height:50px; background-color: white; text-align: center; border: solid 1px #000000">
+                        <div class="col-md-1" style=" height:52px; background-color: white; text-align: center; border: solid 1px #000000">
                             <p style="margin: 25% 0 0 0 ">Giá bán</p>
+                        </div>
+                        <div class="col-md-1" style="background-color: white; text-align: center; border: solid 1px #000000">
+                            <p >Thao tác</p>
                         </div>
                     </div>
                     <div class="row" style="margin: 0px 0px 0px -15px; background-color: white; text-align: center">
                         <div class="col-md-1" style=" height:100px; background-color: white; text-align: center; border: solid 1px #000000">
                             <p style="margin: 50% 0 0 0 ">1</p>
                         </div>
-                        <div class="col-md-2" style=" height:100px; background-color: white; text-align: center; border: solid 1px #000000"><img src="img/nike.jpg" alt="GiayNè" style="height: 90px"></div>
+                        <div class="col-md-2" style=" height:100px; background-color: white; text-align: center; border: solid 1px #000000"><img src="img/giay1.jpg" alt="GiayNè" style="height: 90px;width:100px"></div>
                         <div class="col-md-1" style=" height:100px; background-color: white; text-align: center; border: solid 1px #000000">
                             <p style="margin: 50% 0 0 0 ">NIKE001</p>
                         </div>
@@ -250,7 +253,7 @@
                                                             <p style="margin-right: 60px;margin-top: 10px">Ảnh :</p>
                                                         </div>
                                                         <div class=" form-group col-md-2">
-                                                            <img  alt="NIKE" style="width: 200px;height: 200px" src="img/nike.jpg">
+                                                            <img  alt="NIKE" style="width: 200px;height: 200px" src="img/giay1.jpg">
                                                         </div>
                                                         <div class="col-md-2">
                                                             <input type="file" name="têp" value="tep" style="height: 20px">
@@ -381,7 +384,7 @@
                                                             <p style="margin-right: 60px;margin-top: 10px">Ảnh :</p>
                                                         </div>
                                                         <div class=" form-group col-md-2">
-                                                            <img  alt="NIKE" style="width: 200px;height: 200px" src="img/nike.jpg">
+                                                            <img  alt="NIKE" style="width: 200px;height: 200px" src="img/giay1.jpg">
                                                         </div>
                                                         <div class="col-md-2">
                                                             <input type="file" name="têp" value="tep" style="height: 20px">
@@ -415,7 +418,7 @@
                         <div class="col-md-1" style=" height:100px; background-color: white; text-align: center; border: solid 1px #000000">
                             <p style="margin: 50% 0 0 0 ">2</p>
                         </div>
-                        <div class="col-md-2" style=" height:100px; background-color: white; text-align: center; border: solid 1px #000000"><img src="img/nike.jpg" alt="GiayNè" style="height: 90px"></div>
+                        <div class="col-md-2" style=" height:100px; background-color: white; text-align: center; border: solid 1px #000000"><img src="img/giay1.jpg" alt="GiayNè" style="height: 90px;width:100px"></div>
                         <div class="col-md-1" style=" height:100px; background-color: white; text-align: center; border: solid 1px #000000">
                             <p style="margin: 50% 0 0 0 ">NIKE001</p>
                         </div>
@@ -542,7 +545,7 @@
                                                             <p style="margin-right: 60px;margin-top: 10px">Ảnh :</p>
                                                         </div>
                                                         <div class=" form-group col-md-2">
-                                                            <img  alt="NIKE" style="width: 200px;height: 200px" src="img/nike.jpg">
+                                                            <img  alt="NIKE" style="width: 200px;height: 200px" src="img/giay1.jpg">
                                                         </div>
                                                         <div class="col-md-2">
                                                             <input type="file" name="têp" value="tep" style="height: 20px">
@@ -673,7 +676,7 @@
                                                             <p style="margin-right: 60px;margin-top: 10px">Ảnh :</p>
                                                         </div>
                                                         <div class=" form-group col-md-2">
-                                                            <img  alt="NIKE" style="width: 200px;height: 200px" src="img/nike.jpg">
+                                                            <img  alt="NIKE" style="width: 200px;height: 200px" src="img/giay1.jpg">
                                                         </div>
                                                         <div class="col-md-2">
                                                             <input type="file" name="têp" value="tep" style="height: 20px">
@@ -707,7 +710,7 @@
                         <div class="col-md-1" style=" height:100px; background-color: white; text-align: center; border: solid 1px #000000">
                             <p style="margin: 50% 0 0 0 ">3</p>
                         </div>
-                        <div class="col-md-2" style=" height:100px; background-color: white; text-align: center; border: solid 1px #000000"><img src="img/nike.jpg" alt="GiayNè" style="height: 90px"></div>
+                        <div class="col-md-2" style=" height:100px; background-color: white; text-align: center; border: solid 1px #000000"><img src="img/giay1.jpg" alt="GiayNè" style="height: 90px;width:100px"></div>
                         <div class="col-md-1" style=" height:100px; background-color: white; text-align: center; border: solid 1px #000000">
                             <p style="margin: 50% 0 0 0 ">NIKE001</p>
                         </div>
@@ -834,7 +837,7 @@
                                                             <p style="margin-right: 60px;margin-top: 10px">Ảnh :</p>
                                                         </div>
                                                         <div class=" form-group col-md-2">
-                                                            <img  alt="NIKE" style="width: 200px;height: 200px" src="img/nike.jpg">
+                                                            <img  alt="NIKE" style="width: 200px;height: 200px" src="img/giay1.jpg">
                                                         </div>
                                                         <div class="col-md-2">
                                                             <input type="file" name="têp" value="tep" style="height: 20px">
@@ -965,7 +968,7 @@
                                                             <p style="margin-right: 60px;margin-top: 10px">Ảnh :</p>
                                                         </div>
                                                         <div class=" form-group col-md-2">
-                                                            <img  alt="NIKE" style="width: 200px;height: 200px" src="img/nike.jpg">
+                                                            <img  alt="NIKE" style="width: 200px;height: 200px" src="img/giay1.jpg">
                                                         </div>
                                                         <div class="col-md-2">
                                                             <input type="file" name="têp" value="tep" style="height: 20px">
@@ -999,7 +1002,7 @@
                         <div class="col-md-1" style=" height:100px; background-color: white; text-align: center; border: solid 1px #000000">
                             <p style="margin: 50% 0 0 0 ">4</p>
                         </div>
-                        <div class="col-md-2" style=" height:100px; background-color: white; text-align: center; border: solid 1px #000000"><img src="img/nike.jpg" alt="GiayNè" style="height: 90px"></div>
+                        <div class="col-md-2" style=" height:100px; background-color: white; text-align: center; border: solid 1px #000000"><img src="img/giay1.jpg" alt="GiayNè" style="height: 90px;width:100px"></div>
                         <div class="col-md-1" style=" height:100px; background-color: white; text-align: center; border: solid 1px #000000">
                             <p style="margin: 50% 0 0 0 ">NIKE001</p>
                         </div>
@@ -1126,7 +1129,7 @@
                                                             <p style="margin-right: 60px;margin-top: 10px">Ảnh :</p>
                                                         </div>
                                                         <div class=" form-group col-md-2">
-                                                            <img  alt="NIKE" style="width: 200px;height: 200px" src="img/nike.jpg">
+                                                            <img  alt="NIKE" style="width: 200px;height: 200px" src="img/giay1.jpg">
                                                         </div>
                                                         <div class="col-md-2">
                                                             <input type="file" name="têp" value="tep" style="height: 20px">
@@ -1257,7 +1260,7 @@
                                                             <p style="margin-right: 60px;margin-top: 10px">Ảnh :</p>
                                                         </div>
                                                         <div class=" form-group col-md-2">
-                                                            <img  alt="NIKE" style="width: 200px;height: 200px" src="img/nike.jpg">
+                                                            <img  alt="NIKE" style="width: 200px;height: 200px" src="img/giay1.jpg">
                                                         </div>
                                                         <div class="col-md-2">
                                                             <input type="file" name="têp" value="tep" style="height: 20px">
@@ -1291,7 +1294,7 @@
                         <div class="col-md-1" style=" height:100px; background-color: white; text-align: center; border: solid 1px #000000">
                             <p style="margin: 50% 0 0 0 ">5</p>
                         </div>
-                        <div class="col-md-2" style=" height:100px; background-color: white; text-align: center; border: solid 1px #000000"><img src="img/nike.jpg" alt="GiayNè" style="height: 90px"></div>
+                        <div class="col-md-2" style=" height:100px; background-color: white; text-align: center; border: solid 1px #000000"><img src="img/giay1.jpg" alt="GiayNè" style="height: 90px;width:100px"></div>
                         <div class="col-md-1" style=" height:100px; background-color: white; text-align: center; border: solid 1px #000000">
                             <p style="margin: 50% 0 0 0 ">NIKE001</p>
                         </div>
@@ -1418,7 +1421,7 @@
                                                             <p style="margin-right: 60px;margin-top: 10px">Ảnh :</p>
                                                         </div>
                                                         <div class=" form-group col-md-2">
-                                                            <img  alt="NIKE" style="width: 200px;height: 200px" src="img/nike.jpg">
+                                                            <img  alt="NIKE" style="width: 200px;height: 200px" src="img/giay1.jpg">
                                                         </div>
                                                         <div class="col-md-2">
                                                             <input type="file" name="têp" value="tep" style="height: 20px">
@@ -1549,7 +1552,7 @@
                                                             <p style="margin-right: 60px;margin-top: 10px">Ảnh :</p>
                                                         </div>
                                                         <div class=" form-group col-md-2">
-                                                            <img  alt="NIKE" style="width: 200px;height: 200px" src="img/nike.jpg">
+                                                            <img  alt="NIKE" style="width: 200px;height: 200px" src="img/giay1.jpg">
                                                         </div>
                                                         <div class="col-md-2">
                                                             <input type="file" name="têp" value="tep" style="height: 20px">
@@ -1583,7 +1586,7 @@
                         <div class="col-md-1" style=" height:100px; background-color: white; text-align: center; border: solid 1px #000000">
                             <p style="margin: 50% 0 0 0 ">6</p>
                         </div>
-                        <div class="col-md-2" style=" height:100px; background-color: white; text-align: center; border: solid 1px #000000"><img src="img/nike.jpg" alt="GiayNè" style="height: 90px"></div>
+                        <div class="col-md-2" style=" height:100px; background-color: white; text-align: center; border: solid 1px #000000"><img src="img/giay1.jpg" alt="GiayNè" style="height: 90px;width:100px"></div>
                         <div class="col-md-1" style=" height:100px; background-color: white; text-align: center; border: solid 1px #000000">
                             <p style="margin: 50% 0 0 0 ">NIKE001</p>
                         </div>
@@ -1710,7 +1713,7 @@
                                                             <p style="margin-right: 60px;margin-top: 10px">Ảnh :</p>
                                                         </div>
                                                         <div class=" form-group col-md-2">
-                                                            <img  alt="NIKE" style="width: 200px;height: 200px" src="img/nike.jpg">
+                                                            <img  alt="NIKE" style="width: 200px;height: 200px" src="img/giay1.jpg">
                                                         </div>
                                                         <div class="col-md-2">
                                                             <input type="file" name="têp" value="tep" style="height: 20px">
@@ -1841,7 +1844,7 @@
                                                             <p style="margin-right: 60px;margin-top: 10px">Ảnh :</p>
                                                         </div>
                                                         <div class=" form-group col-md-2">
-                                                            <img  alt="NIKE" style="width: 200px;height: 200px" src="img/nike.jpg">
+                                                            <img  alt="NIKE" style="width: 200px;height: 200px" src="img/giay1.jpg">
                                                         </div>
                                                         <div class="col-md-2">
                                                             <input type="file" name="têp" value="tep" style="height: 20px">
