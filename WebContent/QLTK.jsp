@@ -50,7 +50,7 @@
 		<div class="divider"></div>
 		
 		<ul class="nav menu">
-			<li><a href="QLTK.jsp"><em ">&nbsp;</em> Quản lý tài khoản</a></li>
+			<li class="active"><a href="QLTK.jsp"><em ">&nbsp;</em> Quản lý tài khoản</a></li>
 			<li class="parent "><a data-toggle="collapse" href="#sub-item-1">
 				<em class="fa fa-navicon">&nbsp;</em> Quản lý nhân viên <span data-toggle="collapse" href="#sub-item-1" class="icon pull-right"><em class="fa fa-plus"></em></span>
 				</a>
@@ -58,7 +58,7 @@
 					<li><a class="" href="nhomQuyen-admin.jsp">
 						<span class="fa fa-arrow-right">&nbsp;</span>Các nhóm quyền
 					</a></li>
-					<li><a class="active" href="QLNV.jsp">
+					<li><a href="QLNV.jsp">
 						<span class="fa fa-arrow-right">&nbsp;</span> Danh sách nhân viên
 					</a></li>
 					
