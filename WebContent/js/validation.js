@@ -126,7 +126,7 @@ $(function(){
 		rules:{
 			name:{
 				required: true,
-				lettersonly: true
+
 			},
 			email:{
 				required:true,
@@ -134,25 +134,23 @@ $(function(){
 			},
 			subject:{
 				required:true,
-				lettersonly:true
 			},
 			comment:{
 				required:true,
-				lettersonly:true
 			}
 		},
 		messages:{
 			name:{
 				required: 'Hãy nhập họ và tên của bạn.',
-				lettersonly: 'Vui lòng nhập đúng tên.'
+
 			},
 			email:{
 				required: 'Hãy nhập địa chỉ email.',
-				email:'Vui lòng nhập đúng email.Email phải có @gmail.com'
+				email:'Vui lòng nhập đúng email.'
 			},
 			subject:{
 				required:'Nhập tên tiêu đề',
-				subject:'Nhập đúng tiêu đề.'
+
 			},
 			comment:{
 				required:'Nhập vào nôi dung cần hổ trợ.',
@@ -160,6 +158,27 @@ $(function(){
 			}
 		}
 			
+	});
+	
+	$("#login-admin").validate({
+		rules:{
+			username:{
+				required: true,
+
+			},
+			pass:{
+				required:true,
+			},
+		},
+		messages:{
+			name:{
+				required: 'Vui lòng nhập Username.'
+
+			},
+			pass:{
+				required: 'Vui lòng nhập password.'
+			},
+		}		
 	});
 });
 
