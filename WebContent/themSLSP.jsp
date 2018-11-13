@@ -167,33 +167,20 @@
                                         </thead>
                                         <tbody>
                                            <tr>
-                                              <td class="tintuc-anh"><input type="text" name="" style="background-color: white" value="38"></td>
-                                              <td class="tintuc-tieude">
+                                              <td class=""><input type="text" name="" style="background-color: white" value="38"></td>
+                                              <td class="">
                                                 <input name="SoLuong"id="name"type="number" required="" style="width: 100px;height: 50px;" value="150"  /> đôi
                                               </td>
                                              
                                            </tr>
                                            <tr>
-                                                 <td class="tintuc-anh"><input type="text" name="" style="background-color: white" value="39"></td>
-                                              <td class="tintuc-tieude">
+                                                 <td class=""><input type="text" name="" style="background-color: white" value="39"></td>
+                                              <td class="">
                                                 <input name="SoLuong"id="name"type="number" required="" style="width: 100px;height: 50px" value="150"  /> đôi
                                               </td>
                                              
                                            </tr>
-                                           <tr>
-                                               <td class="tintuc-anh"><input type="text" name="" style="background-color: white" value="40"></td>
-                                              <td class="tintuc-tieude">
-                                                 <input name="SoLuong"id="name"type="number" required="" style="width: 100px;height: 50px" value="150"  /> đôi
-                                              </td>
-                                              
-                                           </tr>
-                                           <tr>
-                                               <td class="tintuc-anh"><input type="text" name="" style="background-color: white" value="42"></td>
-                                              <td class="tintuc-tieude">
-                                                <input name="SoLuong"id="name"type="number" required="" style="width: 100px;height: 50px" value="150"  /> đôi
-                                              </td>
-                                              
-                                           </tr>
+                                          
                                            
                                         </tbody>
                                      </table>

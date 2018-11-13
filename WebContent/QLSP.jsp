@@ -261,7 +261,7 @@
                                                     <div  class="row">
                                                         <div class="col-md-6">
                                                 <form action="QLSP.jsp">
-                                                <button id="input-hover"  class="col-md-4 col-md-offset-8" type="submit" value="Hoàn thành"  style="height:30px ;width: 150px">Hoàn thành</button>
+                                                <button id="input-hover"  class="col-md-4 col-md-offset-8" type="submit" value="OK"  style="height:30px ;width: 150px">OK</button>
                                                 </form>
                                                 </div>
                                                 <div class="col-md-1">
@@ -392,7 +392,7 @@
                                                     <div  class="row">
                                                         <div class="col-md-6">
                                                 <form action="QLSP.jsp">
-                                                <button id="input-hover"  class="col-md-4 col-md-offset-8" type="submit" value="Hoàn thành"  style="height:30px ;width: 150px">Hoàn thành</button>
+                                                <button id="input-hover"  class="col-md-4 col-md-offset-8" type="submit" value="OK"  style="height:30px ;width: 150px">OK</button>
                                                 </form>
                                                 </div>
                                                 <div class="col-md-1">
@@ -553,7 +553,7 @@
                                                     <div  class="row">
                                                         <div class="col-md-6">
                                                 <form action="QLSP.jsp">
-                                                <button id="input-hover"  class="col-md-4 col-md-offset-8" type="submit" value="Hoàn thành"  style="height:30px ;width: 150px">Hoàn thành</button>
+                                                <button id="input-hover"  class="col-md-4 col-md-offset-8" type="submit" value="OK"  style="height:30px ;width: 150px">OK</button>
                                                 </form>
                                                 </div>
                                                 <div class="col-md-1">
@@ -684,7 +684,7 @@
                                                     <div  class="row">
                                                         <div class="col-md-6">
                                                 <form action="QLSP.jsp">
-                                                <button id="input-hover"  class="col-md-4 col-md-offset-8" type="submit" value="Hoàn thành"  style="height:30px ;width: 150px">Hoàn thành</button>
+                                                <button id="input-hover"  class="col-md-4 col-md-offset-8" type="submit" value="OK"  style="height:30px ;width: 150px">OK</button>
                                                 </form>
                                                 </div>
                                                 <div class="col-md-1">
@@ -845,7 +845,7 @@
                                                     <div  class="row">
                                                         <div class="col-md-6">
                                                 <form action="QLSP.jsp">
-                                                <button id="input-hover"  class="col-md-4 col-md-offset-8" type="submit" value="Hoàn thành"  style="height:30px ;width: 150px">Hoàn thành</button>
+                                                <button id="input-hover"  class="col-md-4 col-md-offset-8" type="submit" value="OK"  style="height:30px ;width: 150px">OK</button>
                                                 </form>
                                                 </div>
                                                 <div class="col-md-1">
@@ -976,7 +976,7 @@
                                                     <div  class="row">
                                                         <div class="col-md-6">
                                                 <form action="QLSP.jsp">
-                                                <button id="input-hover"  class="col-md-4 col-md-offset-8" type="submit" value="Hoàn thành"  style="height:30px ;width: 150px">Hoàn thành</button>
+                                                <button id="input-hover"  class="col-md-4 col-md-offset-8" type="submit" value="OK"  style="height:30px ;width: 150px">OK</button>
                                                 </form>
                                                 </div>
                                                 <div class="col-md-1">
@@ -1137,7 +1137,7 @@
                                                     <div  class="row">
                                                         <div class="col-md-6">
                                                 <form action="QLSP.jsp">
-                                                <button id="input-hover"  class="col-md-4 col-md-offset-8" type="submit" value="Hoàn thành"  style="height:30px ;width: 150px">Hoàn thành</button>
+                                                <button id="input-hover"  class="col-md-4 col-md-offset-8" type="submit" value="OK"  style="height:30px ;width: 150px">OK</button>
                                                 </form>
                                                 </div>
                                                 <div class="col-md-1">
@@ -1268,7 +1268,7 @@
                                                     <div  class="row">
                                                         <div class="col-md-6">
                                                 <form action="QLSP.jsp">
-                                                <button id="input-hover"  class="col-md-4 col-md-offset-8" type="submit" value="Hoàn thành"  style="height:30px ;width: 150px">Hoàn thành</button>
+                                                <button id="input-hover"  class="col-md-4 col-md-offset-8" type="submit" value="OK"  style="height:30px ;width: 150px">OK</button>
                                                 </form>
                                                 </div>
                                                 <div class="col-md-1">
@@ -1429,7 +1429,7 @@
                                                     <div  class="row">
                                                         <div class="col-md-6">
                                                 <form action="QLSP.jsp">
-                                                <button id="input-hover"  class="col-md-4 col-md-offset-8" type="submit" value="Hoàn thành"  style="height:30px ;width: 150px">Hoàn thành</button>
+                                                <button id="input-hover"  class="col-md-4 col-md-offset-8" type="submit" value="OK"  style="height:30px ;width: 150px">OK</button>
                                                 </form>
                                                 </div>
                                                 <div class="col-md-1">
@@ -1560,7 +1560,7 @@
                                                     <div  class="row">
                                                         <div class="col-md-6">
                                                 <form action="QLSP.jsp">
-                                                <button id="input-hover"  class="col-md-4 col-md-offset-8" type="submit" value="Hoàn thành"  style="height:30px ;width: 150px">Hoàn thành</button>
+                                                <button id="input-hover"  class="col-md-4 col-md-offset-8" type="submit" value="OK"  style="height:30px ;width: 150px">OK</button>
                                                 </form>
                                                 </div>
                                                 <div class="col-md-1">
@@ -1721,7 +1721,7 @@
                                                     <div  class="row">
                                                         <div class="col-md-6">
                                                 <form action="QLSP.jsp">
-                                                <button id="input-hover"  class="col-md-4 col-md-offset-8" type="submit" value="Hoàn thành"  style="height:30px ;width: 150px">Hoàn thành</button>
+                                                <button id="input-hover"  class="col-md-4 col-md-offset-8" type="submit" value="OK"  style="height:30px ;width: 150px">OK</button>
                                                 </form>
                                                 </div>
                                                 <div class="col-md-1">
@@ -1852,7 +1852,7 @@
                                                     <div  class="row">
                                                         <div class="col-md-6">
                                                 <form action="QLSP.jsp">
-                                                <button id="input-hover"  class="col-md-4 col-md-offset-8" type="submit" value="Hoàn thành"  style="height:30px ;width: 150px">Hoàn thành</button>
+                                                <button id="input-hover"  class="col-md-4 col-md-offset-8" type="submit" value="OK"  style="height:30px ;width: 150px">OK</button>
                                                 </form>
                                                 </div>
                                                 <div class="col-md-1">
