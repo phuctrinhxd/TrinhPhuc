@@ -121,27 +121,7 @@
                              <div class="col-md-1"></div>
                         
                         </div>
-                        <div  class="row"style="margin-top: 10px">
-                            <div class="col-md-1"></div>
-                            <div class="col-md-3">
-                               <p style="margin-left: 65px;margin-top: 10px">Size :</p>
-                            </div>
-                            <div class=" form-group col-md-7" >
-                                 <input type="number" name="size" value="39"  style="width: 50px;height: 30px;text-align: center;" required="">
-                            </div>
-                            
-                        </div>
-                       
-                        <div  class="row"style="margin-top: 10px">
-                            <div class="col-md-1"></div>
-                            <div class="col-md-3">
-                               <p style="margin-left: 65px;margin-top: 10px">Số lượng :</p>
-                            </div>
-                            <div class=" form-group col-md-7" style="width: 300px">
-                                 <input name="SoLuong"id="name"type="number" required="" style="width: 60px;height: 30px;text-align: center;" value="150"  /> đôi
-                            </div>
-                            <div class="col-md-1"></div>
-                        </div>
+                        
                         <div  class="row"style="margin-top: 10px">
                             <div class="col-md-4"></div>
                             <div class="col-md-4">
