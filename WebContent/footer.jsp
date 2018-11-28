@@ -94,9 +94,8 @@
 					<ul class="footer-menu">
 						<li><a href="#">Giới thiệu</a></li>
 						<li><a href="#">Sản phẩm</a></li>
-						<li><a href="#">Tin tức</a></li>
+						<li><a href="TinTucController">Tin tức</a></li>
 						<li><a href="#">Liên hệ</a></li>
-						<li><a href="#">Điều khoản sử dụng</a></li>
 					</ul>
 				</div>
 			</div>
@@ -109,8 +108,7 @@
 						<li><a href="#">Tài khoản</a></li>
 						<li><a href="#">Liên hệ với GIAYNE</a></li>
 						<li><a href="#">Lịch sử mua hàng</a></li>
-						<li><a href="#">Trả lại</a></li>
-						
+						<li><a href="#">Giỏ hàng</a></li>
 					</ul>
 				</div>
 			</div>

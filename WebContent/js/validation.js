@@ -180,5 +180,24 @@ $(function(){
 			},
 		}		
 	});
+	$("#login-form").validate({
+		rules:{
+			username:{
+				required: true,
+			},
+			password:{
+				required:true,
+			},
+		},
+		messages:{
+			username:{
+				required: 'Vui lòng nhập tên đăng nhập.'
+
+			},
+			password:{
+				required: 'Vui lòng nhập mật khẩu.'
+			},
+		}		
+	});
 });
 

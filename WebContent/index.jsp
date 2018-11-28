@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
     pageEncoding="utf-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -8,7 +9,6 @@
 </head>
 <body>
 	<jsp:include page="header.jsp"></jsp:include>
-	
 	<div class="slider-container">
 		<!-- Slider Image -->
 		<div id="mainSlider" class="nivoSlider slider-image">
@@ -21,7 +21,7 @@
 		<div class="container">
 			<div class="row">
 				<div class="section-title">
-					<h2>MẪU GIÀY NỔI BẬT</h2>
+					<h2>MẪU GIÀY MỚI NHẤT</h2>
 					<div class="title-icon">
 						<span><i class="fa fa-angle-left"></i> <i class="fa fa-angle-right"></i></span>
 					</div>
@@ -149,7 +149,7 @@
 		<div class="container">
 			<div class="row">
 				<div class="section-title">
-					<h2><a href="blog.jsp">TIN TỨC</a></h2>
+					<h2><a href="TinTucController">TIN TỨC</a></h2>
 					<div class="title-icon">
 						<span><i class="fa fa-angle-left"></i> <i class="fa fa-angle-right"></i></span>
 					</div>
@@ -157,56 +157,27 @@
 			</div>			
 			<div class="row">
 				<div class="blog-curosel">
+				<c:forEach var="blog" items="${ListTT}">
 					<div class="col-md-12">
 						<div class="blog-wrapper">
 							<div class="blog-img">
-								<a href="single-blog.jsp">
-									<img src="img/blog/bg.jpg" alt="Nike" />
+								<a href="ChiTietTTController?matt=<c:out value="${blog.getMaTinTuc()}"/>">
+									<img src="<c:out value="${blog.getHinhAnh()}"/>" alt="" />
 								</a>
 							</div>
 							<div class="blog-content">
-								<h3><a href="single-blog.jsp">
-									Những mẫu giày hot		
+								<h3><a href="ChiTietTTController?matt=<c:out value="${blog.getMaTinTuc()}"/>">
+									<c:out value="${blog.getTieuDe()}"/>		
 								</a></h3>					
 							</div>
 						</div>
 					</div>
-					<div class="col-md-12">
-					<div class="blog-wrapper">
-							<div class="blog-img">
-								<a href="single-blog.jsp">
-									<img src="img/blog/halloween.jpg" alt="" />
-								</a>
-							</div>
-							<div class="blog-content">
-								<h3><a href="single-blog.jsp">
-									Halloween không sợ ma, chỉ sợ thiếu giày
-								</a></h3>												
-							</div>
-					</div>
-				</div>
-				<div class="col-md-12">
-					<div class="blog-wrapper">
-						
-						<div class="blog-img">
-							<a href="single-blog.jsp">
-								<img src="img/blog/logoGiayNe.png" alt="Giay3.jpg" />
-							</a>
-						</div>
-						<div class="blog-content">
-							<h3>
-								<a href="single-blog.jsp">
-									Khai trương shop giayne ptt
-								</a></h3>
-							</div>
-					</div>
-				</div>	
+				</c:forEach>
 			</div>
 		</div>
 	</div>
 </div>
 		
-	
 		<jsp:include page="footer.jsp"></jsp:include>
 </body>
 </html>

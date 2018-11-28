@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
     pageEncoding="utf-8"%>
+    <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -10,27 +11,32 @@
 	<jsp:include page="header.jsp"></jsp:include>
 	
 	<div class="breadcrumb-area">
-			
+			<div class="container">
+				<div class="row">
+					<div class="col-md-12">
+						<div class="breadcrumb-list">
+							<h1>Đăng nhập - Đăng ký</h1>							
+						</div>
+					</div>
+				</div>
+			</div>
 		</div>
-		<!-- breadcrumb-area end -->
-		<!-- login-area start -->
 		<div class="login-area">
 			<div class="container">
 				<div class="row">
 					<div class="col-md-6">
 						<div class="login-content">
 							<h2 class="login-title">ĐĂNG NHẬP</h2>
-							
-							<form action="#">
-								<label>Tên đăng nhập</label>
-								<input type="text" />
-								<label>Mật khẩu</label>
-								<input type="password" />
+							<form action="#" method="POST" id="login-form">
+								<div class="form-group">
+									<label>Tên đăng nhập <span class="required">*</span></label>
+									<input type="text" placeholder="Tên đăng nhập" name="username" class="form-control" value="<c:out value="${user.id}"/>"/>
+								</div>
+								<div class="form-group">
+									<label>Mật khẩu <span class="required">*</span></label>
+									<input type="password" placeholder="Mật khẩu" name="password" id="password" class="form-control" value="<c:out value="${user.pass}"/>"/>
+								</div>
 								<div class="login-lost">
-									<span class="log-rem">
-										<input type="checkbox" />
-										<label>Remember me!</label>
-									</span>
 									<span class="forgot-login">
 										<a href="forgot-password.jsp">Quên mật khẩu</a>
 									</span>
@@ -43,10 +49,11 @@
 						<div class="login-content login-margin">
 							<h2 class="login-title">ĐĂNG KÍ</h2>
 							<p>Tạo tài khoản mới</p>
-							<form action="#" id="register-form">
+							<h3><%= request.getAttribute("msgDangKy")!=null ? request.getAttribute("msgDangKy") : "" %></h3>
+							<form action="DangKyController" method="post" id="register-form">
 								<div class="form-group">
 									<label>Tên người dùng <span class="required">*</span></label>
-									<input type="text" placeholder="Họ tên" name=name class="form-control"/>
+									<input type="text" placeholder="Họ tên" name="name" class="form-control"/>
 								</div>
 								<div class="form-group">
 									<label>Email <span class="required">*</span></label>
@@ -62,7 +69,7 @@
 								</div>						
 								<div class="form-group">
 									<label>Tên đăng nhập <span class="required">*</span></label>
-									<input type="text" placeholder="Tên đăng nhập" name=username class="form-control"/>
+									<input type="text" placeholder="Tên đăng nhập" name="username" class="form-control"/>
 								</div>
 								<div class="form-group">
 									<label>Mật khẩu <span class="required">*</span></label>
@@ -72,7 +79,6 @@
 									<label>Xác nhận mật khẩu <span class="required">*</span></label>
 									<input type="password" placeholder="Nhập lại mật khẩu" name="password2" class="form-control"/>
 								</div>	
-
 								<input class="login-sub" type="submit" value="Đăng ký" />
 							</form>
 						</div>

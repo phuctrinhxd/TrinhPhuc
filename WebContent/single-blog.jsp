@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
     pageEncoding="utf-8"%>
+    <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -8,7 +9,6 @@
 </head>
 <body>
 	<jsp:include page="header.jsp"></jsp:include>
-
 	<div class="breadcrumb-area">
 			<div class="container">
 				<div class="row">
@@ -20,8 +20,6 @@
 				</div>
 			</div>
 		</div>
-		<!-- breadcrumb-area end -->
-		<!-- blog-area start -->
 		<div class="blog-area pad-60">
 			<div class="container">
 				<div class="row">
@@ -29,13 +27,12 @@
 						<div class="blog-page-main">
 							<div class="blog-wrapper">
 								<div class="blog-img">
-									<img src="img/blog/halloween.jpg" alt="" />
+									<img src="<c:out value="${blog.getHinhAnh()}"/>" alt="" />
 								</div>
 								<div class="blog-content">
-									<h3>Halloween không sợ ma, chỉ sợ thiếu giày</h3>
+									<h3><c:out value="${blog.getTieuDe()}"/></h3>
 									<div class="blog-meta"></div>
-									<p>Ngày HALLOWEEN đã tới rồi, bạn đã có giày ưng ý để đi chơi HALLOWEEN chưa. Nếu chưa bạn đừng lo vì đã có shop GIAYNE PTT của chúng tôi.</p>
-									<p>Để mừng ngày HALLOWEEN, chúng tôi giảm giá các loại giày lên tới 20%. Điều kiện quá tốt tại sao bạn chưa hốt? Hãy nhanh chóng chọn ngay một đôi giày ưng ý để đi chơi HALLOWEEN nào. Nhanh tay, chương trình áp dụng từ ngày 26/10/2018 đến hết ngày 05/11/2018.</p>
+									<p><c:out value="${blog.getNoiDung()}"/></p>
 									<blockquote>
 										<p>Để coi các sản phẩm. Hãy bấm <a href="shop.jsp">TẠI ĐÂY</a>.</p>
 									</blockquote>									
@@ -46,7 +43,6 @@
 				</div>	
 			</div>
 		</div>
-
 	<jsp:include page="footer.jsp"></jsp:include>
 </body>
 </html>
