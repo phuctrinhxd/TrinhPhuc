@@ -25,6 +25,7 @@ public class ChiTietTTController extends HttpServlet {
     
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
+		request.setCharacterEncoding("UTF-8");
 		Connection conn = DBConnection.CreateConnection();
 		int matt = Integer.parseInt(request.getParameter("matt"));
 		TinTuc tintuc = TinTucDAO.ChiTietTinTuc(conn, matt);

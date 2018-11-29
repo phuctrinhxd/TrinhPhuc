@@ -26,6 +26,7 @@ public class SanPhamController extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
+		request.setCharacterEncoding("UTF-8");
 		Connection conn = DBConnection.CreateConnection();
 		List<SanPham> list = SanPhamDAO.TatCaSanPham(conn);
 		String sapxep = request.getParameter("sapxep");

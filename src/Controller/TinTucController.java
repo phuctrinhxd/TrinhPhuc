@@ -24,6 +24,7 @@ public class TinTucController extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
+		request.setCharacterEncoding("UTF-8");
 		Connection conn = DBConnection.CreateConnection();
 		List<TinTuc> list = TinTucDAO.TatCaTinTuc(conn);
 		request.setAttribute("listtt", list);

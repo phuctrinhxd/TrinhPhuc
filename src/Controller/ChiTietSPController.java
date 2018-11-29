@@ -26,6 +26,7 @@ public class ChiTietSPController extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
+		request.setCharacterEncoding("UTF-8");
 		Connection conn = DBConnection.CreateConnection();
 		String masp = request.getParameter("masp");
 		SanPham sp = SanPhamDAO.LaySanPham(conn, masp);

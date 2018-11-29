@@ -27,6 +27,7 @@ public class Home extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
+		request.setCharacterEncoding("UTF-8");
 		Connection conn = DBConnection.CreateConnection();
 		List<SanPham> listsp = SanPhamDAO.SanPhamNoiBac(conn);
 		request.setAttribute("listSP", listsp);
