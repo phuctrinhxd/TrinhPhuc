@@ -18,6 +18,7 @@ public class UsersDAO {
 				statement.close();
 				return true;
 			}
+			statement.close();
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}		

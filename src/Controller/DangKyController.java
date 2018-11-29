@@ -30,6 +30,7 @@ public class DangKyController extends HttpServlet {
 
 		Connection conn = DBConnection.CreateConnection();
 		String hoten = request.getParameter("name");
+		System.out.println(hoten);
 		String email = request.getParameter("email");
 		String sdt = request.getParameter("numberphone");
 		String diachi = request.getParameter("addresshome");
@@ -40,13 +41,13 @@ public class DangKyController extends HttpServlet {
 		boolean kt= UsersDAO.ThemTaiKhoan(conn, user);
 		if(kt) {
 			KhachHangDAO.ThemKhachHang(conn, kh);
-			request.setAttribute("msgDangKy", "�ang k� th�nh c�ng");
+			request.setAttribute("msgDangKy", "Ðăng ký thành công");
 			request.setAttribute("user", user);
 			RequestDispatcher rd = request.getRequestDispatcher("login.jsp");
 			rd.forward(request, response);
 		}
 		else {
-			request.setAttribute("msgDangKy", "T�n dang nh?p d� t?n t?i");
+			request.setAttribute("msgDangKy", "Tên đăng nhập đã tồn tại");
 			RequestDispatcher rd = request.getRequestDispatcher("login.jsp");
 			rd.forward(request, response);
 		}

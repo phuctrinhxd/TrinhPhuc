@@ -20,6 +20,7 @@ public class KhachHangDAO {
 				statement.close();
 				return true;
 			}
+			statement.close();
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}		

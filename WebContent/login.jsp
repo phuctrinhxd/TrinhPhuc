@@ -9,7 +9,12 @@
 </head>
 <body>
 	<jsp:include page="header.jsp"></jsp:include>
-	
+	<script type="text/javascript">
+	var Msg = "<%=request.getAttribute("msgDangKy")%>";
+    if (Msg != "null") {
+ 	alert(Msg);
+ 	}
+    </script> 
 	<div class="breadcrumb-area">
 			<div class="container">
 				<div class="row">
@@ -41,7 +46,7 @@
 										<a href="forgot-password.jsp">Quên mật khẩu</a>
 									</span>
 								</div>
-								<input class="login-sub" type="submit" value="Login" />
+								<input class="login-sub" type="submit" value="Đăng nhập" />
 							</form>
 						</div>
 					</div>
@@ -49,7 +54,6 @@
 						<div class="login-content login-margin">
 							<h2 class="login-title">ĐĂNG KÍ</h2>
 							<p>Tạo tài khoản mới</p>
-							<h3><%= request.getAttribute("msgDangKy")!=null ? request.getAttribute("msgDangKy") : "" %></h3>
 							<form action="DangKyController" method="post" id="register-form">
 								<div class="form-group">
 									<label>Tên người dùng <span class="required">*</span></label>
@@ -73,7 +77,7 @@
 								</div>
 								<div class="form-group">
 									<label>Mật khẩu <span class="required">*</span></label>
-									<input type="password" placeholder="Mật khẩu" name="password" id="password" class="form-control"/>
+									<input type="password" placeholder="Mật khẩu" name="password" id="password1" class="form-control"/>
 								</div>
 								<div class="form-group">
 									<label>Xác nhận mật khẩu <span class="required">*</span></label>
