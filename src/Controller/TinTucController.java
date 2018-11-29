@@ -27,13 +27,13 @@ public class TinTucController extends HttpServlet {
 		Connection conn = DBConnection.CreateConnection();
 		List<TinTuc> list = TinTucDAO.TatCaTinTuc(conn);
 		request.setAttribute("listtt", list);
+		RequestDispatcher rd = request.getRequestDispatcher("blog.jsp");
+		rd.forward(request, response);
 		try {
 			conn.close();
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-		RequestDispatcher rd = request.getRequestDispatcher("blog.jsp");
-		rd.forward(request, response);
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

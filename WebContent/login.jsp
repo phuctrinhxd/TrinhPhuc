@@ -30,11 +30,11 @@
 							<form action="#" method="POST" id="login-form">
 								<div class="form-group">
 									<label>Tên đăng nhập <span class="required">*</span></label>
-									<input type="text" placeholder="Tên đăng nhập" name="username" class="form-control" value="<c:out value="${user.id}"/>"/>
+									<input type="text" placeholder="Tên đăng nhập" name="username" class="form-control" value="<c:out value="${user.getId()}"/>"/>
 								</div>
 								<div class="form-group">
 									<label>Mật khẩu <span class="required">*</span></label>
-									<input type="password" placeholder="Mật khẩu" name="password" id="password" class="form-control" value="<c:out value="${user.pass}"/>"/>
+									<input type="password" placeholder="Mật khẩu" name="password" id="password" class="form-control" value="<c:out value="${user.getPass()}"/>"/>
 								</div>
 								<div class="login-lost">
 									<span class="forgot-login">

@@ -1425,9 +1425,7 @@ span.sorting-name {
 .shop-area .shop-content .col-md-4 {
   margin-bottom: 30px;
 }
-.shop-area .shop-content .col-md-4:nth-last-child(-n+3) {
-  margin: 0;
-}
+
 .shop-list .product-img {
   float: left;
   width: 30%;

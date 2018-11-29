@@ -19,7 +19,7 @@
 					</div>
 				</div>
 			</div>
-		</div>
+	</div>
 		<div class="blog-area pad-60">
 			<div class="container">
 				<div class="row">
@@ -34,7 +34,7 @@
 									<div class="blog-meta"></div>
 									<p><c:out value="${blog.getNoiDung()}"/></p>
 									<blockquote>
-										<p>Để coi các sản phẩm. Hãy bấm <a href="shop.jsp">TẠI ĐÂY</a>.</p>
+										<p>Để coi các sản phẩm. Hãy bấm <a href="SanPhamController">TẠI ĐÂY</a>.</p>
 									</blockquote>									
 								</div>														
 							</div>				

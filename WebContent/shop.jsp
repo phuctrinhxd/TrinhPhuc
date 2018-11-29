@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
     pageEncoding="utf-8"%>
+    <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -8,7 +9,12 @@
 </head>
 <body>
 	<jsp:include page="header.jsp"></jsp:include>
-	
+	<script type="text/javascript">
+	var Msg = "<%=request.getAttribute("msgChiTietSP")%>";
+    if (Msg != "null") {
+ 	alert("Sản phẩm đã hết hoặc không tồn tại");
+ 	}
+ 	</script> 
 	<div class="breadcrumb-area">
 			<div class="container">
 				<div class="row">
@@ -19,15 +25,11 @@
 					</div>
 				</div>
 			</div>
-		</div>
-		<!-- breadcrumb-area end -->
-		<!-- shop-area start -->
+	</div>
 		<div class="shop-area">
 			<div class="container">
 				<div class="row">
-					<!-- left-sidebar start -->
 					<div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
-						<!-- widget-categories start -->
 						<aside class="widget">
 							<h3 class="sidebar-title">Thương hiệu</h3>																	
 							<ul class="sidebar-menu">
@@ -45,8 +47,6 @@
 								</label></li>
 							</ul>
 						</aside>
-						<!-- widget-categories end -->
-						<!-- filter-by start -->
 						<aside class="widget">
 							<h3 class="sidebar-title">Giới tính</h3>
 							<ul class="sidebar-menu">
@@ -58,8 +58,6 @@
 								</label></li>
 							</ul>						
 						</aside>
-						<!-- filter-by end -->
-						<!-- widget start -->
 						<aside class="widget">
 							<h3 class="sidebar-title">Màu sắc</h3>
 							<ul class="sidebar-menu">
@@ -80,7 +78,6 @@
 								</label></li>
 							</ul>						
 						</aside>
-						<!-- widget end -->
 						<aside class="widget">
 							<h3 class="sidebar-title">Size</h3>
 							<ul class="sidebar-menu">
@@ -113,10 +110,8 @@
 							</ul>						
 						</aside>						
 					</div>
-					<!-- left-sidebar end -->
 					<div class="col-md-9 col-sm-12 col-xs-12">
 						<div class="shop-content">					
-							<!-- Nav tabs -->
 							<div class="shop-breadcrumb">
 								<ul>
 									<li class="active"><a href="#">1</a></li>
@@ -126,279 +121,49 @@
 								</ul>
 							</div>
 							<div class="short-by">
+							<form name="SapXepForm" action="SanPhamController" method="GET">
+								<input type="hidden">
 								<span class="sorting-show"> Hiển thị:</span>
-								<select name="sapxephienthi">
-									<option value="new">Mới nhất</option>
-									<option value="low-high">Giá thấp đến cao</option>
-									<option value="high-low">Giá cao đến thấp</option>
-								</select>							
+									<select name="sapxep" onchange="javascript:document.SapXepForm.submit();">
+										<option value="new" ${sapxep=="new"?'selected' : '' }>Mới nhất</option>
+										<option value="low" ${sapxep=="low"?'selected' : '' }>Giá thấp đến cao</option>
+										<option value="high" ${sapxep=="high"?'selected' : '' }>Giá cao đến thấp</option>
+									</select>
+								
+							</form>
 							</div>
 							<div class="clear"></div>
-							<!-- Tab panes -->
 							<div class="tab-content">
 								<div role="tabpanel" class="tab-pane active" id="home">
 									<div class="row">
-										<!-- single-product start -->
+									<c:forEach items="${list}" var="sanpham">
 										<div class="col-md-4 col-sm-4">
 											<div class="single-product">
 												<div class="product-img">
-													<a href="single-product.jsp">
-														<img src="img/giay1.jpg" alt="" />
-
+													<a href="ChiTietSPController?masp=<c:out value="${sanpham.getMaSanPham()}"/>">
+														<img src="<c:out value="${sanpham.getHinhAnh()}"/>" alt="" />
 													</a>
 													<span class="tag-line">new</span>
 													<div class="product-action">
-														<div class="button-top">
-															<a href="#" data-toggle="modal" data-target="#productModal"><i class="fa fa-search"></i></a>
-															<a href="#" ><i class="fa fa-heart"></i></a>
-														</div>
 														<div class="button-cart">
+															<a href="order.jsp"><button><i class="fa fa-usd" aria-hidden="true"></i> đặt hàng</button>
+															</a>
 															<button><i class="fa fa-shopping-cart"></i> Giỏ hàng</button>
 														</div>
 													</div>
 												</div>
 												<div class="product-content">
-													<h3><a href="single-product.jsp">Nike nam</a></h3>
+													<h3><a href="ChiTietSPController?masp=<c:out value="${sanpham.getMaSanPham()}"/>"><c:out value="${sanpham.getTenSanPham()}"/></a></h3>
 													<div class="price">
-														<span>900.000đ</span>
-														<span class="old">950.000đ</span>
+														<span><c:out value="${sanpham.getGiaBan()}"/>đ</span>
+														<c:if test="${sanpham.getKhuyenMai() > 0 }">
+														<span class="old"><c:out value="${sanpham.getGia()}"/>đ</span>
+														</c:if>
 													</div>
 												</div>
 											</div>
 										</div>
-										<!-- single-product end -->	
-										<!-- single-product start -->
-										<div class="col-md-4 col-sm-4">
-											<div class="single-product">
-												<div class="product-img">
-													<a href="single-product.jsp">
-														<img src="img/giay1.jpg" alt="" />
-
-													</a>
-													<span class="tag-line">new</span>
-													<div class="product-action">
-														<div class="button-top">
-															<a href="#" data-toggle="modal" data-target="#productModal"><i class="fa fa-search"></i></a>
-															<a href="#" ><i class="fa fa-heart"></i></a>
-														</div>
-														<div class="button-cart">
-															<button><i class="fa fa-shopping-cart"></i> Giỏ hàng</button>
-														</div>
-													</div>
-												</div>
-												<div class="product-content">
-													<h3><a href="single-product.jsp">Nike nam</a></h3>
-													<div class="price">
-														<span>900.000đ</span>
-														<span class="old">950.000đ</span>
-													</div>
-												</div>
-											</div>
-										</div>
-										<!-- single-product end -->	
-										<!-- single-product start -->
-										<div class="col-md-4 col-sm-4">
-											<div class="single-product">
-												<div class="product-img">
-													<a href="single-product.jsp">
-														<img src="img/giay1.jpg" alt="" />
-
-													</a>
-													<span class="tag-line">new</span>
-													<div class="product-action">
-														<div class="button-top">
-															<a href="#" data-toggle="modal" data-target="#productModal"><i class="fa fa-search"></i></a>
-															<a href="#" ><i class="fa fa-heart"></i></a>
-														</div>
-														<div class="button-cart">
-															<button><i class="fa fa-shopping-cart"></i> Giỏ hàng</button>
-														</div>
-													</div>
-												</div>
-												<div class="product-content">
-													<h3><a href="single-product.jsp">Nike nam</a></h3>
-													<div class="price">
-														<span>900.000đ</span>
-														<span class="old">950.000đ</span>
-													</div>
-												</div>
-											</div>
-										</div>
-										<!-- single-product end -->	
-										<!-- single-product start -->
-										<div class="col-md-4 col-sm-4">
-											<div class="single-product">
-												<div class="product-img">
-													<a href="single-product.jsp">
-														<img src="img/giay1.jpg" alt="" />
-
-													</a>
-													<span class="tag-line">new</span>
-													<div class="product-action">
-														<div class="button-top">
-															<a href="#" data-toggle="modal" data-target="#productModal"><i class="fa fa-search"></i></a>
-															<a href="#" ><i class="fa fa-heart"></i></a>
-														</div>
-														<div class="button-cart">
-															<button><i class="fa fa-shopping-cart"></i> Giỏ hàng</button>
-														</div>
-													</div>
-												</div>
-												<div class="product-content">
-													<h3><a href="single-product.jsp">Nike nam</a></h3>
-													<div class="price">
-														<span>900.000đ</span>
-														<span class="old">950.000đ</span>
-													</div>
-												</div>
-											</div>
-										</div>
-										<!-- single-product end -->	
-										<!-- single-product start -->
-										<div class="col-md-4 col-sm-4">
-											<div class="single-product">
-												<div class="product-img">
-													<a href="single-product.jsp">
-														<img src="img/giay1.jpg" alt="" />
-
-													</a>
-													<span class="tag-line">new</span>
-													<div class="product-action">
-														<div class="button-top">
-															<a href="#" data-toggle="modal" data-target="#productModal"><i class="fa fa-search"></i></a>
-															<a href="#" ><i class="fa fa-heart"></i></a>
-														</div>
-														<div class="button-cart">
-															<button><i class="fa fa-shopping-cart"></i> Giỏ hàng</button>
-														</div>
-													</div>
-												</div>
-												<div class="product-content">
-													<h3><a href="single-product.jsp">Nike nam</a></h3>
-													<div class="price">
-														<span>900.000đ</span>
-														<span class="old">950.000đ</span>
-													</div>
-												</div>
-											</div>
-										</div>
-										<!-- single-product end -->	
-										<!-- single-product start -->
-										<div class="col-md-4 col-sm-4">
-											<div class="single-product">
-												<div class="product-img">
-													<a href="single-product.jsp">
-														<img src="img/giay1.jpg" alt="" />
-
-													</a>
-													<span class="tag-line">new</span>
-													<div class="product-action">
-														<div class="button-top">
-															<a href="#" data-toggle="modal" data-target="#productModal"><i class="fa fa-search"></i></a>
-															<a href="#" ><i class="fa fa-heart"></i></a>
-														</div>
-														<div class="button-cart">
-															<button><i class="fa fa-shopping-cart"></i> Giỏ hàng</button>
-														</div>
-													</div>
-												</div>
-												<div class="product-content">
-													<h3><a href="single-product.jsp">Nike nam</a></h3>
-													<div class="price">
-														<span>900.000đ</span>
-														<span class="old">950.000đ</span>
-													</div>
-												</div>
-											</div>
-										</div>
-										<!-- single-product end -->	
-										<!-- single-product start -->
-										<div class="col-md-4 col-sm-4">
-											<div class="single-product">
-												<div class="product-img">
-													<a href="single-product.jsp">
-														<img src="img/giay1.jpg" alt="" />
-
-													</a>
-													<span class="tag-line">new</span>
-													<div class="product-action">
-														<div class="button-top">
-															<a href="#" data-toggle="modal" data-target="#productModal"><i class="fa fa-search"></i></a>
-															<a href="#" ><i class="fa fa-heart"></i></a>
-														</div>
-														<div class="button-cart">
-															<button><i class="fa fa-shopping-cart"></i> Giỏ hàng</button>
-														</div>
-													</div>
-												</div>
-												<div class="product-content">
-													<h3><a href="single-product.jsp">Nike nam</a></h3>
-													<div class="price">
-														<span>900.000đ</span>
-														<span class="old">950.000đ</span>
-													</div>
-												</div>
-											</div>
-										</div>
-										<!-- single-product end -->	
-										<!-- single-product start -->
-										<div class="col-md-4 col-sm-4">
-											<div class="single-product">
-												<div class="product-img">
-													<a href="single-product.jsp">
-														<img src="img/giay1.jpg" alt="" />
-
-													</a>
-													<span class="tag-line">new</span>
-													<div class="product-action">
-														<div class="button-top">
-															<a href="#" data-toggle="modal" data-target="#productModal"><i class="fa fa-search"></i></a>
-															<a href="#" ><i class="fa fa-heart"></i></a>
-														</div>
-														<div class="button-cart">
-															<button><i class="fa fa-shopping-cart"></i> Giỏ hàng</button>
-														</div>
-													</div>
-												</div>
-												<div class="product-content">
-													<h3><a href="single-product.jsp">Nike nam</a></h3>
-													<div class="price">
-														<span>900.000đ</span>
-														<span class="old">950.000đ</span>
-													</div>
-												</div>
-											</div>
-										</div>
-										<!-- single-product end -->	
-										<!-- single-product start -->
-										<div class="col-md-4 col-sm-4">
-											<div class="single-product">
-												<div class="product-img">
-													<a href="single-product.jsp">
-														<img src="img/giay1.jpg" alt="" />
-
-													</a>
-													<span class="tag-line">new</span>
-													<div class="product-action">
-														<div class="button-top">
-															<a href="#" data-toggle="modal" data-target="#productModal"><i class="fa fa-search"></i></a>
-															<a href="#" ><i class="fa fa-heart"></i></a>
-														</div>
-														<div class="button-cart">
-															<button><i class="fa fa-shopping-cart"></i> Giỏ hàng</button>
-														</div>
-													</div>
-												</div>
-												<div class="product-content">
-													<h3><a href="single-product.jsp">Nike nam</a></h3>
-													<div class="price">
-														<span>900.000đ</span>
-														<span class="old">950.000đ</span>
-													</div>
-												</div>
-											</div>
-										</div>
-										<!-- single-product end -->																	
+									</c:forEach>
 									</div>
 								</div>								
 							</div>
@@ -418,7 +183,6 @@
 				</div>
 			</div>
 		</div>
-
 	<jsp:include page="footer.jsp"></jsp:include>
 </body>
 </html>

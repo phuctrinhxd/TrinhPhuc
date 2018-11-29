@@ -1,6 +1,7 @@
 package Controller;
 
 import java.io.IOException;
+
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -27,8 +28,8 @@ public class Home extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
 		Connection conn = DBConnection.CreateConnection();
-//		List<SanPham> listsp = SanPhamDAO.SanPhamNoiBac(conn);
-//		request.setAttribute("listSP", listsp);
+		List<SanPham> listsp = SanPhamDAO.SanPhamNoiBac(conn);
+		request.setAttribute("listSP", listsp);
 		List<TinTuc> listtt = TinTucDAO.TinTucNoiBac(conn);
 		request.setAttribute("ListTT", listtt);
 		try {
@@ -38,6 +39,11 @@ public class Home extends HttpServlet {
 		}
 		RequestDispatcher rd = request.getRequestDispatcher("index.jsp");
 		rd.forward(request, response);
+		try {
+			conn.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
