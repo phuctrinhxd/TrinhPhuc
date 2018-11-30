@@ -28,7 +28,20 @@ public class SanPhamController extends HttpServlet {
 
 		request.setCharacterEncoding("UTF-8");
 		Connection conn = DBConnection.CreateConnection();
-		List<SanPham> list = SanPhamDAO.TatCaSanPham(conn);
+		String th = request.getParameter("thuonghieu");
+		String gt = request.getParameter("gioitinh");
+		String m = request.getParameter("mau");
+		String gia = request.getParameter("gia");
+		String[] thuonghieu=null;
+		String[] gioitinh=null;
+		String[] mau=null;
+		if(th !=null)
+			thuonghieu = th.split(",");
+		if(gt !=null)
+			gioitinh = gt.split(",");
+		if(m !=null)
+			mau = m.split(",");
+		List<SanPham> list = SanPhamDAO.LocSanPham(conn, thuonghieu, gioitinh, mau, gia);
 		String sapxep = request.getParameter("sapxep");
 		String msgChiTietSP = (String)request.getAttribute("msgChiTietSP");
 		if(sapxep!=null) {
@@ -38,7 +51,6 @@ public class SanPhamController extends HttpServlet {
 				list = SanPhamDAO.GiaThapDan(conn, list);
 		}
 		request.setAttribute("list", list);
-		request.setAttribute("sapxep", sapxep);
 		request.setAttribute("msgChiTietSP", msgChiTietSP);
 		RequestDispatcher rd = request.getRequestDispatcher("shop.jsp");
 		rd.forward(request, response);

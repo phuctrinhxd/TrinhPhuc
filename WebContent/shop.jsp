@@ -9,6 +9,13 @@
 </head>
 <body>
 	<jsp:include page="header.jsp"></jsp:include>
+	<% 
+	String thuonghieu = request.getParameter("thuonghieu")==null ? "1" : request.getParameter("thuonghieu");	
+	String gioitinh = request.getParameter("gioitinh")==null ? "1" : request.getParameter("gioitinh");
+	String mau = request.getParameter("mau")==null ? "1" : request.getParameter("mau");
+	String gia = request.getParameter("gia")==null ? "1" : request.getParameter("gia");
+	String sapxep = request.getParameter("sapxep")==null ? "1" : request.getParameter("sapxep");
+	%>
 	<script type="text/javascript">
 	var Msg = "<%=request.getAttribute("msgChiTietSP")%>";
     if (Msg != "null") {
@@ -34,16 +41,16 @@
 							<h3 class="sidebar-title">Thương hiệu</h3>																	
 							<ul class="sidebar-menu">
 								<li><label>
-									<input type="checkbox"> Adidas
+									<input type="checkbox" name="thuonghieu" value="Adidas" onchange="FillterProduct();" <%= thuonghieu.contains("Adidas")? "checked":""%>> Adidas
 								</label></li>
 								<li><label>
-									<input type="checkbox"> Nike
+									<input type="checkbox" name="thuonghieu" value="Nike" onchange="FillterProduct();" <%= thuonghieu.contains("Nike")? "checked":""%>> Nike
 								</label></li>
 								<li><label>
-									<input type="checkbox"> Bitis
+									<input type="checkbox" name="thuonghieu" value="Bitis" onchange="FillterProduct();" <%= thuonghieu.contains("Bitis")? "checked":""%>> Bitis
 								</label></li>
 								<li><label>
-									<input type="checkbox"> Khác
+									<input type="checkbox" name="thuonghieu" value="other" onchange="FillterProduct();" <%= thuonghieu.contains("other")? "checked":""%>> Khác
 								</label></li>
 							</ul>
 						</aside>
@@ -51,10 +58,10 @@
 							<h3 class="sidebar-title">Giới tính</h3>
 							<ul class="sidebar-menu">
 								<li><label>
-									<input type="checkbox"> Nam
+									<input type="checkbox" name="gioitinh" value="Nam" onchange="FillterProduct();" <%= gioitinh.contains("Nam")? "checked":""%>> Nam
 								</label></li>
 								<li><label>
-									<input type="checkbox"> Nữ
+									<input type="checkbox" name="gioitinh" value="Nữ" onchange="FillterProduct();" <%= gioitinh.contains("Nữ")? "checked":""%>> Nữ
 								</label></li>
 							</ul>						
 						</aside>
@@ -62,50 +69,33 @@
 							<h3 class="sidebar-title">Màu sắc</h3>
 							<ul class="sidebar-menu">
 								<li><label>
-									<input type="checkbox"> Đen
+									<input type="checkbox" name="mau" value="Đen" onchange="FillterProduct();" <%= mau.contains("Đen")? "checked":"" %>> Đen
 								</label></li>
 								<li><label>
-									<input type="checkbox"> Trắng
+									<input type="checkbox" name="mau" value="Trắng" onchange="FillterProduct();" <%= mau.contains("Trắng")? "checked":"" %>> Trắng
 								</label></li>
 								<li><label>
-									<input type="checkbox"> Xám
+									<input type="checkbox" name="mau" value="Xám" onchange="FillterProduct();" <%= mau.contains("Xám")? "checked":""%>> Xám
 								</label></li>
 								<li><label>
-									<input type="checkbox"> Đỏ
+									<input type="checkbox" name="mau" value="Đỏ" onchange="FillterProduct();" <%= mau.contains("Đỏ")? "checked":""%>> Đỏ
 								</label></li>
 								<li><label>
-									<input type="checkbox"> Khác
+									<input type="checkbox" name="mau" value="other" onchange="FillterProduct();" <%= mau.contains("other")? "checked":""%>> Khác
 								</label></li>
 							</ul>						
 						</aside>
 						<aside class="widget">
-							<h3 class="sidebar-title">Size</h3>
-							<ul class="sidebar-menu">
-								<li><label>
-									<input type="checkbox"> 39
-								</label></li>
-								<li><label>
-									<input type="checkbox"> 40
-								</label></li>
-								<li><label>
-									<input type="checkbox"> 41
-								</label></li>
-								<li><label>
-									<input type="checkbox"> 42
-								</label></li>
-							</ul>						
-						</aside>	
-						<aside class="widget">
 							<h3 class="sidebar-title">Giá</h3>
 							<ul class="sidebar-menu">
 								<li><label>
-									<input type="radio" name="gia" value="thap"> Dưới 1 triệu
+									<input type="radio" name="gia" value="thap" onchange="FillterProduct();" <%= gia.contains("thap")? "checked":""%>> Dưới 1 triệu
 								</label></li>
 								<li><label>
-									<input type="radio" name="gia" value="tb"> 1 triệu - 2 triệu
+									<input type="radio" name="gia" value="tb" onchange="FillterProduct();" <%= gia.contains("tb")? "checked":""%>> 1 triệu - 2 triệu
 								</label></li>
 								<li><label>
-									<input type="radio" name="gia" value="cao"> Trên 2 triệu
+									<input type="radio" name="gia" value="cao" onchange="FillterProduct();" <%= mau.contains("cao")? "checked":""%>> Trên 2 triệu
 								</label></li>
 							</ul>						
 						</aside>						
@@ -121,16 +111,14 @@
 								</ul>
 							</div>
 							<div class="short-by">
-							<form name="SapXepForm" action="SanPhamController" method="GET">
 								<input type="hidden">
 								<span class="sorting-show"> Hiển thị:</span>
-									<select name="sapxep" onchange="javascript:document.SapXepForm.submit();">
-										<option value="new" ${sapxep=="new"?'selected' : '' }>Mới nhất</option>
-										<option value="low" ${sapxep=="low"?'selected' : '' }>Giá thấp đến cao</option>
-										<option value="high" ${sapxep=="high"?'selected' : '' }>Giá cao đến thấp</option>
+									<select name="sapxep" onchange="FillterProduct();" id="sortBy">
+										<option value="new" <%= sapxep.contains("new")? "selected":""%>>Mới nhất</option>
+										<option value="low" <%= sapxep.contains("low")? "selected":""%>>Giá thấp đến cao</option>
+										<option value="high" <%= sapxep.contains("high")? "selected":""%>>Giá cao đến thấp</option>
 									</select>
 								
-							</form>
 							</div>
 							<div class="clear"></div>
 							<div class="tab-content">
@@ -183,6 +171,46 @@
 				</div>
 			</div>
 		</div>
+		<script>
+        function FillterProduct() {
+            var thuonghieu = [];
+            var gioitinh = [];
+            var mau = [];
+            var gia = [];
+            var sapxep = $('#sortBy :selected').val();
+            var pathName = window.location.pathname + "?";
+            console.log(pathName);
+            $.each($("input[name='thuonghieu']:checked"), function () {
+            	thuonghieu.push($(this).val());
+            });
+            $.each($("input[name='gioitinh']:checked"), function () {
+            	gioitinh.push($(this).val());
+            });
+            $.each($("input[name='mau']:checked"), function () {
+            	mau.push($(this).val());
+            });
+            $.each($("input[name='gia']:checked"), function () {
+            	gia.push($(this).val());
+            });
+            if (thuonghieu.length > 0) {
+                pathName = pathName + "&thuonghieu=" + thuonghieu.join(",");
+            }
+            if (gioitinh.length > 0) {
+                pathName = pathName + "&gioitinh=" + gioitinh.join(",");
+            }
+            if (mau.length > 0) {
+                pathName = pathName + "&mau=" + mau.join(",");
+            }
+            if (gia.length > 0) {
+                pathName = pathName + "&gia=" + gia.join(",");
+            }
+
+            pathName = pathName+ "&sapxep=" + sapxep;
+
+            window.location.href = pathName;
+        }
+
+    	</script>
 	<jsp:include page="footer.jsp"></jsp:include>
 </body>
 </html>

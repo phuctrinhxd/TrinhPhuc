@@ -54,6 +54,75 @@ public class SanPhamDAO {
         }
 		return listsp;
 	}
+	public static List<SanPham> LocSanPham(Connection conn, String[] thuonghieu, String[] gioitinh, String[] mau, String gia){
+		
+		List<SanPham> list = new ArrayList<SanPham>();
+		List<SanPham> listsp = new ArrayList<SanPham>();
+		
+		String sql = "select * from sanpham where HinhAnh is not null";
+		try {
+			PreparedStatement statement;
+			if(thuonghieu!=null) {
+				sql += " and ( ThuongHieu = '" + thuonghieu[0] + "'";
+				for(int i=1; i < thuonghieu.length;i++) {
+					sql += "or ThuongHieu = '"+thuonghieu[i] + "'";
+				}
+				sql += " )";
+			}
+			if(gioitinh!=null) {
+				sql += " and ( GioiTinh = '" + gioitinh[0] + "'";
+				for(int i=1; i < gioitinh.length;i++) {
+					sql += "or GioiTinh = '"+gioitinh[i] + "'";
+				}
+				sql += " )";
+			}
+			if(mau!=null) {
+				sql += " and ( MauSac = '" + mau[0] + "'";
+				for(int i=1; i < mau.length;i++) {
+					sql += "or MauSac = '"+mau[i] + "'";
+				}
+				sql += " )";
+			}
+			if(gia!=null) {
+				if(gia.contains("thap"))
+					sql += " and (Gia - Gia*KhuyenMai/100) < " + "1000000";
+				else if(gia.contains("tb"))
+					sql += " and (Gia - Gia*KhuyenMai/100) BETWEEN 1000000 and 2000000";
+				else
+					sql += "and (Gia - Gia*KhuyenMai/100) > 2000000";
+					
+			}
+			
+			statement = conn.prepareStatement(sql);
+			
+			ResultSet rs = statement.executeQuery();
+			while (rs.next()) {
+				String masp = rs.getString("MaSanPham");
+				String tensp = rs.getNString("TenSanPham");
+				String mausac = rs.getNString("MauSac");
+				String gioiTinh=rs.getNString("GioiTinh");
+				String thuongHieu=rs.getNString("ThuongHieu");
+				float Gia=rs.getFloat("Gia");
+				float khuyenmai=rs.getFloat("KhuyenMai");
+				String hinh = rs.getNString("HinhAnh");
+				SanPham sp = new SanPham(masp, tensp, mausac, gioiTinh, thuongHieu, khuyenmai, Gia, hinh);
+				list.add(sp);
+			}
+			rs.close();
+			statement.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		ListIterator<SanPham> itr = list.listIterator();
+		while(itr.hasNext())
+		{
+			itr.next();
+		}
+		while (itr.hasPrevious()) {
+            listsp.add(itr.previous());
+        }
+		return listsp;
+	}
 	public static List<SanPham> GiaCaoDan(Connection conn, List<SanPham> list){
 		
 		Collections.sort(list);

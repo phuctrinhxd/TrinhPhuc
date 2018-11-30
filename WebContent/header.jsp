@@ -10,34 +10,22 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
         <link rel="shortcut icon" type="image/x-icon" href="img/favicon.ico">
-        <!-- Place favicon.ico in the root directory -->
 		
 		<!-- google fonts  -->
 		<link href='https://fonts.googleapis.com/css?family=Lato:400,300,700,900' rel='stylesheet' type='text/css'>
 		<link href='https://fonts.googleapis.com/css?family=Raleway:400,500,700,300,800' rel='stylesheet' type='text/css'>
 
 		<!-- all css here -->
-		<!-- bootstrap v3.3.6 css -->
         <link rel="stylesheet" href="css/bootstrap.min.css">
-		<!-- animate css -->
         <link rel="stylesheet" href="css/animate.css">
-		<!-- jquery-ui.min css -->
         <link rel="stylesheet" href="css/jquery-ui.min.css">
-		<!-- meanmenu css -->
         <link rel="stylesheet" href="css/meanmenu.min.css">
-		<!-- owl.carousel css -->
         <link rel="stylesheet" href="css/owl.carousel.css">
-		<!-- nivo-slider css -->
         <link rel="stylesheet" href="lib/css/nivo-slider.css">
-		<!-- font-awesome css -->
         <link rel="stylesheet" href="css/font-awesome.min.css">
-		<!-- style css -->
 		<link rel="stylesheet" href="style.css">
-		<!-- responsive css -->
         <link rel="stylesheet" href="css/responsive.css">
-		<!-- modernizr js -->
         <script src="js/vendor/modernizr-2.8.3.min.js"></script>
-        <link rel="stylesheet" href="LienHe.css">
 </head>
 <body>
  
