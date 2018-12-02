@@ -3,10 +3,10 @@ package BEAN;
 public class ChiTietSanPham {
 
 	private String MaSanPham;
-	private float Size;
+	private int Size;
 	private int SoLuong;
 	public ChiTietSanPham() {}
-	public ChiTietSanPham(String masp, float size, int soluong)
+	public ChiTietSanPham(String masp, int size, int soluong)
 	{
 		this.setMaSanPham(masp);
 		this.setSize(size);
@@ -18,10 +18,10 @@ public class ChiTietSanPham {
 	public void setMaSanPham(String maSanPham) {
 		MaSanPham = maSanPham;
 	}
-	public float getSize() {
+	public int getSize() {
 		return Size;
 	}
-	public void setSize(float size) {
+	public void setSize(int size) {
 		Size = size;
 	}
 	public int getSoLuong() {

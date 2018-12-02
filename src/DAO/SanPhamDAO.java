@@ -33,8 +33,8 @@ public class SanPhamDAO {
 				String mausac = rs.getNString("MauSac");
 				String gioitinh=rs.getNString("GioiTinh");
 				String thuonghieu=rs.getNString("ThuongHieu");
-				float gia=rs.getFloat("Gia");
-				float khuyenmai=rs.getFloat("KhuyenMai");
+				int gia=rs.getInt("Gia");
+				int khuyenmai=rs.getInt("KhuyenMai");
 				String hinh = rs.getNString("HinhAnh");
 				SanPham sp = new SanPham(masp, tensp, mausac, gioitinh, thuonghieu, khuyenmai, gia, hinh);
 				list.add(sp);
@@ -54,12 +54,12 @@ public class SanPhamDAO {
         }
 		return listsp;
 	}
-	public static List<SanPham> LocSanPham(Connection conn, String[] thuonghieu, String[] gioitinh, String[] mau, String gia){
+	public static List<SanPham> LocSanPham(Connection conn, String[] thuonghieu, String[] gioitinh, String[] size, String[] mau, String gia){
 		
 		List<SanPham> list = new ArrayList<SanPham>();
 		List<SanPham> listsp = new ArrayList<SanPham>();
 		
-		String sql = "select * from sanpham where HinhAnh is not null";
+		String sql = "select sanpham.MaSanPham, TenSanPham, MauSac, GioiTinh, ThuongHieu, KhuyenMai, Gia, HinhAnh from sanpham, chitietsanpham where sanpham.MaSanPham = chitietsanpham.MaSanPham ";
 		try {
 			PreparedStatement statement;
 			if(thuonghieu!=null) {
@@ -73,6 +73,13 @@ public class SanPhamDAO {
 				sql += " and ( GioiTinh = '" + gioitinh[0] + "'";
 				for(int i=1; i < gioitinh.length;i++) {
 					sql += "or GioiTinh = '"+gioitinh[i] + "'";
+				}
+				sql += " )";
+			}
+			if(size!=null) {
+				sql += " and ( Size = " + size[0] ;
+				for(int i=1; i < size.length;i++) {
+					sql += " or Size = " + size[i] ;
 				}
 				sql += " )";
 			}
@@ -92,7 +99,7 @@ public class SanPhamDAO {
 					sql += "and (Gia - Gia*KhuyenMai/100) > 2000000";
 					
 			}
-			
+			sql +=" group by sanpham.MaSanPham";
 			statement = conn.prepareStatement(sql);
 			
 			ResultSet rs = statement.executeQuery();
@@ -102,8 +109,8 @@ public class SanPhamDAO {
 				String mausac = rs.getNString("MauSac");
 				String gioiTinh=rs.getNString("GioiTinh");
 				String thuongHieu=rs.getNString("ThuongHieu");
-				float Gia=rs.getFloat("Gia");
-				float khuyenmai=rs.getFloat("KhuyenMai");
+				int Gia=rs.getInt("Gia");
+				int khuyenmai=rs.getInt("KhuyenMai");
 				String hinh = rs.getNString("HinhAnh");
 				SanPham sp = new SanPham(masp, tensp, mausac, gioiTinh, thuongHieu, khuyenmai, Gia, hinh);
 				list.add(sp);
@@ -157,8 +164,8 @@ public class SanPhamDAO {
 				String mausac = rs.getNString("MauSac");
 				String gioitinh=rs.getNString("GioiTinh");
 				String thuonghieu=rs.getNString("ThuongHieu");
-				float gia=rs.getFloat("Gia");
-				float khuyenmai=rs.getFloat("KhuyenMai");
+				int gia=rs.getInt("Gia");
+				int khuyenmai=rs.getInt("KhuyenMai");
 				String hinh = rs.getNString("HinhAnh");
 				sp = new SanPham(masp, tensp, mausac, gioitinh, thuonghieu, khuyenmai, gia, hinh);
 				return sp;
@@ -182,7 +189,7 @@ public class SanPhamDAO {
 			ResultSet rs = statement.executeQuery();
 			while (rs.next())
 			{
-				float size = rs.getFloat("Size");
+				int size = rs.getInt("Size");
 				int soluong = rs.getInt("SoLuong");
 				ChiTietSanPham ctsp = new ChiTietSanPham(masp, size, soluong);
 				list.add(ctsp);

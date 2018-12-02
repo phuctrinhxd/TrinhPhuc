@@ -31,8 +31,6 @@
  
 
        <header class="header-pos">
-			<!-- header-bottom-area start -->
-			 
 			<div class="header-bottom-area">
 				<div class="container">
 					<div class="inner-container">
@@ -49,19 +47,18 @@
 											<li><a href="Home">TRANG CHỦ</a>
 											</li>
 											<li><a href="about.jsp">GIỚI THIỆU</a></li>
-											<li><a href="shop.jsp">GIÀY NAM</a>
+											<li><a href="SanPhamController?gioitinh=Nam">GIÀY NAM</a>
 												<ul>
-													<li><a href="#">ADIDAS</a></li>
-													<li><a href="#">NIKE</a></li>
-													<li><a href="#">BITIS</a></li>
-												
+													<li><a href="SanPhamController?&thuonghieu=Adidas&gioitinh=Nam">ADIDAS</a></li>
+													<li><a href="SanPhamController?&thuonghieu=Nike&gioitinh=Nam">NIKE</a></li>
+													<li><a href="SanPhamController?&thuonghieu=Bitis&gioitinh=Nam">BITIS</a></li>
 												</ul>												
 											</li>	
-											<li><a href="shop.jsp">GIÀY NỮ</a>
+											<li><a href="SanPhamController?&gioitinh=Nữ">GIÀY NỮ</a>
 												<ul>
-													<li><a href="#">ADIDAS</a></li>
-													<li><a href="#">NIKE</a></li>
-													<li><a href="#">BITIS</a></li>
+													<li><a href="SanPhamController?&thuonghieu=Adidas&gioitinh=Nữ">ADIDAS</a></li>
+													<li><a href="SanPhamController?&thuonghieu=Nike&gioitinh=Nữ">NIKE</a></li>
+													<li><a href="SanPhamController?&thuonghieu=Bitis&gioitinh=Nữ">BITIS</a></li>
 												</ul>												
 											</li>	
 											<li><a href="TinTucController">TIN TỨC</a></li>										
@@ -139,6 +136,5 @@
 			</div>
 		</header>
 		
-
 </body>
 </html>

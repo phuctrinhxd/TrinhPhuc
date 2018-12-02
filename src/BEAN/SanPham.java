@@ -7,9 +7,9 @@ public class SanPham implements Comparable<SanPham>{
 	private String MauSac;
 	private String GioiTinh;
 	private String ThuongHieu;
-	private float KhuyenMai;
-	private float Gia;
-	private float GiaBan;
+	private int KhuyenMai;
+	private int Gia;
+	private int GiaBan;
 	private String HinhAnh;
 	private String HinhAnh2;
 	private String HinhAnh3;
@@ -18,7 +18,7 @@ public class SanPham implements Comparable<SanPham>{
 	public SanPham(String masanpham) {
 		this.setMaSanPham(masanpham);
 	}
-	public SanPham(String masp, String tensp, String mau, String gioitinh, String thuonghieu, float khuyenmai, float gia, String hinh) {
+	public SanPham(String masp, String tensp, String mau, String gioitinh, String thuonghieu, int khuyenmai, int gia, String hinh) {
 		this.setMaSanPham(masp);
 		this.setTenSanPham(tensp);
 		this.setMauSac(mau);
@@ -62,22 +62,22 @@ public class SanPham implements Comparable<SanPham>{
 	public void setThuongHieu(String thuongHieu) {
 		ThuongHieu = thuongHieu;
 	}
-	public float getKhuyenMai() {
+	public int getKhuyenMai() {
 		return KhuyenMai;
 	}
-	public void setKhuyenMai(float khuyenMai) {
+	public void setKhuyenMai(int khuyenMai) {
 		KhuyenMai = khuyenMai;
 	}
 	public int getGia() {
 		return (int)Gia;
 	}
-	public void setGia(float gia) {
+	public void setGia(int gia) {
 		Gia = gia;
 	}
 	public int getGiaBan() {
 		return (int)(this.Gia  - this.Gia*this.KhuyenMai/100);
 	}
-	public void setGiaBan(float gia, float khuyenmai) {
+	public void setGiaBan(int gia, int khuyenmai) {
 		GiaBan = gia - gia*khuyenmai/100;
 	}
 	public String getHinhAnh() {

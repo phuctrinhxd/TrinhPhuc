@@ -13,6 +13,7 @@
 	String thuonghieu = request.getParameter("thuonghieu")==null ? "1" : request.getParameter("thuonghieu");	
 	String gioitinh = request.getParameter("gioitinh")==null ? "1" : request.getParameter("gioitinh");
 	String mau = request.getParameter("mau")==null ? "1" : request.getParameter("mau");
+	String size = request.getParameter("size")==null ? "1" : request.getParameter("size");
 	String gia = request.getParameter("gia")==null ? "1" : request.getParameter("gia");
 	String sapxep = request.getParameter("sapxep")==null ? "1" : request.getParameter("sapxep");
 	%>
@@ -85,6 +86,23 @@
 								</label></li>
 							</ul>						
 						</aside>
+						<aside class="widget">
+							<h3 class="sidebar-title">Size</h3>
+							<ul class="sidebar-menu">
+								<li><label>
+									<input type="checkbox" name="size" value="39" onchange="FillterProduct();" <%= size.contains("39")? "checked":""%>> 39
+								</label></li>
+								<li><label>
+									<input type="checkbox" name="size" value="40" onchange="FillterProduct();" <%= size.contains("40")? "checked":""%>> 40
+								</label></li>
+								<li><label>
+									<input type="checkbox" name="size" value="41" onchange="FillterProduct();" <%= size.contains("41")? "checked":""%>> 41
+								</label></li>
+								<li><label>
+									<input type="checkbox" name="size" value="42" onchange="FillterProduct();" <%= size.contains("42")? "checked":""%>> 42
+								</label></li>
+							</ul>						
+						</aside>	
 						<aside class="widget">
 							<h3 class="sidebar-title">Giá</h3>
 							<ul class="sidebar-menu">
@@ -175,6 +193,7 @@
         function FillterProduct() {
             var thuonghieu = [];
             var gioitinh = [];
+            var size = [];
             var mau = [];
             var gia = [];
             var sapxep = $('#sortBy :selected').val();
@@ -189,6 +208,9 @@
             $.each($("input[name='mau']:checked"), function () {
             	mau.push($(this).val());
             });
+            $.each($("input[name='size']:checked"), function () {
+            	size.push($(this).val());
+            });
             $.each($("input[name='gia']:checked"), function () {
             	gia.push($(this).val());
             });
@@ -200,6 +222,9 @@
             }
             if (mau.length > 0) {
                 pathName = pathName + "&mau=" + mau.join(",");
+            }
+            if (size.length > 0) {
+                pathName = pathName + "&size=" + size.join(",");
             }
             if (gia.length > 0) {
                 pathName = pathName + "&gia=" + gia.join(",");
