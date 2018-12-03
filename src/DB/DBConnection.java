@@ -6,7 +6,7 @@ public class DBConnection {
 
 	public static Connection CreateConnection() {
 		Connection conn=null;
-		String url="jdbc:mysql://localhost:3306/quanlyshopgiay";
+		String url="jdbc:mysql://localhost:3306/quanlyshopgiay?useUnicode=yes&characterEncoding=UTF-8";
 		String username="root";
 		String pass="123456";
 		try {

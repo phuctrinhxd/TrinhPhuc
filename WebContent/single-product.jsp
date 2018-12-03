@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
     pageEncoding="utf-8"%>
     <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+    <%@ page import="BEAN.*" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -8,6 +9,7 @@
 <title>Sản phẩm</title>
 </head>
 <body>
+
 	<jsp:include page="header.jsp"></jsp:include>
 
 	<div class="breadcrumb-area">
@@ -66,7 +68,7 @@
 									<br/>
 									<div class="pro-size">
 										<label>size <span>*</span></label>
-										<select name="size">
+										<select name="size" id="size">
 										<c:forEach items="${chitiet}" var="chitietsp">
 											<option value="<c:out value="${chitietsp.getSize()}"/>"><c:out value="${chitietsp.getSize()}"/></option>
 										</c:forEach>
@@ -78,7 +80,7 @@
 										<label>số lượng <span>*</span></label><br>
 										<div class="cart-plus">
 											<form action="#">
-												<div><input type="number" value="1" min="1" /></div>
+												<div><input type="number" value="1" min="1" id="soluong"/></div>
 											</form>
 										</div>
 									</div>
@@ -87,7 +89,7 @@
 										<div class="button-cart">
 											<a href="order.jsp"><button><i class="fa fa-usd" aria-hidden="true"></i> đặt hàng</button></a>
 											&emsp;&emsp;&emsp;
-											<button><i class="fa fa-shopping-cart"></i> giỏ hàng</button>
+											<button onclick="ThemVaoGioHang();"><i class="fa fa-shopping-cart"></i> giỏ hàng</button>
 										</div>
 									</div>	
 								</div>							
@@ -160,6 +162,31 @@
 				</div>
 			</div>
 		</div>
+
+	<script type="text/javascript">
+		
+		function ThemVaoGioHang(){
+			var masp = "${sanpham.getMaSanPham()}";
+			var size = $('#size').val();
+			var soluong = $('#soluong').val();
+			
+			$.ajax({
+				type:'POST',
+				data: {
+					thaotac: "ThemVaoGioHang",
+					masp: masp,
+					size: size,
+					soluong: soluong
+				},
+				url: 'GioHangController',
+				success: function(result){
+					alert("Đã thêm vào giỏ hàng");
+					document.getElementById("SoLuongGioHang").innerHTML = result;
+				}
+			});
+		}
+	
+	</script>
 
 	<jsp:include page="footer.jsp"></jsp:include>
 </body>

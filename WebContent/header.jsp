@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
     pageEncoding="utf-8"%>
+    <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+    <%@ page import="BEAN.*" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -29,7 +31,13 @@
 </head>
 <body>
  
-
+ 		<% DonHang giohang = (DonHang)session.getAttribute("giohang");
+ 		String SoLuongGioHang = "0";
+ 		if(giohang!=null)
+ 		{
+ 			SoLuongGioHang = ""+giohang.getTongSanPham();
+ 		}
+ 		%>
        <header class="header-pos">
 			<div class="header-bottom-area">
 				<div class="container">
@@ -72,7 +80,7 @@
 									<div class="total-cart">
 										<a href="#">
 											<i class="fa fa-shopping-cart"></i>
-											<span>2</span>
+											<span id = "SoLuongGioHang"><%= SoLuongGioHang %></span>
 										</a>								
 									</div>
 								</div>

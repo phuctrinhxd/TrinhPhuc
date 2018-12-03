@@ -31,7 +31,6 @@ public class DangKyController extends HttpServlet {
 		request.setCharacterEncoding("UTF-8");
 		Connection conn = DBConnection.CreateConnection();
 		String hoten = request.getParameter("name");
-		System.out.println(hoten);
 		String email = request.getParameter("email");
 		String sdt = request.getParameter("numberphone");
 		String diachi = request.getParameter("addresshome");
