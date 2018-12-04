@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
     pageEncoding="utf-8"%>
+    <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+    <%@ page import="BEAN.*" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -7,6 +9,8 @@
 <title>Đặt hàng</title>
 </head>
 <body>
+
+	
 	<jsp:include page="header.jsp"></jsp:include>
 
 	<div class="breadcrumb-area">
@@ -20,15 +24,12 @@
 			</div>
 		</div>
 	</div>
-	<!-- breadcrumb-area end -->
-	<!-- coupon-area start -->
 	<div class="coupon-area"></div>
-	<!-- coupon-area end -->		
-	<!-- checkout-area start -->
 	<div class="checkout-area">
 		<div class="container">
 			<div class="row">
 				<div class="col-lg-6 col-md-6">
+					<c:if test="${not empty khachhang }">
 					<div class="checkbox-form">						
 						<h3>Thông tin khách hàng</h3>
 						<form action="#" id="infomation-order-form">
@@ -46,8 +47,27 @@
 							</div>
 							<input class="login-sub" type="submit" value="Sửa thông tin" />
 						</form>
+					</div>
+					</c:if>
+						
+					<c:if test="${empty khachhang }">
+					<div class="col-lg-12 col-md-12">
+					<div class="login-content">
+							<h2 class="login-title">ĐĂNG NHẬP</h2>
+							<form action="#" method="POST" id="login-form">
+								<div class="form-group">
+									<label>Tên đăng nhập <span class="required">*</span></label>
+									<input type="text" placeholder="Tên đăng nhập" name="username" class="form-control" />
+								</div>
+								<div class="form-group">
+									<label>Mật khẩu <span class="required">*</span></label>
+									<input type="password" placeholder="Mật khẩu" name="password" id="password" class="form-control" />
+								</div>
+								<input class="login-sub" type="submit" value="Đăng nhập" />
+							</form>
+						</div>
 					</div>	
-					<div class="hide col-lg-12 col-md-12"><!--form login ở đây --></div>	
+					</c:if>
 				</div>																			
 				<div class="col-lg-6 col-md-6">
 					<div class="your-order">
@@ -62,6 +82,19 @@
 									</tr>							
 								</thead>
 								<tbody>
+									<c:forEach items="${giohang.getListCTDH()}" var="chitietgiohang">
+									<tr class="cart_item">
+										<td class="product-name">
+											<c:out value="${chitietgiohang.getSanPham().getTenSanPham()}"/> <strong class="product-quantity"> × <c:out value="${chitietgiohang.getSoLuong()}"/>
+											</strong>
+										</td>
+										<td><c:out value="${chitietgiohang.getSize()}"/></td>
+										<td class="product-total">
+											<span class="amount"><c:out value="${chitietgiohang.getSoLuong() * chitietgiohang.getDonGia()}"/>đ</span>
+										</td>
+									</tr>
+									</c:forEach>
+									
 									<tr class="cart_item">
 										<td class="product-name">
 											Giày nike nam <strong class="product-quantity"> × 1</strong>
@@ -84,7 +117,8 @@
 								<tfoot>
 									<tr class="order-total">
 										<th>Tổng tiền đơn hàng</th>
-										<td><strong><span class="amount">1.800.000đ</span></strong>
+										<td></td>
+										<td><strong><span class="amount"><%= ((DonHang)request.getAttribute("giohang"))!=null ? ""+((DonHang)request.getAttribute("giohang")).getTongTien() : "0" %>đ</span></strong>
 										</td>
 									</tr>								
 								</tfoot>
@@ -92,7 +126,7 @@
 						</div>
 						<div class="payment-method">							
 							<div class="order-button-payment">
-								<input type="submit" value="Đặt hàng" />
+								<input type="submit" value="Đặt hàng" onclick="DatHang();"/>
 							</div>
 						</div>
 					</div>
@@ -100,6 +134,30 @@
 			</div>
 		</div>
 	</div>
+
+	<script type="text/javascript">
+	
+	function DatHang(){
+		var dangnhap = "${dangnhap}";
+		if(dangnhap != "true")
+			alert("Vui lòng đăng nhập trước khi đặt hàng");
+		else {
+			var madh = "${giohang.getMaDonHang()}";
+			$.ajax({
+				type:'POST',
+				data: {
+					madh: madh,
+				},
+				url: 'DatHangController',
+				success: function(){
+					alert("Đặt hàng thành công");
+					window.location.href = 'DatHangController';
+				}
+			});
+		}
+	}
+
+	</script>
 
 	<jsp:include page="footer.jsp"></jsp:include>
 </body>

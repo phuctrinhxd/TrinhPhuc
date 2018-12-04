@@ -104,7 +104,7 @@
 						<li><a href="#">Tài khoản</a></li>
 						<li><a href="LienHe.jsp">Liên hệ với GIAYNE</a></li>
 						<li><a href="#">Lịch sử mua hàng</a></li>
-						<li><a href="#">Giỏ hàng</a></li>
+						<li><a href="GioHangController">Giỏ hàng</a></li>
 					</ul>
 				</div>
 			</div>

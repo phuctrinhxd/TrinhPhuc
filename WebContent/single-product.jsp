@@ -87,7 +87,7 @@
 									<div class="gach-ngang-xuong-dong"></div>
 									<div class="product-action">
 										<div class="button-cart">
-											<a href="order.jsp"><button><i class="fa fa-usd" aria-hidden="true"></i> đặt hàng</button></a>
+											<button onclick="DatHang();"><i class="fa fa-usd" aria-hidden="true"></i> đặt hàng</button>
 											&emsp;&emsp;&emsp;
 											<button onclick="ThemVaoGioHang();"><i class="fa fa-shopping-cart"></i> giỏ hàng</button>
 										</div>
@@ -185,7 +185,26 @@
 				}
 			});
 		}
-	
+		function DatHang(){
+			var masp = "${sanpham.getMaSanPham()}";
+			var size = $('#size').val();
+			var soluong = $('#soluong').val();
+			
+			$.ajax({
+				type:'POST',
+				data: {
+					thaotac: "ThemVaoGioHang",
+					masp: masp,
+					size: size,
+					soluong: soluong
+				},
+				url: 'GioHangController',
+				success: function(){
+					window.location.href = 'DatHangController';
+				}
+			});
+		}
+		
 	</script>
 
 	<jsp:include page="footer.jsp"></jsp:include>

@@ -146,15 +146,13 @@
 										<div class="col-md-4 col-sm-4">
 											<div class="single-product">
 												<div class="product-img">
-													<input type="hidden" id="MaSP<c:out value="${sanpham.getMaSanPham()}"/>" />
 													<a href="ChiTietSPController?masp=<c:out value="${sanpham.getMaSanPham()}"/>">
 														<img src="<c:out value="${sanpham.getHinhAnh()}"/>" alt="" />
 													</a>
 													<span class="tag-line">new</span>
 													<div class="product-action">
 														<div class="button-cart">
-															<a href="order.jsp"><button><i class="fa fa-usd" aria-hidden="true"></i> đặt hàng</button>
-															</a>
+															<button onclick="DatHang('<c:out value="${sanpham.getMaSanPham()}"/>')"><i class="fa fa-usd" aria-hidden="true"></i> đặt hàng</button>
 															<button onclick="ThemVaoGioHang('<c:out value="${sanpham.getMaSanPham()}"/>')"><i class="fa fa-shopping-cart"></i> Giỏ hàng</button>
 														</div>
 													</div>
@@ -244,12 +242,26 @@
 					masp: masp,
 				},
 				url: 'GioHangController',
-				success: function(){
+				success: function(result){
 					alert("Đã thêm vào giỏ hàng");
 					document.getElementById("SoLuongGioHang").innerHTML = result;
 				}
 			});
 		}
+        function DatHang(masp){
+			$.ajax({
+				type:'POST',
+				data: {
+					thaotac: "ThemVaoGioHang",
+					masp: masp,
+				},
+				url: 'GioHangController',
+				success: function(){
+					window.location.href = 'DatHangController';
+				}
+			});
+		}
+        
     	</script>
 	<jsp:include page="footer.jsp"></jsp:include>
 </body>

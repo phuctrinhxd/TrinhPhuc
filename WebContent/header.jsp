@@ -78,7 +78,7 @@
 							<div class="col-md-2 col-sm-8 col-xs-7 header-right">
 								<div class="my-cart">
 									<div class="total-cart">
-										<a href="#">
+										<a href="GioHangController">
 											<i class="fa fa-shopping-cart"></i>
 											<span id = "SoLuongGioHang"><%= SoLuongGioHang %></span>
 										</a>								
