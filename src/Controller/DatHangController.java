@@ -11,7 +11,6 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import java.sql.*;
-import java.util.*;
 import BEAN.*;
 import DAO.DonHangDAO;
 import DB.DBConnection;

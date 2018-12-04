@@ -168,6 +168,8 @@ public class SanPhamDAO {
 				int khuyenmai=rs.getInt("KhuyenMai");
 				String hinh = rs.getNString("HinhAnh");
 				sp = new SanPham(masp, tensp, mausac, gioitinh, thuonghieu, khuyenmai, gia, hinh);
+				rs.close();
+				statement.close();
 				return sp;
 			}
 			rs.close();

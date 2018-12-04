@@ -43,9 +43,8 @@
 													<span class="tag-line">new</span>
 													<div class="product-action">
 														<div class="button-cart">
-															<a href="order.jsp"><button><i class="fa fa-usd" aria-hidden="true"></i> đặt hàng</button>
-															</a>
-															<button><i class="fa fa-shopping-cart"></i> Giỏ hàng</button>
+															<button onclick="DatHang('<c:out value="${sanpham.getMaSanPham()}"/>')"><i class="fa fa-usd" aria-hidden="true"></i> đặt hàng</button>
+															<button onclick="ThemVaoGioHang('<c:out value="${sanpham.getMaSanPham()}"/>')"><i class="fa fa-shopping-cart"></i> Giỏ hàng</button>
 														</div>
 													</div>
 												</div>
@@ -106,6 +105,38 @@
 		</div>
 	</div>
 		
-		<jsp:include page="footer.jsp"></jsp:include>
+	<script type="text/javascript">
+        
+        function ThemVaoGioHang(masp){
+			$.ajax({
+				type:'POST',
+				data: {
+					thaotac: "ThemVaoGioHang",
+					masp: masp,
+				},
+				url: 'GioHangController',
+				success: function(result){
+					alert("Đã thêm vào giỏ hàng");
+					document.getElementById("SoLuongGioHang").innerHTML = result;
+				}
+			});
+		}
+        function DatHang(masp){
+			$.ajax({
+				type:'POST',
+				data: {
+					thaotac: "ThemVaoGioHang",
+					masp: masp,
+				},
+				url: 'GioHangController',
+				success: function(){
+					window.location.href = 'DatHangController';
+				}
+			});
+		}
+        
+    </script>
+	
+	<jsp:include page="footer.jsp"></jsp:include>
 </body>
 </html>
