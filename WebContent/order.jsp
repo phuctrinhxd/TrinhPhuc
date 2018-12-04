@@ -57,6 +57,7 @@
 								<thead>
 									<tr>
 										<th class="product-name">Tên sản phẩm</th>
+										<th>Size</th>
 										<th class="product-total">Tổng tiền</th>
 									</tr>							
 								</thead>
@@ -65,6 +66,7 @@
 										<td class="product-name">
 											Giày nike nam <strong class="product-quantity"> × 1</strong>
 										</td>
+										<td></td>
 										<td class="product-total">
 											<span class="amount">900.000đ</span>
 										</td>
@@ -73,6 +75,7 @@
 										<td class="product-name">
 											Giày adidas nam	<strong class="product-quantity"> × 1</strong>
 										</td>
+										<td></td>
 										<td class="product-total">
 											<span class="amount">900.000đ</span>
 										</td>

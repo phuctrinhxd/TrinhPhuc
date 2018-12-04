@@ -13,18 +13,15 @@ $(function(){
 				.removeClass('has-error');
 		}
 		
-		
-		
 	});
 	$("#register-form").validate({
 		rules:{
 			name:{
 				required: true,
-				lettersonly: true
 			},
 			email:{
 				required:true,
-				email: true,
+				email: true
 			},
 			numberphone:{
 				required:true,
@@ -43,13 +40,12 @@ $(function(){
 			},
 			password2:{
 				required: true,
-				equalTo:"#password"
+				equalTo:"#password1"
 			}
 		},	
 		messages:{
 			name:{
 				required: 'Hãy nhập họ và tên của bạn.',
-				lettersonly: 'Vui lòng nhập đúng tên.'
 			},
 			email:{
 				required: 'Hãy nhập địa chỉ email.',
@@ -68,7 +64,7 @@ $(function(){
 			},
 			password:{
 				required: 'Hãy nhập mật khẩu của bạn.',
-				minlength:'Mật khẩu quá ngắn'
+				minlength:'Mật khẩu ít nhất 6 ký tự'
 			},
 			password2:{
 				required: 'Vui lòng xác nhận lại mật khẩu.',
@@ -80,7 +76,7 @@ $(function(){
 		rules:{
 			email:{
 				required:true,
-				email: true,
+				email: true
 			},
 			numberphone:{
 				required:true,
@@ -177,6 +173,25 @@ $(function(){
 			},
 			pass:{
 				required: 'Vui lòng nhập password.'
+			},
+		}		
+	});
+	$("#login-form").validate({
+		rules:{
+			username:{
+				required: true,
+			},
+			password:{
+				required:true,
+			},
+		},
+		messages:{
+			username:{
+				required: 'Vui lòng nhập tên đăng nhập.'
+
+			},
+			password:{
+				required: 'Vui lòng nhập mật khẩu.'
 			},
 		}		
 	});
