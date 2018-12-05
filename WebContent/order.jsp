@@ -32,10 +32,10 @@
 					<c:if test="${not empty khachhang }">
 					<div class="checkbox-form">						
 						<h3>Thông tin khách hàng</h3>
-						<form action="#" id="infomation-order-form">
+						<form action="SuaTaiKhoanController" method="post" id="infomation-order-form">
 							<div class="form-group">
 								<label>Họ tên khách hàng <span class="required">*</span></label>
-								<input type="text" placeholder="Họ tên" name=name class="form-control" value="${khachhang.getHoTen() }" />
+								<input type="text" placeholder="Họ tên" name="name" class="form-control" value="${khachhang.getHoTen() }" />
 							</div>
 							<div class="form-group">
 								<label>Số điện thoại <span class="required">*</span></label>
@@ -45,6 +45,7 @@
 								<label>Địa chỉ <span class="required">*</span></label>
 								<textarea name="addresshome" placeholder="Địa chỉ" class="form-control"><c:out value="${khachhang.getDiaChi() }"/></textarea>
 							</div>
+							<input type="hidden" name="thaotac" value="SuaTaiKhoanDatHang">
 							<input class="login-sub" type="submit" value="Sửa thông tin" />
 						</form>
 					</div>
@@ -63,6 +64,7 @@
 									<label>Mật khẩu <span class="required">*</span></label>
 									<input type="password" placeholder="Mật khẩu" name="password" id="password" class="form-control" />
 								</div>
+								<input type="hidden" name="thaotac" value="DangNhapDatHang" />
 								<input class="login-sub" type="submit" value="Đăng nhập" />
 							</form>
 						</div>
@@ -124,17 +126,21 @@
 			alert("Vui lòng đăng nhập trước khi đặt hàng");
 		else {
 			var madh = "${giohang.getMaDonHang()}";
-			$.ajax({
-				type:'POST',
-				data: {
-					madh: madh,
-				},
-				url: 'DatHangController',
-				success: function(){
-					alert("Đặt hàng thành công");
-					window.location.href = 'DatHangController';
-				}
-			});
+			if(madh=="")
+				alert("Giỏ hàng của bạn hiện trống");
+			else{
+				$.ajax({
+					type:'POST',
+					data: {
+						madh: madh,
+					},
+					url: 'DatHangController',
+					success: function(){
+						alert("Đặt hàng thành công");
+						window.location.href = 'DatHangController';
+					}
+				});
+			}
 		}
 	}
 

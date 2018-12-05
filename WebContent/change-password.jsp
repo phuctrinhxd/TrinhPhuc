@@ -8,7 +8,14 @@
 </head>
 <body>
 	<jsp:include page="header.jsp"></jsp:include>
-
+	
+	<script type="text/javascript">
+	var Msg = "<%=request.getAttribute("msgDoiMatKhau")%>";
+    if (Msg != "null") {
+ 	alert(Msg);
+ 	}
+    </script>
+    
 	<div class="breadcrumb-area">
 			<div class="container">
 				<div class="row">
@@ -31,18 +38,18 @@
 					<p>Hãy điền mật khẩu mới của bạn</p>
 				</div>	
 				<div class="rows">
-					<form action="#" id="ttcn-fomr">
+					<form action="DoiMatKhauController" method="post" id="change-pass-form">
 						<div class="form-group">
 							<label>Mật khẩu cũ <span class="required">*</span></label>
-							<input type="password" placeholder="Mật khẩu cũ" name=oldpassword class="form-control" />
+							<input type="password" placeholder="Mật khẩu cũ" name="oldpassword" class="form-control" />
 						</div>
 						<div class="form-group">
 							<label>Mật khẩu mới <span class="required">*</span></label>
-							<input type="password" placeholder="Mật khẩu mới" name=password class="form-control" />
+							<input type="password" placeholder="Mật khẩu mới" name="password1" id="password1" class="form-control" />
 						</div>
 						<div class="form-group">
 							<label>Xác nhận lại mật khẩu <span class="required">*</span></label>
-							<input type="password" placeholder="Xác nhận mật khẩu" name=password2 class="form-control" />
+							<input type="password" placeholder="Xác nhận mật khẩu" name="password2" class="form-control" />
 						</div>	
 						<input type="submit" value="Lưu thay đổi" class="login-sub">
 					</form>

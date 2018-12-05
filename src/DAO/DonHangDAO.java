@@ -229,4 +229,33 @@ public class DonHangDAO {
 		}
 		return list;
 	}
+	
+	public static List<DonHang> LayDonHang(Connection conn, String makh) {
+		
+		List<DonHang> list = new ArrayList<DonHang>();
+		String sql = "select * from donhang where MaNguoiDat = ? and TinhTrang != 'chưa đặt'";
+		PreparedStatement statement;
+		try {
+			statement = conn.prepareStatement(sql);
+			statement.setString(1, makh);
+			ResultSet rs = statement.executeQuery();
+			while (rs.next())
+			{
+				String madh = rs.getString("MaDonHang");
+				Date ngay = rs.getDate("Ngay");
+				int tongtien = rs.getInt("TongTien");
+				String tinhtrang = rs.getString("TinhTrang");
+				DonHang dh = new DonHang(madh, ngay, makh, tongtien, tinhtrang);
+				dh.setListCTDH(LayChiTietDonHang(conn, madh));
+				dh.setTongSanPham(TongSanPham(conn, madh));
+				dh.setTongTien(TongTienDonHang(conn, madh));
+				list.add(dh);
+			}
+			rs.close();
+			statement.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return list;
+	}
 }

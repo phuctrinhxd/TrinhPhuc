@@ -47,7 +47,7 @@ public class DatHangController extends HttpServlet {
 		HttpSession session = request.getSession();
 		KhachHang khachhang= (KhachHang)session.getAttribute("khachhang");
 		int tongtien = DonHangDAO.TongTienDonHang(conn, madh);
-		DonHang dh = new DonHang(madh, java.sql.Date.valueOf(java.time.LocalDate.now()), khachhang.getMaKhachHang(), tongtien, "đã đặt");
+		DonHang dh = new DonHang(madh, java.sql.Date.valueOf(java.time.LocalDate.now()), khachhang.getMaKhachHang(), tongtien, "Đã đặt");
 		DonHangDAO.SuaDonHang(conn, dh);
 		session.removeAttribute("giohang");
 		try {

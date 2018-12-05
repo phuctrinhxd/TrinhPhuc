@@ -52,4 +52,26 @@ public class KhachHangDAO {
 		}		
 		return false;
 	}
+	
+	public static boolean SuaKhachHang(Connection conn, KhachHang kh) {
+
+		String sql = "update khachhang set HoTen = ? , Email = ? , SDT = ? , DiaChi = ? where MaKhachHang = ? ";
+		try {
+			PreparedStatement statement;
+			statement = conn.prepareStatement(sql);
+			statement.setString(1, kh.getHoTen());
+			statement.setString(2, kh.getEmail());
+			statement.setString(3, kh.getSoDienThoai());
+			statement.setString(4, kh.getDiaChi());
+			statement.setString(5, kh.getMaKhachHang());
+			if(statement.executeUpdate()!=0) {
+				statement.close();
+				return true;
+			}
+			statement.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return false;
+	}
 }

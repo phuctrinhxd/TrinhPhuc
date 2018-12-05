@@ -30,14 +30,17 @@
 							<table>
 								<thead>
 									<tr>
-										<th><a href="information.jsp"><i class="fa fa-user"></i> Sửa thông tin cá nhân</a></th>
-										<th><a href="history.jsp"><i class="fa fa-history"></i> Lịch sử mua hàng</a></th>
+										<th><a href="SuaTaiKhoanController"><i class="fa fa-user"></i> Sửa thông tin cá nhân</a></th>
+										<th><a href="DonHangController"><i class="fa fa-history"></i> Lịch sử mua hàng</a></th>
 									</tr>							
 								</thead>
 								<tbody>
 									<tr>
-										<td><a href="change-password.jsp"><i class="fa fa-key"></i> Thay đổi mật khẩu</a></td>
-										<td><a href="cart.jsp"><i class="fa fa-shopping-cart"></i> Giỏ hàng</a></td>
+										<td><a href="DoiMatKhauController"><i class="fa fa-key"></i> Thay đổi mật khẩu</a></td>
+										<td><a href="GioHangController"><i class="fa fa-shopping-cart"></i> Giỏ hàng</a></td>
+									</tr>
+									<tr>
+										<td><a href="DangXuatController"><i class="fa fa-sign-out"></i> Đăng xuất</a></td>
 									</tr>
 								</tbody>
 							</table>

@@ -48,4 +48,23 @@ public class UsersDAO {
 		}		
 		return false;
 	}
+	
+	public static boolean SuaTaiKhoan(Connection conn, Users user) {
+		
+		String sql = "update user set Pass = ? where ID = ?";
+		PreparedStatement statement;
+		try {
+			statement = conn.prepareStatement(sql);
+			statement.setString(1, user.getPass());
+			statement.setString(2, user.getId());
+			if(statement.executeUpdate()!=0) {
+				statement.close();
+				return true;
+			}
+			statement.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}	
+		return false;
+	}
 }

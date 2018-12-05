@@ -26,7 +26,8 @@ public class DangNhapController extends HttpServlet {
     }
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		response.getWriter().append("Served at: ").append(request.getContextPath());
+		RequestDispatcher rd = request.getRequestDispatcher("login.jsp");
+		rd.forward(request, response);
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -66,8 +67,13 @@ public class DangNhapController extends HttpServlet {
 					session.setAttribute("giohang", giohang);
 				}
 			}
-			RequestDispatcher rd = request.getRequestDispatcher("account.jsp");
-			rd.forward(request, response);
+//			response.sendRedirect("TaiKhoanController");
+			if(request.getParameter("thaotac")!=null) {
+				response.sendRedirect("DatHangController");
+			}
+			else {
+				response.sendRedirect("TaiKhoanController");
+			}
 		}
 		else
 		{

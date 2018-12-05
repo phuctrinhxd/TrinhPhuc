@@ -36,7 +36,8 @@ $(function(){
 			},
 			password: {
 				required:true,
-				minlength: 6
+				minlength: 6,
+				maxlength: 45,
 			},
 			password2:{
 				required: true,
@@ -64,7 +65,8 @@ $(function(){
 			},
 			password:{
 				required: 'Hãy nhập mật khẩu của bạn.',
-				minlength:'Mật khẩu ít nhất 6 ký tự'
+				minlength:'Mật khẩu ít nhất 6 ký tự',
+				maxlength: 'Mật khẩu quá dài',
 			},
 			password2:{
 				required: 'Vui lòng xác nhận lại mật khẩu.',
@@ -194,6 +196,92 @@ $(function(){
 				required: 'Vui lòng nhập mật khẩu.'
 			},
 		}		
+	});
+	$("#ttcn-fomr").validate({
+		rules:{
+			name:{
+				required: true,
+			},
+			email:{
+				required:true,
+			},
+			numberphone:{
+				required:true,
+			},
+			addresshome:{
+				required:true,
+			},
+		},
+		messages:{
+			name:{
+				required: 'Vui lòng điền họ tên',
+			},
+			email:{
+				required: 'Vui lòng điền email',
+			},
+			numberphone:{
+				required: 'Vui lòng điền số điện thoại',
+			},
+			addresshome:{
+				required: 'Vui lòng điền địa chỉ',
+			},
+		}		
+	});
+	$("#infomation-order-form").validate({
+		rules:{
+			name:{
+				required: true,
+			},
+			numberphone:{
+				required:true,
+			},
+			addresshome:{
+				required:true,
+			},
+		},
+		messages:{
+			name:{
+				required: 'Vui lòng điền họ tên',
+			},
+			numberphone:{
+				required: 'Vui lòng điền số điện thoại',
+			},
+			addresshome:{
+				required: 'Vui lòng điền địa chỉ',
+			},
+		}		
+	});
+	$("#change-pass-form").validate({
+		rules:{
+			oldpassword: {
+				required:true,
+				minlength: 6,
+			},
+			password1: {
+				required:true,
+				minlength: 6,
+				maxlength: 45,
+			},
+			password2:{
+				required: true,
+				equalTo:"#password1",
+			},
+		},	
+		messages:{
+			oldpassword: {
+				required: 'Hãy điền mật khẩu cũ',
+				minlength: 'Mật khẩu quá ngắn',
+			},
+			password1:{
+				required: 'Hãy nhập mật khẩu của bạn.',
+				minlength:'Mật khẩu ít nhất 6 ký tự',
+				maxlength: 'Mật khẩu quá dài'
+			},
+			password2:{
+				required: 'Vui lòng xác nhận lại mật khẩu.',
+				equalTo: 'Xác nhận không đúng mật khẩu.',
+			}
+		}
 	});
 });
 
