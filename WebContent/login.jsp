@@ -90,7 +90,6 @@
 				</div>
 			</div>
 		</div>
-		<!-- login-area end -->	
 		
 	
 	<jsp:include page="footer.jsp"></jsp:include>

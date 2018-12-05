@@ -52,24 +52,6 @@
 											</c:if>
 										</tr>
 									</c:forEach>
-										<tr>
-											<td><span>11/1/2018</span></td>
-											<td class="ma"><span>123</span></td>
-											<td class="so-luong"><span>2</span></td>
-											<td class="tong-gia"><span class="amount">1.800.000đ</span></td>
-											<td class="tinh-trang"><span>Chưa duyệt</span></td>
-											<td class="chi-tiet"><a href="details-order.jsp"><i class="fa fa-list"></i></a></td>
-											<td class="xoa"><a href="#"><i class="fa fa-times"></i></a></td>
-										</tr>
-										<tr>
-											<td><span>3/20/2018</span></td>
-											<td class="ma"><span>456</span></td>
-											<td class="so-luong"><span>2</span></td>
-											<td class="tong-gia"><span class="amount">1.800.000đ</span></td>
-											<td class="tinh-trang"><span>Đã giao</span></td>
-											<td class="chi-tiet"><a href="details-order.jsp"><i class="fa fa-list"></i></a></td>
-											<td class="xoa"><a href="#"></a></td>
-										</tr>
 									</tbody>
 								</table>
 							</div>

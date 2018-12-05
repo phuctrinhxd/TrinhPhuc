@@ -78,6 +78,8 @@ public class DonHang {
 			max=(int)(Math.random()*40);
 		for(int i=0;i<max;i++) {
 			int temp=(int)(Math.round(Math.random() * chuoi.length()));
+			while(temp>61)
+				temp=(int)(Math.round(Math.random() * chuoi.length()));
 			MaDonHang += chuoi.charAt(temp); 
 		}
 	}

@@ -53,22 +53,6 @@
 											<td class="product-subtotal"><span class="amount"><c:out value="${chitietdonhang.getSoLuong() * chitietdonhang.getDonGia()}"/>đ</span></td>
 										</tr>
 										</c:forEach>
-										<tr>
-											<td class="product-thumbnail"><a href="single-product.jsp"><img src="img/giay1.jpg" alt="" /></a></td>
-											<td class="product-name"><a href="single-product.jsp">Giày nike đen</a></td>
-											<td class="product-price"><span class="amount">900.000đ</span></td>
-											<td class="product-quantity"><span>1</span></td>
-											<td class="product-size"><span>41</span></td>
-											<td class="product-subtotal"><span class="amount">900.000đ</span></td>
-										</tr>
-										<tr>
-											<td class="product-thumbnail"><a href="single-product.jsp"><img src="img/giay1.jpg" alt="" /></a></td>
-											<td class="product-name"><a href="single-product.jsp">Giày nike đen</a></td>
-											<td class="product-price"><span class="amount">900.000đ</span></td>
-											<td class="product-quantity"><span>1</span></td>
-											<td class="product-size"><span>40</span></td>
-											<td class="product-subtotal"><span class="amount">900.000đ</span></td>
-										</tr>
 									</tbody>
 								</table>
 							</div>

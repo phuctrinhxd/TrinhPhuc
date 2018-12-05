@@ -129,26 +129,29 @@
 											<div role="tabpanel" class="tab-pane" id="page-comments">
 												<div class="product-tab-desc">
 													<div class="product-page-comments">
+														<c:forEach items="${listcm }" var="comment">
 														<ul>
-															<li>
+															<li id='li<c:out value="${comment.getMaComment() }"/>'>
 																<div class="product-comments">
 																	<div class="product-comments-content">
-																		<p><strong>trần anh đức</strong>
-																		<a href="#"><span class="delete-comment"><i class="fa fa-times"></i></span></a>
+																		<p><strong><c:out value="${comment.getMaKhachHang() }" /></strong>
+																		<c:if test="${comment.getMaKhachHang()==makh }">
+																		<a href="javascript://" onclick="XoaBinhLuan('<c:out value="${comment.getMaComment() }"/>');"><span class="delete-comment"><i class="fa fa-times"></i></span></a>
+																		</c:if>
 																		</p>
 																		<div class="desc">
-																			Sản phẩm cực đẹp. Mang vào cảm thấy thích vô cùng
+																			<c:out value="${comment.getNoiDung() }" />
 																		</div>
 																	</div>
 																</div>
 															</li>
 														</ul>
+														</c:forEach>
+														<ul id="BinhLuanMoi"></ul>
 														<div class="review-form-wrapper">
 															<h3>Thêm bình luận</h3>
-															<form action="#">
 																<textarea id="product-message" cols="30" rows="10" placeholder="Bình luận của bạn"></textarea>
-																<input type="submit" value="Bình luận" />
-															</form>
+																<input type="submit" value="Bình luận" onclick="ThemBinhLuan();"/>
 														</div>
 													</div>
 												</div>
@@ -181,7 +184,7 @@
 				url: 'GioHangController',
 				success: function(result){
 					alert("Đã thêm vào giỏ hàng");
-					document.getElementById("SoLuongGioHang").innerHTML = result;
+					document.getElementById("BinhLuanMoi").innerHTML = result;
 				}
 			});
 		}
@@ -201,6 +204,48 @@
 				url: 'GioHangController',
 				success: function(){
 					window.location.href = 'DatHangController';
+				}
+			});
+		}
+		function ThemBinhLuan(){
+			var makh = "${makh}"
+			var nd = $('#product-message').val();
+			var masp = "${sanpham.getMaSanPham()}";
+			if(makh==null||makh==""){
+				alert("Bạn cần đăng nhập để được bình luận");
+			}
+			else {
+				if(nd==""||nd==null)
+					alert("Bình luận của bạn trống");
+				else {
+					$.ajax({
+						type:'POST',
+						data: {
+							thaotac: "ThemBinhLuan",
+							makh: makh,
+							masp: masp,
+							nd: nd
+						},
+						url: 'ChiTietSPController',
+						success: function(result){
+							document.getElementById("BinhLuanMoi").innerHTML = result;
+							document.getElementById("product-message").value = "";
+						}
+					});
+				}
+			}
+		}
+		function XoaBinhLuan(macm){
+			$.ajax({
+				type:'POST',
+				data: {
+					thaotac: "XoaBinhLuan",
+					macm: macm,
+				},
+				url: 'ChiTietSPController',
+				success: function(){
+					//alert(result);
+					$("#li"+macm).remove();
 				}
 			});
 		}
