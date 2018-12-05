@@ -58,6 +58,7 @@ public class DangNhapController extends HttpServlet {
 						DonHangDAO.ThemChiTietDonHang(conn, ct);
 					}
 					DonHangDAO.XoaDonHang(conn, giohang.getMaDonHang());
+					giohanguser.setTongSanPham(DonHangDAO.TongSanPham(conn, giohanguser.getMaDonHang()));
 					session.setAttribute("giohang", giohanguser);
 				} else {
 					giohang.setMaNguoiDat(username);

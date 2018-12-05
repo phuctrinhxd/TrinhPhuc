@@ -35,15 +35,15 @@
 						<form action="#" id="infomation-order-form">
 							<div class="form-group">
 								<label>Họ tên khách hàng <span class="required">*</span></label>
-								<input type="text" placeholder="Họ tên" name=name class="form-control" value="Trần Văn A" />
+								<input type="text" placeholder="Họ tên" name=name class="form-control" value="${khachhang.getHoTen() }" />
 							</div>
 							<div class="form-group">
 								<label>Số điện thoại <span class="required">*</span></label>
-								<input type="number" placeholder="Số điện thoại" name="numberphone" class="form-control" value="0123456789" />
+								<input type="number" placeholder="Số điện thoại" name="numberphone" class="form-control" value="${khachhang.getSoDienThoai() }" />
 							</div>
 							<div class="form-group">
 								<label>Địa chỉ <span class="required">*</span></label>
-								<textarea name="addresshome" placeholder="Địa chỉ" class="form-control">1 Võ Văn Ngân, Thủ Đức, TPHCM</textarea>
+								<textarea name="addresshome" placeholder="Địa chỉ" class="form-control"><c:out value="${khachhang.getDiaChi() }"/></textarea>
 							</div>
 							<input class="login-sub" type="submit" value="Sửa thông tin" />
 						</form>
@@ -54,7 +54,7 @@
 					<div class="col-lg-12 col-md-12">
 					<div class="login-content">
 							<h2 class="login-title">ĐĂNG NHẬP</h2>
-							<form action="#" method="POST" id="login-form">
+							<form action="DangNhapController" method="POST" id="login-form">
 								<div class="form-group">
 									<label>Tên đăng nhập <span class="required">*</span></label>
 									<input type="text" placeholder="Tên đăng nhập" name="username" class="form-control" />
@@ -94,25 +94,6 @@
 										</td>
 									</tr>
 									</c:forEach>
-									
-									<tr class="cart_item">
-										<td class="product-name">
-											Giày nike nam <strong class="product-quantity"> × 1</strong>
-										</td>
-										<td></td>
-										<td class="product-total">
-											<span class="amount">900.000đ</span>
-										</td>
-									</tr>
-									<tr class="cart_item">
-										<td class="product-name">
-											Giày adidas nam	<strong class="product-quantity"> × 1</strong>
-										</td>
-										<td></td>
-										<td class="product-total">
-											<span class="amount">900.000đ</span>
-										</td>
-									</tr>
 								</tbody>
 								<tfoot>
 									<tr class="order-total">
