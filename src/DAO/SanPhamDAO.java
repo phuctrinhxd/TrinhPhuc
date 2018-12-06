@@ -203,4 +203,32 @@ public class SanPhamDAO {
 		}
 		return list;
 	}
+	
+	public static List<SanPham> TimKiemSanPham(Connection conn, String chuoi){
+		
+		List<SanPham> list = new ArrayList<SanPham>();
+		String sql = "select * from sanpham where TenSanPham like '%"+chuoi+"%'";
+		Statement statement;
+		try {
+			statement = conn.createStatement();
+			ResultSet rs = statement.executeQuery(sql);
+			while(rs.next()) {
+				String masp = rs.getString("MaSanPham");
+				String ten = rs.getString("TenSanPham");
+				String mau = rs.getString("MauSac");
+				String gioitinh = rs.getString("GioiTinh");
+				String thuonghieu = rs.getString("ThuongHieu");
+				int gia=rs.getInt("Gia");
+				int khuyenmai=rs.getInt("KhuyenMai");
+				String hinh = rs.getNString("HinhAnh");
+				SanPham sp = new SanPham(masp, ten, mau, gioitinh, thuonghieu, khuyenmai, gia, hinh);
+				list.add(sp);
+			}
+			rs.close();
+			statement.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return list;
+	}
 }

@@ -95,15 +95,14 @@
 										<li><a href="DangNhapController">Đăng nhập</a></li>
 										<li><a href="DangKyController">Đăng kí</a></li>
 										</c:if>
-										
 									</ul>								
 								</div>
 								<div class="header-search">
 									<i class="fa fa-search"></i>
 									<div class="header-form">
-										<form action="#">
-											<input type="text" placeholder="search" />
-											<button><i class="fa fa-search"></i></button>
+										<form action="SanPhamController" method="post">
+											<input type="text" name="timkiem"placeholder="search" />
+											<button type="submit"><i class="fa fa-search"></i></button>
 										</form>
 									</div>
 								</div>							
