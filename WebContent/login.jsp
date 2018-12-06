@@ -43,7 +43,7 @@
 								</div>
 								<div class="login-lost">
 									<span class="forgot-login">
-										<a href="forgot-password.jsp">Quên mật khẩu</a>
+										<a href="QuenMatKhauController">Quên mật khẩu</a>
 									</span>
 								</div>
 								<input class="login-sub" type="submit" value="Đăng nhập" />

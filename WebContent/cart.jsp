@@ -121,7 +121,7 @@
 			},
 			url: 'GioHangController',
 			success: function(result){
-				
+				alert("Đã sửa thành công");
 				window.location.href = 'GioHangController';
 			}
 		});

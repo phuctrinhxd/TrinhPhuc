@@ -5,7 +5,7 @@ import BEAN.Users;
 
 public class UsersDAO {
 	
-	public static Users LayTaiKhoan(Connection conn, String username, String pass) {
+	public static Users KiemTraTaiKhoan(Connection conn, String username, String pass) {
 		
 		String sql = "select * from user where ID = ? and Pass = ?";
 		PreparedStatement statement;
@@ -29,6 +29,30 @@ public class UsersDAO {
 		return null;
 	}
 
+	public static Users LayTaiKhoan(Connection conn, String username) {
+		
+		String sql = "select * from user where ID = ?";
+		PreparedStatement statement;
+		try {
+			statement = conn.prepareStatement(sql);
+			statement.setString(1, username);
+			ResultSet rs = statement.executeQuery();
+			if(rs.next()) {
+				int quyen = rs.getInt("Quyen");
+				String pass = rs.getString("Pass");
+				Users user = new Users(username, pass, quyen);
+				rs.close();
+				statement.close();
+				return user;
+			}
+			rs.close();
+			statement.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}		
+		return null;
+	}
+	
 	public static boolean ThemTaiKhoan(Connection conn, Users user) 
 	{
 		PreparedStatement statement = null;

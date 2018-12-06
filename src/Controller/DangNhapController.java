@@ -35,7 +35,7 @@ public class DangNhapController extends HttpServlet {
 		Connection conn = DBConnection.CreateConnection();
 		String username = request.getParameter("username");
 		String pass = request.getParameter("password");
-		Users user = UsersDAO.LayTaiKhoan(conn, username, pass);
+		Users user = UsersDAO.KiemTraTaiKhoan(conn, username, pass);
 		if(user!=null  && user.getQuyen()==1) {
 			HttpSession session = request.getSession();
 			session.setAttribute("login", "true");
