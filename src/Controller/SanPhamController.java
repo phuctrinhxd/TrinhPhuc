@@ -33,6 +33,9 @@ public class SanPhamController extends HttpServlet {
 		String m = request.getParameter("mau");
 		String si = request.getParameter("size");
 		String gia = request.getParameter("gia");
+		int page = 1;
+		if(request.getParameter("page")!=null)
+			page=Integer.parseInt(request.getParameter("page"));
 		String[] thuonghieu=null;
 		String[] gioitinh=null;
 		String[] mau=null;
@@ -54,8 +57,10 @@ public class SanPhamController extends HttpServlet {
 			else if(sapxep.contains("high")) 
 				list = SanPhamDAO.GiaThapDan(conn, list);
 		}
+		list = SanPhamDAO.PhanTrang(conn, list, page);
 		request.setAttribute("list", list);
 		request.setAttribute("msgChiTietSP", msgChiTietSP);
+		request.setAttribute("page", page);
 		RequestDispatcher rd = request.getRequestDispatcher("shop.jsp");
 		rd.forward(request, response);
 		try {

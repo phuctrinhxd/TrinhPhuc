@@ -20,7 +20,7 @@
 		<div class="container">
 			<div class="row">
 				<div class="section-title">
-					<h2>MẪU GIÀY MỚI NHẤT</h2>
+					<h2>MẪU GIÀY NỔI BẬC</h2>
 					<div class="title-icon">
 						<span><i class="fa fa-angle-left"></i> <i class="fa fa-angle-right"></i></span>
 					</div>

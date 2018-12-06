@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
     pageEncoding="utf-8"%>
     <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+     <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -122,10 +123,20 @@
 						<div class="shop-content">					
 							<div class="shop-breadcrumb">
 								<ul>
-									<li class="active"><a href="#">1</a></li>
-									<li><a href="#">2</a></li>
-									<li><a href="#">3</a></li>
-									<li><a href="#"><i class="fa fa-angle-right"></i></a></li>
+								<c:choose>
+								<c:when test="${page>1}">
+									<li><a href="javascript://" onclick="PhanTrang('<c:out value="${page - 1}"/>');">
+									<c:out value="${page - 1}"/></a></li>
+									<li class="active"><a href="javascript://" onclick="PhanTrang('<c:out value="${page}"/>');">
+									<c:out value="${page}"/></a></li>
+									<c:if test="${fn:length(list)>5 }"><li><a href="javascript://" onclick="PhanTrang('<c:out value="${page + 1}"/>');">
+									<c:out value="${page + 1}"/></a></li></c:if>
+								</c:when>
+								<c:otherwise>
+									<li class="active"><a href="javascript://" onclick="PhanTrang('1');">1</a></li>
+									<c:if test="${fn:length(list)>5 }"><li><a href="javascript://" onclick="PhanTrang('2');">2</a></li></c:if>
+								</c:otherwise>
+								</c:choose>
 								</ul>
 							</div>
 							<div class="short-by">
@@ -176,11 +187,22 @@
 							<div class="clear"></div>
 							<div class="shop-breadcrumb">
 								<ul>
-									<li class="active"><a href="#">1</a></li>
-									<li><a href="#">2</a></li>
-									<li><a href="#">3</a></li>
-									<li><a href="#"><i class="fa fa-angle-right"></i></a></li>
+								<c:choose>
+									<c:when test="${page>1}">
+									<li><a href="javascript://" onclick="PhanTrang('<c:out value="${page - 1}"/>');">
+									<c:out value="${page - 1}"/></a></li>
+									<li class="active"><a href="javascript://" onclick="PhanTrang('<c:out value="${page}"/>');">
+									<c:out value="${page}"/></a></li>
+									<c:if test="${fn:length(list)>5 }"><li><a href="javascript://" onclick="PhanTrang('<c:out value="${page + 1}"/>');">
+									<c:out value="${page + 1}"/></a></li></c:if>
+								</c:when>
+								<c:otherwise>
+									<li class="active"><a href="javascript://" onclick="PhanTrang('1');">1</a></li>
+									<c:if test="${fn:length(list)>5 }"><li><a href="javascript://" onclick="PhanTrang('2');">2</a></li></c:if>
+								</c:otherwise>
+								</c:choose>
 								</ul>
+								<input type="hidden" id="page" value="1" />
 							</div>
 							<div class="clear"></div>
 						</div>
@@ -228,10 +250,16 @@
             if (gia.length > 0) {
                 pathName = pathName + "&gia=" + gia.join(",");
             }
+            var page = $('#page').val();
 
-            pathName = pathName+ "&sapxep=" + sapxep;
+            pathName = pathName+ "&sapxep=" + sapxep + "&page="+page;
 
             window.location.href = pathName;
+        }
+        
+        function PhanTrang(page){
+        	document.getElementById("page").value = page;
+        	FillterProduct();
         }
         
         function ThemVaoGioHang(masp){

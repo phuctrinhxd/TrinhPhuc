@@ -8,6 +8,7 @@ public class SanPhamDAO {
 
 	public static List<SanPham> SanPhamNoiBac(Connection conn){
 		List<SanPham> list = TatCaSanPham(conn);
+		list = GiaCaoDan(conn, list);
 		List<SanPham> listspnb = new ArrayList<SanPham>();
 		for(SanPham sp: list)
 		{
@@ -101,7 +102,6 @@ public class SanPhamDAO {
 			}
 			sql +=" group by sanpham.MaSanPham";
 			statement = conn.prepareStatement(sql);
-			
 			ResultSet rs = statement.executeQuery();
 			while (rs.next()) {
 				String masp = rs.getString("MaSanPham");
@@ -230,5 +230,17 @@ public class SanPhamDAO {
 			e.printStackTrace();
 		}
 		return list;
+	}
+	
+	public static List<SanPham> PhanTrang(Connection conn, List<SanPham> list, int page){
+		
+		List<SanPham> listnew = new ArrayList<SanPham>();
+		for(int i=(page-1)*6;i<list.size();i++) {
+			if(listnew.size()>=6) {
+				return listnew;
+			}
+			listnew.add(list.get(i));
+		}
+		return listnew;
 	}
 }
