@@ -47,7 +47,7 @@
 											<td class="tong-gia"><span class="amount"><c:out value="${donhang.getTongTien() }" />đ</span></td>
 											<td class="tinh-trang"><span><c:out value="${donhang.getTinhTrang() }" /></span></td>
 											<td class="chi-tiet"><a href="ChiTietDonHangController?madh=<c:out value="${donhang.getMaDonHang()}"/>"><i class="fa fa-list"></i></a></td>
-											<c:if test="${donhang.getTinhTrang() !='Đã giao' }">
+											<c:if test="${donhang.getTinhTrang() =='Đã đặt' }">
 												<td class="xoa"><a href="javascript://" onclick="XoaDonHang('<c:out value="${donhang.getMaDonHang()}"/>');"><i class="fa fa-times"></i></a></td>
 											</c:if>
 										</tr>
