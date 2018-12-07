@@ -7,31 +7,36 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>Login Admin</title>
          <link href="css/login-Admin.css" rel="stylesheet">
-    	
+    	<link rel="stylesheet" href="css/jquery-ui.min.css">
+    	<link rel="stylesheet" href="css/bootstrap.min.css">
     </head>
     <body>
     	<div class="login-header">
    			 	<h1>Quản lý GIAYNE</h1>
+   				<br/>
+  				<br/>
   			</div>
-  			<form action="#" id="login-admin">
+  			<div class="col-md-4"></div>
+  			<form action="#" method="post" id="login-admin" class="col-md-4">
   				<div class="login">
  					<div class="login-form">
-					    <h3>Username:</h3>
-					    <input id="username" type="text" placeholder="Username" required=""/><br>
-					    <h3>Password:</h3>
-					    <input id="pass" type="password" placeholder="Password" required=""/>
-					    <br>
-					    <a href="QLTK.jsp">
-					    	<input type="button" value="Login" class="login-button" required=""/>
-					    </a>
-		
+					    <div class="form-group">
+							<label>Tên đăng nhập</label>
+							<input type="text" name="username" class="form-control" />
+						</div>
+					    <div class="form-group">
+							<label>Mật khẩu</label>
+							<input type="password" name="pass" class="form-control" />
+						</div>
+					    <input type="submit" class="btn btn-success" id="submit-button" value="Đăng nhập">
 					 </div>
 				</div>
   			</form>
-    		
+  			<div class="col-md-4"></div>
     	<!-- all js here -->
 		<!-- jquery latest version -->
         <script src="js/vendor/jquery-1.12.0.min.js"></script>
+        <script src="js/bootstrap.min.js"></script>
 	    <script src="js/login-Admin.js"></script>
         <script src="js/jquery.validate.js"></script>
         <script src="js/validation.js"></script>

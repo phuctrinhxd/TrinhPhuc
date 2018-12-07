@@ -138,16 +138,16 @@ $(function(){
 		rules:{
 			username:{
 				required: true,
-
+				nowhitespace: true
 			},
 			pass:{
 				required:true,
 			},
 		},
 		messages:{
-			name:{
-				required: 'Vui lòng nhập Username.'
-
+			username:{
+				required: 'Vui lòng nhập Username.',
+				nowhitespace: 'Tên đăng nhập sai.'
 			},
 			pass:{
 				required: 'Vui lòng nhập password.'
@@ -158,6 +158,7 @@ $(function(){
 		rules:{
 			username:{
 				required: true,
+				nowhitespace: true
 			},
 			password:{
 				required:true,
@@ -165,8 +166,8 @@ $(function(){
 		},
 		messages:{
 			username:{
-				required: 'Vui lòng nhập tên đăng nhập.'
-
+				required: 'Vui lòng nhập tên đăng nhập.',
+				nowhitespace: 'Tên đăng nhập sai.'
 			},
 			password:{
 				required: 'Vui lòng nhập mật khẩu.'
@@ -257,6 +258,18 @@ $(function(){
 				required: 'Vui lòng xác nhận lại mật khẩu.',
 				equalTo: 'Xác nhận không đúng mật khẩu.',
 			}
+		}
+	});
+	$("#nhom-quyen-form").validate({
+		rules:{
+			mieuta: {
+				required:true,
+			},
+		},	
+		messages:{
+			mieuta: {
+				required:'Hãy nhập miêu tả',
+			},
 		}
 	});
 });

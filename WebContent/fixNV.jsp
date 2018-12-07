@@ -27,14 +27,15 @@
 				<a class="navbar-brand" href="#">Admin</a>
 				<div class="row">
 					<ul class="nav navbar-top-links navbar-right">
-				 	
+				 	<li>
 				 		<div class="col-md-12 text-right">
-				 			<a class="navbar-brand fa fa-user" href="#">Thông tin cá nhân</a>
+				 			<a class="navbar-brand fa fa-user col-md-12 text-right" href="#">Thông tin cá nhân</a>
 					
 				 		</div>
-				</div>
-			
+				
+					</li>
 				</ul>
+				</div>
 			</div>
 		</div><!-- /.container-fluid -->
 	</nav>
@@ -50,9 +51,9 @@
 		<div class="divider"></div>
 		
 		<ul class="nav menu">
-			<li><a href="QLTK.jsp"><em ">&nbsp;</em> Quản lý tài khoản</a></li>
+			<li><a href="QLTK.jsp"><em >&nbsp;</em> Quản lý tài khoản</a></li>
 			<li class="parent "><a data-toggle="collapse" href="#sub-item-1">
-				<em class="fa fa-navicon">&nbsp;</em> Quản lý nhân viên <span data-toggle="collapse" href="#sub-item-1" class="icon pull-right"><em class="fa fa-plus"></em></span>
+				<em class="fa fa-navicon">&nbsp;</em> Quản lý nhân viên <span data-toggle="collapse"  class="icon pull-right"><em class="fa fa-plus"></em></span>
 				</a>
 				<ul class="children collapse" id="sub-item-1">
 					<li><a class="" href="nhomQuyen-admin.jsp">
@@ -88,7 +89,7 @@
 			</ol>
 			
 		</div><!--/.row-->
-		
+		<form>
 		<div class="widget">
 			<div class="title"> <h4> Nhập dữ liệu</h4> </div>
 			<div class="formRow">
@@ -150,7 +151,7 @@
 			</div>
 			
 		</div>
-	
+		</form>
 	</div>	<!--/.main-->
 	
 	<!-- all js here -->

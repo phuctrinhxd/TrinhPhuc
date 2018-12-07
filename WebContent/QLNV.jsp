@@ -92,7 +92,6 @@
 		<table class="table table-bordered">
                     <thead>
                         <tr>
-                            <th>STT</th>
                             <th>ID</th>
                             <th>Tên nhân viên</th>
                             <th> Nhóm quyền </th>
@@ -101,17 +100,14 @@
                     </thead>
                     <tbody>
                         <tr>
-                            <td>1</td>
                             <td>1001</td>
                             <td>Trịnh Vĩnh Phúc</td>
                             <td>Admin</td>
                             <td>
-                            <a href="viewNV.jsp"> 
-                            	<button type="button" class="btn btn-info">Xem</button>
-                            </a>
                             <a href="fixNV.jsp"> 
                             	<button type="button" class="btn btn-info">Sửa</button>
                             </a>
+                            &emsp;&emsp;
 							<button type="button" class="btn btn-info " data-toggle="modal" data-target="#myModal">Xóa</button>
 
 							  <!-- Modal -->
@@ -137,17 +133,14 @@
                         </tr>
                         
                       <tr>
-                            <td>2</td>
                             <td>1002</td>
                             <td>Trần A</td>
                             <td>Nhóm quản lý tin tức và comment</td>
                             <td>
-                             <a href="viewNV.jsp"> 
-                            	<button type="button" class="btn btn-info">Xem</button>
-                            </a>
                             <a href="fixNV.jsp"> 
                             	<button type="button" class="btn btn-info">Sửa</button>
                             </a>
+                            &emsp;&emsp;
                             <button type="button" class="btn btn-info " data-toggle="modal" data-target="#myModal">Xóa</button>
 
 							  <!-- Modal -->
@@ -172,17 +165,14 @@
                             </td>
                         </tr>
                         <tr>
-                            <td>3</td>
                             <td>1003</td>
                             <td>Nguyễn B</td>
                             <td>Nhóm quản lý sản phẩm</td>
                             <td>
-                             <a href="viewNV.jsp"> 
-                            	<button type="button" class="btn btn-info">Xem</button>
-                            </a>
                             <a href="fixNV.jsp"> 
                             	<button type="button" class="btn btn-info">Sửa</button>
                             </a>
+                            &emsp;&emsp;
                             <button type="button" class="btn btn-info " data-toggle="modal" data-target="#myModal">Xóa</button>
 
 							  <!-- Modal -->
