@@ -16,7 +16,7 @@
 					<em class="fa fa-home"></em>
 				</a></li>				
 					<li class="active">
-					<a href="QLNV.jsp">  Danh sách nhóm quyền </a>
+					<a href="QLNVController">  Danh sách nhân viên </a>
 					</li>
 
 				<li><em class="fa"> Thêm nhân viên </em> </li>

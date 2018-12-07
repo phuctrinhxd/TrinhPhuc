@@ -19,8 +19,17 @@ public class DangXuatController extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 	
 		HttpSession session = request.getSession();
-		session.invalidate();
-		response.sendRedirect("Home");
+		if(session!=null) {
+			if(session.getAttribute("quyen")!=null) {
+				session.invalidate();
+				response.sendRedirect("DangNhapAdminController");
+			} else {
+				session.invalidate();
+				response.sendRedirect("Home");
+			}
+		} else {
+			response.sendRedirect("Home");
+		}
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

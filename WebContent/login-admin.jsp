@@ -17,7 +17,7 @@
   				<br/>
   			</div>
   			<div class="col-md-4"></div>
-  			<form action="#" method="post" id="login-admin" class="col-md-4">
+  			<form action="DangNhapAdminController" method="post" id="login-admin" class="col-md-4">
   				<div class="login">
  					<div class="login-form">
 					    <div class="form-group">
@@ -41,5 +41,11 @@
         <script src="js/jquery.validate.js"></script>
         <script src="js/validation.js"></script>
         <script src="js/additional-methods.js"></script>
+        <script type="text/javascript">
+		var Msg = "<%=request.getAttribute("msg")%>";
+    	if (Msg != "null") {
+ 		alert(Msg);
+ 		}
+ 		</script> 
     </body>
 </html>

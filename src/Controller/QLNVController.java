@@ -10,6 +10,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import BEAN.*;
 import DAO.*;
@@ -25,37 +26,46 @@ public class QLNVController extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		Connection conn = DBConnection.CreateConnection();
-		String thaotac = request.getParameter("thaotac");
-		if(thaotac==null) {
-			List<NhanVien> list = NhanVienDAO.TatCaNV(conn);
-			request.setAttribute("listnv", list);
-			RequestDispatcher rd = request.getRequestDispatcher("QLNV.jsp");
-			rd.forward(request, response);
-		}
+		HttpSession session = request.getSession();
+		if(session.getAttribute("quyen")==null)
+			response.sendRedirect("Home");
 		else {
-			if(thaotac.contains("them")) {
-				List<Quyen> list = QuyenDAO.TatCaQuyen(conn);
-				request.setAttribute("listq", list);
-				RequestDispatcher rd = request.getRequestDispatcher("addNV.jsp");
-				rd.forward(request, response);
-			} else {
-				String manv = request.getParameter("manv");
-				if(manv.contains("admin")==false) {
-					NhanVien nv = NhanVienDAO.LayNV(conn, manv);
-					Users user = UsersDAO.LayTaiKhoan(conn, manv);
-					List<Quyen> list = QuyenDAO.TatCaQuyen(conn);
-					request.setAttribute("nv", nv);
-					request.setAttribute("pass", user.getPass());
-					request.setAttribute("listq", list);
-					RequestDispatcher rd = request.getRequestDispatcher("fixNV.jsp");
-					rd.forward(request, response);
-				} else {
+			if(((Quyen)session.getAttribute("quyen")).getAdmin()==1) {
+				Connection conn = DBConnection.CreateConnection();
+				String thaotac = request.getParameter("thaotac");
+				if(thaotac==null) {
 					List<NhanVien> list = NhanVienDAO.TatCaNV(conn);
 					request.setAttribute("listnv", list);
 					RequestDispatcher rd = request.getRequestDispatcher("QLNV.jsp");
 					rd.forward(request, response);
 				}
+				else {
+					if(thaotac.contains("them")) {
+						List<Quyen> list = QuyenDAO.TatCaQuyen(conn);
+						request.setAttribute("listq", list);
+						RequestDispatcher rd = request.getRequestDispatcher("addNV.jsp");
+						rd.forward(request, response);
+					} else {
+						String manv = request.getParameter("manv");
+						if(manv.contains("admin")==false) {
+							NhanVien nv = NhanVienDAO.LayNV(conn, manv);
+							Users user = UsersDAO.LayTaiKhoan(conn, manv);
+							List<Quyen> list = QuyenDAO.TatCaQuyen(conn);
+							request.setAttribute("nv", nv);
+							request.setAttribute("pass", user.getPass());
+							request.setAttribute("listq", list);
+							RequestDispatcher rd = request.getRequestDispatcher("fixNV.jsp");
+							rd.forward(request, response);
+						} else {
+							List<NhanVien> list = NhanVienDAO.TatCaNV(conn);
+							request.setAttribute("listnv", list);
+							RequestDispatcher rd = request.getRequestDispatcher("QLNV.jsp");
+							rd.forward(request, response);
+						}
+					}
+				}
+			} else {
+				response.sendRedirect("DangNhapAdminController");
 			}
 		}
 	}

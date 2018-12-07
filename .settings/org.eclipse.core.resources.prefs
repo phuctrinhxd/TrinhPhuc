@@ -2,6 +2,7 @@ eclipse.preferences.version=1
 encoding//WebContent/style.css=UTF-8
 encoding//src/Controller/ChiTietSPController.java=UTF-8
 encoding//src/Controller/DangKyController.java=UTF-8
+encoding//src/Controller/DangNhapAdminController.java=UTF-8
 encoding//src/Controller/DatHangController.java=UTF-8
 encoding//src/Controller/DoiMatKhauController.java=UTF-8
 encoding//src/Controller/DonHangController.java=UTF-8

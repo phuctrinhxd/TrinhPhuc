@@ -50,13 +50,9 @@
 		
 		<ul class="nav menu">
 			<li><a href="QLTK.jsp"><em >&nbsp;</em> Quản lý tài khoản</a></li>
-			<!--<c:choose>
-			<c:when test="${sessionScope.admin == 1 }"> xuất hết</c:when>
-			<c:when test="${sessionScope.qlsp == 1}"></c:when>
-			<c:when test="${sessionScope.qldh == 1}"></c:when>
-			<c:when test="${sessionScope.qlkh == 1}"></c:when>
-			<c:when test="${sessionScope.qltt == 1}"></c:when>
-			</c:choose> -->
+			
+			
+			<c:if test="${sessionScope.quyen.getAdmin() == 1 }">
 			<li class="parent "><a data-toggle="collapse" href="#sub-item-1">
 				<em class="fa fa-navicon">&nbsp;</em> Quản lý nhân viên <span data-toggle="collapse"  class="icon pull-right"><em class="fa fa-plus"></em></span>
 				</a>
@@ -64,7 +60,7 @@
 					<li><a class="" href="NhomQuyenController">
 						<span class="fa fa-arrow-right">&nbsp;</span> Các nhóm quyền
 					</a></li>
-					<li><a class="active" href="QLNV.jsp">
+					<li><a class="active" href="QLNVController">
 						<span class="fa fa-arrow-right">&nbsp;</span> Danh sách nhân viên
 					</a></li>
 					
@@ -76,7 +72,25 @@
 			<li><a href="QLDH.jsp"><em >&nbsp;</em> Quản lý đơn hàng</a></li>
 			<li><a href="QLKH.jsp"><em >&nbsp;</em> Quản lý khách hàng</a></li>
 			<li><a href="QLTT.jsp"><em >&nbsp;</em> Quản lý tin tức</a></li>
-			<li><a href="login-admin.jsp"><em >&nbsp;</em> Đăng xuất</a></li>
+			</c:if>
+			
+			<c:if test="${sessionScope.quyen.getKhachHang()==1 && sessionScope.quyen.getAdmin()==0}">
+			<li><a href="QLKH.jsp"><em >&nbsp;</em> Quản lý khách hàng</a></li>
+			</c:if>
+			
+			<c:if test="${sessionScope.quyen.getSanPham()==1 && sessionScope.quyen.getAdmin()==0}">
+			<li><a href="QLSP.jsp"><em >&nbsp;</em> Quản lý sản phẩm</a></li>
+			</c:if>
+			
+			<c:if test="${sessionScope.quyen.getDonHang()==1 && sessionScope.quyen.getAdmin()==0}">
+			<li><a href="QLDH.jsp"><em >&nbsp;</em> Quản lý đơn hàng</a></li>
+			</c:if>
+			
+			<c:if test="${sessionScope.quyen.getTinTuc()==1 && sessionScope.quyen.getAdmin()==0}">
+			<li><a href="QLTT.jsp"><em >&nbsp;</em> Quản lý tin tức</a></li>
+			</c:if>
+			
+			<li><a href="DangXuatController"><em >&nbsp;</em> Đăng xuất</a></li>
 		</ul>
 	</div><!--/.sidebar-->
 

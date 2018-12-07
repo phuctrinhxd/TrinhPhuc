@@ -8,6 +8,8 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
 import java.sql.*;
 import java.util.*;
 import BEAN.Quyen;
@@ -24,26 +26,36 @@ public class NhomQuyenController extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		Connection conn = DBConnection.CreateConnection();
-		String thaotac = request.getParameter("thaotac");
-		if(thaotac==null) {
-			List<Quyen> list = QuyenDAO.TatCaQuyen(conn);
-			request.setAttribute("listq", list);
-			RequestDispatcher rd = request.getRequestDispatcher("nhomQuyen-admin.jsp");
-			rd.forward(request, response);
-		}
+		HttpSession session = request.getSession();
+		if(session.getAttribute("quyen")==null)
+			response.sendRedirect("Home");
 		else {
-			if(thaotac.contains("them")) {
-				RequestDispatcher rd = request.getRequestDispatcher("addNhomQuyen.jsp");
-				rd.forward(request, response);
+			if(((Quyen)session.getAttribute("quyen")).getAdmin()==1) {
+				Connection conn = DBConnection.CreateConnection();
+				String thaotac = request.getParameter("thaotac");
+				if(thaotac==null) {
+					List<Quyen> list = QuyenDAO.TatCaQuyen(conn);
+					request.setAttribute("listq", list);
+					RequestDispatcher rd = request.getRequestDispatcher("nhomQuyen-admin.jsp");
+					rd.forward(request, response);
+				}
+				else {
+					if(thaotac.contains("them")) {
+						RequestDispatcher rd = request.getRequestDispatcher("addNhomQuyen.jsp");
+						rd.forward(request, response);
+					} else {
+						int maquyen = Integer.parseInt(request.getParameter("maquyen"));
+						Quyen q = QuyenDAO.LayQuyen(conn, maquyen);
+						request.setAttribute("quyen", q);
+						RequestDispatcher rd = request.getRequestDispatcher("fixNhomQuyen.jsp");
+						rd.forward(request, response);
+					}
+				}
 			} else {
-				int maquyen = Integer.parseInt(request.getParameter("maquyen"));
-				Quyen q = QuyenDAO.LayQuyen(conn, maquyen);
-				request.setAttribute("quyen", q);
-				RequestDispatcher rd = request.getRequestDispatcher("fixNhomQuyen.jsp");
-				rd.forward(request, response);
+				response.sendRedirect("DangNhapAdminController");
 			}
 		}
+		
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
