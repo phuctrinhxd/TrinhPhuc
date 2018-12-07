@@ -91,4 +91,17 @@ public class UsersDAO {
 		}	
 		return false;
 	}
+	
+	public static void XoaTaiKhoan(Connection conn, String id) {
+		String sql = "delete from user where ID = ?";
+		PreparedStatement statement;
+		try {
+			statement = conn.prepareStatement(sql);
+			statement.setString(1, id);
+			statement.executeUpdate();
+			statement.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}	
+	}
 }

@@ -272,5 +272,85 @@ $(function(){
 			},
 		}
 	});
+	$("#fix-nv-form").validate({
+		rules:{
+			manv:{},
+			password: {
+				required:true,
+			},
+			name:{
+				required:true,
+			},
+			phone:{
+			},
+			mail:{
+				required:true,
+				email:true
+			},
+		},	
+		messages:{
+			manv:{},
+			password: {
+				required: 'Hãy nhập mật khẩu.',
+			},
+			name:{
+				required: 'Hãy điền họ tên.',
+			},
+			phone:{
+			},
+			mail:{
+				required: 'Hãy điền email.',
+				email: 'Hãy nhập đúng email.'
+			},
+		}
+	});
+	$("#add-nv-form").validate({
+		rules:{
+			name:{
+				required: true,
+			},
+			mail:{
+				required:true,
+				email: true
+			},
+			phone:{
+				required:true,
+			},
+			username:{
+				required:true,
+				nowhitespace: true
+			},
+			password1: {
+				required:true,
+			},
+			password2:{
+				required: true,
+				equalTo:"#password1"
+			}
+		},	
+		messages:{
+			name:{
+				required: 'Hãy nhập họ và tên của bạn.',
+			},
+			mail:{
+				required: 'Hãy nhập địa chỉ email.',
+				email:'Vui lòng nhập đúng email.'
+			},
+			phone:{
+				required: 'Hãy nhập số điện thoại.',
+			},
+			username:{
+				required: 'Hãy nhập tên đăng nhập.',
+				nowhitespace:'Vui lòng nhập tên đăng nhập không có dấu cách.'
+			},
+			password1:{
+				required: 'Hãy nhập mật khẩu của bạn.',
+			},
+			password2:{
+				required: 'Vui lòng xác nhận lại mật khẩu.',
+				equalTo: 'Xác nhận không đúng mật khẩu.'
+			}
+		}
+	});
 });
 

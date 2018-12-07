@@ -61,7 +61,7 @@
 				<em class="fa fa-navicon">&nbsp;</em> Quản lý nhân viên <span data-toggle="collapse"  class="icon pull-right"><em class="fa fa-plus"></em></span>
 				</a>
 				<ul class="children collapse" id="sub-item-1">
-					<li><a class="" href="nhomQuyen-admin.jsp">
+					<li><a class="" href="NhomQuyenController">
 						<span class="fa fa-arrow-right">&nbsp;</span> Các nhóm quyền
 					</a></li>
 					<li><a class="active" href="QLNV.jsp">

@@ -10,6 +10,9 @@ public class Quyen {
 	private int TinTuc;
 	private String MieuTa;
 	public Quyen() {}
+	public Quyen(int maquyen) {
+		this.setMaQuyen(maquyen);
+	}
 	public Quyen(int maquyen, int ad, int kh, int sp, int dh, int tt, String mieuta) {
 		this.setMaQuyen(maquyen);
 		this.setAdmin(ad);

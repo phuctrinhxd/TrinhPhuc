@@ -48,6 +48,7 @@ public class NhomQuyenController extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
+		request.setCharacterEncoding("UTF-8");
 		String thaotac=request.getParameter("loai").trim();
 		switch (thaotac) {
 		case "them":
