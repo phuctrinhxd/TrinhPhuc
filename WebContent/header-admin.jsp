@@ -49,7 +49,7 @@
 		<div class="divider"></div>
 		
 		<ul class="nav menu">
-			<li><a href="QLTK.jsp"><em >&nbsp;</em> Quản lý tài khoản</a></li>
+			<li><a href="QLTKController"><em >&nbsp;</em> Quản lý tài khoản</a></li>
 			
 			
 			<c:if test="${sessionScope.quyen.getAdmin() == 1 }">
@@ -60,7 +60,7 @@
 					<li><a class="" href="NhomQuyenController">
 						<span class="fa fa-arrow-right">&nbsp;</span> Các nhóm quyền
 					</a></li>
-					<li><a class="active" href="QLNVController">
+					<li><a href="QLNVController">
 						<span class="fa fa-arrow-right">&nbsp;</span> Danh sách nhân viên
 					</a></li>
 					

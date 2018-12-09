@@ -35,7 +35,6 @@ public class NhanVienDAO {
 			statement.setString(2, nv.getEmail());
 			statement.setString(3, nv.getSDT());
 			statement.setInt(4, nv.getQuyen().getMaQuyen());
-			System.out.println(nv.getMaNhanVien());
 			statement.setString(5, nv.getMaNhanVien());
 			if(statement.executeUpdate()>0) {
 				statement.close();

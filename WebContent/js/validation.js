@@ -352,5 +352,61 @@ $(function(){
 			}
 		}
 	});
+	$("#suatk-form").validate({
+		rules:{
+			username:{},
+			quyen:{},
+			name:{
+				required:true,
+			},
+			phone:{
+				required:true,
+			},
+			mail:{
+				required:true,
+				email:true
+			},
+		},	
+		messages:{
+			username:{},
+			quyen:{},
+			name:{
+				required: 'Hãy điền họ tên.',
+			},
+			phone:{
+				required: 'Hãy điền số điện thoại của bạn',
+			},
+			mail:{
+				required: 'Hãy điền email.',
+				email: 'Hãy nhập đúng email.'
+			},
+		}
+	});
+	$("#doimk-form").validate({
+		rules:{
+			oldpassword: {
+				required:true,
+			},
+			password1: {
+				required:true,
+			},
+			password2:{
+				required: true,
+				equalTo:"#password1",
+			},
+		},	
+		messages:{
+			oldpassword: {
+				required: 'Hãy điền mật khẩu cũ',
+			},
+			password1:{
+				required: 'Hãy nhập mật khẩu của bạn.',
+			},
+			password2:{
+				required: 'Vui lòng xác nhận lại mật khẩu.',
+				equalTo: 'Xác nhận không đúng mật khẩu.',
+			}
+		}
+	});
 });
 

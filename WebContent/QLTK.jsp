@@ -1,80 +1,23 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
     pageEncoding="utf-8"%>
+    <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html>
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>Quản lý tài khoản</title>
-	<link href="css/bootstrap.min.css" rel="stylesheet">
-	<link href="css/font-awesome.min.css" rel="stylesheet">
-	<link href="css/datepicker3.css" rel="stylesheet">
-	<link href="css/style-admin.css" rel="stylesheet">
-	
-	<!--Custom Font-->
-	<link href="https://fonts.googleapis.com/css?family=Montserrat:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
-	<!--[if lt IE 9]>
-	<script src="js/html5shiv.js"></script>
-	<script src="js/respond.min.js"></script>
-	<![endif]-->
 </head>
 <body>
-	<nav class="navbar navbar-custom navbar-fixed-top" role="navigation">
-		<div class="container-fluid">
-			<div class="navbar-header">
-				<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#sidebar-collapse"><span class="sr-only">Toggle navigation</span>
-					</button>
-				<a class="navbar-brand" href="#">Admin</a>
-				<div class="row">
-					<ul class="nav navbar-top-links navbar-right">
-				 	
-				 		<div class="col-md-12 text-right">
-				 			<a class="navbar-brand fa fa-user" href="#">Thông tin cá nhân</a>
-					
-				 		</div>
-				</div>
-			
-				</ul>
-			</div>
-		</div><!-- /.container-fluid -->
-	</nav>
-	<div id="sidebar-collapse" class="col-sm-3 col-lg-2 sidebar">
-		<div class="profile-sidebar">
-			
-			<div class="profile-usertitle">
-				<div class="profile-usertitle-name text-center">Trần Minh Tùng</div>
-				<div class="profile-usertitle-status text-center"><span class="indicator label-success"></span>Online</div>
-			</div>
-			<div class="clear"></div>
-		</div>
-		<div class="divider"></div>
-		
-		<ul class="nav menu">
-			<li class="active"><a href="QLTK.jsp"><em ">&nbsp;</em> Quản lý tài khoản</a></li>
-			<li class="parent "><a data-toggle="collapse" href="#sub-item-1">
-				<em class="fa fa-navicon">&nbsp;</em> Quản lý nhân viên <span data-toggle="collapse" href="#sub-item-1" class="icon pull-right"><em class="fa fa-plus"></em></span>
-				</a>
-				<ul class="children collapse" id="sub-item-1">
-					<li><a class="" href="nhomQuyen-admin.jsp">
-						<span class="fa fa-arrow-right">&nbsp;</span>Các nhóm quyền
-					</a></li>
-					<li><a href="QLNV.jsp">
-						<span class="fa fa-arrow-right">&nbsp;</span> Danh sách nhân viên
-					</a></li>
-					
-				</ul>
-				
-			</li>
-			
-			<li><a href="QLSP.jsp"><em >&nbsp;</em> Quản lý sản phẩm</a></li>
-			<li><a href="QLDH.jsp"><em >&nbsp;</em> Quản lý đơn hàng</a></li>
-			<li><a href="QLKH.jsp"><em >&nbsp;</em> Quản lý khách hàng</a></li>
-			<li><a href="QLTT.jsp"><em >&nbsp;</em> Quản lý tin tức</a></li>
-			
-			<li><a href="login-admin.jsp"><em >&nbsp;</em> Đăng xuất</a></li>
-		</ul>
-	</div><!--/.sidebar-->
-		
+	<jsp:include page="header-admin.jsp"></jsp:include>	
+	
+	<script type="text/javascript">
+	var Msg = "<%=request.getAttribute("msg")%>";
+    if (Msg != "null") {
+ 	alert(Msg);
+ 	}
+    </script>
+	
 	<div class="col-sm-9 col-sm-offset-3 col-lg-10 col-lg-offset-2 main">
 		<div class="row">
 			<ol class="breadcrumb">
@@ -89,41 +32,50 @@
 		
 		
 		<div class="widget">
+			<form action="QLTKController" method="post" id="suatk-form">
 			<div class="title"> <h4> Thông tin tài khoản</h4> </div>
-			<div class="formRow">
-				<label> Họ và tên </label>
-				<div class="formRight"> 
-					<div class="col-xs-6">
-	        			<input class="form-control" id="name" type="text" value="Trần Minh Tùng">
-					</div>
-				</div>
-			</div>
-			
-			<div class="formRow">
-				<label>Số điện thoại</label>
-				<div class="formRight"> 
-					<div class="col-xs-6">
-	        			<input class="form-control" id="phone" type="text" value="089653210">
-					</div>
-				</div>
-			</div>
-			<div class="formRow">
+			<div class="formRow form-group">
 				<label>Tên đăng nhập</label>
 				<div class="formRight"> 
 					<div class="col-xs-6">
-	        			<input class="form-control" id="tenDN" type="text" value="tung123">
+	        			<input class="form-control" name="username" type="text" value="<c:out value="${nv.getMaNhanVien() }"/>" disabled>
 					</div>
 				</div>
 			</div>
-			<div class="formRow">
-				<label> Nhóm quyền quản lý</label>
+			<div class="formRow form-group">
+				<label> Họ và tên </label>
 				<div class="formRight"> 
 					<div class="col-xs-6">
-	        			<input class="form-control" id="disabledInput" type="text" placeholder="Admin" disabled>
+	        			<input class="form-control" name="name" type="text" value="<c:out value="${nv.getHoTen() }"/>">
 					</div>
 				</div>
 			</div>
 			
+			<div class="formRow form-group">
+				<label>Số điện thoại</label>
+				<div class="formRight"> 
+					<div class="col-xs-6">
+	        			<input class="form-control" name="phone" type="number" value="<c:out value="${nv.getSDT() }"/>">
+					</div>
+				</div>
+			</div>
+			<div class="formRow form-group">
+				<label>Email</label>
+				<div class="formRight"> 
+					<div class="col-xs-6">
+	        			<input class="form-control" name="mail" type="email" value="<c:out value="${nv.getEmail() }"/>">
+					</div>
+				</div>
+			</div>
+			<div class="formRow form-group">
+				<label> Nhóm quyền quản lý</label>
+				<div class="formRight"> 
+					<div class="col-xs-6">
+	        			<input class="form-control" name="quyen" type="text" value="<c:out value="${nv.getQuyen().getMieuTa() }"/>" disabled>
+					</div>
+				</div>
+			</div>
+			<input type="hidden" name="loai" value="suathongtin"/>
 			<div class="formRow" style="height: 50px">
 				<div class="formRight"> 
 					<button type="submit" class="btn btn-info">CHỈNH SỬA</button>
@@ -131,33 +83,35 @@
 				<div class="clear"></div>
 				
 			</div>
+			</form>
+			<form action ="QLTKController" method="post" id="doimk-form">
 			<div class="title"> <h4> Đổi mật khẩu</h4> </div>
-			<div class="formRow">
+			<div class="formRow form-group">
 				<label> Mật khẩu cũ</label>
 				<div class="formRight"> 
 					<div class="col-xs-6">
-	        			<input class="form-control" id="password" type="password">
+	        			<input class="form-control" name="oldpassword" type="password">
 					</div>
 				</div>
 			</div>
-			<div class="formRow">
+			<div class="formRow form-group">
 				<label> Mật khẩu mới</label>
 				<div class="formRight"> 
 					<div class="col-xs-6">
-	        			<input class="form-control" id="password" type="password">
+	        			<input class="form-control" id="password1" name="password1" type="password">
 					</div>
 				</div>
 			</div>
-			<div class="formRow">
+			<div class="formRow form-group">
 				<label>Xác nhận Mật khẩu</label>
 				<div class="formRight"> 
 					<div class="col-xs-6">
-	        			<input class="form-control" id="cofirm-password" type="password">
+	        			<input class="form-control" name="password2" type="password">
 					</div>
 				</div>
 			</div>
 				        
-        	
+        	<input type="hidden" name="loai" value="doimk"/>
 			<div class="formRow" style="height: 50px">
 				<div class="formRight"> 
 					<button type="submit" class="btn btn-info">ĐỔI MẬT KHẨU</button>
@@ -165,18 +119,11 @@
 				<div class="clear"></div>
 				
 			</div>
-			
+			</form>
 		</div>
 		
 	
 	</div>	<!--/.main-->
 	
-	<!-- all js here -->
-		<!-- jquery latest version -->
-        <script src="js/vendor/jquery-1.12.0.min.js"></script>
-		<!-- bootstrap js -->
-        <script src="js/bootstrap.min.js"></script>
-			
-		
 </body>
 </html>
