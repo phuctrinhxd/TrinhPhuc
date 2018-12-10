@@ -2,6 +2,7 @@ package DAO;
 
 import java.sql.*;
 import BEAN.KhachHang;
+import java.util.*;
 
 public class KhachHangDAO {
 
@@ -73,5 +74,48 @@ public class KhachHangDAO {
 			e.printStackTrace();
 		}
 		return false;
+	}
+	
+	public static boolean XoaKhachHang(Connection conn, String makh) {
+
+		String sql = "delete from khachhang where MaKhachHang = ?";
+		try {
+			PreparedStatement statement;
+			statement = conn.prepareStatement(sql);
+			statement.setString(1, makh);
+			if(statement.executeUpdate()!=0) {
+				statement.close();
+				return true;
+			}
+			statement.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return false;
+	}
+	
+	public static List<KhachHang> TatCaKhachHang(Connection conn){
+		
+		List<KhachHang> list = new ArrayList<KhachHang>();
+		String sql = "select * from khachhang";
+		Statement statement;
+		try {
+			statement = conn.createStatement();
+			ResultSet rs = statement.executeQuery(sql);
+			while(rs.next()) {
+				String makh = rs.getString("MaKhachHang");
+				String ten = rs.getString("HoTen");
+				String mail = rs.getString("Email");
+				String sdt = rs.getString("SDT");
+				String diachi = rs.getString("DiaChi");
+				KhachHang kh = new KhachHang(makh, ten, mail, sdt, diachi);
+				list.add(kh);
+			}
+			rs.close();
+			statement.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return list;
 	}
 }

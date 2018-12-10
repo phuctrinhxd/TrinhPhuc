@@ -67,15 +67,14 @@
 				</ul>
 				
 			</li>
-			
+			<li><a href="QLKHController"><em >&nbsp;</em> Quản lý khách hàng</a></li>
 			<li><a href="QLSP.jsp"><em >&nbsp;</em> Quản lý sản phẩm</a></li>
 			<li><a href="QLDHController"><em >&nbsp;</em> Quản lý đơn hàng</a></li>
-			<li><a href="QLKH.jsp"><em >&nbsp;</em> Quản lý khách hàng</a></li>
 			<li><a href="QLTT.jsp"><em >&nbsp;</em> Quản lý tin tức</a></li>
 			</c:if>
 			
 			<c:if test="${sessionScope.quyen.getKhachHang()==1 && sessionScope.quyen.getAdmin()==0}">
-			<li><a href="QLKH.jsp"><em >&nbsp;</em> Quản lý khách hàng</a></li>
+			<li><a href="QLKHController"><em >&nbsp;</em> Quản lý khách hàng</a></li>
 			</c:if>
 			
 			<c:if test="${sessionScope.quyen.getSanPham()==1 && sessionScope.quyen.getAdmin()==0}">
