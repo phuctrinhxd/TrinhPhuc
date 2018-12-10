@@ -29,7 +29,7 @@ public class DonHangController extends HttpServlet {
 		HttpSession session = request.getSession();
 		if(session.getAttribute("login")!=null) {
 			String makh = ((Users)session.getAttribute("user")).getId();
-			List<DonHang> list = DonHangDAO.LayDonHang(conn, makh);
+			List<DonHang> list = DonHangDAO.LayDonHangNguoiDung(conn, makh);
 			request.setAttribute("listdh", list);
 			RequestDispatcher rd = request.getRequestDispatcher("history.jsp");
 			rd.forward(request, response);

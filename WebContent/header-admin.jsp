@@ -5,7 +5,7 @@
 <html>
 <head>
 	<meta charset="utf-8">
-	<title>Insert title here</title>
+	<title>Admin - Nhân viên</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link href="css/bootstrap.min.css" rel="stylesheet">
 	<link href="css/font-awesome.min.css" rel="stylesheet">
@@ -69,7 +69,7 @@
 			</li>
 			
 			<li><a href="QLSP.jsp"><em >&nbsp;</em> Quản lý sản phẩm</a></li>
-			<li><a href="QLDH.jsp"><em >&nbsp;</em> Quản lý đơn hàng</a></li>
+			<li><a href="QLDHController"><em >&nbsp;</em> Quản lý đơn hàng</a></li>
 			<li><a href="QLKH.jsp"><em >&nbsp;</em> Quản lý khách hàng</a></li>
 			<li><a href="QLTT.jsp"><em >&nbsp;</em> Quản lý tin tức</a></li>
 			</c:if>
@@ -83,7 +83,7 @@
 			</c:if>
 			
 			<c:if test="${sessionScope.quyen.getDonHang()==1 && sessionScope.quyen.getAdmin()==0}">
-			<li><a href="QLDH.jsp"><em >&nbsp;</em> Quản lý đơn hàng</a></li>
+			<li><a href="QLDHController"><em >&nbsp;</em> Quản lý đơn hàng</a></li>
 			</c:if>
 			
 			<c:if test="${sessionScope.quyen.getTinTuc()==1 && sessionScope.quyen.getAdmin()==0}">

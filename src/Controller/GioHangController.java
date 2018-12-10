@@ -36,22 +36,26 @@ public class GioHangController extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-		String thaotac=request.getParameter("thaotac");
-		
-		switch (thaotac) {
-		case "ThemVaoGioHang":
-			ThemVaoGioHang(request, response);
-			break;
-		case "XoaTrongGioHang":
-			XoaTrongGioHang(request, response);
-			break;
-		case "SuaTrongGioHang":
-			SuaTrongGioHang(request, response);
-			break;
-		default:
-			break;
+		HttpSession session = request.getSession();
+		if(session.getAttribute("quyen")!=null) {
+			return;
+		} else {
+			String thaotac=request.getParameter("thaotac");
+			
+			switch (thaotac) {
+			case "ThemVaoGioHang":
+				ThemVaoGioHang(request, response);
+				break;
+			case "XoaTrongGioHang":
+				XoaTrongGioHang(request, response);
+				break;
+			case "SuaTrongGioHang":
+				SuaTrongGioHang(request, response);
+				break;
+			default:
+				break;
+			}
 		}
-		
 	}
 	
 	public void ThemVaoGioHang(HttpServletRequest request, HttpServletResponse response)

@@ -71,8 +71,8 @@ public class SanPhamDAO {
 				sql += " )";
 			}
 			if(gioitinh!=null) {
-				sql += " and ( GioiTinh = '" + gioitinh[0] + "'";
-				for(int i=1; i < gioitinh.length;i++) {
+				sql += " and ( GioiTinh ='Cả 2'";
+				for(int i=0; i < gioitinh.length;i++) {
 					sql += "or GioiTinh = '"+gioitinh[i] + "'";
 				}
 				sql += " )";

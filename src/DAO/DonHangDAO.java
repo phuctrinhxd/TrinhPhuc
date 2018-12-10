@@ -230,7 +230,7 @@ public class DonHangDAO {
 		return list;
 	}
 	
-	public static List<DonHang> LayDonHang(Connection conn, String makh) {
+	public static List<DonHang> LayDonHangNguoiDung(Connection conn, String makh) {
 		
 		List<DonHang> list = new ArrayList<DonHang>();
 		String sql = "select * from donhang where MaNguoiDat = ? and TinhTrang != 'chưa đặt'";
@@ -257,5 +257,64 @@ public class DonHangDAO {
 			e.printStackTrace();
 		}
 		return list;
+	}
+	
+	public static List<DonHang> LayDonHang(Connection conn, String tinhtrang) {
+		
+		List<DonHang> list = new ArrayList<DonHang>();
+		String sql = "select * from donhang where TinhTrang = ?";
+		PreparedStatement statement;
+		try {
+			statement = conn.prepareStatement(sql);
+			statement.setString(1, tinhtrang);
+			ResultSet rs = statement.executeQuery();
+			while (rs.next())
+			{
+				String madh = rs.getString("MaDonHang");
+				String makh = rs.getString("MaNguoiDat");
+				Date ngay = rs.getDate("Ngay");
+				int tongtien = rs.getInt("TongTien");
+				DonHang dh = new DonHang(madh, ngay, makh, tongtien, tinhtrang);
+				dh.setListCTDH(LayChiTietDonHang(conn, madh));
+				dh.setTongSanPham(TongSanPham(conn, madh));
+				dh.setTongTien(TongTienDonHang(conn, madh));
+				list.add(dh);
+			}
+			rs.close();
+			statement.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return list;
+	}
+	
+public static DonHang LayDonHangTheoMa(Connection conn, String madh) {
+		
+		String sql = "select * from donhang where MaDonHang = ?";
+		PreparedStatement statement;
+		try {
+			statement = conn.prepareStatement(sql);
+			statement.setString(1, madh);
+			ResultSet rs = statement.executeQuery();
+			if (rs.next())
+			{
+				String tinhtrang = rs.getString("TinhTrang");
+				String makh = rs.getString("MaNguoiDat");
+				Date ngay = rs.getDate("Ngay");
+				int tongtien = rs.getInt("TongTien");
+				DonHang dh = new DonHang(madh, ngay, makh, tongtien, tinhtrang);
+				dh.setListCTDH(LayChiTietDonHang(conn, madh));
+				dh.setTongSanPham(TongSanPham(conn, madh));
+				dh.setTongTien(TongTienDonHang(conn, madh));
+				rs.close();
+				statement.close();
+				return dh;
+			}
+			rs.close();
+			statement.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return null;
 	}
 }
