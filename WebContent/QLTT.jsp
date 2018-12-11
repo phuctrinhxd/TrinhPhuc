@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
     pageEncoding="utf-8"%>
+      <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+      
 <!DOCTYPE html>
 <html>
 
@@ -17,6 +19,22 @@
 </head>
 
 <body>
+	<script type="text/javascript">
+	var Msg = "<%=request.getAttribute("msgThemTinTuc")%>";
+    if (Msg != "null") {
+ 	alert(Msg);
+ 	}
+    
+    var MsgXoa = "<%=request.getAttribute("msgXoaTinTuc")%>";
+    if (MsgXoa != "null") {
+ 	alert(MsgXoa);
+ 	}
+    var MsgSua = "<%=request.getAttribute("msgSuaTinTuc")%>";
+    if (MsgSua != "null") {
+ 	alert(MsgSua);
+ 	}
+    </script>
+    
     <nav class="navbar navbar-custom navbar-fixed-top" role="navigation">
         <div class="container-fluid">
             <div class="navbar-header">
@@ -28,8 +46,8 @@
                         <div class="col-md-12 text-right">
                             <a class="navbar-brand fa fa-user" href="#">Thông tin cá nhân</a>
                         </div>
+                     </ul>
                 </div>
-                </ul>
             </div>
         </div>
     </nav>
@@ -59,18 +77,19 @@
 				
 				</li>
 			
-                <li ><a href="QLSP.jsp"><em>&nbsp;</em> Quản lý sản phẩm</a></li>
+                <li ><a href="QLSPController"><em>&nbsp;</em> Quản lý sản phẩm</a></li>
                 <li><a href="QLDH.jsp"><em >&nbsp;</em> Quản lý đơn hàng</a></li>
 				<li><a href="QLKH.jsp"><em >&nbsp;</em> Quản lý khách hàng</a></li>
-                <li class="active"><a href="QLTT.jsp"><em ">&nbsp;</em> Quản lý tin tức</a></li>
+				
+                <li class="active" > <a href="QLTTController" ><em >&nbsp;</em> Quản lý tin tức</a></li>
               
                 <li><a href="login-admin.jsp"><em >&nbsp;</em> Đăng xuất</a></li>
           </ul>
     </div>
-    <!--/.sidebar-->
+   
     <div class="col-sm-9 col-sm-offset-3 col-lg-10 col-lg-offset-2 main">
         <div class="row">
-            <H4>
+            <h4>
                 <ol class="breadcrumb">
                     <li><a href="#">
                         <em class="fa fa-home"></em>
@@ -78,7 +97,7 @@
                     </li>
                     <li class="active  " style="color: red">Quản lý tin tức</li>
                 </ol>
-            </H4>
+            </h4>
         </div>
         <!--/.row-->
         <div class="row" style="width: 100%; margin: 0% 0% 0% 0%">
@@ -90,7 +109,8 @@
                 <div class="row " style="width: 100%; margin: 1% 0% 0% 0%; border: 1px">
                     <div class="col-md-12" style="margin: 0px 0px 0px -100px ">
                         <form action="themTT.jsp">
-                            <input id="input-hover" class="col-md-4 col-md-offset-6" type="submit" value="Thêm tin tức" style="height:30px ;width: 180px" />
+                           <!--  <button class="col-md-4 col-md-offset-6" id="input-hover"   type="submit" value="Thêm tin tức"  style="height:30px ;width: 180px">Thêm tin tức</button>-->
+                             <input id="input-hover" class="col-md-4 col-md-offset-6" type="submit" value="Thêm tin tức" style="height:30px ;width: 180px" />
                         </form>
                     </div>
                 </div>
@@ -98,1069 +118,63 @@
         </div>
         <div class="row" style="">
             <div class="col-md-12 ">
-                <form action="#">
+                
                     <div class="table-content ">
-                        <table style="margin-top: 10px; margin-left: 20px">
+                        <table  style="margin-top: 10px; margin-left: 20px;">
                             <thead>
                                 <tr style="">
-                                    <th class="tintuc-anh">Ảnh</th>
+                                    <th class="tintuc-anh">STT</th>
+                                	<th class="tintuc-thaotac">Ảnh</th>
                                     <th class="tintuc-tieude">Tiêu đề</th>
                                     <th class="tintuc-noidung">Nội dung</th>
                                     <th class="tintuc-thaotac">Thao tác</th>
+                                  
                                 </tr>
                             </thead>
                             <tbody>
+                        
+                            <c:forEach items="${listQLTT}" var="tttt" >
                                 <tr>
-                                    <td class="tintuc-anh"><img src="img/giay1.jpg" alt="" style="width: 100px;height: 100px"></td>
+                                    <td class="tintuc-anh"> <h3  style="width: 100%;height: 100px; text-align: center;font-size: 20px"><c:out value="${tttt.getMaTinTuc()}"></c:out> </h3></td>
                                     <td class="tintuc-tieude">
-                                        <textarea name="name" style="width: 100%;height: 100px; text-align: center;">NIKE</textarea>
+                                       <img src="<c:out value="${tttt.getHinhAnh()}"></c:out>" alt="" style="width: 100px;height: 100px">
+                                      
+                                    </td>
+                                    <td class="tintuc-tieude">
+                                      
+                                        <h3  style="width: 100%;height: 100px; text-align: center"><c:out value="${tttt.getTieuDe()}" /> </h3>
                                     </td>
                                     <td class="tintuc-noidung">
-                                        <textarea name="name" style="width: 100%;height: 100px ;text-align: center">giày nè PTT</textarea>
+                                        <h3  style="width: 100%;height: 100px ;text-align: center"><c:out value="${tttt.getNoiDung()}" /> </h3>
                                     </td>
                                     <td class="tintuc-thaotac">
-                                        <div class="row" >
-                                            <a id="a-id" href="#"  data-toggle="modal" data-target="#myModal1" title="">Xóa</a>
-                                            <div class="modal fade" id="myModal1" role="dialog">
-                                                <div class="modal-dialog">
-                                                    <div class="modal-content" style="width: 200%;margin-left: -50%" >
-                                                        <div class="col-md-12">
-                                                            <div class="row panel " style="width: 30%;margin-left: 40%">
-                                                                <form class="panel" style="background-color: white;width: 25%;margin-left: 40%">
-                                                                    <div class="row">
-                                                                        <h4 style="text-align: center;color: red">Xóa tin tức</h4>
-                                                                    </div>
-                                                                </form>
-                                                            </div>
-                                                            <div class="row " style="width: 100%; margin: 0% 0% 0% 0%; border: 1px">
-                                                            </div>
-                                                            <form class="panel" style="background-color: white">
-                                                               <div class="row" style="width: 100%; margin: 0% 0% 0% 0%">
-                                                                    <div class="col-md-12">
-                                                                       
-                                                                        <div class="row " style="width: 100%; margin: 1% 0% 0% 0%; border: 1px">
-                                                                            
-                                                                        </div>
-                                                                        <form class="panel" style="background-color: white">
-                                                                            <div  class="row"style="margin-top: 20px">
-                                                                            <div  class="row"style="margin-top: 10px">
-                                                                                <div class="col-md-1"></div>
-                                                                                <div class="col-md-3">
-                                                                                   <p style="margin-left: 65px;margin-top: 10px">Tên tin tức :</p>
-                                                                                </div>
-                                                                                 <div class=" form-group col-md-7 " style="width: 400px;">
-                                                                                     <textarea name="message" id="Message"  placeholder="Tên tin tức" required=""  class="form-control"></textarea>
-                                                                                </div>
-                                                                                 <div class="col-md-1"></div>
-                                                                            
-                                                                            </div>
-                                                                           
-                                                                            <div  class="row"style="margin-top: 10px">
-                                                                                <div class="col-md-1"></div>
-                                                                                <div class="col-md-3">
-                                                                                   <p style="margin-left: 65px;margin-top: 10px">Tiêu đề:</p>
-                                                                                </div>
-                                                                                <div class=" form-group col-md-7 " style="width: 400px;">
-                                                                                     <textarea name="message" id="Message"  placeholder="Tiêu đề" required=""  class="form-control"></textarea>
-                                                                                </div>
-                                                                                 <div class="col-md-1"></div>
-                                                                            
-                                                                            </div>
-                                                                            <div  class="row"style="margin-top: 10px">
-                                                                                <div class="col-md-1"></div>
-                                                                                <div class="col-md-3" >
-                                                                                   <p style="margin-left: 65px;margin-top: 10px">Nội dung:</p>
-                                                                                </div>
-                                                                                <div class=" form-group col-md-7 " style="width: 500px">
-                                                                                     <textarea name="message" id="Message"  cols="30" rows="10" placeholder="Nội dung" required=""  class="form-control"></textarea>
-                                                                                </div>
-                                                                                 <div class="col-md-1"></div>
-                                                                            
-                                                                            </div>
-                                                                           <div  class="row"style="margin-top: 10px">
-                                                                                <div class="col-md-1"></div>
-                                                                                <div class="col-md-3">
-                                                                                   <p style="margin-left: 65px;margin-top: 5px">Ảnh :</p>
-                                                                                </div>
-                                                                                <div class=" form-group col-md-3">
-                                                                                     <img src="img/nike.jpg" alt="NIKE" style="width: 200px;height: 200px">
-                                                                                </div>
-                                                                                <div class="col-md-2">
-                                                                                    <input type="file" name="" value="" style="width: 350px;height: 30px;background-color: white">
-                                                                                </div>
-                                                                            </div>
-                                                                           <div  class="row"style="margin-top: 10px">
-                                                                            <div class="col-md-6">
-
-                                                                                <form action="QLTT.jsp">
-                                                                                    <button id="input-hover"  class="col-md-4 col-md-offset-8" type="submit" value="Hoàn thành"  style="height:30px ;width: 140px;">Hoàn thành</button>
-                                                                                </form>
-                                                                                
-                                                                            </div>
-                                                                            <div class="col-md-3">
-                                                                                <form action="QLTT.jsp">
-                                                                                    <button id="input-hover"   type="submit" value="Hủy"  style="height:30px ;width: 100px">Quay lại</button>
-                                                                                </form>
-                                                                                 
-                                                                            </div> 
-
-                                                                                
-                                                                        </form>
-                                                                    </div>
-                                                                </div>
-                                                            </div> 
-                                                            </div>
-                                                        </form>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
+                                   
+                                        <div class="row"  >
+                                       <form action="XoaTinTucController?MaTinTuc=<c:out value="${tttt.getMaTinTuc()}"/>" method="Post">
+                                         		<input id="input-hover" style="width: 65px;height: 25px;margin-top: 10px" value="Delete" type="submit">
+											</form>
                                         </div >
                                  
                                         <div class="row" style="margin-top: 5%" >
-                                            <a id="a-id" href="#"  data-toggle="modal" data-target="#myModal2" title="">Sửa</a>
-                                            <div class="modal fade" id="myModal2" role="dialog">
-                                                <div class="modal-dialog">
-                                                    <div class="modal-content" style="width: 200%;margin-left: -50%" >
-                                                        <div class="col-md-12">
-                                                            <div class="row panel " style="width: 30%;margin-left: 40%">
-                                                                <form class="panel" style="background-color: white;width: 50%;margin-left: 25%">
-                                                                    <div class="row">
-                                                                        <h4 style="text-align: center;color: red">Sửa tin tức</h4>
-                                                                    </div>
-                                                                </form>
-                                                            </div>
-                                                            <div class="row " style="width: 100%; margin: 0% 0% 0% 0%; border: 1px">
-                                                            </div>
-                                                            <form class="panel" style="background-color: white">
-                                                               <div class="row" style="width: 100%; margin: 0% 0% 0% 0%">
-                                                                    <div class="col-md-12">
-                                                                       
-                                                                        <div class="row " style="width: 100%; margin: 1% 0% 0% 0%; border: 1px">
-                                                                            
-                                                                        </div>
-                                                                        <form class="panel" style="background-color: white">
-                                                                            <div  class="row"style="margin-top: 20px">
-                                                                            <div  class="row"style="margin-top: 10px">
-                                                                                <div class="col-md-1"></div>
-                                                                                <div class="col-md-3">
-                                                                                   <p style="margin-left: 65px;margin-top: 10px">Tên tin tức :</p>
-                                                                                </div>
-                                                                                 <div class=" form-group col-md-7 " style="width: 400px;">
-                                                                                     <textarea name="message" id="Message"  placeholder="Tên tin tức" required=""  class="form-control"></textarea>
-                                                                                </div>
-                                                                                 <div class="col-md-1"></div>
-                                                                            
-                                                                            </div>
-                                                                           
-                                                                            <div  class="row"style="margin-top: 10px">
-                                                                                <div class="col-md-1"></div>
-                                                                                <div class="col-md-3">
-                                                                                   <p style="margin-left: 65px;margin-top: 10px">Tiêu đề:</p>
-                                                                                </div>
-                                                                                <div class=" form-group col-md-7 " style="width: 400px;">
-                                                                                     <textarea name="message" id="Message"  placeholder="Tiêu đề" required=""  class="form-control"></textarea>
-                                                                                </div>
-                                                                                 <div class="col-md-1"></div>
-                                                                            
-                                                                            </div>
-                                                                            <div  class="row"style="margin-top: 10px">
-                                                                                <div class="col-md-1"></div>
-                                                                                <div class="col-md-3" >
-                                                                                   <p style="margin-left: 65px;margin-top: 10px">Nội dung:</p>
-                                                                                </div>
-                                                                                <div class=" form-group col-md-7 " style="width: 500px">
-                                                                                     <textarea name="message" id="Message"  cols="30" rows="10" placeholder="Nội dung" required=""  class="form-control"></textarea>
-                                                                                </div>
-                                                                                 <div class="col-md-1"></div>
-                                                                            
-                                                                            </div>
-                                                                           <div  class="row"style="margin-top: 10px">
-                                                                                <div class="col-md-1"></div>
-                                                                                <div class="col-md-3">
-                                                                                   <p style="margin-left: 65px;margin-top: 5px">Ảnh :</p>
-                                                                                </div>
-                                                                                <div class=" form-group col-md-3">
-                                                                                     <img src="img/nike.jpg" alt="NIKE" style="width: 200px;height: 200px">
-                                                                                </div>
-                                                                                <div class="col-md-2">
-                                                                                    <input type="file" name="" value="" style="width: 350px;height: 30px;background-color: white">
-                                                                                </div>
-                                                                            </div>
-                                                                           <div  class="row"style="margin-top: 10px">
-                                                                            <div class="col-md-6">
-
-                                                                                <form action="QLTT.jsp">
-                                                                                    <button id="input-hover"  class="col-md-4 col-md-offset-8" type="submit" value="Hoàn thành"  style="height:30px ;width: 140px;">Hoàn thành</button>
-                                                                                </form>
-                                                                                
-                                                                            </div>
-                                                                            <div class="col-md-3">
-                                                                                <form action="QLTT.jsp">
-                                                                                    <button id="input-hover"   type="submit" value="Hủy"  style="height:30px ;width: 100px">Quay lại</button>
-                                                                                </form>
-                                                                                 
-                                                                            </div> 
-
-                                                                                
-                                                                        </form>
-                                                                    </div>
-                                                                </div>
-                                                            </div> 
-                                                            </div>
-                                                        </form>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
+                                      		 <form action="SuaTinTucController?MaTinTuc=<c:out value="${tttt.getMaTinTuc()}"/>" method="Post">
+                                      			<input   id="input-hover" style="width: 80px;height: 25px;margin-top: 10px" type="submit" value="Update"> 
+                                        	</form>
+                                        	
                                         </div >
-                                        <div style="margin-top: 5%">
-                                            <a id="a-id" href="single-blog.jsp">Xem</a>
+                                        <div class="row" style="margin-top: 5%">
+                                       
+                                            <input id="input-hover" value="Xem" type="submit" style="width: 50px;height: 25px;margin-top: 10px">
+                                           
                                         </div>
                                     </td>
                                 </tr>
-                                <tr>
-                                    <td class="tintuc-anh"><img src="img/giay1.jpg" alt="" style="width: 100px;height: 100px"></td>
-                                    <td class="tintuc-tieude">
-                                        <textarea name="name" style="width: 100%;height: 100px; text-align: center;">NIKE</textarea>
-                                    </td>
-                                    <td class="tintuc-noidung">
-                                        <textarea name="name" style="width: 100%;height: 100px ;text-align: center">giày nè PTT</textarea>
-                                    </td>
-                                   <td class="tintuc-thaotac">
-                                        <div class="row" >
-                                            <a id="a-id" href="#"  data-toggle="modal" data-target="#myModal1" title="">Xóa</a>
-                                            <div class="modal fade" id="myModal1" role="dialog">
-                                                <div class="modal-dialog">
-                                                    <div class="modal-content" style="width: 200%;margin-left: -50%" >
-                                                        <div class="col-md-12">
-                                                            <div class="row panel " style="width: 30%;margin-left: 40%">
-                                                                <form class="panel" style="background-color: white;width: 25%;margin-left: 40%">
-                                                                    <div class="row">
-                                                                        <h4 style="text-align: center;color: red">Xóa tin tức</h4>
-                                                                    </div>
-                                                                </form>
-                                                            </div>
-                                                            <div class="row " style="width: 100%; margin: 0% 0% 0% 0%; border: 1px">
-                                                            </div>
-                                                            <form class="panel" style="background-color: white">
-                                                               <div class="row" style="width: 100%; margin: 0% 0% 0% 0%">
-                                                                    <div class="col-md-12">
-                                                                       
-                                                                        <div class="row " style="width: 100%; margin: 1% 0% 0% 0%; border: 1px">
-                                                                            
-                                                                        </div>
-                                                                        <form class="panel" style="background-color: white">
-                                                                            <div  class="row"style="margin-top: 20px">
-                                                                            <div  class="row"style="margin-top: 10px">
-                                                                                <div class="col-md-1"></div>
-                                                                                <div class="col-md-3">
-                                                                                   <p style="margin-left: 65px;margin-top: 10px">Tên tin tức :</p>
-                                                                                </div>
-                                                                                 <div class=" form-group col-md-7 " style="width: 400px;">
-                                                                                     <textarea name="message" id="Message"  placeholder="Tên tin tức" required=""  class="form-control"></textarea>
-                                                                                </div>
-                                                                                 <div class="col-md-1"></div>
-                                                                            
-                                                                            </div>
-                                                                           
-                                                                            <div  class="row"style="margin-top: 10px">
-                                                                                <div class="col-md-1"></div>
-                                                                                <div class="col-md-3">
-                                                                                   <p style="margin-left: 65px;margin-top: 10px">Tiêu đề:</p>
-                                                                                </div>
-                                                                                <div class=" form-group col-md-7 " style="width: 400px;">
-                                                                                     <textarea name="message" id="Message"  placeholder="Tiêu đề" required=""  class="form-control"></textarea>
-                                                                                </div>
-                                                                                 <div class="col-md-1"></div>
-                                                                            
-                                                                            </div>
-                                                                            <div  class="row"style="margin-top: 10px">
-                                                                                <div class="col-md-1"></div>
-                                                                                <div class="col-md-3" >
-                                                                                   <p style="margin-left: 65px;margin-top: 10px">Nội dung:</p>
-                                                                                </div>
-                                                                                <div class=" form-group col-md-7 " style="width: 500px">
-                                                                                     <textarea name="message" id="Message"  cols="30" rows="10" placeholder="Nội dung" required=""  class="form-control"></textarea>
-                                                                                </div>
-                                                                                 <div class="col-md-1"></div>
-                                                                            
-                                                                            </div>
-                                                                           <div  class="row"style="margin-top: 10px">
-                                                                                <div class="col-md-1"></div>
-                                                                                <div class="col-md-3">
-                                                                                   <p style="margin-left: 65px;margin-top: 5px">Ảnh :</p>
-                                                                                </div>
-                                                                                <div class=" form-group col-md-3">
-                                                                                     <img src="img/nike.jpg" alt="NIKE" style="width: 200px;height: 200px">
-                                                                                </div>
-                                                                                <div class="col-md-2">
-                                                                                    <input type="file" name="" value="" style="width: 350px;height: 30px;background-color: white">
-                                                                                </div>
-                                                                            </div>
-                                                                           <div  class="row"style="margin-top: 10px">
-                                                                            <div class="col-md-6">
-
-                                                                                <form action="QLTT.jsp">
-                                                                                    <button id="input-hover"  class="col-md-4 col-md-offset-8" type="submit" value="Hoàn thành"  style="height:30px ;width: 140px;">Hoàn thành</button>
-                                                                                </form>
-                                                                                
-                                                                            </div>
-                                                                            <div class="col-md-3">
-                                                                                <form action="QLTT.jsp">
-                                                                                    <button id="input-hover"   type="submit" value="Hủy"  style="height:30px ;width: 100px">Quay lại</button>
-                                                                                </form>
-                                                                                 
-                                                                            </div> 
-
-                                                                                
-                                                                        </form>
-                                                                    </div>
-                                                                </div>
-                                                            </div> 
-                                                            </div>
-                                                        </form>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div >
-                                 
-                                        <div class="row" style="margin-top: 5%" >
-                                            <a id="a-id" href="#"  data-toggle="modal" data-target="#myModal2" title="">Sửa</a>
-                                            <div class="modal fade" id="myModal2" role="dialog">
-                                                <div class="modal-dialog">
-                                                    <div class="modal-content" style="width: 200%;margin-left: -50%" >
-                                                        <div class="col-md-12">
-                                                            <div class="row panel " style="width: 30%;margin-left: 40%">
-                                                                <form class="panel" style="background-color: white;width: 50%;margin-left: 25%">
-                                                                    <div class="row">
-                                                                        <h4 style="text-align: center;color: red">Sửa tin tức</h4>
-                                                                    </div>
-                                                                </form>
-                                                            </div>
-                                                            <div class="row " style="width: 100%; margin: 0% 0% 0% 0%; border: 1px">
-                                                            </div>
-                                                            <form class="panel" style="background-color: white">
-                                                               <div class="row" style="width: 100%; margin: 0% 0% 0% 0%">
-                                                                    <div class="col-md-12">
-                                                                       
-                                                                        <div class="row " style="width: 100%; margin: 1% 0% 0% 0%; border: 1px">
-                                                                            
-                                                                        </div>
-                                                                        <form class="panel" style="background-color: white">
-                                                                            <div  class="row"style="margin-top: 20px">
-                                                                            <div  class="row"style="margin-top: 10px">
-                                                                                <div class="col-md-1"></div>
-                                                                                <div class="col-md-3">
-                                                                                   <p style="margin-left: 65px;margin-top: 10px">Tên tin tức :</p>
-                                                                                </div>
-                                                                                 <div class=" form-group col-md-7 " style="width: 400px;">
-                                                                                     <textarea name="message" id="Message"  placeholder="Tên tin tức" required=""  class="form-control"></textarea>
-                                                                                </div>
-                                                                                 <div class="col-md-1"></div>
-                                                                            
-                                                                            </div>
-                                                                           
-                                                                            <div  class="row"style="margin-top: 10px">
-                                                                                <div class="col-md-1"></div>
-                                                                                <div class="col-md-3">
-                                                                                   <p style="margin-left: 65px;margin-top: 10px">Tiêu đề:</p>
-                                                                                </div>
-                                                                                <div class=" form-group col-md-7 " style="width: 400px;">
-                                                                                     <textarea name="message" id="Message"  placeholder="Tiêu đề" required=""  class="form-control"></textarea>
-                                                                                </div>
-                                                                                 <div class="col-md-1"></div>
-                                                                            
-                                                                            </div>
-                                                                            <div  class="row"style="margin-top: 10px">
-                                                                                <div class="col-md-1"></div>
-                                                                                <div class="col-md-3" >
-                                                                                   <p style="margin-left: 65px;margin-top: 10px">Nội dung:</p>
-                                                                                </div>
-                                                                                <div class=" form-group col-md-7 " style="width: 500px">
-                                                                                     <textarea name="message" id="Message"  cols="30" rows="10" placeholder="Nội dung" required=""  class="form-control"></textarea>
-                                                                                </div>
-                                                                                 <div class="col-md-1"></div>
-                                                                            
-                                                                            </div>
-                                                                           <div  class="row"style="margin-top: 10px">
-                                                                                <div class="col-md-1"></div>
-                                                                                <div class="col-md-3">
-                                                                                   <p style="margin-left: 65px;margin-top: 5px">Ảnh :</p>
-                                                                                </div>
-                                                                                <div class=" form-group col-md-3">
-                                                                                     <img src="img/nike.jpg" alt="NIKE" style="width: 200px;height: 200px">
-                                                                                </div>
-                                                                                <div class="col-md-2">
-                                                                                    <input type="file" name="" value="" style="width: 350px;height: 30px;background-color: white">
-                                                                                </div>
-                                                                            </div>
-                                                                           <div  class="row"style="margin-top: 10px">
-                                                                            <div class="col-md-6">
-
-                                                                                <form action="QLTT.jsp">
-                                                                                    <button id="input-hover"  class="col-md-4 col-md-offset-8" type="submit" value="Hoàn thành"  style="height:30px ;width: 140px;">Hoàn thành</button>
-                                                                                </form>
-                                                                                
-                                                                            </div>
-                                                                            <div class="col-md-3">
-                                                                                <form action="QLTT.jsp">
-                                                                                    <button id="input-hover"   type="submit" value="Hủy"  style="height:30px ;width: 100px">Quay lại</button>
-                                                                                </form>
-                                                                                 
-                                                                            </div> 
-
-                                                                                
-                                                                        </form>
-                                                                    </div>
-                                                                </div>
-                                                            </div> 
-                                                            </div>
-                                                        </form>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div >
-                                        <div style="margin-top: 5%">
-                                            <a id="a-id" href="single-blog">Xem</a>
-                                        </div>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td class="tintuc-anh"><img src="img/giay1.jpg" alt="" style="width: 100px;height: 100px"></td>
-                                    <td class="tintuc-tieude">
-                                        <textarea name="name" style="width: 100%;height: 100px; text-align: center;">NIKE</textarea>
-                                    </td>
-                                    <td class="tintuc-noidung">
-                                        <textarea name="name" style="width: 100%;height: 100px ;text-align: center">giày nè PTT</textarea>
-                                    </td>
-                                    <td class="tintuc-thaotac">
-                                        <div class="row" >
-                                            <a id="a-id" href="#"  data-toggle="modal" data-target="#myModal1" title="">Xóa</a>
-                                            <div class="modal fade" id="myModal1" role="dialog">
-                                                <div class="modal-dialog">
-                                                    <div class="modal-content" style="width: 200%;margin-left: -50%" >
-                                                        <div class="col-md-12">
-                                                            <div class="row panel " style="width: 30%;margin-left: 40%">
-                                                                <form class="panel" style="background-color: white;width: 25%;margin-left: 40%">
-                                                                    <div class="row">
-                                                                        <h4 style="text-align: center;color: red">Xóa tin tức</h4>
-                                                                    </div>
-                                                                </form>
-                                                            </div>
-                                                            <div class="row " style="width: 100%; margin: 0% 0% 0% 0%; border: 1px">
-                                                            </div>
-                                                            <form class="panel" style="background-color: white">
-                                                               <div class="row" style="width: 100%; margin: 0% 0% 0% 0%">
-                                                                    <div class="col-md-12">
-                                                                       
-                                                                        <div class="row " style="width: 100%; margin: 1% 0% 0% 0%; border: 1px">
-                                                                            
-                                                                        </div>
-                                                                        <form class="panel" style="background-color: white">
-                                                                            <div  class="row"style="margin-top: 20px">
-                                                                            <div  class="row"style="margin-top: 10px">
-                                                                                <div class="col-md-1"></div>
-                                                                                <div class="col-md-3">
-                                                                                   <p style="margin-left: 65px;margin-top: 10px">Tên tin tức :</p>
-                                                                                </div>
-                                                                                 <div class=" form-group col-md-7 " style="width: 400px;">
-                                                                                     <textarea name="message" id="Message"  placeholder="Tên tin tức" required=""  class="form-control"></textarea>
-                                                                                </div>
-                                                                                 <div class="col-md-1"></div>
-                                                                            
-                                                                            </div>
-                                                                           
-                                                                            <div  class="row"style="margin-top: 10px">
-                                                                                <div class="col-md-1"></div>
-                                                                                <div class="col-md-3">
-                                                                                   <p style="margin-left: 65px;margin-top: 10px">Tiêu đề:</p>
-                                                                                </div>
-                                                                                <div class=" form-group col-md-7 " style="width: 400px;">
-                                                                                     <textarea name="message" id="Message"  placeholder="Tiêu đề" required=""  class="form-control"></textarea>
-                                                                                </div>
-                                                                                 <div class="col-md-1"></div>
-                                                                            
-                                                                            </div>
-                                                                            <div  class="row"style="margin-top: 10px">
-                                                                                <div class="col-md-1"></div>
-                                                                                <div class="col-md-3" >
-                                                                                   <p style="margin-left: 65px;margin-top: 10px">Nội dung:</p>
-                                                                                </div>
-                                                                                <div class=" form-group col-md-7 " style="width: 500px">
-                                                                                     <textarea name="message" id="Message"  cols="30" rows="10" placeholder="Nội dung" required=""  class="form-control"></textarea>
-                                                                                </div>
-                                                                                 <div class="col-md-1"></div>
-                                                                            
-                                                                            </div>
-                                                                           <div  class="row"style="margin-top: 10px">
-                                                                                <div class="col-md-1"></div>
-                                                                                <div class="col-md-3">
-                                                                                   <p style="margin-left: 65px;margin-top: 5px">Ảnh :</p>
-                                                                                </div>
-                                                                                <div class=" form-group col-md-3">
-                                                                                     <img src="img/nike.jpg" alt="NIKE" style="width: 200px;height: 200px">
-                                                                                </div>
-                                                                                <div class="col-md-2">
-                                                                                    <input type="file" name="" value="" style="width: 350px;height: 30px;background-color: white">
-                                                                                </div>
-                                                                            </div>
-                                                                           <div  class="row"style="margin-top: 10px">
-                                                                            <div class="col-md-6">
-
-                                                                                <form action="QLTT.jsp">
-                                                                                    <button id="input-hover"  class="col-md-4 col-md-offset-8" type="submit" value="Hoàn thành"  style="height:30px ;width: 140px;">Hoàn thành</button>
-                                                                                </form>
-                                                                                
-                                                                            </div>
-                                                                            <div class="col-md-3">
-                                                                                <form action="QLTT.jsp">
-                                                                                    <button id="input-hover"   type="submit" value="Hủy"  style="height:30px ;width: 100px">Quay lại</button>
-                                                                                </form>
-                                                                                 
-                                                                            </div> 
-
-                                                                                
-                                                                        </form>
-                                                                    </div>
-                                                                </div>
-                                                            </div> 
-                                                            </div>
-                                                        </form>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div >
-                                 
-                                        <div class="row" style="margin-top: 5%" >
-                                            <a id="a-id" href="#"  data-toggle="modal" data-target="#myModal2" title="">Sửa</a>
-                                            <div class="modal fade" id="myModal2" role="dialog">
-                                                <div class="modal-dialog">
-                                                    <div class="modal-content" style="width: 200%;margin-left: -50%" >
-                                                        <div class="col-md-12">
-                                                            <div class="row panel " style="width: 30%;margin-left: 40%">
-                                                                <form class="panel" style="background-color: white;width: 50%;margin-left: 25%">
-                                                                    <div class="row">
-                                                                        <h4 style="text-align: center;color: red">Sửa tin tức</h4>
-                                                                    </div>
-                                                                </form>
-                                                            </div>
-                                                            <div class="row " style="width: 100%; margin: 0% 0% 0% 0%; border: 1px">
-                                                            </div>
-                                                            <form class="panel" style="background-color: white">
-                                                               <div class="row" style="width: 100%; margin: 0% 0% 0% 0%">
-                                                                    <div class="col-md-12">
-                                                                       
-                                                                        <div class="row " style="width: 100%; margin: 1% 0% 0% 0%; border: 1px">
-                                                                            
-                                                                        </div>
-                                                                        <form class="panel" style="background-color: white">
-                                                                            <div  class="row"style="margin-top: 20px">
-                                                                            <div  class="row"style="margin-top: 10px">
-                                                                                <div class="col-md-1"></div>
-                                                                                <div class="col-md-3">
-                                                                                   <p style="margin-left: 65px;margin-top: 10px">Tên tin tức :</p>
-                                                                                </div>
-                                                                                 <div class=" form-group col-md-7 " style="width: 400px;">
-                                                                                     <textarea name="message" id="Message"  placeholder="Tên tin tức" required=""  class="form-control"></textarea>
-                                                                                </div>
-                                                                                 <div class="col-md-1"></div>
-                                                                            
-                                                                            </div>
-                                                                           
-                                                                            <div  class="row"style="margin-top: 10px">
-                                                                                <div class="col-md-1"></div>
-                                                                                <div class="col-md-3">
-                                                                                   <p style="margin-left: 65px;margin-top: 10px">Tiêu đề:</p>
-                                                                                </div>
-                                                                                <div class=" form-group col-md-7 " style="width: 400px;">
-                                                                                     <textarea name="message" id="Message"  placeholder="Tiêu đề" required=""  class="form-control"></textarea>
-                                                                                </div>
-                                                                                 <div class="col-md-1"></div>
-                                                                            
-                                                                            </div>
-                                                                            <div  class="row"style="margin-top: 10px">
-                                                                                <div class="col-md-1"></div>
-                                                                                <div class="col-md-3" >
-                                                                                   <p style="margin-left: 65px;margin-top: 10px">Nội dung:</p>
-                                                                                </div>
-                                                                                <div class=" form-group col-md-7 " style="width: 500px">
-                                                                                     <textarea name="message" id="Message"  cols="30" rows="10" placeholder="Nội dung" required=""  class="form-control"></textarea>
-                                                                                </div>
-                                                                                 <div class="col-md-1"></div>
-                                                                            
-                                                                            </div>
-                                                                           <div  class="row"style="margin-top: 10px">
-                                                                                <div class="col-md-1"></div>
-                                                                                <div class="col-md-3">
-                                                                                   <p style="margin-left: 65px;margin-top: 5px">Ảnh :</p>
-                                                                                </div>
-                                                                                <div class=" form-group col-md-3">
-                                                                                     <img src="img/nike.jpg" alt="NIKE" style="width: 200px;height: 200px">
-                                                                                </div>
-                                                                                <div class="col-md-2">
-                                                                                    <input type="file" name="" value="" style="width: 350px;height: 30px;background-color: white">
-                                                                                </div>
-                                                                            </div>
-                                                                           <div  class="row"style="margin-top: 10px">
-                                                                            <div class="col-md-6">
-
-                                                                                <form action="QLTT.jsp">
-                                                                                    <button id="input-hover"  class="col-md-4 col-md-offset-8" type="submit" value="Hoàn thành"  style="height:30px ;width: 140px;">Hoàn thành</button>
-                                                                                </form>
-                                                                                
-                                                                            </div>
-                                                                            <div class="col-md-3">
-                                                                                <form action="QLTT.jsp">
-                                                                                    <button id="input-hover"   type="submit" value="Hủy"  style="height:30px ;width: 100px">Quay lại</button>
-                                                                                </form>
-                                                                                 
-                                                                            </div> 
-
-                                                                                
-                                                                        </form>
-                                                                    </div>
-                                                                </div>
-                                                            </div> 
-                                                            </div>
-                                                        </form>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div >
-                                        <div style="margin-top: 5%">
-                                            <a id="a-id" href="single-blog">Xem</a>
-                                        </div>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td class="tintuc-anh"><img src="img/giay1.jpg" alt="" style="width: 100px;height: 100px"></td>
-                                    <td class="tintuc-tieude">
-                                        <textarea name="name" style="width: 100%;height: 100px; text-align: center;">NIKE</textarea>
-                                    </td>
-                                    <td class="tintuc-noidung">
-                                        <textarea name="name" style="width: 100%;height: 100px ;text-align: center">giày nè PTT</textarea>
-                                    </td>
-                                    <td class="tintuc-thaotac">
-                                        <div class="row" >
-                                            <a id="a-id" href="#"  data-toggle="modal" data-target="#myModal1" title="">Xóa</a>
-                                            <div class="modal fade" id="myModal1" role="dialog">
-                                                <div class="modal-dialog">
-                                                    <div class="modal-content" style="width: 200%;margin-left: -50%" >
-                                                        <div class="col-md-12">
-                                                            <div class="row panel " style="width: 30%;margin-left: 40%">
-                                                                <form class="panel" style="background-color: white;width: 25%;margin-left: 40%">
-                                                                    <div class="row">
-                                                                        <h4 style="text-align: center;color: red">Xóa tin tức</h4>
-                                                                    </div>
-                                                                </form>
-                                                            </div>
-                                                            <div class="row " style="width: 100%; margin: 0% 0% 0% 0%; border: 1px">
-                                                            </div>
-                                                            <form class="panel" style="background-color: white">
-                                                               <div class="row" style="width: 100%; margin: 0% 0% 0% 0%">
-                                                                    <div class="col-md-12">
-                                                                       
-                                                                        <div class="row " style="width: 100%; margin: 1% 0% 0% 0%; border: 1px">
-                                                                            
-                                                                        </div>
-                                                                        <form class="panel" style="background-color: white">
-                                                                            <div  class="row"style="margin-top: 20px">
-                                                                            <div  class="row"style="margin-top: 10px">
-                                                                                <div class="col-md-1"></div>
-                                                                                <div class="col-md-3">
-                                                                                   <p style="margin-left: 65px;margin-top: 10px">Tên tin tức :</p>
-                                                                                </div>
-                                                                                 <div class=" form-group col-md-7 " style="width: 400px;">
-                                                                                     <textarea name="message" id="Message"  placeholder="Tên tin tức" required=""  class="form-control"></textarea>
-                                                                                </div>
-                                                                                 <div class="col-md-1"></div>
-                                                                            
-                                                                            </div>
-                                                                           
-                                                                            <div  class="row"style="margin-top: 10px">
-                                                                                <div class="col-md-1"></div>
-                                                                                <div class="col-md-3">
-                                                                                   <p style="margin-left: 65px;margin-top: 10px">Tiêu đề:</p>
-                                                                                </div>
-                                                                                <div class=" form-group col-md-7 " style="width: 400px;">
-                                                                                     <textarea name="message" id="Message"  placeholder="Tiêu đề" required=""  class="form-control"></textarea>
-                                                                                </div>
-                                                                                 <div class="col-md-1"></div>
-                                                                            
-                                                                            </div>
-                                                                            <div  class="row"style="margin-top: 10px">
-                                                                                <div class="col-md-1"></div>
-                                                                                <div class="col-md-3" >
-                                                                                   <p style="margin-left: 65px;margin-top: 10px">Nội dung:</p>
-                                                                                </div>
-                                                                                <div class=" form-group col-md-7 " style="width: 500px">
-                                                                                     <textarea name="message" id="Message"  cols="30" rows="10" placeholder="Nội dung" required=""  class="form-control"></textarea>
-                                                                                </div>
-                                                                                 <div class="col-md-1"></div>
-                                                                            
-                                                                            </div>
-                                                                           <div  class="row"style="margin-top: 10px">
-                                                                                <div class="col-md-1"></div>
-                                                                                <div class="col-md-3">
-                                                                                   <p style="margin-left: 65px;margin-top: 5px">Ảnh :</p>
-                                                                                </div>
-                                                                                <div class=" form-group col-md-3">
-                                                                                     <img src="img/nike.jpg" alt="NIKE" style="width: 200px;height: 200px">
-                                                                                </div>
-                                                                                <div class="col-md-2">
-                                                                                    <input type="file" name="" value="" style="width: 350px;height: 30px;background-color: white">
-                                                                                </div>
-                                                                            </div>
-                                                                           <div  class="row"style="margin-top: 10px">
-                                                                            <div class="col-md-6">
-
-                                                                                <form action="QLTT.jsp">
-                                                                                    <button id="input-hover"  class="col-md-4 col-md-offset-8" type="submit" value="Hoàn thành"  style="height:30px ;width: 140px;">Hoàn thành</button>
-                                                                                </form>
-                                                                                
-                                                                            </div>
-                                                                            <div class="col-md-3">
-                                                                                <form action="QLTT.jsp">
-                                                                                    <button id="input-hover"   type="submit" value="Hủy"  style="height:30px ;width: 100px">Quay lại</button>
-                                                                                </form>
-                                                                                 
-                                                                            </div> 
-
-                                                                                
-                                                                        </form>
-                                                                    </div>
-                                                                </div>
-                                                            </div> 
-                                                            </div>
-                                                        </form>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div >
-                                 
-                                        <div class="row" style="margin-top: 5%" >
-                                            <a id="a-id" href="#"  data-toggle="modal" data-target="#myModal2" title="">Sửa</a>
-                                            <div class="modal fade" id="myModal2" role="dialog">
-                                                <div class="modal-dialog">
-                                                    <div class="modal-content" style="width: 200%;margin-left: -50%" >
-                                                        <div class="col-md-12">
-                                                            <div class="row panel " style="width: 30%;margin-left: 40%">
-                                                                <form class="panel" style="background-color: white;width: 50%;margin-left: 25%">
-                                                                    <div class="row">
-                                                                        <h4 style="text-align: center;color: red">Sửa tin tức</h4>
-                                                                    </div>
-                                                                </form>
-                                                            </div>
-                                                            <div class="row " style="width: 100%; margin: 0% 0% 0% 0%; border: 1px">
-                                                            </div>
-                                                            <form class="panel" style="background-color: white">
-                                                               <div class="row" style="width: 100%; margin: 0% 0% 0% 0%">
-                                                                    <div class="col-md-12">
-                                                                       
-                                                                        <div class="row " style="width: 100%; margin: 1% 0% 0% 0%; border: 1px">
-                                                                            
-                                                                        </div>
-                                                                        <form class="panel" style="background-color: white">
-                                                                            <div  class="row"style="margin-top: 20px">
-                                                                            <div  class="row"style="margin-top: 10px">
-                                                                                <div class="col-md-1"></div>
-                                                                                <div class="col-md-3">
-                                                                                   <p style="margin-left: 65px;margin-top: 10px">Tên tin tức :</p>
-                                                                                </div>
-                                                                                 <div class=" form-group col-md-7 " style="width: 400px;">
-                                                                                     <textarea name="message" id="Message"  placeholder="Tên tin tức" required=""  class="form-control"></textarea>
-                                                                                </div>
-                                                                                 <div class="col-md-1"></div>
-                                                                            
-                                                                            </div>
-                                                                           
-                                                                            <div  class="row"style="margin-top: 10px">
-                                                                                <div class="col-md-1"></div>
-                                                                                <div class="col-md-3">
-                                                                                   <p style="margin-left: 65px;margin-top: 10px">Tiêu đề:</p>
-                                                                                </div>
-                                                                                <div class=" form-group col-md-7 " style="width: 400px;">
-                                                                                     <textarea name="message" id="Message"  placeholder="Tiêu đề" required=""  class="form-control"></textarea>
-                                                                                </div>
-                                                                                 <div class="col-md-1"></div>
-                                                                            
-                                                                            </div>
-                                                                            <div  class="row"style="margin-top: 10px">
-                                                                                <div class="col-md-1"></div>
-                                                                                <div class="col-md-3" >
-                                                                                   <p style="margin-left: 65px;margin-top: 10px">Nội dung:</p>
-                                                                                </div>
-                                                                                <div class=" form-group col-md-7 " style="width: 500px">
-                                                                                     <textarea name="message" id="Message"  cols="30" rows="10" placeholder="Nội dung" required=""  class="form-control"></textarea>
-                                                                                </div>
-                                                                                 <div class="col-md-1"></div>
-                                                                            
-                                                                            </div>
-                                                                           <div  class="row"style="margin-top: 10px">
-                                                                                <div class="col-md-1"></div>
-                                                                                <div class="col-md-3">
-                                                                                   <p style="margin-left: 65px;margin-top: 5px">Ảnh :</p>
-                                                                                </div>
-                                                                                <div class=" form-group col-md-3">
-                                                                                     <img src="img/nike.jpg" alt="NIKE" style="width: 200px;height: 200px">
-                                                                                </div>
-                                                                                <div class="col-md-2">
-                                                                                    <input type="file" name="" value="" style="width: 350px;height: 30px;background-color: white">
-                                                                                </div>
-                                                                            </div>
-                                                                           <div  class="row"style="margin-top: 10px">
-                                                                            <div class="col-md-6">
-
-                                                                                <form action="QLTT.jsp">
-                                                                                    <button id="input-hover"  class="col-md-4 col-md-offset-8" type="submit" value="Hoàn thành"  style="height:30px ;width: 140px;">Hoàn thành</button>
-                                                                                </form>
-                                                                                
-                                                                            </div>
-                                                                            <div class="col-md-3">
-                                                                                <form action="QLTT.jsp">
-                                                                                    <button id="input-hover"   type="submit" value="Hủy"  style="height:30px ;width: 100px">Quay lại</button>
-                                                                                </form>
-                                                                                 
-                                                                            </div> 
-
-                                                                                
-                                                                        </form>
-                                                                    </div>
-                                                                </div>
-                                                            </div> 
-                                                            </div>
-                                                        </form>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div >
-                                        <div style="margin-top: 5%">
-                                            <a id="a-id" href="single-blog">Xem</a>
-                                        </div>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td class="tintuc-anh"><img src="img/giay1.jpg" alt="" style="width: 25%x;height: 12.5%"></td>
-                                    <td class="tintuc-tieude">
-                                        <textarea name="name" style="width: 100%;height: 100px; text-align: center;">NIKE</textarea>
-                                    </td>
-                                    <td class="tintuc-noidung">
-                                        <textarea name="name" style="width: 100%;height: 100px ;text-align: center">giày nè PTT</textarea>
-                                    </td>
-                                    <td class="tintuc-thaotac">
-                                        <div class="row" >
-                                            <a id="a-id" href="#"  data-toggle="modal" data-target="#myModal1" title="">Xóa</a>
-                                            <div class="modal fade" id="myModal1" role="dialog">
-                                                <div class="modal-dialog">
-                                                    <div class="modal-content" style="width: 200%;margin-left: -50%" >
-                                                        <div class="col-md-12">
-                                                            <div class="row panel " style="width: 30%;margin-left: 40%">
-                                                                <form class="panel" style="background-color: white;width: 25%;margin-left: 40%">
-                                                                    <div class="row">
-                                                                        <h4 style="text-align: center;color: red">Xóa tin tức</h4>
-                                                                    </div>
-                                                                </form>
-                                                            </div>
-                                                            <div class="row " style="width: 100%; margin: 0% 0% 0% 0%; border: 1px">
-                                                            </div>
-                                                            <form class="panel" style="background-color: white">
-                                                               <div class="row" style="width: 100%; margin: 0% 0% 0% 0%">
-                                                                    <div class="col-md-12">
-                                                                       
-                                                                        <div class="row " style="width: 100%; margin: 1% 0% 0% 0%; border: 1px">
-                                                                            
-                                                                        </div>
-                                                                        <form class="panel" style="background-color: white">
-                                                                            <div  class="row"style="margin-top: 20px">
-                                                                            <div  class="row"style="margin-top: 10px">
-                                                                                <div class="col-md-1"></div>
-                                                                                <div class="col-md-3">
-                                                                                   <p style="margin-left: 65px;margin-top: 10px">Tên tin tức :</p>
-                                                                                </div>
-                                                                                 <div class=" form-group col-md-7 " style="width: 400px;">
-                                                                                     <textarea name="message" id="Message"  placeholder="Tên tin tức" required=""  class="form-control"></textarea>
-                                                                                </div>
-                                                                                 <div class="col-md-1"></div>
-                                                                            
-                                                                            </div>
-                                                                           
-                                                                            <div  class="row"style="margin-top: 10px">
-                                                                                <div class="col-md-1"></div>
-                                                                                <div class="col-md-3">
-                                                                                   <p style="margin-left: 65px;margin-top: 10px">Tiêu đề:</p>
-                                                                                </div>
-                                                                                <div class=" form-group col-md-7 " style="width: 400px;">
-                                                                                     <textarea name="message" id="Message"  placeholder="Tiêu đề" required=""  class="form-control"></textarea>
-                                                                                </div>
-                                                                                 <div class="col-md-1"></div>
-                                                                            
-                                                                            </div>
-                                                                            <div  class="row"style="margin-top: 10px">
-                                                                                <div class="col-md-1"></div>
-                                                                                <div class="col-md-3" >
-                                                                                   <p style="margin-left: 65px;margin-top: 10px">Nội dung:</p>
-                                                                                </div>
-                                                                                <div class=" form-group col-md-7 " style="width: 500px">
-                                                                                     <textarea name="message" id="Message"  cols="30" rows="10" placeholder="Nội dung" required=""  class="form-control"></textarea>
-                                                                                </div>
-                                                                                 <div class="col-md-1"></div>
-                                                                            
-                                                                            </div>
-                                                                           <div  class="row"style="margin-top: 10px">
-                                                                                <div class="col-md-1"></div>
-                                                                                <div class="col-md-3">
-                                                                                   <p style="margin-left: 65px;margin-top: 5px">Ảnh :</p>
-                                                                                </div>
-                                                                                <div class=" form-group col-md-3">
-                                                                                     <img src="img/nike.jpg" alt="NIKE" style="width: 200px;height: 200px">
-                                                                                </div>
-                                                                                <div class="col-md-2">
-                                                                                    <input type="file" name="" value="" style="width: 350px;height: 30px;background-color: white">
-                                                                                </div>
-                                                                            </div>
-                                                                           <div  class="row"style="margin-top: 10px">
-                                                                            <div class="col-md-6">
-
-                                                                                <form action="QLTT.jsp">
-                                                                                    <button id="input-hover"  class="col-md-4 col-md-offset-8" type="submit" value="Hoàn thành"  style="height:30px ;width: 140px;">Hoàn thành</button>
-                                                                                </form>
-                                                                                
-                                                                            </div>
-                                                                            <div class="col-md-3">
-                                                                                <form action="QLTT.jsp">
-                                                                                    <button id="input-hover"   type="submit" value="Hủy"  style="height:30px ;width: 100px">Quay lại</button>
-                                                                                </form>
-                                                                                 
-                                                                            </div> 
-
-                                                                                
-                                                                        </form>
-                                                                    </div>
-                                                                </div>
-                                                            </div> 
-                                                            </div>
-                                                        </form>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div >
-                                 
-                                        <div class="row" style="margin-top: 5%" >
-                                            <a id="a-id" href="#"  data-toggle="modal" data-target="#myModal2" title="">Sửa</a>
-                                            <div class="modal fade" id="myModal2" role="dialog">
-                                                <div class="modal-dialog">
-                                                    <div class="modal-content" style="width: 200%;margin-left: -50%" >
-                                                        <div class="col-md-12">
-                                                            <div class="row panel " style="width: 30%;margin-left: 40%">
-                                                                <form class="panel" style="background-color: white;width: 50%;margin-left: 25%">
-                                                                    <div class="row">
-                                                                        <h4 style="text-align: center;color: red">Sửa tin tức</h4>
-                                                                    </div>
-                                                                </form>
-                                                            </div>
-                                                            <div class="row " style="width: 100%; margin: 0% 0% 0% 0%; border: 1px">
-                                                            </div>
-                                                            <form class="panel" style="background-color: white">
-                                                               <div class="row" style="width: 100%; margin: 0% 0% 0% 0%">
-                                                                    <div class="col-md-12">
-                                                                       
-                                                                        <div class="row " style="width: 100%; margin: 1% 0% 0% 0%; border: 1px">
-                                                                            
-                                                                        </div>
-                                                                        <form class="panel" style="background-color: white">
-                                                                            <div  class="row"style="margin-top: 20px">
-                                                                            <div  class="row"style="margin-top: 10px">
-                                                                                <div class="col-md-1"></div>
-                                                                                <div class="col-md-3">
-                                                                                   <p style="margin-left: 65px;margin-top: 10px">Tên tin tức :</p>
-                                                                                </div>
-                                                                                 <div class=" form-group col-md-7 " style="width: 400px;">
-                                                                                     <textarea name="message" id="Message"  placeholder="Tên tin tức" required=""  class="form-control"></textarea>
-                                                                                </div>
-                                                                                 <div class="col-md-1"></div>
-                                                                            
-                                                                            </div>
-                                                                           
-                                                                            <div  class="row"style="margin-top: 10px">
-                                                                                <div class="col-md-1"></div>
-                                                                                <div class="col-md-3">
-                                                                                   <p style="margin-left: 65px;margin-top: 10px">Tiêu đề:</p>
-                                                                                </div>
-                                                                                <div class=" form-group col-md-7 " style="width: 400px;">
-                                                                                     <textarea name="message" id="Message"  placeholder="Tiêu đề" required=""  class="form-control"></textarea>
-                                                                                </div>
-                                                                                 <div class="col-md-1"></div>
-                                                                            
-                                                                            </div>
-                                                                            <div  class="row"style="margin-top: 10px">
-                                                                                <div class="col-md-1"></div>
-                                                                                <div class="col-md-3" >
-                                                                                   <p style="margin-left: 65px;margin-top: 10px">Nội dung:</p>
-                                                                                </div>
-                                                                                <div class=" form-group col-md-7 " style="width: 500px">
-                                                                                     <textarea name="message" id="Message"  cols="30" rows="10" placeholder="Nội dung" required=""  class="form-control"></textarea>
-                                                                                </div>
-                                                                                 <div class="col-md-1"></div>
-                                                                            
-                                                                            </div>
-                                                                           <div  class="row"style="margin-top: 10px">
-                                                                                <div class="col-md-1"></div>
-                                                                                <div class="col-md-3">
-                                                                                   <p style="margin-left: 65px;margin-top: 5px">Ảnh :</p>
-                                                                                </div>
-                                                                                <div class=" form-group col-md-3">
-                                                                                     <img src="img/nike.jpg" alt="NIKE" style="width: 200px;height: 200px">
-                                                                                </div>
-                                                                                <div class="col-md-2">
-                                                                                    <input type="file" name="" value="" style="width: 350px;height: 30px;background-color: white">
-                                                                                </div>
-                                                                            </div>
-                                                                           <div  class="row"style="margin-top: 10px">
-                                                                            <div class="col-md-6">
-
-                                                                                <form action="QLTT.jsp">
-                                                                                    <button id="input-hover"  class="col-md-4 col-md-offset-8" type="submit" value="Hoàn thành"  style="height:30px ;width: 140px;">Hoàn thành</button>
-                                                                                </form>
-                                                                                
-                                                                            </div>
-                                                                            <div class="col-md-3">
-                                                                                <form action="QLTT.jsp">
-                                                                                    <button id="input-hover"   type="submit" value="Hủy"  style="height:30px ;width: 100px">Quay lại</button>
-                                                                                </form>
-                                                                                 
-                                                                            </div> 
-
-                                                                                
-                                                                        </form>
-                                                                    </div>
-                                                                </div>
-                                                            </div> 
-                                                            </div>
-                                                        </form>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div >
-                                        <div style="margin-top: 5%">
-                                            <a id="a-id" href="single-blog">Xem</a>
-                                        </div>
-                                    </td>
-                                </tr>
+                             </c:forEach>
                             </tbody>
                         </table>
                     </div>
-                </form>
+                
             </div>
         </div>
-
+	</div>
     </body>
 </html>

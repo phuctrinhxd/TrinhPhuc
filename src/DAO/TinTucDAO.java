@@ -1,74 +1,152 @@
 package DAO;
 
-import java.util.*;
+
 import java.sql.*;
-import BEAN.*;
+import java.util.ArrayList;
+import java.util.List;
+import BEAN.TinTuc;
 
-public class TinTucDAO {
 
-	public static List<TinTuc> TatCaTinTuc(Connection conn){
-		List<TinTuc> list = new ArrayList<TinTuc>();
-		List<TinTuc> listtt = new ArrayList<TinTuc>();
+public class TinTucDAO 
+{
+	public static List<TinTuc> LoadTinTuc( Connection conn) 
+	{
+		List<TinTuc>list=new ArrayList<TinTuc>();
 		
-		String sql = "SELECT * FROM tintuc";
-		Statement statement;
+		String sqlStr="select * from tintuc ";
+		Statement stmt=null;
+		
 		try {
-			statement = conn.createStatement();
-			ResultSet rs = statement.executeQuery(sql);
-			while (rs.next())
+			
+			stmt=conn.createStatement();
+			ResultSet rs=stmt.executeQuery(sqlStr);
+			
+			
+			while(rs.next())
 			{
-				int matt = rs.getInt("MaTinTuc");
-				String tieude = rs.getNString("TieuDe");
-				String nd = rs.getNString("NoiDung");
-				String hinh = rs.getNString("HinhAnh");
-				TinTuc tt= new TinTuc(matt, tieude, nd, hinh);
-				list.add(tt);
+				
+				int MaTinTuc=rs.getInt("MaTinTuc");
+				String TieuDe=rs.getString("TieuDe");
+				String NoiDung=rs.getString("NoiDung");
+				String HinhAnh=rs.getString("HinhAnh");
+			
+				
+				TinTuc qltt=new TinTuc(MaTinTuc,TieuDe,NoiDung,HinhAnh);
+				
+				list.add(qltt);
 			}
+			conn.close();
 			rs.close();
-			statement.close();
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-		ListIterator<TinTuc> itr = list.listIterator();
-		while(itr.hasNext())
-		{
-			itr.next();
-		}
-		while (itr.hasPrevious()) {
-			listtt.add(itr.previous());
-        }
-		return listtt;
+		return list;
 	}
-	public static List<TinTuc> TinTucNoiBac(Connection conn){
-		List<TinTuc> list = TatCaTinTuc(conn);
-		List<TinTuc> listtt = new ArrayList<TinTuc>();
-		for(TinTuc tt : list)
-		{
-			listtt.add(tt);
-			if(listtt.size()>=3)
-				return listtt;
-		}
-		return listtt;
-	}
-	public static TinTuc ChiTietTinTuc(Connection conn, int matt) {
-		TinTuc tintuc;
-		String sql = "SELECT * FROM tintuc WHERE MaTinTuc=?";
+	public static TinTuc LayTinTuc(int MaTinTuc,Connection conn)
+	{
+		TinTuc qltt=null;
+		String sqlStr="Select * from tintuc Where MaTinTuc=?";
+		PreparedStatement ptmt=null;
+		
 		try {
-			PreparedStatement statement = conn.prepareStatement(sql);
-			statement.setInt(1, matt);
-			ResultSet rs = statement.executeQuery();
-			if(rs.next()) {
-				String tieude = rs.getNString("TieuDe");
-				String nd = rs.getNString("NoiDung");
-				String hinh = rs.getNString("HinhAnh");
-				tintuc = new TinTuc(matt, tieude, nd, hinh);
+			ptmt=conn.prepareStatement(sqlStr);
+			
+			ptmt.setInt(1,MaTinTuc);
+			
+			ResultSet rs=ptmt.executeQuery();
+			
+			if(rs.next())
+			{
+				String TieuDe=rs.getString("TieuDe");
+				String NoiDung=rs.getString("NoiDung");
+				String HinhAnh=rs.getString("HinhAnh");
+				
+				qltt=new TinTuc(MaTinTuc,TieuDe,NoiDung,HinhAnh);
 				rs.close();
-				statement.close();
-				return tintuc;
+				conn.close();
+				return qltt;
 			}
+			
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-		return null;
+		return qltt;
+		
 	}
+	public static boolean ThemTinTuc(TinTuc qltt, Connection conn)
+	{
+	
+		String sqlStr ="insert into tintuc(MaTinTuc,TieuDe,NoiDung,HinhAnh) values (?, ?, ?, ?)";
+		PreparedStatement ptmt=null;
+		try {
+			ptmt=conn.prepareStatement(sqlStr);
+			
+			ptmt.setInt(1, qltt.getMaTinTuc());
+			ptmt.setString(2, qltt.getTieuDe());
+			ptmt.setString(3, qltt.getNoiDung());
+			ptmt.setString(4, qltt.getHinhAnh());
+			
+			if(ptmt.executeUpdate()!=0)
+			{
+				ptmt.close();
+				return true;
+			}
+			
+			ptmt.close();
+					
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		return false;
+
+			
+	}
+	public static boolean SuaTinTuc(TinTuc qltt, Connection conn)
+	{
+		
+	        boolean	update = false;
+	       String  sqlStr="Update tintuc set TieuDe= ?, NoiDung= ? , HinhAnh= ? where MaTinTuc= ? ";
+	       
+	        PreparedStatement ptmt =null;
+	        try {
+	        	
+	        	ptmt=conn.prepareStatement(sqlStr);
+				
+				ptmt.setInt(4, qltt.getMaTinTuc());
+				ptmt.setString(1, qltt.getTieuDe());
+				ptmt.setString(2, qltt.getNoiDung());
+				ptmt.setString(3, qltt.getHinhAnh());
+				
+				update=ptmt.executeUpdate()>0;
+				ptmt.close();
+				conn.close();
+				 
+
+			}  catch (SQLException e) {
+				e.printStackTrace();
+			}
+	        
+	        return update;
+
+	}
+	public static boolean DeleteTinTuc(int MaTinTuc,Connection conn)
+	{
+		String sqlStr="Delete from tintuc where MaTinTuc= ?";
+		PreparedStatement ptmt=null;
+		boolean delete=false;
+		try {
+			
+			ptmt=conn.prepareStatement(sqlStr);
+			ptmt.setInt(1,MaTinTuc);
+			delete=ptmt.executeUpdate()>0;
+			ptmt.close();
+			conn.close();
+		
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return delete;
+	}
+	
 }

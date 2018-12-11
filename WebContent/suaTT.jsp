@@ -18,7 +18,6 @@
       
     </head>
     <body>
-    
         <nav class="navbar navbar-custom navbar-fixed-top" role="navigation">
             <div class="container-fluid">
                 <div class="navbar-header">
@@ -30,9 +29,9 @@
                             <div class="col-md-12 text-right">
                                 <a class="navbar-brand fa fa-user" href="#">Thông tin cá nhân</a>
                             </div>
-                         </ul>
                     </div>
-                                  
+                  
+                    </ul>
                 </div>
             </div>
            
@@ -90,16 +89,24 @@
             <div class="row" style="width: 100%; margin: 0% 0% 0% 0%">
                 <div class="col-md-12">
                     <div class="row">
-                        <h4 style="text-align: center;color: blue">Thêm tin tức</h4>
+                        <h4 style="text-align: center;color: blue">Sửa tin tức</h4>
                     </div>
                     <div class="row" style="width: 102%; height: 10px; background-color: #85e0e0;"></div>
                     <div class="row " style="width: 100%; margin: 1% 0% 0% 0%; border: 1px">
                         
                     </div>
-                    <form action="ThemTinTucController"  method="post"    class="panel" style="background-color: white">
+                    <form action="SuaTinTucController?action=Update"  method="post"  class="panel" style="background-color: white">
                         <div  class="row"style="margin-top: 20px"></div>
                         <div  class="row"style="margin-top: 30px">
-                            
+                            <div class="col-md-1"></div>
+                            <div class="col-md-3">
+                               <p style="margin-left: 65px;margin-top: 10px">Mã tin tức :</p>
+                            </div>
+                            <div class=" form-group col-md-7" style="width: 400px">
+                                   <input name="MaTinTuc" id="name" type="hidden" placeholder="" value="<c:out value="${tttt.getMaTinTuc() }"/>"  class="form-control" />
+                                  <h3 ><c:out value="${tttt.getMaTinTuc() }"/></h3>
+                            </div>
+                             <div class="col-md-1"></div>
                         
                         </div>
                        
@@ -109,7 +116,7 @@
                                <p style="margin-left: 65px;margin-top: 10px">Tiêu đề:</p>
                             </div>
                             <div class=" form-group col-md-7 " style="width: 400px;">
-                                 <textarea name="TieuDe" id="Message"  placeholder="Tiêu đề"  required=""  class="form-control"></textarea>
+                                 <textarea name="TieuDe" id="Message"  placeholder="Tiêu đề" required=""  class="form-control"><c:out value="${tttt.getTieuDe()}"></c:out></textarea>
                             </div>
                              <div class="col-md-1"></div>
                         
@@ -120,7 +127,7 @@
                                <p style="margin-left: 65px;margin-top: 10px">Nội dung:</p>
                             </div>
                             <div class=" form-group col-md-7 " style="width: 500px">
-                                 <textarea name="NoiDung" id="Message"  cols="30" rows="8" placeholder="Nội dung" required="" class="form-control"></textarea>
+                                 <textarea name="NoiDung" id="Message"  cols="30" rows="8" placeholder="Nội dung" required=""  class="form-control"><c:out value="${tttt.getNoiDung()}"></c:out></textarea>
                             </div>
                              <div class="col-md-1"></div>
                         
@@ -131,17 +138,18 @@
                                <p  style="margin-left: 65px;margin-top: 5px">Ảnh :</p>
                             </div>
                             <div class=" form-group col-md-3">
-                                 <img id="load_img" src="#" alt="NIKE" style="width: 200px;height: 200px" >
+                                 <img id="load_img" src="<c:out value="${tttt.getHinhAnh()}"></c:out>" alt="NIKE" style="width: 200px;height: 200px">
                             </div>
                             <div class="col-md-2">
-                                <input id="file_img" type="file" name="HinhAnh"  style="width: 300px;height: 20px" accept="image/jpg,image/png,image/jpeg" onchange="loadFile(event)">
+                              <input type="hidden" name="HinhAnhCu" value="<c:out value="${tttt.getHinhAnh()}"></c:out>" style="width: 300px;height: 20px" accept="image/jpg,image/png,image/jpeg">
+                                <input type="file" name="HinhAnh" value="<c:out value="${tttt.getHinhAnh()}"></c:out>" style="width: 300px;height: 20px" accept="image/jpg,image/png,image/jpeg" onchange="loadFile(event)">
                             </div>
                         </div>
                         
                        <div  class="row"style="margin-top: 10px"> 
                         <div class="col-md-6">
                       
-                               <a id="a-id" href="QLTTController"><input id="input-hover" class="col-md-4 col-md-offset-8" type="button" style="height:30px ;width: 140px" value="Quay Lại">
+                               <a id="a-id" href="QLTTController"  ><input id="input-hover" class="col-md-4 col-md-offset-8" type="button" style="height:30px ;width: 140px" value="QuayLại">
                        			</a>
                			 </div>
                         <div class="col-md-6">
@@ -153,14 +161,11 @@
                     </form>
                 </div>
             </div>
-          
 			<script>
 			  var loadFile = function(event) {
 			    var output = document.getElementById('load_img');
 			    output.src = URL.createObjectURL(event.target.files[0]);
 			  };
 			</script>
-          
-		
     </body>
 </html>
