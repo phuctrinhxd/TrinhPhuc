@@ -1,6 +1,8 @@
 package DAO;
 
 import java.sql.*;
+import java.sql.Date;
+import java.util.*;
 import BEAN.*;
 
 import BEAN.SanPham;
@@ -164,6 +166,177 @@ public class DonHangDAO {
 				rs.close();
 				statement.close();
 				return ctdh;
+			}
+			rs.close();
+			statement.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
+	
+	public static DonHang LayGioHang(Connection conn, String makh) {
+		
+		String sql = "select * from donhang where MaNguoiDat = ? and TinhTrang = 'chưa đặt'";
+		PreparedStatement statement;
+		try {
+			statement = conn.prepareStatement(sql);
+			statement.setString(1, makh);
+			ResultSet rs = statement.executeQuery();
+			if(rs.next())
+			{
+				String madh = rs.getString("MaDonHang");
+				Date ngay = rs.getDate("Ngay");
+				int tongtien = rs.getInt("TongTien");
+				DonHang dh = new DonHang(madh, ngay, makh, tongtien, "chưa đặt");
+				dh.setListCTDH(LayChiTietDonHang(conn, madh));
+				rs.close();
+				statement.close();
+				return dh;
+			}
+			rs.close();
+			statement.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
+	
+	public static List<ChiTietDonHang> LayChiTietDonHang(Connection conn, String madh){
+		
+		List<ChiTietDonHang> list = new ArrayList<ChiTietDonHang>();
+		String sql = "select * from chitietdonhang where MaDonHang = ?";
+		PreparedStatement statement;
+		try {
+			statement = conn.prepareStatement(sql);
+			statement.setString(1, madh);
+			ResultSet rs = statement.executeQuery();
+			while(rs.next())
+			{
+				String mactdh = rs.getString("MaChiTietDonHang");
+				String masp = rs.getString("MaSanPham");
+				int size = rs.getInt("Size");
+				int soluong = rs.getInt("SoLuong");
+				int dongia = rs.getInt("DonGia");
+				SanPham sp = SanPhamDAO.LaySanPham(conn, masp);
+				ChiTietDonHang ctdh = new ChiTietDonHang(mactdh, madh, sp, size, soluong, dongia);
+				list.add(ctdh);
+			}
+			rs.close();
+			statement.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return list;
+	}
+	
+public static List<ChiTietDonHang> LayChiTietDonHangTheoMaSP(Connection conn, String masp){
+		
+		List<ChiTietDonHang> list = new ArrayList<ChiTietDonHang>();
+		String sql = "select * from chitietdonhang where MaSanPham = ?";
+		PreparedStatement statement;
+		try {
+			statement = conn.prepareStatement(sql);
+			statement.setString(1, masp);
+			ResultSet rs = statement.executeQuery();
+			while(rs.next())
+			{
+				String mactdh = rs.getString("MaChiTietDonHang");
+				String madh = rs.getString("MaDonHang");
+				int size = rs.getInt("Size");
+				int soluong = rs.getInt("SoLuong");
+				int dongia = rs.getInt("DonGia");
+				SanPham sp = SanPhamDAO.LaySanPham(conn, masp);
+				ChiTietDonHang ctdh = new ChiTietDonHang(mactdh, madh, sp, size, soluong, dongia);
+				list.add(ctdh);
+			}
+			rs.close();
+			statement.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return list;
+	}
+	
+	public static List<DonHang> LayDonHangNguoiDung(Connection conn, String makh) {
+		
+		List<DonHang> list = new ArrayList<DonHang>();
+		String sql = "select * from donhang where MaNguoiDat = ? and TinhTrang != 'chưa đặt'";
+		PreparedStatement statement;
+		try {
+			statement = conn.prepareStatement(sql);
+			statement.setString(1, makh);
+			ResultSet rs = statement.executeQuery();
+			while (rs.next())
+			{
+				String madh = rs.getString("MaDonHang");
+				Date ngay = rs.getDate("Ngay");
+				int tongtien = rs.getInt("TongTien");
+				String tinhtrang = rs.getString("TinhTrang");
+				DonHang dh = new DonHang(madh, ngay, makh, tongtien, tinhtrang);
+				dh.setListCTDH(LayChiTietDonHang(conn, madh));
+				dh.setTongSanPham(TongSanPham(conn, madh));
+				dh.setTongTien(TongTienDonHang(conn, madh));
+				list.add(dh);
+			}
+			rs.close();
+			statement.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return list;
+	}
+	
+	public static List<DonHang> LayDonHang(Connection conn, String tinhtrang) {
+		
+		List<DonHang> list = new ArrayList<DonHang>();
+		String sql = "select * from donhang where TinhTrang = ?";
+		PreparedStatement statement;
+		try {
+			statement = conn.prepareStatement(sql);
+			statement.setString(1, tinhtrang);
+			ResultSet rs = statement.executeQuery();
+			while (rs.next())
+			{
+				String madh = rs.getString("MaDonHang");
+				String makh = rs.getString("MaNguoiDat");
+				Date ngay = rs.getDate("Ngay");
+				int tongtien = rs.getInt("TongTien");
+				DonHang dh = new DonHang(madh, ngay, makh, tongtien, tinhtrang);
+				dh.setListCTDH(LayChiTietDonHang(conn, madh));
+				dh.setTongSanPham(TongSanPham(conn, madh));
+				dh.setTongTien(TongTienDonHang(conn, madh));
+				list.add(dh);
+			}
+			rs.close();
+			statement.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return list;
+	}
+	
+public static DonHang LayDonHangTheoMa(Connection conn, String madh) {
+		
+		String sql = "select * from donhang where MaDonHang = ?";
+		PreparedStatement statement;
+		try {
+			statement = conn.prepareStatement(sql);
+			statement.setString(1, madh);
+			ResultSet rs = statement.executeQuery();
+			if (rs.next())
+			{
+				String tinhtrang = rs.getString("TinhTrang");
+				String makh = rs.getString("MaNguoiDat");
+				Date ngay = rs.getDate("Ngay");
+				int tongtien = rs.getInt("TongTien");
+				DonHang dh = new DonHang(madh, ngay, makh, tongtien, tinhtrang);
+				dh.setListCTDH(LayChiTietDonHang(conn, madh));
+				dh.setTongSanPham(TongSanPham(conn, madh));
+				dh.setTongTien(TongTienDonHang(conn, madh));
+				rs.close();
+				statement.close();
+				return dh;
 			}
 			rs.close();
 			statement.close();

@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
     pageEncoding="utf-8"%>
+    <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -101,10 +102,19 @@
 				<div class="footer-widget">
 					<h3>Tài Khoản</h3>
 					<ul class="footer-menu">
-						<li><a href="#">Tài khoản</a></li>
+						<c:choose>
+							<c:when test="${not empty sessionScope.khachhang }">
+								<li><a href="TaiKhoanController">Tài khoản</a></li>
+							</c:when>
+							<c:otherwise>
+								<li><a href="login.jsp">Đăng nhập</a></li>
+							</c:otherwise>
+						</c:choose>
 						<li><a href="LienHe.jsp">Liên hệ với GIAYNE</a></li>
-						<li><a href="#">Lịch sử mua hàng</a></li>
-						<li><a href="#">Giỏ hàng</a></li>
+						<c:if test="${not empty sessionScope.khachhang }">
+						<li><a href="DonHangController">Lịch sử mua hàng</a></li>
+						</c:if>
+						<li><a href="GioHangController">Giỏ hàng</a></li>
 					</ul>
 				</div>
 			</div>

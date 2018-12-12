@@ -70,8 +70,8 @@ public class ChiTietDonHang {
 		int max = (int)(Math.random()*40);
 		while(max==0 || max>40)
 			max=(int)(Math.random()*40);
-		for(int i=-1;i<max;i++) {
-			int temp=(int)Math.round(Math.random() * chuoi.length());
+		for(int i=0;i<max;i++) {
+			int temp=(int)(Math.round(Math.random() * (chuoi.length()-1)));
 			MaChiTietDonHang += chuoi.charAt(temp); 
 		}
 	}

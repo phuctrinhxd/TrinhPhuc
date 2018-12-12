@@ -32,9 +32,8 @@
 				 			<a class="navbar-brand fa fa-user" href="#">Thông tin cá nhân</a>
 					
 				 		</div>
-				</div>
-			
 				</ul>
+				</div>
 			</div>
 		</div><!-- /.container-fluid -->
 	</nav>
@@ -50,7 +49,7 @@
 		<div class="divider"></div>
 		
 		<ul class="nav menu">
-			<li><a href="admin.jsp"><em ">&nbsp;</em> Quản lý tài khoản</a></li>
+			<li><a href="admin.jsp"><em >&nbsp;</em> Quản lý tài khoản</a></li>
 			<li class="parent "><a data-toggle="collapse" href="#sub-item-1">
 				<em class="fa fa-navicon">&nbsp;</em> Quản lý nhân viên <span data-toggle="collapse" href="#sub-item-1" class="icon pull-right"><em class="fa fa-plus"></em></span>
 				</a>

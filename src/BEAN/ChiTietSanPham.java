@@ -5,15 +5,12 @@ public class ChiTietSanPham {
 	private String MaSanPham;
 	private int Size;
 	private int SoLuong;
-	
-	public ChiTietSanPham() {
-		super();
-	}
-	public ChiTietSanPham(String maSanPham, int size, int soLuong) {
-		super();
-		MaSanPham = maSanPham;
-		Size = size;
-		SoLuong = soLuong;
+	public ChiTietSanPham() {}
+	public ChiTietSanPham(String masp, int size, int soluong)
+	{
+		this.setMaSanPham(masp);
+		this.setSize(size);
+		this.setSoLuong(soluong);
 	}
 	public String getMaSanPham() {
 		return MaSanPham;
@@ -33,4 +30,5 @@ public class ChiTietSanPham {
 	public void setSoLuong(int soLuong) {
 		SoLuong = soLuong;
 	}
+
 }

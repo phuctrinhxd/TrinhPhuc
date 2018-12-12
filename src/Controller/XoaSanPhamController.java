@@ -2,6 +2,7 @@ package Controller;
 
 import java.io.IOException;
 import java.sql.Connection;
+import java.sql.SQLException;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -9,10 +10,11 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
-import DAO.ChiTietSanPhamDAO;
-import DAO.SanPhamDAO;
-
+import java.util.*;
+import DAO.*;
+import BEAN.*;
 import DB.DBConnection;
 
 
@@ -28,31 +30,56 @@ public class XoaSanPhamController extends HttpServlet {
 
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		Connection conn=DBConnection.CreateConnection();
-		String MaSanPham=request.getParameter("MaSanPham");
-		boolean f=ChiTietSanPhamDAO.DeleteChiTietSanPham_1(MaSanPham,conn);
-		if(f)
-		{
-			boolean kt=SanPhamDAO.DeleteSanPham(MaSanPham, conn);	
-			if(kt)
-	       {
-	    	   request.setAttribute("msgXóaSanPham", "Xóa sản phẩm  thành công");
-	    	   RequestDispatcher rd = request.getRequestDispatcher("QLSPController");
-	  			rd.forward(request, response);
-	       }
-	       else
-	       {
-	    	   request.setAttribute("msgXoaSanPham", "Xóa sản phẩm không thành công");
-	    	   RequestDispatcher rd = request.getRequestDispatcher("QLSPController");
-	  			rd.forward(request, response);
-	       }
-		}
 		
+		HttpSession session = request.getSession();
+		if(session.getAttribute("quyen")==null) {
+			response.sendRedirect("Home");
+		} else {
+			if(((Quyen)session.getAttribute("quyen")).getSanPham()==1 || ((Quyen)session.getAttribute("quyen")).getAdmin()==1) {
+				Connection conn=DBConnection.CreateConnection();
+				String MaSanPham=request.getParameter("MaSanPham");
+				List<Comment> listcm = CommentDAO.DanhSachBinhLuan(conn, MaSanPham);
+				for(Comment cm : listcm) {
+					CommentDAO.XoaBinhLuan(conn, cm.getMaComment());
+				}
+				List<ChiTietDonHang> listctdh = DonHangDAO.LayChiTietDonHangTheoMaSP(conn, MaSanPham);
+				for(ChiTietDonHang ctdh : listctdh) {
+					DonHangDAO.XoaChiTietDonHang(conn, ctdh.getMaChiTietDonHang());
+					DonHang dh = DonHangDAO.LayDonHangTheoMa(conn, ctdh.getMaDonHang());
+					dh.setListCTDH(DonHangDAO.LayChiTietDonHang(conn, dh.getMaDonHang()));
+					dh.setTongSanPham(DonHangDAO.TongSanPham(conn, dh.getMaDonHang()));
+					dh.setTongTien(DonHangDAO.TongTienDonHang(conn, dh.getMaDonHang()));
+					DonHangDAO.SuaDonHang(conn, dh);
+				}
+				List<ChiTietSanPham> listctsp = SanPhamDAO.ChiTietSanPham(conn, MaSanPham);
+				for(ChiTietSanPham ctsp : listctsp) {
+					SanPhamDAO.DeleteChiTietSanPham(MaSanPham, ctsp.getSize(), conn);
+				}
+				boolean kt=SanPhamDAO.DeleteSanPham(MaSanPham, conn);	
+				try {
+					conn.close();
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
+				if(kt)
+				{
+					request.setAttribute("msgXoaSanPham", "Xóa thành công");
+					RequestDispatcher rd = request.getRequestDispatcher("QLSPController");
+		  			rd.forward(request, response);
+				}
+				else
+				{
+					request.setAttribute("msgXoaSanPham", "Xóa thất công");
+					RequestDispatcher rd = request.getRequestDispatcher("QLSPController");
+		  			rd.forward(request, response);
+				}
+			}
+			else
+				response.sendRedirect("DangXuatController");
+		}
 	}
-
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
 		doGet(request, response);
 	}
 

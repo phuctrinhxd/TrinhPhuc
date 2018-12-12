@@ -87,7 +87,7 @@
 									<div class="gach-ngang-xuong-dong"></div>
 									<div class="product-action">
 										<div class="button-cart">
-											<a href="order.jsp"><button><i class="fa fa-usd" aria-hidden="true"></i> đặt hàng</button></a>
+											<button onclick="DatHang();"><i class="fa fa-usd" aria-hidden="true"></i> đặt hàng</button>
 											&emsp;&emsp;&emsp;
 											<button onclick="ThemVaoGioHang();"><i class="fa fa-shopping-cart"></i> giỏ hàng</button>
 										</div>
@@ -129,26 +129,29 @@
 											<div role="tabpanel" class="tab-pane" id="page-comments">
 												<div class="product-tab-desc">
 													<div class="product-page-comments">
+														<c:forEach items="${listcm }" var="comment">
 														<ul>
-															<li>
+															<li id='li<c:out value="${comment.getMaComment() }"/>'>
 																<div class="product-comments">
 																	<div class="product-comments-content">
-																		<p><strong>trần anh đức</strong>
-																		<a href="#"><span class="delete-comment"><i class="fa fa-times"></i></span></a>
+																		<p><strong><c:out value="${comment.getMaKhachHang() }" /></strong>
+																		<c:if test="${comment.getMaKhachHang()==makh || sessionScope.quyen.getAdmin()==1 || sessionScope.quyen.getSanPham()==1}">
+																		<a href="javascript://" onclick="XoaBinhLuan('<c:out value="${comment.getMaComment() }"/>');"><span class="delete-comment"><i class="fa fa-times"></i></span></a>
+																		</c:if>
 																		</p>
 																		<div class="desc">
-																			Sản phẩm cực đẹp. Mang vào cảm thấy thích vô cùng
+																			<c:out value="${comment.getNoiDung() }" />
 																		</div>
 																	</div>
 																</div>
 															</li>
 														</ul>
+														</c:forEach>
+														<ul id="BinhLuanMoi"></ul>
 														<div class="review-form-wrapper">
 															<h3>Thêm bình luận</h3>
-															<form action="#">
 																<textarea id="product-message" cols="30" rows="10" placeholder="Bình luận của bạn"></textarea>
-																<input type="submit" value="Bình luận" />
-															</form>
+																<input type="submit" value="Bình luận" onclick="ThemBinhLuan();"/>
 														</div>
 													</div>
 												</div>
@@ -181,11 +184,72 @@
 				url: 'GioHangController',
 				success: function(result){
 					alert("Đã thêm vào giỏ hàng");
-					document.getElementById("SoLuongGioHang").innerHTML = result;
+					document.getElementById("BinhLuanMoi").innerHTML = result;
 				}
 			});
 		}
-	
+		function DatHang(){
+			var masp = "${sanpham.getMaSanPham()}";
+			var size = $('#size').val();
+			var soluong = $('#soluong').val();
+			
+			$.ajax({
+				type:'POST',
+				data: {
+					thaotac: "ThemVaoGioHang",
+					masp: masp,
+					size: size,
+					soluong: soluong
+				},
+				url: 'GioHangController',
+				success: function(){
+					window.location.href = 'DatHangController';
+				}
+			});
+		}
+		function ThemBinhLuan(){
+			var makh = "${makh}"
+			var nd = $('#product-message').val();
+			var masp = "${sanpham.getMaSanPham()}";
+			if(makh==null||makh==""){
+				alert("Bạn cần đăng nhập để được bình luận");
+			}
+			else {
+				if(nd==""||nd==null)
+					alert("Bình luận của bạn trống");
+				else {
+					$.ajax({
+						type:'POST',
+						data: {
+							thaotac: "ThemBinhLuan",
+							makh: makh,
+							masp: masp,
+							nd: nd
+						},
+						url: 'ChiTietSPController',
+						success: function(result){
+							document.getElementById("BinhLuanMoi").innerHTML = result;
+							document.getElementById("product-message").value = "";
+						}
+					});
+				}
+			}
+		}
+		function XoaBinhLuan(macm){
+			$.ajax({
+				type:'POST',
+				data: {
+					thaotac: "XoaBinhLuan",
+					macm: macm,
+				},
+				url: 'ChiTietSPController',
+				success: function(){
+					//alert(result);
+					$("#li"+macm).remove();
+				}
+			});
+		}
+		
 	</script>
 
 	<jsp:include page="footer.jsp"></jsp:include>

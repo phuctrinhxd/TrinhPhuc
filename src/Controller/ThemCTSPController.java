@@ -2,6 +2,7 @@ package Controller;
 
 import java.io.IOException;
 import java.sql.Connection;
+import java.sql.SQLException;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -12,7 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import BEAN.ChiTietSanPham;
 
-import DAO.ChiTietSanPhamDAO;
+import DAO.SanPhamDAO;
 
 import DB.DBConnection;
 
@@ -36,33 +37,31 @@ public class ThemCTSPController extends HttpServlet {
         int Size=Integer.parseInt(request.getParameter("Size"));
         int SoLuong=Integer.parseInt(request.getParameter("SoLuong"));
       
-        System.out.println(MaSanPham);
-        System.out.print(Size);
-        System.out.print(SoLuong);
-        
         ChiTietSanPham ctsp=new ChiTietSanPham();
         ctsp.setMaSanPham(MaSanPham);
         ctsp.setSize(Size);
         ctsp.setSoLuong(SoLuong);
-        boolean kt=ChiTietSanPhamDAO.ThemChiTietSanPham(ctsp, conn);
-        
+        boolean kt=SanPhamDAO.ThemChiTietSanPham(ctsp, conn);
+        try {
+			conn.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
         if(kt)
         {
-     	   request.setAttribute("msgThemCTSP", "Thêm chi tiết sản phẩm  thành công");
+     	   request.setAttribute("msgThemCTSP", "Thêm thành công");
      	   RequestDispatcher rd = request.getRequestDispatcher("ChiTietSanPhamController?MaSanPham="+MaSanPham);
    			rd.forward(request, response);
         }
         else
         {
-        	request.setAttribute("msgThemCTSP", "Thêm chi tiết sản phẩm  thành công");
+        	request.setAttribute("msgThemCTSP", "Thêm thất bại");
      	   RequestDispatcher rd = request.getRequestDispatcher("ChiTietSanPhamController?MaSanPham="+MaSanPham);
    			rd.forward(request, response);
         }
 
 	
 	}
-
-	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		doGet(request, response);

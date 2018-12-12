@@ -8,7 +8,7 @@ public class DBConnection {
 		Connection conn=null;
 		String url="jdbc:mysql://localhost:3306/quanlyshopgiay?useUnicode=yes&characterEncoding=UTF-8";
 		String username="root";
-		String pass="123456";
+		String pass="TranMinhTung20091998";
 		try {
 			Class.forName("com.mysql.jdbc.Driver");
 			conn = DriverManager.getConnection(url, username, pass);

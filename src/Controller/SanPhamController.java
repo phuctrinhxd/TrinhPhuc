@@ -33,6 +33,9 @@ public class SanPhamController extends HttpServlet {
 		String m = request.getParameter("mau");
 		String si = request.getParameter("size");
 		String gia = request.getParameter("gia");
+		int page = 1;
+		if(request.getParameter("page")!=null)
+			page=Integer.parseInt(request.getParameter("page"));
 		String[] thuonghieu=null;
 		String[] gioitinh=null;
 		String[] mau=null;
@@ -54,8 +57,10 @@ public class SanPhamController extends HttpServlet {
 			else if(sapxep.contains("high")) 
 				list = SanPhamDAO.GiaThapDan(conn, list);
 		}
+		list = SanPhamDAO.PhanTrang(conn, list, page);
 		request.setAttribute("list", list);
 		request.setAttribute("msgChiTietSP", msgChiTietSP);
+		request.setAttribute("page", page);
 		RequestDispatcher rd = request.getRequestDispatcher("shop.jsp");
 		rd.forward(request, response);
 		try {
@@ -66,7 +71,32 @@ public class SanPhamController extends HttpServlet {
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		doGet(request, response);
+
+		request.setCharacterEncoding("UTF-8");
+		String timkiem = request.getParameter("timkiem");
+		if(timkiem!=null || timkiem !="") {
+			Connection conn = DBConnection.CreateConnection();
+			List<SanPham> list = SanPhamDAO.TimKiemSanPham(conn, timkiem);
+			String sapxep = request.getParameter("sapxep");
+			if(list!=null) {
+				if(sapxep!=null) {
+					if(sapxep.contains("low")) 
+						list = SanPhamDAO.GiaCaoDan(conn, list);
+					else if(sapxep.contains("high")) 
+						list = SanPhamDAO.GiaThapDan(conn, list);
+				}
+				request.setAttribute("list", list);
+			} else {
+				request.setAttribute("msgChiTietSP", "Sản phẩm bạn tìm không có");
+			}
+			RequestDispatcher rd = request.getRequestDispatcher("shop.jsp");
+			rd.forward(request, response);
+			try {
+				conn.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
 	}
 
 }

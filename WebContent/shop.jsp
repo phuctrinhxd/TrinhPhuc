@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
     pageEncoding="utf-8"%>
     <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+     <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -51,7 +52,7 @@
 									<input type="checkbox" name="thuonghieu" value="Bitis" onchange="FillterProduct();" <%= thuonghieu.contains("Bitis")? "checked":""%>> Bitis
 								</label></li>
 								<li><label>
-									<input type="checkbox" name="thuonghieu" value="other" onchange="FillterProduct();" <%= thuonghieu.contains("other")? "checked":""%>> Khác
+									<input type="checkbox" name="thuonghieu" value="Khác" onchange="FillterProduct();" <%= thuonghieu.contains("Khác")? "checked":""%>> Khác
 								</label></li>
 							</ul>
 						</aside>
@@ -82,7 +83,7 @@
 									<input type="checkbox" name="mau" value="Đỏ" onchange="FillterProduct();" <%= mau.contains("Đỏ")? "checked":""%>> Đỏ
 								</label></li>
 								<li><label>
-									<input type="checkbox" name="mau" value="other" onchange="FillterProduct();" <%= mau.contains("other")? "checked":""%>> Khác
+									<input type="checkbox" name="mau" value="Khác" onchange="FillterProduct();" <%= mau.contains("Khác")? "checked":""%>> Khác
 								</label></li>
 							</ul>						
 						</aside>
@@ -122,10 +123,20 @@
 						<div class="shop-content">					
 							<div class="shop-breadcrumb">
 								<ul>
-									<li class="active"><a href="#">1</a></li>
-									<li><a href="#">2</a></li>
-									<li><a href="#">3</a></li>
-									<li><a href="#"><i class="fa fa-angle-right"></i></a></li>
+								<c:choose>
+								<c:when test="${page>1}">
+									<li><a href="javascript://" onclick="PhanTrang('<c:out value="${page - 1}"/>');">
+									<c:out value="${page - 1}"/></a></li>
+									<li class="active"><a href="javascript://" onclick="PhanTrang('<c:out value="${page}"/>');">
+									<c:out value="${page}"/></a></li>
+									<c:if test="${fn:length(list)>5 }"><li><a href="javascript://" onclick="PhanTrang('<c:out value="${page + 1}"/>');">
+									<c:out value="${page + 1}"/></a></li></c:if>
+								</c:when>
+								<c:otherwise>
+									<li class="active"><a href="javascript://" onclick="PhanTrang('1');">1</a></li>
+									<c:if test="${fn:length(list)>5 }"><li><a href="javascript://" onclick="PhanTrang('2');">2</a></li></c:if>
+								</c:otherwise>
+								</c:choose>
 								</ul>
 							</div>
 							<div class="short-by">
@@ -146,15 +157,13 @@
 										<div class="col-md-4 col-sm-4">
 											<div class="single-product">
 												<div class="product-img">
-													<input type="hidden" id="MaSP<c:out value="${sanpham.getMaSanPham()}"/>" />
 													<a href="ChiTietSPController?masp=<c:out value="${sanpham.getMaSanPham()}"/>">
 														<img src="<c:out value="${sanpham.getHinhAnh()}"/>" alt="" />
 													</a>
 													<span class="tag-line">new</span>
 													<div class="product-action">
 														<div class="button-cart">
-															<a href="order.jsp"><button><i class="fa fa-usd" aria-hidden="true"></i> đặt hàng</button>
-															</a>
+															<button onclick="DatHang('<c:out value="${sanpham.getMaSanPham()}"/>')"><i class="fa fa-usd" aria-hidden="true"></i> đặt hàng</button>
 															<button onclick="ThemVaoGioHang('<c:out value="${sanpham.getMaSanPham()}"/>')"><i class="fa fa-shopping-cart"></i> Giỏ hàng</button>
 														</div>
 													</div>
@@ -178,11 +187,22 @@
 							<div class="clear"></div>
 							<div class="shop-breadcrumb">
 								<ul>
-									<li class="active"><a href="#">1</a></li>
-									<li><a href="#">2</a></li>
-									<li><a href="#">3</a></li>
-									<li><a href="#"><i class="fa fa-angle-right"></i></a></li>
+								<c:choose>
+									<c:when test="${page>1}">
+									<li><a href="javascript://" onclick="PhanTrang('<c:out value="${page - 1}"/>');">
+									<c:out value="${page - 1}"/></a></li>
+									<li class="active"><a href="javascript://" onclick="PhanTrang('<c:out value="${page}"/>');">
+									<c:out value="${page}"/></a></li>
+									<c:if test="${fn:length(list)>5 }"><li><a href="javascript://" onclick="PhanTrang('<c:out value="${page + 1}"/>');">
+									<c:out value="${page + 1}"/></a></li></c:if>
+								</c:when>
+								<c:otherwise>
+									<li class="active"><a href="javascript://" onclick="PhanTrang('1');">1</a></li>
+									<c:if test="${fn:length(list)>5 }"><li><a href="javascript://" onclick="PhanTrang('2');">2</a></li></c:if>
+								</c:otherwise>
+								</c:choose>
 								</ul>
+								<input type="hidden" id="page" value="1" />
 							</div>
 							<div class="clear"></div>
 						</div>
@@ -230,10 +250,16 @@
             if (gia.length > 0) {
                 pathName = pathName + "&gia=" + gia.join(",");
             }
+            var page = $('#page').val();
 
-            pathName = pathName+ "&sapxep=" + sapxep;
+            pathName = pathName+ "&sapxep=" + sapxep + "&page="+page;
 
             window.location.href = pathName;
+        }
+        
+        function PhanTrang(page){
+        	document.getElementById("page").value = page;
+        	FillterProduct();
         }
         
         function ThemVaoGioHang(masp){
@@ -244,12 +270,26 @@
 					masp: masp,
 				},
 				url: 'GioHangController',
-				success: function(){
+				success: function(result){
 					alert("Đã thêm vào giỏ hàng");
 					document.getElementById("SoLuongGioHang").innerHTML = result;
 				}
 			});
 		}
+        function DatHang(masp){
+			$.ajax({
+				type:'POST',
+				data: {
+					thaotac: "ThemVaoGioHang",
+					masp: masp,
+				},
+				url: 'GioHangController',
+				success: function(){
+					window.location.href = 'DatHangController';
+				}
+			});
+		}
+        
     	</script>
 	<jsp:include page="footer.jsp"></jsp:include>
 </body>

@@ -32,7 +32,7 @@
 					<div class="col-md-6">
 						<div class="login-content">
 							<h2 class="login-title">ĐĂNG NHẬP</h2>
-							<form action="#" method="POST" id="login-form">
+							<form action="DangNhapController" method="POST" id="login-form">
 								<div class="form-group">
 									<label>Tên đăng nhập <span class="required">*</span></label>
 									<input type="text" placeholder="Tên đăng nhập" name="username" class="form-control" value="<c:out value="${user.getId()}"/>"/>
@@ -43,7 +43,7 @@
 								</div>
 								<div class="login-lost">
 									<span class="forgot-login">
-										<a href="forgot-password.jsp">Quên mật khẩu</a>
+										<a href="QuenMatKhauController">Quên mật khẩu</a>
 									</span>
 								</div>
 								<input class="login-sub" type="submit" value="Đăng nhập" />
@@ -90,7 +90,6 @@
 				</div>
 			</div>
 		</div>
-		<!-- login-area end -->	
 		
 	
 	<jsp:include page="footer.jsp"></jsp:include>

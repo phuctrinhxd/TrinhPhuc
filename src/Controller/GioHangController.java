@@ -2,7 +2,8 @@ package Controller;
 
 import java.io.IOException;
 import java.sql.Connection;
-import java.util.List;
+import java.sql.SQLException;
+import java.util.*;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -26,23 +27,35 @@ public class GioHangController extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
+		HttpSession session = request.getSession();
+		DonHang giohang = (DonHang)session.getAttribute("giohang");
+		request.setAttribute("giohang", giohang);
 		RequestDispatcher rd = request.getRequestDispatcher("cart.jsp");
 		rd.forward(request, response);
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-		String thaotac=request.getParameter("thaotac");
-		
-		switch (thaotac) {
-		case "ThemVaoGioHang":
-			ThemVaoGioHang(request, response);
-			break;
-
-		default:
-			break;
+		HttpSession session = request.getSession();
+		if(session.getAttribute("quyen")!=null) {
+			return;
+		} else {
+			String thaotac=request.getParameter("thaotac");
+			
+			switch (thaotac) {
+			case "ThemVaoGioHang":
+				ThemVaoGioHang(request, response);
+				break;
+			case "XoaTrongGioHang":
+				XoaTrongGioHang(request, response);
+				break;
+			case "SuaTrongGioHang":
+				SuaTrongGioHang(request, response);
+				break;
+			default:
+				break;
+			}
 		}
-		
 	}
 	
 	public void ThemVaoGioHang(HttpServletRequest request, HttpServletResponse response)
@@ -91,11 +104,16 @@ public class GioHangController extends HttpServlet {
 		//Nếu đã tồn tại giỏ hàng 
 		else {
 			giohang = (DonHang)session.getAttribute("giohang");
-			
+			List<ChiTietDonHang> list = giohang.getListCTDH();
 			//Kiểm tra trong giỏ hàng có sản phẩm đó cùng size chưa
 			ChiTietDonHang ctgh = DonHangDAO.KiemTraSanPhamTrongGio(conn, giohang.getMaDonHang(), masp, size);
 			//Nếu có rồi thì cộng số lượng vào
 			if(ctgh!=null) {
+				for(ChiTietDonHang a: list)
+				{
+					if(a.getMaChiTietDonHang().contains(ctgh.getMaChiTietDonHang()))
+						a.setSoLuong(ctgh.getSoLuong()+soluong);;
+				}
 				ctgh.setSoLuong(ctgh.getSoLuong()+soluong);
 				DonHangDAO.SuaChiTietDonHang(conn, ctgh.getMaChiTietDonHang(), ctgh.getSoLuong());
 			}
@@ -104,9 +122,8 @@ public class GioHangController extends HttpServlet {
 				SanPham sp = SanPhamDAO.LaySanPham(conn, masp);
 				ctgh = new ChiTietDonHang(giohang.getMaDonHang(), sp, size, soluong, sp.getGiaBan());
 				DonHangDAO.ThemChiTietDonHang(conn, ctgh);
+				list.add(ctgh);
 			}
-			List<ChiTietDonHang> list = giohang.getListCTDH();
-			list.add(ctgh);
 			giohang.setListCTDH(list);
 		}
 		giohang.setTongSanPham(DonHangDAO.TongSanPham(conn, giohang.getMaDonHang()));
@@ -114,10 +131,71 @@ public class GioHangController extends HttpServlet {
 		DonHangDAO.SuaDonHang(conn, giohang);
 		session.setAttribute("giohang", giohang);
 		try {
+			conn.close();
 			response.getWriter().write(String.valueOf(giohang.getTongSanPham()));
+		} catch (SQLException e1) {
+			e1.printStackTrace();
+		}
+		catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+	
+	public void XoaTrongGioHang(HttpServletRequest request, HttpServletResponse response)
+	{
+		Connection conn = DBConnection.CreateConnection();
+		String mactgh = request.getParameter("mactgh");
+		HttpSession session = request.getSession();
+		DonHang giohang = (DonHang)session.getAttribute("giohang");
+		DonHangDAO.XoaChiTietDonHang(conn, mactgh);
+		List<ChiTietDonHang> list=  giohang.getListCTDH();
+		for(int i=0;i<list.size();i++) {
+			if(list.get(i).getMaChiTietDonHang().contains(mactgh))
+				list.remove(i);
+		}
+		if(list.size()==0) {
+			DonHangDAO.XoaDonHang(conn, giohang.getMaDonHang());
+			session.removeAttribute("giohang");
+		} else {
+			giohang.setTongSanPham(DonHangDAO.TongSanPham(conn, giohang.getMaDonHang()));
+			giohang.setTongTien(DonHangDAO.TongTienDonHang(conn, giohang.getMaDonHang()));
+			DonHangDAO.SuaDonHang(conn, giohang);
+			session.setAttribute("giohang", giohang);
+		}
+		try {
+			conn.close();
+			if(session.getAttribute("giohang")!=null)
+				response.getWriter().println(String.valueOf(giohang.getTongTien()));
+			else
+				response.getWriter().println("0");
+		} catch (SQLException e) {
+			e.printStackTrace();
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
 	}
-
+	
+	public void SuaTrongGioHang(HttpServletRequest request, HttpServletResponse response)
+	{
+		Connection conn = DBConnection.CreateConnection();
+		String mactgh = request.getParameter("mactgh");
+		int soluong = Integer.parseInt(request.getParameter("soluong"));
+		HttpSession session = request.getSession();
+		DonHang giohang = (DonHang)session.getAttribute("giohang");
+		DonHangDAO.SuaChiTietDonHang(conn, mactgh, soluong);
+		List<ChiTietDonHang> list=  giohang.getListCTDH();
+		for(int i=0;i<list.size();i++) {
+			if(list.get(i).getMaChiTietDonHang().contains(mactgh))
+				list.get(i).setSoLuong(soluong);
+		}
+		giohang.setTongSanPham(DonHangDAO.TongSanPham(conn, giohang.getMaDonHang()));
+		giohang.setTongTien(DonHangDAO.TongTienDonHang(conn, giohang.getMaDonHang()));
+		DonHangDAO.SuaDonHang(conn, giohang);
+		session.setAttribute("giohang", giohang);
+		try {
+			conn.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
 }

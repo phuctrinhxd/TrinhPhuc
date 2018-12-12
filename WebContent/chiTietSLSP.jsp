@@ -35,70 +35,16 @@
  	alert(MsgSua);
  	}
     </script>
-        <nav class="navbar navbar-custom navbar-fixed-top" role="navigation">
-            <div class="container-fluid">
-                <div class="navbar-header">
-                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#sidebar-collapse"><span class="sr-only">Toggle navigation</span>
-                    </button>
-                    <a class="navbar-brand" href="#">Admin</a>
-                    <div class="row">
-                        <ul class="nav navbar-top-links navbar-right">
-                            <div class="col-md-12 text-right">
-                                <a class="navbar-brand fa fa-user" href="#">Thông tin cá nhân</a>
-                            </div>
-                    </div>
-                  
-                    </ul>
-                </div>
-            </div>
-           
-        </nav>
-        <div id="sidebar-collapse" class="col-sm-3 col-lg-2 sidebar">
-            <div class="profile-sidebar">
-                <div class="profile-usertitle">
-                    <div class="profile-usertitle-name text-center">Trần Minh Tùng</div>
-                    <div class="profile-usertitle-status text-center"><span class="indicator label-success"></span>Online</div>
-                </div>
-                <div class="clear"></div>
-            </div>
-            <div class="divider"></div>
-            
-           	 <ul class="nav menu">
-	           	<li><a href="QLTK.jsp"><em ">&nbsp;</em> Quản lý tài khoản</a></li>
-				<li class="parent "><a data-toggle="collapse" href="#sub-item-1">
-					<em class="fa fa-navicon">&nbsp;</em> Quản lý nhân viên <span data-toggle="collapse" href="#sub-item-1" class="icon pull-right"><em class="fa fa-plus"></em></span>
-					</a>
-					<ul class="children collapse" id="sub-item-1">
-						<li><a class="" href="nhomQuyen-admin.jsp">
-							<span class="fa fa-arrow-right">&nbsp;</span> Các nhóm quản trị viên
-						</a></li>
-						<li><a class="" href="QLNV.jsp">
-							<span class="fa fa-arrow-right">&nbsp;</span> Danh sách nhân viên
-						</a></li>
-						
-					</ul>
-					
-				</li>
-				
-				<li class="active"><a href="QLSPController"><em >&nbsp;</em> Quản lý sản phẩm</a></li>
-				<li><a href="QLDH.jsp"><em >&nbsp;</em> Quản lý đơn hàng</a></li>
-				<li><a href="QLKH.jsp"><em >&nbsp;</em> Quản lý khách hàng</a></li>
-				<li><a href="QLTTController"><em >&nbsp;</em> Quản lý tin tức</a></li>
-				
-				<li><a href="login-admin.jsp"><em >&nbsp;</em> Đăng xuất</a></li>
-			</ul>
-        </div>
-     
+     <jsp:include page="header-admin.jsp"></jsp:include>
         <div class="col-sm-9 col-sm-offset-3 col-lg-10 col-lg-offset-2 main">
             <div class="row">
-               <H4> <ol class="breadcrumb">
+               <ol class="breadcrumb">
                     <li><a href="#">
                         <em class="fa fa-home"></em>
                         </a>
                     </li>
                     <li class="active  " style="color: red">Quản lý số lượng sản phẩm</li>
                 </ol>
-                </H4>
             </div>
             <!--/.row-->
             <form action="ChiTietSanPhamController" method="Post">
@@ -185,10 +131,10 @@
           
                                               <div class="row" style="margin-top:10px">
                                                
-					                                  <input  id="input-hover" style="width: 50px;height: 25px"  type="button" data-toggle="modal" data-target="#myModalSua" value="Sửa">
+					                                  <input  id="input-hover" style="width: 50px;height: 25px"  type="button" data-toggle="modal" data-target="#myModalSua<c:out value="${ChiTiet.getSize()}"/>" value="Sửa">
                                     				
                                           	  	<div >
-				                                        <div class="modal fade" id="myModalSua" role="dialog">
+				                                        <div class="modal fade" id="myModalSua<c:out value="${ChiTiet.getSize()}"/>" role="dialog">
 				                                            <div class="modal-dialog">
 				                                              
 				                                             <div >
@@ -318,11 +264,10 @@
                            	</div>
                            			 
                          <div  class="row"style="margin-bottom: 25px">
-                        
-               
                 </div>
             </div>
         </div>
     </form>
+    </div>
     </body>
 </html>

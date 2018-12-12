@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
     pageEncoding="utf-8"%>
     <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+    <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -47,15 +48,34 @@
 						<div class="blog-pagination">
 							<div class="shop-breadcrumb">
 								<ul>
-									<li class="active"><a href="#">1</a></li>
-									<li><a href="#">2</a></li>
-									<li><a href="#">3</a></li>
-									<li><a href="#"><i class="fa fa-angle-right"></i></a></li>
+								<c:choose>
+									<c:when test="${page>1}">
+									<li><a href="javascript://" onclick="PhanTrang('<c:out value="${page - 1}"/>');">
+									<c:out value="${page - 1}"/></a></li>
+									<li class="active"><a href="javascript://" onclick="PhanTrang('<c:out value="${page}"/>');">
+									<c:out value="${page}"/></a></li>
+									<c:if test="${fn:length(listtt)>5 }"><li><a href="javascript://" onclick="PhanTrang('<c:out value="${page + 1}"/>');">
+									<c:out value="${page + 1}"/></a></li></c:if>
+									</c:when>
+									<c:otherwise>
+									<li class="active"><a href="javascript://" onclick="PhanTrang('1');">1</a></li>
+									<c:if test="${fn:length(listtt)>5 }"><li><a href="javascript://" onclick="PhanTrang('2');">2</a></li></c:if>
+									</c:otherwise>
+								</c:choose>
 								</ul>
 							</div>						
 						</div>
 					</div>
 				</div>			
+
+	<script type="text/javascript">
+	
+	function PhanTrang(page){
+		var pathName = window.location.pathname + "?page="+page;
+		window.location.href = pathName;
+	}
+	
+	</script>
 
 	<jsp:include page="footer.jsp"></jsp:include>
 </body>

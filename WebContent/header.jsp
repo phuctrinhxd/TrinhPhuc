@@ -78,7 +78,7 @@
 							<div class="col-md-2 col-sm-8 col-xs-7 header-right">
 								<div class="my-cart">
 									<div class="total-cart">
-										<a href="#">
+										<a href="GioHangController">
 											<i class="fa fa-shopping-cart"></i>
 											<span id = "SoLuongGioHang"><%= SoLuongGioHang %></span>
 										</a>								
@@ -87,17 +87,22 @@
 								<div class="user-meta">
 									<a href="#"><i class="fa fa-cog"></i></a>
 									<ul>
-										<li><a href="login.jsp">Đăng nhập</a></li>
-										<li><a href="login.jsp">Đăng kí</a></li>
-										
+										<c:if test="${not empty sessionScope.login }">
+										<li><a href="TaiKhoanController">Tài khoản</a></li>
+										<li><a href="DangXuatController">Đăng xuất</a></li>
+										</c:if>
+										<c:if test="${empty sessionScope.login }">
+										<li><a href="DangNhapController">Đăng nhập</a></li>
+										<li><a href="DangKyController">Đăng kí</a></li>
+										</c:if>
 									</ul>								
 								</div>
 								<div class="header-search">
 									<i class="fa fa-search"></i>
 									<div class="header-form">
-										<form action="#">
-											<input type="text" placeholder="search" />
-											<button><i class="fa fa-search"></i></button>
+										<form action="SanPhamController" method="post">
+											<input type="text" name="timkiem"placeholder="search" />
+											<button type="submit"><i class="fa fa-search"></i></button>
 										</form>
 									</div>
 								</div>							
@@ -115,22 +120,22 @@
 									<ul>
 										<li><a href="Home">Trang chủ</a></li>
 										<li><a href="about.jsp">Giới thiệu</a></li>										
-										<li><a href="shop.jsp">Adidas</a>
+										<li><a href="SanPhamConTroller?thuonghieu=Adidas">Adidas</a>
 											<ul>
-												<li><a href="shop.jsp">Giày nam</a></li>
-												<li><a href="shop.jsp">Giày nữ</a></li>
+												<li><a href="SanPhamController?&thuonghieu=Adidas&gioitinh=Nam">Giày nam</a></li>
+												<li><a href="SanPhamController?&thuonghieu=Adidas&gioitinh=Nữ">Giày nữ</a></li>
 											</ul>
 										</li>
-										<li><a href="shop.jsp">Nike</a>
+										<li><a href="SanPhamController?&thuonghieu=Nike">Nike</a>
 											<ul>
-												<li><a href="shop.jsp">Giày nam</a></li>
-												<li><a href="shop.jsp">Giày nữ</a></li>
+												<li><a href="SanPhamController?&thuonghieu=Nike&gioitinh=Nam">Giày nam</a></li>
+												<li><a href="SanPhamController?&thuonghieu=Nike&gioitinh=Nữ">Giày nữ</a></li>
 											</ul>
 										</li>
-										<li><a href="shop.jsp">Bitis</a>
+										<li><a href="SanPhamController?&thuonghieu=Bitis">Bitis</a>
 											<ul>
-												<li><a href="shop.jsp">Giày nam</a></li>
-												<li><a href="shop.jsp">Giày nữ</a></li>
+												<li><a href="SanPhamController?&thuonghieu=Bitis&gioitinh=Nam">Giày nam</a></li>
+												<li><a href="SanPhamController?&thuonghieu=Bitis&gioitinh=Nữ">Giày nữ</a></li>
 											</ul>
 										</li>
 										<li><a href="TinTucController">Tin tức</a></li>

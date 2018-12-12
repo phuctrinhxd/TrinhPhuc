@@ -26,8 +26,12 @@ public class TinTucController extends HttpServlet {
 
 		request.setCharacterEncoding("UTF-8");
 		Connection conn = DBConnection.CreateConnection();
-		List<TinTuc> list = TinTucDAO.TatCaTinTuc(conn);
+		int page=1;
+		if(request.getParameter("page")!=null)
+			page=Integer.parseInt(request.getParameter("page"));
+		List<TinTuc> list = TinTucDAO.PhanTrang(conn, page);
 		request.setAttribute("listtt", list);
+		request.setAttribute("page", page);
 		RequestDispatcher rd = request.getRequestDispatcher("blog.jsp");
 		rd.forward(request, response);
 		try {

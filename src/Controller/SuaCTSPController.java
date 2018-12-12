@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import BEAN.ChiTietSanPham;
-import DAO.ChiTietSanPhamDAO;
+import DAO.SanPhamDAO;
 import DB.DBConnection;
 
 
@@ -33,24 +33,20 @@ public class SuaCTSPController extends HttpServlet {
         int Size=Integer.parseInt(request.getParameter("Size"));
         int SoLuong=Integer.parseInt(request.getParameter("SoLuong"));
       
-        System.out.println(MaSanPham);
-        System.out.print(Size);
-        System.out.print(SoLuong);
-        
         ChiTietSanPham ctsp=new ChiTietSanPham();
         ctsp.setMaSanPham(MaSanPham);
         ctsp.setSize(Size);
         ctsp.setSoLuong(SoLuong);
-        boolean kt=ChiTietSanPhamDAO.UpdateChiTietSanPham(ctsp, conn);
+        boolean kt=SanPhamDAO.UpdateChiTietSanPham(ctsp, conn);
         if(kt)
         {
-     	   request.setAttribute("msgSuaCTSP", "Sửa chi tiết sản phẩm  thành công");
+     	   request.setAttribute("msgSuaCTSP", "Sửa chi tiết sản phẩm thành công");
      	   RequestDispatcher rd = request.getRequestDispatcher("ChiTietSanPhamController?MaSanPham="+MaSanPham);
    			rd.forward(request, response);
         }
         else
         {
-        	request.setAttribute("msgSuaCTSP", "Sửa chi tiết sản phẩm  thành công");
+        	request.setAttribute("msgSuaCTSP", "Sửa chi tiết sản phẩm thất bại");
      	   RequestDispatcher rd = request.getRequestDispatcher("ChiTietSanPhamController?MaSanPham="+MaSanPham);
    			rd.forward(request, response);
         }
@@ -58,7 +54,6 @@ public class SuaCTSPController extends HttpServlet {
 
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
 		doGet(request, response);
 	}
 
