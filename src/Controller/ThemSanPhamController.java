@@ -35,17 +35,17 @@ public class ThemSanPhamController extends HttpServlet {
 
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-//		HttpSession session = request.getSession();
-//		if(session.getAttribute("quyen")==null)
-//			response.sendRedirect("Home");
-//		else {
-//			if(((Quyen)session.getAttribute("quyen")).getSanPham()==1 || ((Quyen)session.getAttribute("quyen")).getAdmin()==1) {
+		HttpSession session = request.getSession();
+		if(session.getAttribute("quyen")==null)
+			response.sendRedirect("Home");
+		else {
+			if(((Quyen)session.getAttribute("quyen")).getSanPham()==1 || ((Quyen)session.getAttribute("quyen")).getAdmin()==1) {
 				RequestDispatcher rd = request.getRequestDispatcher("themSP.jsp");
 				rd.forward(request, response);
-//			} else {
-//				response.sendRedirect("DangNhapAdminController");
-//			}
-//		}
+			} else {
+				response.sendRedirect("DangNhapAdminController");
+			}
+		}
 		
 	}
 

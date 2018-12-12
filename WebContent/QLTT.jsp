@@ -9,6 +9,12 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Quản lý tin tức</title>
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+        <link href="css/font-awesome.min.css" rel="stylesheet">
+        <link href="css/datepicker3.css" rel="stylesheet">
+        <link href="css/admin.css" rel="stylesheet">
+        <script src="js/vendor/jquery-1.12.0.min.js"></script>
+    	<script src="js/bootstrap.min.js"></script>
 </head>
 
 <body>

@@ -11,8 +11,10 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import javax.servlet.http.Part;
 
+import BEAN.Quyen;
 import BEAN.SanPham;
 
 import DAO.SanPhamDAO;
@@ -36,14 +38,25 @@ public class SuaSanPhamController extends HttpServlet {
 
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		request.setCharacterEncoding("UTF-8"); 
-		 String action = request.getParameter("action");
-		 if(action==null)
-			 ShowSanPham(request, response);
-		 else {
-			 if(action.contains("Update"))		
-					UpdateSanPham(request, response);
-		 }
+		
+		HttpSession session = request.getSession();
+		if(session.getAttribute("quyen")==null) {
+			response.sendRedirect("Home");
+		} else {
+			if(((Quyen)session.getAttribute("quyen")).getSanPham()==1 || ((Quyen)session.getAttribute("quyen")).getAdmin()==1) {
+				request.setCharacterEncoding("UTF-8"); 
+				 String action = request.getParameter("action");
+				 if(action==null)
+					 ShowSanPham(request, response);
+				 else {
+					 if(action.contains("Update"))		
+							UpdateSanPham(request, response);
+				 }
+			}
+			else
+				response.sendRedirect("DangXuatController");
+		}
+		
 	}
 
 	
@@ -87,7 +100,6 @@ public class SuaSanPhamController extends HttpServlet {
         for (Part part : request.getParts()) {
         	String fileName = extractFileName(part);
         	fileName = new File(fileName).getName();
-        	System.out.println(fileName);
             if(fileName.length()>1) {
             	if(i==8) {
             		HinhAnh = fileName;

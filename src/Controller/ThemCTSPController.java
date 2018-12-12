@@ -37,10 +37,6 @@ public class ThemCTSPController extends HttpServlet {
         int Size=Integer.parseInt(request.getParameter("Size"));
         int SoLuong=Integer.parseInt(request.getParameter("SoLuong"));
       
-        System.out.println(MaSanPham);
-        System.out.print(Size);
-        System.out.print(SoLuong);
-        
         ChiTietSanPham ctsp=new ChiTietSanPham();
         ctsp.setMaSanPham(MaSanPham);
         ctsp.setSize(Size);

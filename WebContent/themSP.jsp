@@ -106,7 +106,6 @@
                </div>
                <div class="col-md-3" style="margin-top: 5px"><input  type="radio" name="GioiTinh"  value="Cả 2"  <%= GioiTinh.contains("Cả 2")? "checked":""%>> Cả 2</div>
                </div>
-            </div>
             <div  class="row"style="margin-top: 10px">
                <div class="col-md-1"></div>
                <div class="col-md-3">
@@ -159,7 +158,7 @@
          </form>
          </div>
       </div>
-     </div>
+      </div>
     <script type="text/javascript">
 	function read(input){
 		if(input.files && input.files[0]){
