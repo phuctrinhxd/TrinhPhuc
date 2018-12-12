@@ -65,7 +65,7 @@ public class QLNVController extends HttpServlet {
 					}
 				}
 			} else {
-				response.sendRedirect("DangNhapAdminController");
+				response.sendRedirect("DangXuatController");
 			}
 		}
 	}

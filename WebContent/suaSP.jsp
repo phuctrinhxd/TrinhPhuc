@@ -6,7 +6,7 @@
    <head>
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width, initial-scale=1">
-      <title>Thêm sản phẩm</title>
+      <title>Sửa sản phẩm</title>
       <link href="css/bootstrap.min.css" rel="stylesheet">
       <link href="css/font-awesome.min.css" rel="stylesheet">
       <link href="css/datepicker3.css" rel="stylesheet">
@@ -14,7 +14,7 @@
       <link href="https://fonts.googleapis.com/css?family=Montserrat:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
    </head>
    <body>
-	<jsp:include page="header-admin.jsp"></jsp:include>
+   <jsp:include page="header-admin.jsp"></jsp:include>
       <div class="col-sm-9 col-sm-offset-3 col-lg-10 col-lg-offset-2 main">
       <div class="row">
             <ol class="breadcrumb">
@@ -29,52 +29,49 @@
       <div class="row" style="width: 100%; margin: 0% 0% 0% 0%">
       <div class="col-md-12">
          <div class="row">
-            <h4 style="text-align: center;color: blue">Thêm sản phẩm</h4>
+            <h4 style="text-align: center;color: blue">Sửa sản phẩm</h4>
          </div>
          <div class="row" style="width: 102%; height: 10px; background-color: #85e0e0;"></div>
          <div class="row " style="width: 100%; margin: 1% 0% 0% 0%; border: 1px">
          </div>
-         <form action="ThemSanPhamController" method="post"  class="panel" style="background-color: white" enctype="multipart/form-data">
-         <% 
-	String ThuongHieu = request.getParameter("ThuongHieu")==null ? "1" : request.getParameter("ThuongHieu");	
-	String GioiTinh = request.getParameter("GioiTinh")==null ? "1" : request.getParameter("GioiTinh");
-	String MauSac = request.getParameter("MauSac")==null ? "1" : request.getParameter("MauSac");
-	%>
+         <form action="SuaSanPhamController?action=Update" method="post"  class="panel" style="background-color: white" enctype="multipart/form-data">
+        	<% 
+	
+			String MauSac = request.getParameter("MauSac")==null ? "1" : request.getParameter("MauSac");
+			%>
             <div  class="row"style="margin-top: 10px">
                <div  class="row" style="margin-top: 5px">
                   <div class="col-md-1"></div>
-                  <div class="col-md-4" style="margin-top: 5px">
-                     <div class="col-md-9"  style="margin-top: 5px">
-                        <p style="margin-left: 61px">Danh mục sản phẩm :</p>
+                  <div class="col-md-10" style="margin-top: 5px">
+                     <div class="col-md-3"  style="margin-top: 20px">
+                        <p style="margin-left: 61px">Thương hiệu :</p>
                      </div>
-                     <div class="col-md-3" style="margin-top: 5px"><input  type="radio" name="ThuongHieu" value="Nike"  <%= ThuongHieu.contains("Nike")? "checked":""%> required > Nike</div>
+                     <div class="col-md-4" style="margin-left:40px ">
+                     <input name="ThuongHieu"  type="hidden" placeholder="" value="<c:out value="${ttsp.getThuongHieu() }"/>"  >
+                               <h3 > <c:out value="${ttsp.getThuongHieu() }"/> </h3>
+					</div>                
                   </div>
-                  <div class="col-md-3">
-                     <div class="col-md-7" style="margin-top: 10px"><input type="radio" name="ThuongHieu" value="Adidas"  <%= ThuongHieu.contains("Adidas")? "checked":""%> required> Adidas</div>
-                     <div class="col-md-5" style="margin-top: 10px"><input type="radio" name="ThuongHieu" value="Bitis"  <%= ThuongHieu.contains("Bitis")? "checked":""%> required> Bitis</div>
-                  </div>
-                  <div class="col-md-3">
-                     <div class="col-md-7" style="margin-top: 10px"><input  type="radio" name="ThuongHieu"  value="Khác"  <%= ThuongHieu.contains("Khác")? "checked":""%> required> Khác</div>
-                  </div>
+                 
                   <div class="col-md-1"></div>
                </div>
                <div class="col-md-1"></div>
                <div class="col-md-3">
-                  <p style="margin-left: 65px;margin-top: 10px">Mã sản phẩm :</p>
+                  <p style="margin-left: 65px;margin-top: 20px">Mã sản phẩm :</p>
                </div>
                <div class=" form-group col-md-7" style="width: 500px">
-                  <input name="MaSanPham" type="text"    class="form-control" value= "<c:out value="${ttsp.getMaSanPham()}"/>"/>
-                
+                  <input name="MaSanPham"  type="hidden" placeholder="" value="<c:out value="${ttsp.getMaSanPham() }"/>"  >
+                               <h3> <c:out value="${ttsp.getMaSanPham() }"/> </h3>
                </div>
                <div class="col-md-1"></div>
             </div>
             <div  class="row"style="margin-top: 10px">
                <div class="col-md-1"></div>
                <div class="col-md-3">
-                  <p style="margin-left: 65px;margin-top: 10px">Tên sản phẩm :</p>
+                  <p style="margin-left: 65px;margin-top: 20px">Tên sản phẩm :</p>
                </div>
                <div class=" form-group col-md-7" style="width: 500px">
-                  <input name="TenSanPham"id="name"type="text" placeholder="Tên sản phẩm" required  class="form-control" />
+               <input name="TenSanPham"  type="hidden" placeholder="" value="<c:out value="${ttsp.getTenSanPham() }"/>"  >
+                     <h3> <c:out value="${ttsp.getTenSanPham() }"/> </h3>
                </div>
                <div class="col-md-1"></div>
             </div>
@@ -84,7 +81,8 @@
                   <p style="margin-left: 65px;margin-top: 10px">Màu :</p>
                </div>
                <div class=" form-group col-md-7" >
-                  <select name="MauSac" style="height: 40px;width: 250px">
+                  <select name="MauSac" style="height: 40px;width: 250px" >
+                  	<option value="<c:out value="${ttsp.getMauSac() }"/>"><c:out value="${ttsp.getMauSac() }"/></option>
                      <option value="Đen" <%= MauSac.contains("Đen")? "selected":""%>>Đen</option>
                      <option value="Trắng" <%= MauSac.contains("Trắng")? "selected":""%>>Trắng</option>
                      <option value="Xám" <%= MauSac.contains("Xám")? "selected":""%>>Xám</option>
@@ -95,35 +93,33 @@
             </div>
             <div  class="row" style="margin-top: 5px">
                <div class="col-md-1"></div>
-               <div class="col-md-4" style="margin-top: 5px">
-                  <div class="col-md-9"  style="margin-top: 5px">
+               <div class="col-md-10" style="margin-top: 5px">
+                  <div class="col-md-3"  style="margin-top: 25px">
                      <p style="margin-left: 50px">Giới tính :</p>
                   </div>
-                  <div class="col-md-3" style="margin-top: 5px"><input  type="radio" name="GioiTinh"  value="Nam"  <%= GioiTinh.contains("Nam")? "checked":""%>> Nam</div>
+                  <div class="col-md-3" style="margin-top: 5px;margin-left: 30px"><input  type="hidden" name="GioiTinh"  value="<c:out value="${ttsp.getGioiTinh()}"/>">
+                  <h3><c:out value="${ttsp.getGioiTinh()}"/> </h3>
+                  </div>
                </div>
-               <div class="col-md-3">
-                  <div class="col-md-7" style="margin-top: 10px"><input type="radio" name="GioiTinh" value="Nữ"  <%= GioiTinh.contains("Nữ")? "checked":""%> > Nữ</div>
-               </div>
-               <div class="col-md-3" style="margin-top: 5px"><input  type="radio" name="GioiTinh"  value="Cả 2"  <%= GioiTinh.contains("Cả 2")? "checked":""%>> Cả 2</div>
-               </div>
+               
             </div>
             <div  class="row"style="margin-top: 10px">
                <div class="col-md-1"></div>
                <div class="col-md-3">
-                  <p style="margin-left: 65px;margin-top: 10px">Khuyến mãi :</p>
+                  <p style="margin-left: 65px;margin-top: 10px">Khuyến mãi (%):</p>
                </div>
                <div class=" form-group col-md-7" style="width: 150px">
-                  <input name="KhuyenMai" type="number" placeholder="%" required class="form-control" />
+                  <input name="KhuyenMai" type="number" placeholder="%" required  class="form-control" value="<c:out value="${ttsp.getKhuyenMai() }"/>" />
                </div>
                <div class="col-md-1"></div>
             </div>
             <div  class="row"style="margin-top: 10px">
                <div class="col-md-1"></div>
                <div class="col-md-3">
-                  <p style="margin-left: 65px;margin-top: 10px">Giá bán :</p>
+                  <p style="margin-left: 65px;margin-top: 10px">Giá bán (VND) :</p>
                </div>
                <div class=" form-group col-md-7" style="width: 300px">
-                  <input name="GiaBan" type="number" placeholder="đ" required  class="form-control" />
+                  <input name="GiaBan" type="number" placeholder="đ" required  value="<c:out value="${ttsp.getGia() }"/>" class="form-control" />
                </div>
                <div class="col-md-1"></div>
             </div>
@@ -133,16 +129,16 @@
                   <p style="margin-left: 65px;margin-top: 10px">Ảnh :</p>
                </div>
                <div class=" form-group col-md-3">
-                  <img  alt="" style="width: 200px;height: 200px" src="" id="image"><br/>
-                  <img  alt="" style="width: 200px;height: 200px" src="" id="image2"><br/>
-                  <img  alt="" style="width: 200px;height: 200px" src="" id="image3"><br/>
-                  <img  alt="" style="width: 200px;height: 200px" src="" id="image4"><br/>
+               	  <img  alt="" style="width: 200px;height: 200px" src="<c:out value="${ttsp.getHinhAnh() }"/>" id="image"><br/>
+                  <img  alt="" style="width: 200px;height: 200px" src="<c:out value="${ttsp.getHinhAnh2() }"/>" id="image2"><br/>
+                  <img  alt="" style="width: 200px;height: 200px" src="<c:out value="${ttsp.getHinhAnh3() }"/>" id="image3"><br/>
+                  <img  alt="" style="width: 200px;height: 200px" src="<c:out value="${ttsp.getHinhAnh4() }"/>" id="image4"><br/>
                </div>
                <div class="col-md-2">
-                  <input type="file" name="HinhAnh" style="height: 20px" required accept="image/jpg,image/png,image/jpeg" onchange="read(this);"><br/>
-                  <input type="file" name="HinhAnh" style="height: 20px" required accept="image/jpg,image/png,image/jpeg" onchange="read2(this);"><br/>
-                  <input type="file" name="HinhAnh" style="height: 20px" required accept="image/jpg,image/png,image/jpeg" onchange="read3(this);"><br/>
-                  <input type="file" name="HinhAnh" style="height: 20px" required accept="image/jpg,image/png,image/jpeg" onchange="read4(this);"><br/>
+                  <input type="file" name="HinhAnh" style="height: 20px" accept="image/jpg,image/png,image/jpeg" onchange="read(this);"><br/>
+                  <input type="file" name="HinhAnh" style="height: 20px" accept="image/jpg,image/png,image/jpeg" onchange="read2(this);"><br/>
+                  <input type="file" name="HinhAnh" style="height: 20px" accept="image/jpg,image/png,image/jpeg" onchange="read3(this);"><br/>
+                  <input type="file" name="HinhAnh" style="height: 20px" accept="image/jpg,image/png,image/jpeg" onchange="read4(this);"><br/>
                </div>
             </div>
             <div  class="row"style="margin-top: 10px">
@@ -160,7 +156,7 @@
          </div>
       </div>
      </div>
-    <script type="text/javascript">
+     <script type="text/javascript">
 	function read(input){
 		if(input.files && input.files[0]){
 			var reader = new FileReader();

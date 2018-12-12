@@ -65,7 +65,7 @@ public class QLDHController extends HttpServlet {
 					}
 				}
 			} else {
-				response.sendRedirect("DangNhapAdminController");
+				response.sendRedirect("DangXuatController");
 			}
 		}
 	}

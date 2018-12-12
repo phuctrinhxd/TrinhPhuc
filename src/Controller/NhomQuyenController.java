@@ -52,7 +52,7 @@ public class NhomQuyenController extends HttpServlet {
 					}
 				}
 			} else {
-				response.sendRedirect("DangNhapAdminController");
+				response.sendRedirect("DangXuatController");
 			}
 		}
 		

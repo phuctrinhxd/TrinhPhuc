@@ -12,9 +12,7 @@
 	<div class="product-comments">
 		<div class="product-comments-content">
 			<p><strong><c:out value="${makh }" /></strong>
-			<c:if test="${comment.getMaKhachHang()==makh }">
 			<a href="javascript://" onclick="XoaBinhLuan('<c:out value="${macm }" />');"><span class="delete-comment"><i class="fa fa-times"></i></span></a>
-			</c:if>
 			</p>
 			<div class="desc">
 				<c:out value="${nd}"/>

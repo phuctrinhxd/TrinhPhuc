@@ -135,7 +135,7 @@
 																<div class="product-comments">
 																	<div class="product-comments-content">
 																		<p><strong><c:out value="${comment.getMaKhachHang() }" /></strong>
-																		<c:if test="${comment.getMaKhachHang()==makh }">
+																		<c:if test="${comment.getMaKhachHang()==makh || sessionScope.quyen.getAdmin()==1 || sessionScope.quyen.getSanPham()==1}">
 																		<a href="javascript://" onclick="XoaBinhLuan('<c:out value="${comment.getMaComment() }"/>');"><span class="delete-comment"><i class="fa fa-times"></i></span></a>
 																		</c:if>
 																		</p>

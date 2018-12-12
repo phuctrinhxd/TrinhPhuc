@@ -5,7 +5,156 @@ import java.util.*;
 import BEAN.*;
 
 public class SanPhamDAO {
+	
+	public static boolean DeleteSanPham(String MaSanPham, Connection conn)
+	{
+		String sqlStr="Delete from sanpham where MaSanPham= ?";
+		
+		PreparedStatement ptmt=null;
+		boolean delete=false;
+			try {
+				
+				ptmt=conn.prepareStatement(sqlStr);
+				ptmt.setString(1,MaSanPham);
+				
+				delete=ptmt.executeUpdate()>0;
+				ptmt.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		
+		return delete;
+	}
+	
+	public static boolean DeleteChiTietSanPham(String MaSanPham,int Size,Connection conn)
+	{
+		String sqlStr="Delete from chitietsanpham where MaSanPham=? And Size=?";
+		PreparedStatement ptmt=null;
+		boolean delete=false;
+		try {
+			
+			ptmt=conn.prepareStatement(sqlStr);
+			ptmt.setString(1,MaSanPham);
+			ptmt.setInt(2, Size);
+			delete=ptmt.executeUpdate()>0;
+			ptmt.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return delete;
+	}
+	
+	public static boolean ThemSanPham(SanPham qlsp,Connection conn)
+	{
 
+		String sqlStr="insert into sanpham(MaSanPham,TenSanPham,ThuongHieu,MauSac,GioiTinh,KhuyenMai,Gia,HinhAnh) values(?,?,?,?,?,?,?,?)";
+		PreparedStatement ptmt=null;
+		try {
+			ptmt=conn.prepareStatement(sqlStr);
+			
+			ptmt=conn.prepareStatement(sqlStr);
+			ptmt.setString(1, qlsp.getMaSanPham());
+			ptmt.setString(2, qlsp.getTenSanPham());
+			ptmt.setString(3, qlsp.getThuongHieu());
+			ptmt.setString(4, qlsp.getMauSac());
+			ptmt.setString(5, qlsp.getGioiTinh());
+			ptmt.setInt(6, qlsp.getKhuyenMai());
+			ptmt.setInt(7, qlsp.getGia());
+			ptmt.setString(8, qlsp.getHinhAnh());
+			
+			if(ptmt.executeUpdate()!=0)
+			{
+				ptmt.close();
+				return true;
+			}
+			
+			ptmt.close();
+					
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		return false;
+	}
+	
+	public static boolean ThemChiTietSanPham(ChiTietSanPham ctsp, Connection conn)
+	{
+		String sqlStr ="insert into chitietsanpham(MaSanPham,Size,SoLuong) values (?, ?, ?)";
+		PreparedStatement ptmt=null;
+		try {
+			ptmt=conn.prepareStatement(sqlStr);
+			
+			ptmt.setString(1, ctsp.getMaSanPham());
+			ptmt.setInt(2, ctsp.getSize());
+			ptmt.setInt(3, ctsp.getSoLuong());
+			
+			if(ptmt.executeUpdate()!=0)
+			{
+				ptmt.close();
+				return true;
+			}
+			
+			ptmt.close();
+					
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		return false;
+	}
+	
+	public static boolean UpdateSanPham(SanPham qlsp, Connection conn)
+	{
+			boolean	update = false;
+	      
+			String sqlStr="Update sanpham set TenSanPham=?,ThuongHieu=?,MauSac=?,GioiTinh=?,KhuyenMai=?,Gia=?,HinhAnh=? where MaSanPham=?";
+	        PreparedStatement ptmt =null;
+	        try {
+	        	
+	        	ptmt=conn.prepareStatement(sqlStr);
+				ptmt.setString(1, qlsp.getTenSanPham());
+				ptmt.setString(2, qlsp.getThuongHieu());
+				ptmt.setString(3, qlsp.getMauSac());
+				ptmt.setString(4, qlsp.getGioiTinh());
+				ptmt.setInt(5, qlsp.getKhuyenMai());
+				ptmt.setInt(6, qlsp.getGia());
+				ptmt.setString(7, qlsp.getHinhAnh());
+				ptmt.setString(8, qlsp.getMaSanPham());
+
+				update=ptmt.executeUpdate()>0;
+				ptmt.close();
+
+			}  catch (SQLException e) {
+				e.printStackTrace();
+			}
+	        
+	        return update;
+	}
+	
+	public static boolean UpdateChiTietSanPham(ChiTietSanPham ctsp,Connection conn)
+	{
+		boolean	update = false;
+	       String  sqlStr="Update chitietsanpham set SoLuong=? where MaSanPham= ? and Size=? ";
+	       
+	        PreparedStatement ptmt =null;
+	        try {
+	        	
+	        	ptmt=conn.prepareStatement(sqlStr);
+				ptmt.setString(2,ctsp.getMaSanPham());
+				ptmt.setInt(3,ctsp.getSize());
+				ptmt.setInt(1,ctsp.getSoLuong());
+	     
+				update=ptmt.executeUpdate()>0;
+				ptmt.close();
+
+			}  catch (SQLException e) {
+				e.printStackTrace();
+			}
+	        
+	        return update;
+
+	}
+	
 	public static List<SanPham> SanPhamNoiBac(Connection conn){
 		List<SanPham> list = TatCaSanPham(conn);
 		list = GiaCaoDan(conn, list);

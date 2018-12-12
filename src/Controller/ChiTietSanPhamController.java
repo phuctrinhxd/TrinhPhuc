@@ -16,38 +16,43 @@ import BEAN.*;
 import DAO.*;
 import DB.DBConnection;
 
-@WebServlet("/QLKHController")
-public class QLKHController extends HttpServlet {
+
+@WebServlet("/ChiTietSanPhamController")
+public class ChiTietSanPhamController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
-    public QLKHController() {
+    
+    public ChiTietSanPhamController() {
         super();
+       
     }
 
+	
+	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 	
 		HttpSession session = request.getSession();
-		if(session.getAttribute("quyen")==null)
+		if(session.getAttribute("quyen")==null) {
 			response.sendRedirect("Home");
-		else {
-			if(((Quyen)session.getAttribute("quyen")).getKhachHang()==1 || ((Quyen)session.getAttribute("quyen")).getAdmin()==1) {
+		} else {
+			if(((Quyen)session.getAttribute("quyen")).getSanPham()==1 || ((Quyen)session.getAttribute("quyen")).getAdmin()==1) {
 				Connection conn = DBConnection.CreateConnection();
-					List<KhachHang> list = KhachHangDAO.TatCaKhachHang(conn);
-					request.setAttribute("listkh", list);
-					RequestDispatcher rd = request.getRequestDispatcher("QLKH.jsp");
-					rd.forward(request, response);
+				String MaSanPham=request.getParameter("MaSanPham");
+				SanPham qlsp=SanPhamDAO.LaySanPham(conn, MaSanPham);
+				List<ChiTietSanPham> ctsp=SanPhamDAO.ChiTietSanPham(conn, MaSanPham);
+				request.setAttribute("ThongTinSanPham",qlsp);
+				request.setAttribute("ThongTinChiTietSanPham", ctsp);
+				RequestDispatcher rd = request.getRequestDispatcher("chiTietSLSP.jsp");
+				rd.forward(request, response);
 			} else {
-				response.sendRedirect("DangXuatController");
+				response.sendRedirect("DangNhapAdminController");
 			}
 		}
+		
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-	
-		Connection conn = DBConnection.CreateConnection();
-		String makh = request.getParameter("makh");
-		KhachHangDAO.XoaKhachHang(conn, makh);
-		UsersDAO.XoaTaiKhoan(conn, makh);
+		doGet(request, response);
 	}
 
 }

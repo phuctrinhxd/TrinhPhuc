@@ -52,7 +52,7 @@
 									<input type="checkbox" name="thuonghieu" value="Bitis" onchange="FillterProduct();" <%= thuonghieu.contains("Bitis")? "checked":""%>> Bitis
 								</label></li>
 								<li><label>
-									<input type="checkbox" name="thuonghieu" value="other" onchange="FillterProduct();" <%= thuonghieu.contains("other")? "checked":""%>> Khác
+									<input type="checkbox" name="thuonghieu" value="Khác" onchange="FillterProduct();" <%= thuonghieu.contains("Khác")? "checked":""%>> Khác
 								</label></li>
 							</ul>
 						</aside>
@@ -83,7 +83,7 @@
 									<input type="checkbox" name="mau" value="Đỏ" onchange="FillterProduct();" <%= mau.contains("Đỏ")? "checked":""%>> Đỏ
 								</label></li>
 								<li><label>
-									<input type="checkbox" name="mau" value="other" onchange="FillterProduct();" <%= mau.contains("other")? "checked":""%>> Khác
+									<input type="checkbox" name="mau" value="Khác" onchange="FillterProduct();" <%= mau.contains("Khác")? "checked":""%>> Khác
 								</label></li>
 							</ul>						
 						</aside>

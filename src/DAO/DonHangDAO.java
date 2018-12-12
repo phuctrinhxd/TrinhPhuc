@@ -230,6 +230,34 @@ public class DonHangDAO {
 		return list;
 	}
 	
+public static List<ChiTietDonHang> LayChiTietDonHangTheoMaSP(Connection conn, String masp){
+		
+		List<ChiTietDonHang> list = new ArrayList<ChiTietDonHang>();
+		String sql = "select * from chitietdonhang where MaSanPham = ?";
+		PreparedStatement statement;
+		try {
+			statement = conn.prepareStatement(sql);
+			statement.setString(1, masp);
+			ResultSet rs = statement.executeQuery();
+			while(rs.next())
+			{
+				String mactdh = rs.getString("MaChiTietDonHang");
+				String madh = rs.getString("MaDonHang");
+				int size = rs.getInt("Size");
+				int soluong = rs.getInt("SoLuong");
+				int dongia = rs.getInt("DonGia");
+				SanPham sp = SanPhamDAO.LaySanPham(conn, masp);
+				ChiTietDonHang ctdh = new ChiTietDonHang(mactdh, madh, sp, size, soluong, dongia);
+				list.add(ctdh);
+			}
+			rs.close();
+			statement.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return list;
+	}
+	
 	public static List<DonHang> LayDonHangNguoiDung(Connection conn, String makh) {
 		
 		List<DonHang> list = new ArrayList<DonHang>();
