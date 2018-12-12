@@ -107,11 +107,6 @@
                                         	</form>
                                         	
                                         </div >
-                                        <div class="row" style="margin-top: 5%">
-                                       
-                                            <input id="input-hover" value="Xem" type="submit" style="width: 50px;height: 25px;margin-top: 10px">
-                                           
-                                        </div>
                                     </td>
                                 </tr>
                              </c:forEach>
