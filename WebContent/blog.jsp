@@ -10,7 +10,7 @@
 </head>
 <body>
 	<jsp:include page="header.jsp"></jsp:include>
-
+	<% int a=0; %>
 	<div class="breadcrumb-area">
 			<div class="container">
 				<div class="row">
@@ -22,6 +22,7 @@
 				</div>
 			</div>
 		</div>
+		<div class="clear"></div>
 		<div class="blog-area blog-full pad-60">
 			<div class="container">
 				<div class="row">	
@@ -37,6 +38,7 @@
 								</div>
 							</div>								
 						</div>
+						<c:if test="${blog==listtt.get(2)}"><div class="clear"></div></c:if>
 					</c:forEach>
 						
 					</div>						
