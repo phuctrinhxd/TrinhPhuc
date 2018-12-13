@@ -77,7 +77,7 @@ public class SuaSanPhamController extends HttpServlet {
 	
 	private void UpdateSanPham(HttpServletRequest request, HttpServletResponse response)  throws ServletException, IOException 
 	{
-		
+		request.setCharacterEncoding("UTF-8");
 		Connection conn = DBConnection.CreateConnection();
 		String MaSanPham=request.getParameter("MaSanPham");
 		String MauSac=request.getParameter("MauSac");

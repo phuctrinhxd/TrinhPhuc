@@ -21,7 +21,7 @@
                     <div class="row " style="width: 100%; margin: 1% 0% 0% 0%; border: 1px">
                         
                     </div>
-                    <form action="ThemTinTucController" enctype="multipart/form-data"  method="post"  class="panel" style="background-color: white">
+                    <form action="ThemTinTucController" enctype="multipart/form-data"  method="post"  class="panel" style="background-color: white" id="ss">
                         <div  class="row"style="margin-top: 20px"></div>
                         <div  class="row"style="margin-top: 30px">
                             
@@ -34,7 +34,7 @@
                                <p style="margin-left: 65px;margin-top: 10px">Tiêu đề:</p>
                             </div>
                             <div class=" form-group col-md-7 " style="width: 400px;">
-                                 <textarea name="TieuDe" id="Message"  placeholder="Tiêu đề"  class="form-control"></textarea>
+                                 <textarea name="TieuDe" id="Message" required placeholder="Tiêu đề"  class="form-control"></textarea>
                             </div>
                              <div class="col-md-1"></div>
                         
@@ -45,7 +45,7 @@
                                <p style="margin-left: 65px;margin-top: 10px">Nội dung:</p>
                             </div>
                             <div class=" form-group col-md-7 " style="width: 500px">
-                                 <textarea name="NoiDung" id="Message"  cols="30" rows="8" placeholder="Nội dung" class="form-control"></textarea>
+                                 <textarea name="NoiDung" id="Message"  cols="30" rows="8" placeholder="Nội dung" class="form-control" required></textarea>
                             </div>
                              <div class="col-md-1"></div>
                         
@@ -59,7 +59,7 @@
                                  <img src="#" alt="" style="width: 200px;height: 200px" id="image">
                             </div>
                             <div class="col-md-2">
-                                <input type="file" name="HinhAnh"  style="width: 300px;height: 20px" onchange="read(this);">
+                                <input type="file" name="HinhAnh"  required style="width: 300px;height: 20px" accept="image/jpg,image/png,image/jpeg" onchange="read(this);">
                             </div>
                         </div>
                         

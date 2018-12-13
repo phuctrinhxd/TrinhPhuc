@@ -34,7 +34,7 @@
          <div class="row" style="width: 102%; height: 10px; background-color: #85e0e0;"></div>
          <div class="row " style="width: 100%; margin: 1% 0% 0% 0%; border: 1px">
          </div>
-         <form action="ThemSanPhamController" method="post"  class="panel" style="background-color: white" enctype="multipart/form-data">
+         <form id="Them_SanPham" action="ThemSanPhamController" method="post"  class="panel" style="background-color: white" enctype="multipart/form-data">
          <% 
 	String ThuongHieu = request.getParameter("ThuongHieu")==null ? "1" : request.getParameter("ThuongHieu");	
 	String GioiTinh = request.getParameter("GioiTinh")==null ? "1" : request.getParameter("GioiTinh");
@@ -63,7 +63,7 @@
                   <p style="margin-left: 65px;margin-top: 10px">Mã sản phẩm :</p>
                </div>
                <div class=" form-group col-md-7" style="width: 500px">
-                  <input name="MaSanPham" type="text"    class="form-control" value= "<c:out value="${ttsp.getMaSanPham()}"/>"/>
+                  <input name="MaSanPham" type="text"  required  class="form-control" value= "<c:out value="${ttsp.getMaSanPham()}"/>"/>
                 
                </div>
                <div class="col-md-1"></div>
@@ -112,7 +112,7 @@
                   <p style="margin-left: 65px;margin-top: 10px">Khuyến mãi :</p>
                </div>
                <div class=" form-group col-md-7" style="width: 150px">
-                  <input name="KhuyenMai" type="number" placeholder="%" required class="form-control" />
+                  <input name="KhuyenMai" type="number" placeholder="%" min="0" max="100" required class="form-control" />
                </div>
                <div class="col-md-1"></div>
             </div>
@@ -122,7 +122,7 @@
                   <p style="margin-left: 65px;margin-top: 10px">Giá bán :</p>
                </div>
                <div class=" form-group col-md-7" style="width: 300px">
-                  <input name="GiaBan" type="number" placeholder="đ" required  class="form-control" />
+                  <input name="GiaBan" type="number" placeholder="đ" required min="100000"   class="form-control" />
                </div>
                <div class="col-md-1"></div>
             </div>

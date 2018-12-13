@@ -42,15 +42,6 @@ public class XoaSanPhamController extends HttpServlet {
 				for(Comment cm : listcm) {
 					CommentDAO.XoaBinhLuan(conn, cm.getMaComment());
 				}
-				List<ChiTietDonHang> listctdh = DonHangDAO.LayChiTietDonHangTheoMaSP(conn, MaSanPham);
-				for(ChiTietDonHang ctdh : listctdh) {
-					DonHangDAO.XoaChiTietDonHang(conn, ctdh.getMaChiTietDonHang());
-					DonHang dh = DonHangDAO.LayDonHangTheoMa(conn, ctdh.getMaDonHang());
-					dh.setListCTDH(DonHangDAO.LayChiTietDonHang(conn, dh.getMaDonHang()));
-					dh.setTongSanPham(DonHangDAO.TongSanPham(conn, dh.getMaDonHang()));
-					dh.setTongTien(DonHangDAO.TongTienDonHang(conn, dh.getMaDonHang()));
-					DonHangDAO.SuaDonHang(conn, dh);
-				}
 				List<ChiTietSanPham> listctsp = SanPhamDAO.ChiTietSanPham(conn, MaSanPham);
 				for(ChiTietSanPham ctsp : listctsp) {
 					SanPhamDAO.DeleteChiTietSanPham(MaSanPham, ctsp.getSize(), conn);

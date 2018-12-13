@@ -45,7 +45,7 @@
 									<div class="form-group col-md-12">
 										<div class="contact-textarea " >
 											<textarea name="comment" id="comment" cols="30" rows="10" placeholder="Nội dung" class="form-control"></textarea>
-											<input class="col-md-4 col-md-offset-4" type="submit" value="Gửi" onclick="ThongBao();"/>
+											<input class="col-md-4 col-md-offset-4" type="submit" value="Gửi" onsubmit="ThongBao();"/>
 										</div>								
 									</div>
 								</form>						

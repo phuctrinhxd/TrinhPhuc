@@ -31,7 +31,7 @@
                     <div class="row " style="width: 100%; margin: 1% 0% 0% 0%; border: 1px">
                         
                     </div>
-                    <form enctype="multipart/form-data" action="SuaTinTucController?action=Update"  method="post"  class="panel" style="background-color: white" >
+                    <form id="ss" enctype="multipart/form-data" action="SuaTinTucController?action=Update"  method="post"  class="panel" style="background-color: white" >
                         <div  class="row"style="margin-top: 20px"></div>
                         <div  class="row"style="margin-top: 30px">
                             <div class="col-md-1"></div>

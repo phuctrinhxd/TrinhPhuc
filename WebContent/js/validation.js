@@ -408,5 +408,82 @@ $(function(){
 			}
 		}
 	});
+	$("#Them_SanPham").validate({
+		rules:{
+			MaSanPham:{
+				required:true,
+			},
+			TenSanPham:{
+				required:true,
+			},
+			KhuyenMai:{
+				required:true,
+			},
+			GiaBan:{
+				required:true,
+			},
+			HinhAnh1:{
+				
+			},
+			HinhAnh2:{
+				
+			},
+			HinhAnh3:{
+				
+			},
+			HinhAnh4:{
+				
+			},
+			
+		},
+		message:{
+			MaSanPham:{
+				required:'Nhập mã sản phẩm .',
+			},
+			TenSanPham:{
+				required:'Nhập tên sản phẩm',
+			},
+			KhuyenMai:{
+				required:'Nhập giá khuyến mãi',
+			},
+			GiaBan:{
+				required:'Nhập giá bán .',
+			},
+			HinhAnh1:{
+				
+			},
+			HinhAnh2:{
+				
+			},
+			HinhAnh3:{
+				
+			},
+			HinhAnh4:{
+				
+			},
+		}
+	})
+	$("#ss").validate({
+		rules:{
+			TieuDe: {
+				required:true,
+			},
+			NoiDung: {
+				required:true,
+			},
+			HinhAnh:{
+			},
+		},	
+		messages:{
+			TieuDe: {
+				required: 'Hãy nhập tiêu đề tin tức.',
+			},
+			NoiDung:{
+				required: 'Hãy nhập nội dung tin tức.',
+			},
+			HinhAnh:{
+			}
+		}
+	});
 });
 

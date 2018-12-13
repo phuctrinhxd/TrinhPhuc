@@ -68,38 +68,39 @@ public class SuaTinTucController extends HttpServlet {
 	
 	private void UpdateTinTuc(HttpServletRequest request, HttpServletResponse response)  throws ServletException, IOException 
 	{
-		 	Connection conn=DBConnection.CreateConnection();
-		 	int MaTinTuc=Integer.parseInt(request.getParameter("MaTinTuc"));
-	        String TieuDe=request.getParameter("TieuDe");
-	        String NoiDung=request.getParameter("NoiDung");
-		 	String appPath = request.getServletContext().getRealPath("");
-			String savePath = appPath + File.separator + SAVE_DIR1;
-			String savePath1 = SAVE_DIR + SAVE_DIR1;
-			File fileSaveDir = new File(savePath);
-	        if (!fileSaveDir.exists()) {
-	            fileSaveDir.mkdir();
-	        }
-	        String HinhAnh = "";
-	        for (Part part : request.getParts()) {
-	        	HinhAnh = extractFileName(part);
-	        	HinhAnh = new File(HinhAnh).getName();
-	            if(HinhAnh.length()>1) {
-	            	part.write(savePath + File.separator + HinhAnh);
-	            	part.write(savePath1 + File.separator + HinhAnh);
-	            }
-	        }
-	        TinTuc qltt=TinTucDAO.LayTinTuc(MaTinTuc, conn);
-	        qltt.setTieuDe(TieuDe);
-	        qltt.setNoiDung(NoiDung);
-	        if(HinhAnh.length()>1)
-	        	qltt.setHinhAnh(SAVE_DIR1+"/"+HinhAnh);
-	        
-	       boolean kt= TinTucDAO.SuaTinTuc(qltt, conn);
-	       try {
-			conn.close();
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
+		request.setCharacterEncoding("UTF-8");
+	 	Connection conn=DBConnection.CreateConnection();
+	 	int MaTinTuc=Integer.parseInt(request.getParameter("MaTinTuc"));
+        String TieuDe=request.getParameter("TieuDe");
+        String NoiDung=request.getParameter("NoiDung");
+	 	String appPath = request.getServletContext().getRealPath("");
+		String savePath = appPath + File.separator + SAVE_DIR1;
+		String savePath1 = SAVE_DIR + SAVE_DIR1;
+		File fileSaveDir = new File(savePath);
+        if (!fileSaveDir.exists()) {
+            fileSaveDir.mkdir();
+        }
+        String HinhAnh = "";
+        for (Part part : request.getParts()) {
+        	HinhAnh = extractFileName(part);
+        	HinhAnh = new File(HinhAnh).getName();
+            if(HinhAnh.length()>1) {
+            	part.write(savePath + File.separator + HinhAnh);
+            	part.write(savePath1 + File.separator + HinhAnh);
+            }
+        }
+        TinTuc qltt=TinTucDAO.LayTinTuc(MaTinTuc, conn);
+        qltt.setTieuDe(TieuDe);
+        qltt.setNoiDung(NoiDung);
+        if(HinhAnh.length()>1)
+        	qltt.setHinhAnh(SAVE_DIR1+"/"+HinhAnh);
+        
+       boolean kt= TinTucDAO.SuaTinTuc(qltt, conn);
+       try {
+		conn.close();
+	} catch (SQLException e) {
+		e.printStackTrace();
+	}
 	       if(kt)
 	       {
 	    	   request.setAttribute("msgSuaTinTuc", "Sửa tin tức thành công");
