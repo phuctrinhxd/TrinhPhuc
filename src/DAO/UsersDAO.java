@@ -61,7 +61,7 @@ public class UsersDAO {
 			statement = conn.prepareStatement(sql);
 			statement.setString(1, user.getId());
 			statement.setString(2, user.getPass());
-			statement.setInt(3, 1);
+			statement.setInt(3, user.getQuyen());
 			if(statement.executeUpdate()!=0) {
 				statement.close();
 				return true;
