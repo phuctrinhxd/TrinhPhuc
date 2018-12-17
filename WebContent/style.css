@@ -2702,7 +2702,7 @@ a.shipping-calculator-button:hover {
 .blog-page-main .col-md-6{margin-bottom:30px}
 .blog-page-main .col-md-4{margin-bottom:30px}
 .blog-page-main .col-md-6:nth-last-child(-n+2){margin-bottom:0px}
-.blog-page-main .col-md-4:nth-last-child(-n+3){margin-bottom:0px}
+.blog-page-main .col-md-4:nth-child(4n+0){clear: both;}
 .blog-pagination {
   border-top: 1px solid #ddd;
   margin-top: 31px;

@@ -38,7 +38,6 @@
 								</div>
 							</div>								
 						</div>
-						<c:if test="${blog==listtt.get(2)}"><div class="clear"></div></c:if>
 					</c:forEach>
 						
 					</div>						

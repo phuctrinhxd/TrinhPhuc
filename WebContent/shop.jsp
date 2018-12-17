@@ -114,7 +114,7 @@
 									<input type="radio" name="gia" value="tb" onchange="FillterProduct();" <%= gia.contains("tb")? "checked":""%>> 1 triệu - 2 triệu
 								</label></li>
 								<li><label>
-									<input type="radio" name="gia" value="cao" onchange="FillterProduct();" <%= mau.contains("cao")? "checked":""%>> Trên 2 triệu
+									<input type="radio" name="gia" value="cao" onchange="FillterProduct();" <%= gia.contains("cao")? "checked":""%>> Trên 2 triệu
 								</label></li>
 							</ul>						
 						</aside>						

@@ -128,7 +128,7 @@
 											</div>
 											<div role="tabpanel" class="tab-pane" id="page-comments">
 												<div class="product-tab-desc">
-													<div class="product-page-comments">
+													<div class="product-page-comments" >
 														<c:forEach items="${listcm }" var="comment">
 														<ul>
 															<li id='li<c:out value="${comment.getMaComment() }"/>'>
