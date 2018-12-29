@@ -1,80 +1,15 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
     pageEncoding="utf-8"%>
+    <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html>
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>Xem chi tiết đơn hàng</title>
-	<link href="css/bootstrap.min.css" rel="stylesheet">
-	<link href="css/font-awesome.min.css" rel="stylesheet">
-	<link href="css/datepicker3.css" rel="stylesheet">
-	<link href="css/style-admin.css" rel="stylesheet">
-	
-	<!--Custom Font-->
-	<link href="https://fonts.googleapis.com/css?family=Montserrat:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
-	<!--[if lt IE 9]>
-	<script src="js/html5shiv.js"></script>
-	<script src="js/respond.min.js"></script>
-	<![endif]-->
 </head>
 <body>
-	<nav class="navbar navbar-custom navbar-fixed-top" role="navigation">
-		<div class="container-fluid">
-			<div class="navbar-header">
-				<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#sidebar-collapse"><span class="sr-only">Toggle navigation</span>
-					</button>
-				<a class="navbar-brand" href="#">Admin</a>
-				<div class="row">
-					<ul class="nav navbar-top-links navbar-right">
-				 	
-				 		<div class="col-md-12 text-right">
-				 			<a class="navbar-brand fa fa-user" href="#">Thông tin cá nhân</a>
-					
-				 		</div>
-				</div>
-			
-				</ul>
-			</div>
-		</div><!-- /.container-fluid -->
-	</nav>
-	<div id="sidebar-collapse" class="col-sm-3 col-lg-2 sidebar">
-		<div class="profile-sidebar">
-			
-			<div class="profile-usertitle">
-				<div class="profile-usertitle-name text-center">Trần Minh Tùng</div>
-				<div class="profile-usertitle-status text-center"><span class="indicator label-success"></span>Online</div>
-			</div>
-			<div class="clear"></div>
-		</div>
-		<div class="divider"></div>
-		
-		<ul class="nav menu">
-			<li><a href="QLTK.jsp"><em ">&nbsp;</em> Quản lý tài khoản</a></li>
-			<li class="parent "><a data-toggle="collapse" href="#sub-item-1">
-				<em class="fa fa-navicon">&nbsp;</em> Quản lý nhân viên <span data-toggle="collapse" href="#sub-item-1" class="icon pull-right"><em class="fa fa-plus"></em></span>
-				</a>
-				<ul class="children collapse" id="sub-item-1">
-					<li><a class="" href="nhomQuyen-admin.jsp">
-						<span class="fa fa-arrow-right">&nbsp;</span> Các nhóm quyền
-					</a></li>
-					<li><a class="" href="QLNV.jsp">
-						<span class="fa fa-arrow-right">&nbsp;</span> Danh sách nhân viên
-					</a></li>
-					
-				</ul>
-				
-			</li>
-			
-			<li><a href="QLSP.jsp"><em >&nbsp;</em> Quản lý sản phẩm</a></li>
-			<li class="active"><a href="QLDH.jsp"><em >&nbsp;</em> Quản lý đơn hàng</a></li>
-			<li><a href="QLKH.jsp"><em >&nbsp;</em> Quản lý khách hàng</a></li>
-			<li><a href="QLTT.jsp"><em >&nbsp;</em> Quản lý tin tức</a></li>
-			
-			<li><a href="login-admin.jsp"><em >&nbsp;</em> Đăng xuất</a></li>
-		</ul>
-	</div><!--/.sidebar-->
-		
+	<jsp:include page="header-admin.jsp"></jsp:include>
 	<div class="col-sm-9 col-sm-offset-3 col-lg-10 col-lg-offset-2 main">
 		<div class="row">
 			<ol class="breadcrumb">
@@ -93,7 +28,7 @@
 				<label> Họ và tên </label>
 				<div class="formRight"> 
 					<div class="col-xs-6">
-	        			<input class="form-control" id="name" type="text">
+	        			<input class="form-control" name="name" type="text" value="${khachhang.getHoTen() }" disabled>
 					</div>
 				</div>
 			</div>
@@ -101,7 +36,7 @@
 				<label> Email</label>
 				<div class="formRight"> 
 					<div class="col-xs-6">
-	        			<input class="form-control" id="email" type="text">
+	        			<input class="form-control" name="email" type="email" value="${khachhang.getEmail() }" disabled>
 					</div>
 				</div>
 			</div>
@@ -109,7 +44,7 @@
 				<label>Số điện thoại</label>
 				<div class="formRight"> 
 					<div class="col-xs-6">
-	        			<input class="form-control" id="phone" type="text">
+	        			<input class="form-control" name="phone" type="number" value="${khachhang.getSoDienThoai() }" disabled>
 					</div>
 				</div>
 			</div>
@@ -117,7 +52,7 @@
 				<label>Địa chỉ</label>
 				<div class="formRight"> 
 					<div class="col-xs-6">
-	        			<input class="form-control" id="address" type="text">
+	        			<textarea name="addresshome" class="form-control" disabled><c:out value="${khachhang.getDiaChi()}" /></textarea>
 					</div>
 				</div>
 			</div>
@@ -126,7 +61,7 @@
 				<label> Mã đơn hàng </label>
 				<div class="formRight"> 
 					<div class="col-xs-6">
-	        			<input class="form-control" id="id-DH" type="text">
+	        			<input class="form-control" name="id-DH" type="text" disabled value="${donhang.getMaDonHang() }">
 					</div>
 				</div>
 			</div>
@@ -134,15 +69,15 @@
 				<label> Ngày đặt hàng</label>
 				<div class="formRight"> 
 					<div class="col-xs-6">
-	        			<input class="form-control" id="date" type="text">
+	        			<input class="form-control" name="date" type="text" value="${donhang.getNgay() }" disabled>
 					</div>
 				</div>
 			</div>
-			<div class="formRow" style="height: 110px">
-				<label>Ghi chú</label>
+			<div class="formRow">
+				<label> Tổng tiền</label>
 				<div class="formRight"> 
-					<div class="col-xs-6">       	
-	        			<textarea rows="4" cols="80" class="tipS" name="node" original-title=""></textarea>
+					<div class="col-xs-6">
+	        			<input class="form-control" name="total" type="text" value="${donhang.getTongTien() }" disabled>
 					</div>
 				</div>
 			</div>
@@ -150,47 +85,25 @@
 			<table class="table table-bordered">
                     <thead>
                         <tr>
-                            <th>STT</th>
+                            <th>Hình ảnh</th>
                             <th>Thông tin sản phẩm</th>
-                            <th>Hình sản phẩm</th>
                             <th>Giá </th>
                             <th>Số lượng</th>
-                            <th>Tổng</th>
+                            <th>Size</th>
+                            <th>Thành tiền</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td>1</td>
-                            <td>
-                            	<p> Tên SP: </p>
-                            	<p> Mã SP: </p>
-							</td>
-							<td> 
-								<img  alt="NIKE" style="width: 200px;height: 200px" src="img/nike.jpg">
-							</td>
-                            <td>1000000đ</td>
-                            <td>2</td>
-                            <td>2000000đ</td>
-
-                        </tr>
- 						<tr>
-                            <td>2</td>
-                            <td>
-                            	<p> Tên SP: </p>
-                            	<p> Mã SP: </p>
-							</td>
-							<td> 
-								<img  alt="NIKE" style="width: 200px;height: 200px" src="img/nike.jpg">
-							</td>
-                            <td>500000đ</td>
-                            <td>1</td>
-                            <td>500000đ</td>
-                        </tr>
-                       <tr>
-                       <td> </td>
-                       	<td> <b> Tổng giá trị đơn hàng: </b></td>
-                       	<td> 25000000đ</td> 
-                       </tr>
+                    <c:forEach items="${listctdh}" var="chitietdonhang">
+                   		<tr>
+							<td><img src="<c:out value="${chitietdonhang.getSanPham().getHinhAnh()}"/>" alt="" height="50" width="50" /></td>
+							<td><c:out value="${chitietdonhang.getSanPham().getTenSanPham()}"/></td>
+							<td><c:out value="${chitietdonhang.getDonGia()}"/> đ</td>
+							<td><c:out value="${chitietdonhang.getSoLuong()}"/></td>
+							<td><c:out value="${chitietdonhang.getSize()}"/></td>
+							<td><c:out value="${chitietdonhang.getSoLuong() * chitietdonhang.getDonGia()}"/> đ</td>
+						</tr>
+                    </c:forEach>
                     </tbody>
                 </table>
 	
@@ -199,7 +112,7 @@
         	
 			<div class="formRow" style="height: 50px">
 				<div class="formRight"> 
-					<button type="submit" class="btn btn-info">HOÀN TẤT</button>
+					<a href="QLDHController"><button class="btn btn-info">Quay lại</button></a>
 				</div>
 				<div class="clear"></div>
 				
@@ -207,14 +120,6 @@
 			
 		</div>
 	
-	</div>	<!--/.main-->
-	
-	<!-- all js here -->
-		<!-- jquery latest version -->
-        <script src="js/vendor/jquery-1.12.0.min.js"></script>
-		<!-- bootstrap js -->
-        <script src="js/bootstrap.min.js"></script>
-			
 		
 </body>
 </html>

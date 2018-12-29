@@ -1,2 +1,0 @@
-# TrinhPhuc
-đồ án web

@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
     pageEncoding="utf-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -8,9 +9,7 @@
 </head>
 <body>
 	<jsp:include page="header.jsp"></jsp:include>
-	
 	<div class="slider-container">
-		<!-- Slider Image -->
 		<div id="mainSlider" class="nivoSlider slider-image">
 			<img src="img/blog/logoGiayNe.png" alt="main slider" title="#htmlcaption1" />
 			<img src="img/blog/bg.jpg" alt="main slider" title="#htmlcaption2" />
@@ -21,7 +20,7 @@
 		<div class="container">
 			<div class="row">
 				<div class="section-title">
-					<h2>MẪU GIÀY NỔI BẬT</h2>
+					<h2>MẪU GIÀY NỔI BẬC</h2>
 					<div class="title-icon">
 						<span><i class="fa fa-angle-left"></i> <i class="fa fa-angle-right"></i></span>
 					</div>
@@ -30,111 +29,39 @@
 			<div class="row">
 				<div class="col-md-12">
 					<div class="product-tab">
-						<!-- Nav tabs -->		
-						<!-- Tab panes -->
 						<div class="tab-content">
 							<div role="tabpanel" class="tab-pane active" id="home">
 								<div class="row">
 									<div class="product-curosel">
-										<!-- single-product start -->
+									<c:forEach items="${listSP}" var="sanpham">
 										<div class="col-md-12">
 											<div class="single-product">
 												<div class="product-img">
-													<a href="single-product.jsp">
-														<img src="img/giay1.jpg" alt="" />
+													<a href="ChiTietSPController?masp=<c:out value="${sanpham.getMaSanPham()}"/>">
+														<img src="<c:out value="${sanpham.getHinhAnh()}"/>" alt="" />
 													</a>
 													<span class="tag-line">new</span>
 													<div class="product-action">
 														<div class="button-cart">
-															<a href="order.jsp"><button><i class="fa fa-usd" aria-hidden="true"></i> đặt hàng</button>
-															</a>
-															<button><i class="fa fa-shopping-cart"></i> Giỏ hàng</button>
+															<button onclick="DatHang('<c:out value="${sanpham.getMaSanPham()}"/>')"><i class="fa fa-usd" aria-hidden="true"></i> đặt hàng</button>
+															<button onclick="ThemVaoGioHang('<c:out value="${sanpham.getMaSanPham()}"/>')"><i class="fa fa-shopping-cart"></i> Giỏ hàng</button>
 														</div>
 													</div>
 												</div>
 												<div class="product-content">
-													<h3><a href="single-product.jsp">Nike Nam</a></h3>
+													<h3><a href="ChiTietSPController?masp=<c:out value="${sanpham.getMaSanPham()}"/>">
+													<c:out value="${sanpham.getTenSanPham()}"/>
+													</a></h3>
 													<div class="price">
-														<span>900.000đ</span>
-														<span class="old">950.000đ</span>
+														<span><c:out value="${sanpham.getGiaBan()}"/>đ</span>
+														<c:if test="${sanpham.getKhuyenMai() > 0 }">
+														<span class="old"><c:out value="${sanpham.getGia()}"/>đ</span>
+														</c:if>
 													</div>
 												</div>
 											</div>
 										</div>
-										<!-- single-product end -->
-										<!-- single-product start -->
-										<div class="col-md-12">
-											<div class="single-product">
-												<div class="product-img">
-													<a href="single-product.jsp">
-														<img src="img/giay1.jpg" alt="" />
-													</a>
-													<span class="tag-line">new</span>
-													<div class="product-action">
-														<div class="button-cart">
-															<a href="order.jsp"><button><i class="fa fa-usd" aria-hidden="true"></i> đặt hàng</button>
-															</a>
-															<button><i class="fa fa-shopping-cart"></i> Giỏ hàng</button>
-														</div>
-													</div>
-												</div>
-												<div class="product-content">
-													<h3><a href="single-product.jsp">Nike Nam</a></h3>
-													<div class="price">
-														<span>900.000đ</span>
-														<span class="old">950.000đ</span>
-													</div>
-												</div>
-											</div>
-										</div>
-										<div class="col-md-12">
-											<div class="single-product">
-												<div class="product-img">
-													<a href="single-product.jsp">
-														<img src="img/giay1.jpg" alt="" />
-													</a>
-													<span class="tag-line">new</span>
-													<div class="product-action">
-														<div class="button-cart">
-															<a href="order.jsp"><button><i class="fa fa-usd" aria-hidden="true"></i> đặt hàng</button>
-															</a>
-															<button><i class="fa fa-shopping-cart"></i> Giỏ hàng</button>
-														</div>
-													</div>
-												</div>
-												<div class="product-content">
-													<h3><a href="single-product.jsp">Nike Nam</a></h3>
-													<div class="price">
-														<span>900.000đ</span>
-														<span class="old">950.000đ</span>
-													</div>
-												</div>
-											</div>
-										</div>
-										<div class="col-md-12">
-											<div class="single-product">
-												<div class="product-img">
-													<a href="single-product.jsp">
-														<img src="img/giay1.jpg" alt="" />
-													</a>
-													<span class="tag-line">new</span>
-													<div class="product-action">
-														<div class="button-cart">
-															<a href="order.jsp"><button><i class="fa fa-usd" aria-hidden="true"></i> đặt hàng</button>
-															</a>
-															<button><i class="fa fa-shopping-cart"></i> Giỏ hàng</button>
-														</div>
-													</div>
-												</div>
-												<div class="product-content">
-													<h3><a href="single-product.jsp">Nike Nam</a></h3>
-													<div class="price">
-														<span>900.000đ</span>
-														<span class="old">950.000đ</span>
-													</div>
-												</div>
-											</div>
-										</div>					
+									</c:forEach>
 									</div>
 								</div>								
 							</div>
@@ -149,7 +76,7 @@
 		<div class="container">
 			<div class="row">
 				<div class="section-title">
-					<h2><a href="blog.jsp">TIN TỨC</a></h2>
+					<h2><a href="TinTucController">TIN TỨC</a></h2>
 					<div class="title-icon">
 						<span><i class="fa fa-angle-left"></i> <i class="fa fa-angle-right"></i></span>
 					</div>
@@ -157,56 +84,59 @@
 			</div>			
 			<div class="row">
 				<div class="blog-curosel">
+				<c:forEach var="blog" items="${ListTT}">
 					<div class="col-md-12">
 						<div class="blog-wrapper">
 							<div class="blog-img">
-								<a href="single-blog.jsp">
-									<img src="img/blog/bg.jpg" alt="Nike" />
+								<a href="ChiTietTTController?matt=<c:out value="${blog.getMaTinTuc()}"/>">
+									<img src="<c:out value="${blog.getHinhAnh()}"/>" alt="" />
 								</a>
 							</div>
 							<div class="blog-content">
-								<h3><a href="single-blog.jsp">
-									Những mẫu giày hot		
+								<h3><a href="ChiTietTTController?matt=<c:out value="${blog.getMaTinTuc()}"/>">
+									<c:out value="${blog.getTieuDe()}"/>		
 								</a></h3>					
 							</div>
 						</div>
 					</div>
-					<div class="col-md-12">
-					<div class="blog-wrapper">
-							<div class="blog-img">
-								<a href="single-blog.jsp">
-									<img src="img/blog/halloween.jpg" alt="" />
-								</a>
-							</div>
-							<div class="blog-content">
-								<h3><a href="single-blog.jsp">
-									Halloween không sợ ma, chỉ sợ thiếu giày
-								</a></h3>												
-							</div>
-					</div>
+				</c:forEach>
 				</div>
-				<div class="col-md-12">
-					<div class="blog-wrapper">
-						
-						<div class="blog-img">
-							<a href="single-blog.jsp">
-								<img src="img/blog/logoGiayNe.png" alt="Giay3.jpg" />
-							</a>
-						</div>
-						<div class="blog-content">
-							<h3>
-								<a href="single-blog.jsp">
-									Khai trương shop giayne ptt
-								</a></h3>
-							</div>
-					</div>
-				</div>	
 			</div>
 		</div>
 	</div>
-</div>
 		
+	<script type="text/javascript">
+        
+        function ThemVaoGioHang(masp){
+			$.ajax({
+				type:'POST',
+				data: {
+					thaotac: "ThemVaoGioHang",
+					masp: masp,
+				},
+				url: 'GioHangController',
+				success: function(result){
+					alert("Đã thêm vào giỏ hàng");
+					document.getElementById("SoLuongGioHang").innerHTML = result;
+				}
+			});
+		}
+        function DatHang(masp){
+			$.ajax({
+				type:'POST',
+				data: {
+					thaotac: "ThemVaoGioHang",
+					masp: masp,
+				},
+				url: 'GioHangController',
+				success: function(){
+					window.location.href = 'DatHangController';
+				}
+			});
+		}
+        
+    </script>
 	
-		<jsp:include page="footer.jsp"></jsp:include>
+	<jsp:include page="footer.jsp"></jsp:include>
 </body>
 </html>

@@ -1,80 +1,15 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
     pageEncoding="utf-8"%>
+    <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html>
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>Quản lý khách hàng</title>
-	<link href="css/bootstrap.min.css" rel="stylesheet">
-	<link href="css/font-awesome.min.css" rel="stylesheet">
-	<link href="css/datepicker3.css" rel="stylesheet">
-	<link href="css/style-admin.css" rel="stylesheet">
-	
-	<!--Custom Font-->
-	<link href="https://fonts.googleapis.com/css?family=Montserrat:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
-	<!--[if lt IE 9]>
-	<script src="js/html5shiv.js"></script>
-	<script src="js/respond.min.js"></script>
-	<![endif]-->
 </head>
 <body>
-	<nav class="navbar navbar-custom navbar-fixed-top" role="navigation">
-		<div class="container-fluid">
-			<div class="navbar-header">
-				<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#sidebar-collapse"><span class="sr-only">Toggle navigation</span>
-					</button>
-				<a class="navbar-brand" href="#">Admin</a>
-				<div class="row">
-					<ul class="nav navbar-top-links navbar-right">
-				 	
-				 		<div class="col-md-12 text-right">
-				 			<a class="navbar-brand fa fa-user" href="#">Thông tin cá nhân</a>
-					
-				 		</div>
-				</div>
-			
-				</ul>
-			</div>
-		</div><!-- /.container-fluid -->
-	</nav>
-	<div id="sidebar-collapse" class="col-sm-3 col-lg-2 sidebar">
-		<div class="profile-sidebar">
-			
-			<div class="profile-usertitle">
-				<div class="profile-usertitle-name text-center">Trần Minh Tùng</div>
-				<div class="profile-usertitle-status text-center"><span class="indicator label-success"></span>Online</div>
-			</div>
-			<div class="clear"></div>
-		</div>
-		<div class="divider"></div>
-		
-		<ul class="nav menu">
-			<li><a href="QLTK.jsp"><em ">&nbsp;</em> Quản lý tài khoản</a></li>
-			<li class="parent "><a data-toggle="collapse" href="#sub-item-1">
-				<em class="fa fa-navicon">&nbsp;</em> Quản lý nhân viên <span data-toggle="collapse" href="#sub-item-1" class="icon pull-right"><em class="fa fa-plus"></em></span>
-				</a>
-				<ul class="children collapse" id="sub-item-1">
-					<li><a class="" href="nhomQuyen-admin.jsp">
-						<span class="fa fa-arrow-right">&nbsp;</span> Các nhóm quản trị viên
-					</a></li>
-					<li><a class="" href="QLNV.jsp">
-						<span class="fa fa-arrow-right">&nbsp;</span> Danh sách nhân viên
-					</a></li>
-					
-				</ul>
-				
-			</li>
-			
-			<li><a href="QLSP.jsp"><em >&nbsp;</em> Quản lý sản phẩm</a></li>
-			<li><a href="QLDH.jsp"><em >&nbsp;</em> Quản lý đơn hàng</a></li>
-			<li class="active"><a href="QLKH.jsp"><em >&nbsp;</em> Quản lý khách hàng</a></li>
-			<li><a href="QLTT.jsp"><em >&nbsp;</em> Quản lý tin tức</a></li>
-			
-			<li><a href="login-admin.jsp"><em >&nbsp;</em> Đăng xuất</a></li>
-		</ul>
-	</div><!--/.sidebar-->
-		
+	<jsp:include page="header-admin.jsp"></jsp:include>		
 	<div class="col-sm-9 col-sm-offset-3 col-lg-10 col-lg-offset-2 main">
 		<div class="row">
 			<ol class="breadcrumb">
@@ -86,249 +21,67 @@
 			
 		</div><!--/.row-->
 
-            <form action="#" style="padding:15px;">
-		      <input type="text" placeholder="Search.." name="search">
-		      <button type="submit"><i class="fa fa-search"></i></button>
-		    </form>
-
-		
 		<table class="table table-bordered">
                     <thead>
                         <tr>
-                            <th>STT</th>
-                            <th>ID</th>
+                            <th>Mã khách hàng</th>
                             <th>Họ tên</th>
-                            <th> Email </th>
-                            <th> Số điện thoại </th>
-                            <th> Địa chỉ </th>
+                            <th>Email</th>
+                            <th>Số điện thoại</th>
+                            <th>Địa chỉ</th>
                             <th>Thao tác</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td>1</td>
-                            <td>1101</td>
-                            <td>Trịnh Vĩnh Phúc</td>
-                            <td>phuc12323@gmail.com</td>
-                            <td> 0894251232 </td>
-                            <td> Quận thủ đức, Tp.HCM </td>
+                    <c:forEach items="${listkh}" var="khachhang">
+                    	<tr id='tr<c:out value="${khachhang.getMaKhachHang() }"/>'>
+                            <td><c:out value="${khachhang.getMaKhachHang() }"/></td>
+                            <td><c:out value="${khachhang.getHoTen() }"/></td>
+                            <td><c:out value="${khachhang.getEmail() }"/></td>
+                            <td><c:out value="${khachhang.getSoDienThoai() }"/></td>
+                            <td><c:out value="${khachhang.getDiaChi() }"/></td>
                             <td>
-                            <a href="viewKH.jsp">
-                            	<button type="button" class="btn btn-info">Xem</button>
-                            </a>
-                            <button type="button" class="btn btn-info " data-toggle="modal" data-target="#myModal">Xóa</button>
+                            <button type="button" class="btn btn-info " data-toggle="modal" data-target="#myModal<c:out value="${khachhang.getMaKhachHang() }"/>">Xóa</button>
 
-							  <!-- Modal -->
-							  <div class="modal fade" id="myModal" role="dialog">
+							  <div class="modal fade" id="myModal<c:out value="${khachhang.getMaKhachHang() }"/>" role="dialog">
 							    <div class="modal-dialog">
 							    
-							      <!-- Modal content-->
 							      <div class="modal-content">
 							        <div class="modal-header" style="text-align: center;">
 							          <button type="button" class="close" data-dismiss="modal">&times;</button>
 							          <h4 class="modal-title">Bạn chắc chắn xóa Tài khoản</h4>
 							        </div>
 							        <div class="modal-body">
-							          <p>Trịnh Vĩnh Phúc</p>
+							          <p><c:out value="${khachhang.getHoTen() }"/></p>
 							        </div>
 							        <div class="modal-footer" style="text-align: center;">
-							          <button type="button" class="btn btn-default" data-dismiss="modal">Xác nhận</button>
+							          <button type="button" class="btn btn-default" data-dismiss="modal" onclick="XoaKH('<c:out value="${khachhang.getMaKhachHang() }"/>');">Xác nhận</button>
 							        </div>
 							      </div>
-							      
-							    </div>
-							  </div>
-                            
-                            </td>
-                        </tr>
-                         <tr>
-                            <td>2</td>
-                            <td>1102</td>
-                            <td>Hoàng Huy</td>
-                            <td>huyhoang23@gmail.com</td>
-                            <td> 0989465232 </td>
-                            <td> 18A phường bình thọ, Quận 9, Tp.HCM </td>
-                            <td>
-                            <a href="viewKH.jsp">
-                            	<button type="button" class="btn btn-info">Xem</button>
-                            </a>
-                             <button type="button" class="btn btn-info " data-toggle="modal" data-target="#myModal">Xóa</button>
-
-							  <!-- Modal -->
-							  <div class="modal fade" id="myModal" role="dialog">
-							    <div class="modal-dialog">
-							    
-							      <!-- Modal content-->
-							      <div class="modal-content">
-							        <div class="modal-header" style="text-align: center;">
-							          <button type="button" class="close" data-dismiss="modal">&times;</button>
-							          <h4 class="modal-title">Bạn chắc chắn xóa Tài khoản</h4>
-							        </div>
-							        <div class="modal-body">
-							          <p>Hoàng Huy</p>
-							        </div>
-							        <div class="modal-footer" style="text-align: center;">
-							          <button type="button" class="btn btn-default" data-dismiss="modal">Xác nhận</button>
-							        </div>
-							      </div>
-							      
 							    </div>
 							  </div>
                             </td>
                         </tr>
-                      	<tr>
-                            <td>3</td>
-                            <td>1103</td>
-                            <td>Hoàng Huy</td>
-                            <td>huyhoang23@gmail.com</td>
-                            <td> 0989465232 </td>
-                            <td> 18A phường bình thọ, Quận 9, Tp.HCM </td>
-                            <td>
-                            <a href="viewKH.jsp">
-                            	<button type="button" class="btn btn-info">Xem</button>
-                            </a>
-                             <button type="button" class="btn btn-info " data-toggle="modal" data-target="#myModal">Xóa</button>
-
-							  <!-- Modal -->
-							  <div class="modal fade" id="myModal" role="dialog">
-							    <div class="modal-dialog">
-							    
-							      <!-- Modal content-->
-							      <div class="modal-content">
-							        <div class="modal-header" style="text-align: center;">
-							          <button type="button" class="close" data-dismiss="modal">&times;</button>
-							          <h4 class="modal-title">Bạn chắc chắn xóa Tài khoản</h4>
-							        </div>
-							        <div class="modal-body">
-							          <p>Nguyễn Văn A</p>
-							        </div>
-							        <div class="modal-footer" style="text-align: center;">
-							          <button type="button" class="btn btn-default" data-dismiss="modal">Xác nhận</button>
-							        </div>
-							      </div>
-							      
-							    </div>
-							  </div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>4</td>
-                            <td>1104</td>
-                            <td>Hoàng Huy</td>
-                            <td>huyhoang23@gmail.com</td>
-                            <td> 0989465232 </td>
-                            <td> 18A phường bình thọ, Quận 9, Tp.HCM </td>
-                            <td>
-                            <a href="viewKH.jsp">
-                            	<button type="button" class="btn btn-info">Xem</button>
-                            </a>
-                             <button type="button" class="btn btn-info " data-toggle="modal" data-target="#myModal">Xóa</button>
-
-							  <!-- Modal -->
-							  <div class="modal fade" id="myModal" role="dialog">
-							    <div class="modal-dialog">
-							    
-							      <!-- Modal content-->
-							      <div class="modal-content">
-							        <div class="modal-header" style="text-align: center;">
-							          <button type="button" class="close" data-dismiss="modal">&times;</button>
-							          <h4 class="modal-title">Bạn chắc chắn xóa Tài khoản</h4>
-							        </div>
-							        <div class="modal-body">
-							          <p>Nguyễn Văn A</p>
-							        </div>
-							        <div class="modal-footer" style="text-align: center;">
-							          <button type="button" class="btn btn-default" data-dismiss="modal">Xác nhận</button>
-							        </div>
-							      </div>
-							      
-							    </div>
-							  </div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>5</td>
-                            <td>1105</td>
-                            <td>Hoàng Huy</td>
-                            <td>huyhoang23@gmail.com</td>
-                            <td> 0989465232 </td>
-                            <td> 18A phường bình thọ, Quận 9, Tp.HCM </td>
-                            <td>
-                            <a href="viewKH.jsp">
-                            	<button type="button" class="btn btn-info">Xem</button>
-                            </a>
-                             <button type="button" class="btn btn-info " data-toggle="modal" data-target="#myModal">Xóa</button>
-
-							  <!-- Modal -->
-							  <div class="modal fade" id="myModal" role="dialog">
-							    <div class="modal-dialog">
-							    
-							      <!-- Modal content-->
-							      <div class="modal-content">
-							        <div class="modal-header" style="text-align: center;">
-							          <button type="button" class="close" data-dismiss="modal">&times;</button>
-							          <h4 class="modal-title">Bạn chắc chắn xóa Tài khoản</h4>
-							        </div>
-							        <div class="modal-body">
-							          <p>Nguyễn Văn A</p>
-							        </div>
-							        <div class="modal-footer" style="text-align: center;">
-							          <button type="button" class="btn btn-default" data-dismiss="modal">Xác nhận</button>
-							        </div>
-							      </div>
-							      
-							    </div>
-							  </div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>6</td>
-                            <td>1106</td>
-                            <td>Hoàng Huy</td>
-                            <td>huyhoang23@gmail.com</td>
-                            <td> 0989465232 </td>
-                            <td> 18A phường bình thọ, Quận 9, Tp.HCM </td>
-                            <td>
-                            <a href="viewKH.jsp">
-                            	<button type="button" class="btn btn-info">Xem</button>
-                            </a>
-                             <button type="button" class="btn btn-info " data-toggle="modal" data-target="#myModal">Xóa</button>
-
-							  <!-- Modal -->
-							  <div class="modal fade" id="myModal" role="dialog">
-							    <div class="modal-dialog">
-							    
-							      <!-- Modal content-->
-							      <div class="modal-content">
-							        <div class="modal-header" style="text-align: center;">
-							          <button type="button" class="close" data-dismiss="modal">&times;</button>
-							          <h4 class="modal-title">Bạn chắc chắn xóa Tài khoản</h4>
-							        </div>
-							        <div class="modal-body">
-							          <p>Nguyễn Văn A</p>
-							        </div>
-							        <div class="modal-footer" style="text-align: center;">
-							          <button type="button" class="btn btn-default" data-dismiss="modal">Xác nhận</button>
-							        </div>
-							      </div>
-							      
-							    </div>
-							  </div>
-                            </td>
-                        </tr>
-                        
+                    </c:forEach>
                     </tbody>
                 </table>
 		
 	
 	</div>	<!--/.main-->
-	
-	<!-- all js here -->
-		<!-- jquery latest version -->
-        <script src="js/vendor/jquery-1.12.0.min.js"></script>
-		<!-- bootstrap js -->
-        <script src="js/bootstrap.min.js"></script>
-			
+	<script type="text/javascript">
+		function XoaKH(makh){
+				$.ajax({
+					type:'POST',
+					data: {
+						makh: makh,
+					},
+					url: 'QLKHController',
+					success: function(){
+						$("#tr"+makh).remove();
+					}
+				});
+		}
 		
+	</script>
 </body>
 </html>
