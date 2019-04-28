@@ -41,7 +41,7 @@ public class ThemTinTucController extends HttpServlet {
 		if(session.getAttribute("quyen")==null)
 			response.sendRedirect("Home");
 		else {
-			if(((Quyen)session.getAttribute("quyen")).getKhachHang()==1 || ((Quyen)session.getAttribute("quyen")).getAdmin()==1) {
+			if(((Quyen)session.getAttribute("quyen")).getTinTuc()==1 || ((Quyen)session.getAttribute("quyen")).getAdmin()==1) {
 				RequestDispatcher rd = request.getRequestDispatcher("themTT.jsp");
 				rd.forward(request, response);
 			} else {

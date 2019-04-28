@@ -3,7 +3,13 @@
   <groupId>Project_shop_giay</groupId>
   <artifactId>Project_shop_giay</artifactId>
   <version>0.0.1-SNAPSHOT</version>
-  <packaging>war</packaging>
+  <packaging>jar</packaging>
+  
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+	</properties>
+
   <dependencies>
 		<dependency>
 			<groupId>javax.servlet</groupId>
